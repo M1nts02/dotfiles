@@ -272,7 +272,6 @@ return {
   },
 
   {
-    condition = require("heirline.conditions").lsp_attached,
     update = { "LspAttach", "LspDetach" },
     provider = function()
       local names = {}
