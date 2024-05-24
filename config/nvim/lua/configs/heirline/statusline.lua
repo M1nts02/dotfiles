@@ -272,7 +272,7 @@ return {
   },
 
   {
-    update = { "LspAttach", "LspDetach" },
+    update = { "LspAttach", "LspDetach", "BufWinEnter" },
     provider = function()
       local names = {}
       for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do

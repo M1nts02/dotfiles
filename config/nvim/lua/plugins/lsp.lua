@@ -13,12 +13,4 @@ return {
     opts = require("configs.aerial").opts,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-
-  -- Hover
-  {
-    "lewis6991/hover.nvim",
-    event = "LspAttach",
-    keys = require("configs.hover").keys,
-    config = require("configs.hover").config,
-  },
 }

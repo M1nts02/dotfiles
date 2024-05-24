@@ -30,6 +30,16 @@ local rg = {
     end,
     "Definition",
   },
+  ["K"] = {
+    function()
+      if vim.inspect(vim.lsp.get_active_clients { bufnr = 0 }) == "{}" then
+        pcall(vim.cmd, "Man")
+      else
+        vim.lsp.buf.hover()
+      end
+    end,
+    "Hover",
+  },
   ["<Space>l"] = {
     name = "LSP+",
     ["r"] = {
