@@ -80,7 +80,7 @@ local get_mode_color = function()
 end
 
 return {
-  hl = { fg = "fg", bg = "bg1" },
+  hl = { fg = "fg", bg = "bg" },
 
   -- Mode
   {
@@ -142,14 +142,14 @@ return {
   }),
 
   -- Git
-  utils.surround(separators.left, "bg1", {
+  utils.surround(separators.left, "bg", {
     {
       init = function(self)
         self.status_dict = vim.b.gitsigns_status_dict
         self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
       end,
       condition = require("heirline.conditions").is_git_repo,
-      hl = { fg = "fg1", bg = "bg1" },
+      hl = { fg = "fg1", bg = "bg" },
 
       { -- git branch name
         provider = function(self)
@@ -194,14 +194,14 @@ return {
     },
   }),
 
-  { provider = "%=", hl = { fg = "fg1", bg = "bg1" } },
+  { provider = "%=", hl = { fg = "fg1", bg = "bg" } },
 
   -- Lsp message
   {
     provider = function()
       return require("lsp-progress").progress()
     end,
-    hl = { fg = "green", bg = "bg1" },
+    hl = { fg = "green", bg = "bg" },
     update = {
       "User",
       pattern = "LspProgressStatusUpdated",
@@ -211,7 +211,7 @@ return {
     },
   },
 
-  { provider = "%=", hl = { fg = "fg1", bg = "bg1" } },
+  { provider = "%=", hl = { fg = "fg1", bg = "bg" } },
 
   {
     condition = require("heirline.conditions").has_diagnostics,
