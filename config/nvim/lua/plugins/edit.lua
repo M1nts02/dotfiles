@@ -1,14 +1,6 @@
 local utils = require "modules.utils"
 
 return {
-  -- Buffer manager
-  {
-    "glepnir/flybuf.nvim",
-    cmd = "FlyBuf",
-    keys = { { "<Space>b", "<CMD>FlyBuf<CR>", desc = "Buffers" } },
-    opts = { border = "rounded" },
-  },
-
   -- Code format
   {
     "stevearc/conform.nvim",
