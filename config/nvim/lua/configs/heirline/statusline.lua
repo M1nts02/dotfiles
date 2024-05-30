@@ -1,13 +1,5 @@
 local utils = require "heirline.utils"
-
-local icons = {
-  VimIcon = "",
-  ScrollText = "",
-  GitBranch = "",
-  GitAdd = "",
-  GitChange = "",
-  GitDelete = "",
-}
+local icons = require "modules.icons"
 
 local separators = {
   left = { "", "" },
@@ -95,9 +87,7 @@ return {
   },
 
   {
-    provider = function()
-      return separators.left[2]
-    end,
+    provider = separators.left[2],
     hl = function()
       return { fg = get_mode_color(), bg = "fg2" }
     end,
@@ -106,12 +96,8 @@ return {
   -- Filename
   utils.surround(separators.left, "bg2", {
     {
-      provider = function()
-        return separators.left[2]
-      end,
-      hl = function()
-        return { fg = "fg2", bg = "bg2" }
-      end,
+      provider = separators.left[2],
+      hl = { fg = "fg2", bg = "bg2" },
     },
     {
       init = function(self)
@@ -123,9 +109,7 @@ return {
       provider = function(self)
         return self.icon and (" " .. self.icon .. " ")
       end,
-      hl = function()
-        return { fg = "blue", bg = "bg2" }
-      end,
+      hl = { fg = "blue", bg = "bg2" },
     },
     {
       provider = function(self)
@@ -135,9 +119,7 @@ return {
 
         return filename .. " "
       end,
-      hl = function()
-        return { fg = "fg", bg = "bg2" }
-      end,
+      hl = { fg = "fg", bg = "bg2" },
     },
   }),
 
@@ -216,10 +198,10 @@ return {
   {
     condition = require("heirline.conditions").has_diagnostics,
     static = {
-      error_icon = " ",
-      warn_icon = " ",
-      info_icon = "󰋼 ",
-      hint_icon = "󰛩 ",
+      error_icon = icons.DiagnosticError .. " ",
+      warn_icon = icons.DiagnosticWarn .. " ",
+      info_icon = icons.DiagnosticInfo .. " ",
+      hint_icon = icons.DiagnosticHint .. " ",
     },
 
     init = function(self)
@@ -285,15 +267,11 @@ return {
 
   -- WorkDir
   {
-    provider = function()
-      return ""
-    end,
+    provider = separators.right[1],
     hl = { fg = "indian_red", bg = "bg1" },
   },
   {
-    provider = function()
-      return "󰉋 "
-    end,
+    provider = icons.Folder .. " ",
     hl = { fg = "bg", bg = "indian_red" },
   },
   {
@@ -314,23 +292,15 @@ return {
 
   -- Ruler
   {
-    provider = function()
-      return separators.right[1]
-    end,
-    hl = function()
-      return { fg = "green", bg = "bg1" }
-    end,
+    provider = separators.right[1],
+    hl = { fg = "green", bg = "bg1" },
   },
   {
     provider = icons.ScrollText .. " ",
-    hl = function()
-      return { fg = "bg", bg = "green" }
-    end,
+    hl = { fg = "bg", bg = "green" },
   },
   {
     provider = " %l:%c %P",
-    hl = function()
-      return { fg = "green", bg = "bg1" }
-    end,
+    hl = { fg = "green", bg = "bg" },
   },
 }

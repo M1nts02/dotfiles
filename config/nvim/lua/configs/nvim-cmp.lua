@@ -1,47 +1,5 @@
 local cmp = require "cmp"
-
-local icons = {
-  Namespace = "󰌗",
-  Text = "󰉿",
-  Method = "󰆧",
-  Constructor = "",
-  Field = "󰜢",
-  Variable = "󰀫",
-  Class = "󰠱",
-  Interface = "",
-  Module = "",
-  Property = "󰜢",
-  Unit = "󰑭",
-  Value = "󰎠",
-  Enum = "",
-  EnumMember = "",
-  Keyword = "󰌋",
-  Snippet = "",
-  Color = "󰏘",
-  File = "󰈚",
-  Reference = "󰈇",
-  Folder = "󰉋",
-  Constant = "󰏿",
-  Struct = "󰙅",
-  Event = "",
-  Operator = "󰆕",
-  TypeParameter = "󰊄",
-  Table = "",
-  Object = "󰅩",
-  Tag = "",
-  Array = "[]",
-  Boolean = "",
-  Number = "",
-  Null = "󰟢",
-  String = "󰉿",
-  Calendar = "",
-  Watch = "󰥔",
-  Package = "",
-  Copilot = "",
-  Codeium = "",
-  TabNine = "",
-  Function = "󰊕",
-}
+local icons = require "modules.icons"
 
 cmp.setup {
   enabled = function()

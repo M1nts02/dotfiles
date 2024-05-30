@@ -1,12 +1,13 @@
 local M = {}
 
 local utils = require "modules.utils"
+local icons = require "modules.icons"
 
 M.keys = {
   {
     "<Space>f<CR>",
     function()
-      require("fzf-lua").builtin { prompt = " " }
+      require("fzf-lua").builtin { prompt = icons.Search .. " " }
     end,
     desc = "Builtin",
   },
@@ -27,7 +28,7 @@ M.keys = {
   {
     "<Space>fm",
     function()
-      require("fzf-lua").marks()
+      require("fzf-lua").marks { prompt = icons.Bookmarks .. " " }
     end,
     desc = "Marks",
   },
@@ -55,7 +56,7 @@ M.keys = {
   {
     "<Space>lS",
     function()
-      require("fzf-lua").lsp_workspace_symbols { prompt = " " }
+      require("fzf-lua").lsp_workspace_symbols { prompt = icons.Search .. " " }
     end,
     desc = "Symbol Workspace",
   },
@@ -143,10 +144,10 @@ M.opts = {
       },
     },
   },
-  files = { prompt = " ", cwd_prompt = false },
+  files = { prompt = icons.Search .. " ", cwd_prompt = false },
   git = {
     files = {
-      prompt = " ",
+      prompt = icons.Search .. " ",
       cmd = "git ls-files --exclude-standard",
       multiprocess = true,
       git_icons = true,
@@ -154,27 +155,31 @@ M.opts = {
       color_icons = true,
       cwd_header = false,
     },
-    status = { prompt = " " },
-    commits = { prompt = " " },
-    bcommits = { prompt = " " },
-    branches = { prompt = " " },
-    tags = { prompt = " " },
-    stash = { prompt = " " },
+    status = { prompt = icons.Search .. " " },
+    commits = { prompt = icons.Search .. " " },
+    bcommits = { prompt = icons.Search .. " " },
+    branches = { prompt = icons.Search .. " " },
+    tags = { prompt = icons.Search .. " " },
+    stash = { prompt = icons.Search .. " " },
   },
-  grep = { prompt = "󰈭 ", input_prompt = " " },
-  args = { prompt = " " },
-  oldfiles = { prompt = "󰈚 ", cwd_only = false },
-  buffers = { prompt = " " },
-  tabs = { prompt = " ", tab_title = "Tab", tab_marker = " " },
-  lines = { prompt = " " },
-  blines = { prompt = " " },
-  tags = { prompt = " ", no_header = true, no_header_i = true },
-  btags = { prompt = " " },
-  colorschemes = { prompt = " ", live_preview = false, winopts = { height = 0.55, width = 0.30 } },
-  awesome_colorschemes = { prompt = " ", live_preview = false },
-  quickfix_stack = { prompt = " ", marker = " " },
-  lsp = { prompt_postfix = " ", code_actions = { prompt = " " }, finder = { prompt = " " } },
-  diagnostics = { prompt = " " },
+  grep = { prompt = icons.WordFile .. " ", input_prompt = icons.Input .. " " },
+  args = { prompt = icons.Search .. " " },
+  oldfiles = { prompt = icons.DefaultFile .. " ", cwd_only = false },
+  buffers = { prompt = icons.Search .. " " },
+  tabs = { prompt = icons.Search .. " ", tab_title = "Tab", tab_marker = icons.Bookmarks .. " " },
+  lines = { prompt = icons.Search .. " " },
+  blines = { prompt = icons.Search .. " " },
+  tags = { prompt = icons.Search .. " ", no_header = true, no_header_i = true },
+  btags = { prompt = icons.Search .. " " },
+  colorschemes = { prompt = icons.Colorscheme .. " ", live_preview = false, winopts = { height = 0.55, width = 0.30 } },
+  awesome_colorschemes = { prompt = icons.Colorscheme .. " ", live_preview = false },
+  quickfix_stack = { prompt = icons.Search .. " ", marker = icons.Bookmarks .. " " },
+  lsp = {
+    prompt_postfix = icons.Search .. " ",
+    code_actions = { prompt = icons.Search .. " " },
+    finder = { prompt = icons.Search .. " " },
+  },
+  diagnostics = { prompt = icons.Search .. " " },
 }
 
 return M
