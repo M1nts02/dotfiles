@@ -30,6 +30,16 @@ return {
       hs.spaces.toggleMissionControl()
     end,
 
+    -- Next Space
+    [singleKey("[", "Space-")] = function()
+      hs.eventtap.keyStroke({ "Control", "Command" }, "a")
+    end,
+
+    -- Prev Space
+    [singleKey("]", "Space+")] = function()
+      hs.eventtap.keyStroke({ "Control", "Command" }, "d")
+    end,
+
     -- Dock
     [singleKey("d", "Dock")] = function()
       hs.eventtap.keyStroke({ "fn" }, "a")
