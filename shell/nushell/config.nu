@@ -197,7 +197,15 @@ $env.config = {
   use_ansi_coloring: true
   bracketed_paste: true # enable bracketed paste, currently useless on windows
   edit_mode: vi # emacs, vi
-  shell_integration: false # enables terminal markers and a workaround to arrow keys stop working issue
+  shell_integration: {
+    osc2: true
+    osc7: true
+    osc8: true
+    osc9_9: false
+    osc133: true
+    osc633: true
+    reset_application_mode: false
+  }
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
   hooks: {
