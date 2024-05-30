@@ -12,6 +12,7 @@ return {
         local buf_id = vim.api.nvim_get_current_buf()
         local breakpoints = get()[buf_id]
 
+        -- If have breakpoint
         if breakpoints ~= nil then
           for _, breakpoint in ipairs(breakpoints) do
             if breakpoint.line == line then
@@ -21,6 +22,13 @@ return {
           end
         end
 
+        -- If have diagnostic
+        if vim.inspect(vim.diagnostic.get(0, { lnum = line })) ~= "{}" then
+          vim.lsp.buf.code_action()
+          return
+        end
+
+        -- Fold
         if vim.fn.foldclosed(line) ~= -1 then
           pcall(vim.cmd, "foldopen")
         else
