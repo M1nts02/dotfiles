@@ -3,3 +3,5 @@ lua/custom.lua
 custom.lua
 .DS_Store
 .luarc.json
+zig-cache
+template/zig-cache
