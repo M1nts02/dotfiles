@@ -38,6 +38,20 @@ def wallpaper_change(mode: bool):
 if __name__ == "__main__":
     mode = sys.argv[1] == "true"
     if mode:
+        os.popen(
+            "cp -f "
+            + home
+            + "/dotfiles/config/alacritty/alacritty_dark.toml "
+            + home
+            + "/.config/alacritty/alacritty.toml"
+        )
         wallpaper_change(True)
     else:
+        os.popen(
+            "cp -f "
+            + home
+            + "/dotfiles/config/alacritty/alacritty_light.toml "
+            + home
+            + "/.config/alacritty/alacritty.toml"
+        )
         wallpaper_change(False)
