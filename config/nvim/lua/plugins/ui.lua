@@ -32,12 +32,10 @@ return {
 
   -- Statusline
   {
-    "rebelot/heirline.nvim",
-    event = { "BufRead", "BufNewFile" },
-    config = require("configs.heirline").config,
+    "nvim-lualine/lualine.nvim",
+    config = require("configs.lualine").config,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "lewis6991/gitsigns.nvim",
       "stevearc/aerial.nvim",
       {
         "linrongbin16/lsp-progress.nvim",
