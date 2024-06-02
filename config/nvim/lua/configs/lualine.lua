@@ -20,7 +20,14 @@ local opts = {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "filename", "aerial" },
+    lualine_b = {
+      function()
+        local tab_id = vim.api.nvim_tabpage_get_number(0)
+        return "[" .. tab_id .. "]"
+      end,
+      "filename",
+      "aerial",
+    },
     lualine_c = {
       "%=",
       function()
