@@ -43,4 +43,15 @@ return {
       },
     },
   },
+
+  -- Status column
+  {
+    "luukvbaal/statuscol.nvim",
+    config = function()
+      require "configs.statuscol"
+    end,
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+    },
+  },
 }
