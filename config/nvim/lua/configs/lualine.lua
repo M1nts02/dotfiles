@@ -41,7 +41,8 @@ local opts = {
         for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
           table.insert(names, server.name)
         end
-        return table.concat(names, " ")
+        local name = table.concat(names, " ")
+        return name == "" and "" or icons.ActiveLSP .. "  " .. name
       end,
     },
     lualine_y = {
