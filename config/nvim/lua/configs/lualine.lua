@@ -1,4 +1,5 @@
 local M = {}
+local icons = require "modules.icons"
 
 local opts = {
   options = {
@@ -36,7 +37,9 @@ local opts = {
         return table.concat(names, " ")
       end,
     },
-    lualine_y = { "branch" },
+    lualine_y = {
+      { "branch", icon = icons.Git },
+    },
     lualine_z = { "location", "progress" },
   },
 }
