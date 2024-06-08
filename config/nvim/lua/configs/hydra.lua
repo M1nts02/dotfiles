@@ -27,7 +27,7 @@ rg["window"] = {
   },
 }
 
-M.config = function()
+function M.config()
   local Hydra = require "hydra"
   for _, v in pairs(rg) do
     Hydra(v)

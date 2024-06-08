@@ -9,7 +9,7 @@ local opts = {
 
 M.cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUpdate" }
 
-M.init = function()
+function M.init()
   -- Enable highlight
   vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = { "*.kdl", "*.md", "*.nu", "*.ron", "*.toml", "*.yaml" },
@@ -17,7 +17,7 @@ M.init = function()
   })
 end
 
-M.config = function()
+function M.config()
   require("nvim-treesitter.configs").setup(opts)
 end
 

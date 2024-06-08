@@ -7,7 +7,7 @@ local opts = {
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {
-      statusline = {},
+      statusline = { "dashboard" },
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -38,7 +38,7 @@ local opts = {
       "diagnostics",
       function()
         local names = {}
-        for _, server in pairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+        for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
           table.insert(names, server.name)
         end
         local name = table.concat(names, " ")
@@ -52,7 +52,7 @@ local opts = {
   },
 }
 
-M.config = function()
+function M.config()
   require("lualine").setup(opts)
 end
 

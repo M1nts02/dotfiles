@@ -1,7 +1,7 @@
 local utils = require "modules.utils"
 local dap = require "dap"
 
-local lldb = function()
+local function lldb()
   if utils.executable "codelldb" then
     return "codelldb"
   end

@@ -32,7 +32,7 @@ end, {
   desc = "Toggle auto-format",
 })
 
-M.config = function()
+function M.config()
   require("conform").setup(opts) -- Options
   vim.cmd "AutoFormatToggle" -- Enable auto-format
 end

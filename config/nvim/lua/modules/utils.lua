@@ -3,14 +3,14 @@ local M = {}
 --- Get highlight
 ---@param name string The group name
 ---@return string[]
-M.get_hl = function(name)
+function M.get_hl(name)
   return vim.api.nvim_get_hl(0, { name = name, link = false })
 end
 
 --- A function to copy file
 ---@param oldPath string The old file path
 ---@param newPath string The new file path
-M.copy_file = function(oldPath, newPath)
+function M.copy_file(oldPath, newPath)
   local oldIcon, errorString = io.open(oldPath, "rb")
   assert(oldIcon ~= nil, errorString)
   local data = oldIcon:read "a"
@@ -23,7 +23,7 @@ end
 --- A function to check Commands exist
 ---@param cmd string|string[] The commands
 ---@return boolean
-M.executable = function(cmd)
+function M.executable(cmd)
   if type(cmd) == "string" then
     return vim.fn.executable(cmd) == 1
   end

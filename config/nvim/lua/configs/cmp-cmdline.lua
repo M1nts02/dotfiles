@@ -41,7 +41,7 @@ M.opts = function()
   }
 end
 
-M.config = function(_, opts)
+function M.config(_, opts)
   local cmp = require "cmp"
   vim.tbl_map(function(val)
     cmp.setup.cmdline(val.type, val)

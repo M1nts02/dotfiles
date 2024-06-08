@@ -32,7 +32,7 @@ local rg = {
   },
   ["K"] = {
     function()
-      if vim.inspect(vim.lsp.get_active_clients { bufnr = 0 }) == "{}" then
+      if vim.inspect(vim.lsp.get_clients { bufnr = 0 }) == "{}" then
         pcall(vim.cmd, "Man")
       else
         vim.lsp.buf.hover()
@@ -111,7 +111,7 @@ local rg = {
   },
 }
 
-M.config = function()
+function M.config()
   require("which-key").setup(options)
   require("which-key").register(rg)
 end

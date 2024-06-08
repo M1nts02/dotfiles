@@ -1,6 +1,6 @@
 local M = {}
 
-M.get_palette = function()
+function M.get_palette()
   local get_hl = require("modules.utils").get_hl
 
   local palette = {}
@@ -22,7 +22,7 @@ M.get_palette = function()
   return palette
 end
 
-M.set_groups = function(palette)
+function M.set_groups(palette)
   local groups = {
     NormalFloat = { bg = palette.bg },
 

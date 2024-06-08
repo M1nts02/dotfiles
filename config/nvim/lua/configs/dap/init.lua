@@ -15,7 +15,7 @@ M.cmd = {
   "DapUIToggle",
 }
 
-M.configs = function()
+function M.configs()
   require "configs.dap.configurations" -- Load configurations
   require "configs.dap.adapters" -- Load adapters
   require "configs.dap.options"
