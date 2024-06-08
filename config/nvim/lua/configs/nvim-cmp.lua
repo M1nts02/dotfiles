@@ -73,6 +73,8 @@ cmp.setup {
     { name = "snippets", max_item_count = 10 },
     { name = "path" },
     { name = "buffer" },
+    { name = "lazydev", group_index = 0 },
+    { name = "nvim_lsp_signature_help" },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
