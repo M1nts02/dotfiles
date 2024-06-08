@@ -85,7 +85,10 @@ return {
     cmd = { "Neogit" },
     keys = { { "<Space>gn", "<CMD>Neogit<CR>", desc = "Neogit" } },
     main = "neogit",
-    opts = { integrations = { diffview = true } },
+    opts = {
+      integrations = { diffview = true },
+      commit_editor = { staged_diff_split_kind = "auto" },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",

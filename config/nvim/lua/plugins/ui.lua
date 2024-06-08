@@ -33,6 +33,7 @@ return {
   -- Statusline
   {
     "nvim-lualine/lualine.nvim",
+    event = { "BufRead", "BufNewFile" },
     config = require("configs.lualine").config,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
@@ -47,6 +48,7 @@ return {
   -- Status column
   {
     "luukvbaal/statuscol.nvim",
+    event = { "BufRead", "BufNewFile" },
     config = function()
       require "configs.statuscol"
     end,
