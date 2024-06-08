@@ -1,15 +1,5 @@
 let sep = (if $nu.os-info.name == "windows" {"\\"} else {"/"})
 
-def fast-git-style [] {
-    let ret = (do -p { git --no-optional-locks branch -v } | complete)
-    if ($ret.exit_code == 0) {
-        let info = ($ret.stdout | str trim | parse -r '\* (?<name>(\([\S ]+\))|([\w\/\-\.]+)) +\w+ (\[((?<state>[^\]]+))+\])?')
-        $"(ansi green)->(ansi '#FF00FF') ($info.name.0)"
-    } else {
-        ""
-    }
-}
-
 $env.PROMPT_COMMAND = {
     mut home = ""
     try {
@@ -35,7 +25,7 @@ $env.PROMPT_COMMAND = {
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($workspace)"
 
-    $"($path_segment) (fast-git-style) \n "
+    $"($path_segment)\n "
 }
 
 $env.PROMPT_COMMAND_RIGHT = {
