@@ -12,7 +12,7 @@ return {
       hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
     end,
     -- Chinese
-    [singleKey("2", "English")] = function()
+    [singleKey("2", "Chinese")] = function()
       hs.keycodes.currentSourceID "com.apple.inputmethod.SCIM.ITABC"
     end,
     -- Japanese
