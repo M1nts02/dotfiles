@@ -26,13 +26,6 @@ M.keys = {
     desc = "Oldfile",
   },
   {
-    "<Space>fm",
-    function()
-      require("fzf-lua").marks { prompt = icons.Bookmarks .. " " }
-    end,
-    desc = "Marks",
-  },
-  {
     "<Space>fb",
     function()
       require("fzf-lua").buffers()
@@ -47,32 +40,11 @@ M.keys = {
     desc = "Tabs",
   },
   {
-    "<Space><Tab>",
-    function()
-      require("fzf-lua").tabs()
-    end,
-    desc = "Tabs",
-  },
-  {
     "<Space>lS",
     function()
       require("fzf-lua").lsp_workspace_symbols { prompt = icons.Search .. " " }
     end,
     desc = "Symbol Workspace",
-  },
-  {
-    "<Space>f/",
-    function()
-      require("fzf-lua").lines()
-    end,
-    desc = "Buffers line",
-  },
-  {
-    "<Space>/",
-    function()
-      require("fzf-lua").blines()
-    end,
-    desc = "Line",
   },
   {
     "<Space>fh",
