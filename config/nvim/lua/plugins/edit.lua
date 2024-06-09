@@ -1,6 +1,13 @@
 local utils = require "modules.utils"
 
 return {
+  -- Comment
+  {
+    "numToStr/Comment.nvim",
+    event = { "BufRead", "BufNewFile" },
+    opts = {},
+  },
+
   -- Code format
   {
     "stevearc/conform.nvim",
