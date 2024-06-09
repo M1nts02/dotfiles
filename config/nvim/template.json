@@ -1,23 +1,19 @@
 {
   "xmake(c)": {
-    "template": "xmake_c.lua",
-    "target": "xmake.lua"
-  },
-  "launch(lldb)": {
-    "template": "launch_lldb.json",
-    "target": ".vscode/launch.json"
-  },
-  "build.zig": {
-    "template": "build.zig",
-    "target": "build.zig"
+    "target": "xmake.lua",
+    "template": "xmake_c.lua"
   },
   "stylua": {
-    "template": "stylua.toml",
-    "target": "stylua.toml"
+    "target": "stylua.toml",
+    "template": "stylua.toml"
+  },
+  "launch(lldb)": {
+    "target": ".vscode/launch.json",
+    "template": "launch_lldb.json"
   },
   "cmake(c)": {
-    "template": "cmake(c).txt",
-    "target": "CMakeLists.txt"
+    "target": "CMakeLists.txt",
+    "template": "cmake(c).txt"
   }
 }
 
