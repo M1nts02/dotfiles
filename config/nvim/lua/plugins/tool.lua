@@ -1,6 +1,20 @@
 local utils = require "modules.utils"
 
 return {
+  -- File browser
+  {
+    "simonmclean/triptych.nvim",
+    keys = { { "<Space>e", "<CMD>Triptych<CR>", desc = "Triptych" } },
+    opts = {
+      mappings = { toggle_hidden = "'", show_help = "?" },
+      options = { backdrop = 100, border = "rounded" },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+
   -- Install tool
   {
     "williamboman/mason.nvim",
@@ -69,14 +83,6 @@ return {
     keys = { [[<C-\>]] },
     main = "toggleterm",
     opts = require("configs.toggleterm").opts,
-  },
-
-  -- File browser
-  {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    keys = require("configs.nvim-tree").keys,
-    opts = require("configs.nvim-tree").opts,
   },
 
   -- Neogit
