@@ -6,6 +6,7 @@ return {
     "mfussenegger/nvim-dap",
     version = "*",
     cmd = require("configs.dap").cmd,
+    keys = require("configs.dap").keys,
     config = require("configs.dap").configs,
     dependencies = {
       { -- DAP UI
