@@ -100,8 +100,7 @@ return {
     "lewis6991/gitsigns.nvim",
     cmd = { "Gitsigns" },
     event = { "BufRead", "BufNewFile" },
-    keys = require("configs.gitsigns").keys,
-    opts = require("configs.gitsigns").opts,
+    opts = { signcolumn = true },
   },
 
   -- Which key
