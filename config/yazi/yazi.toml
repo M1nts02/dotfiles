@@ -20,10 +20,12 @@ image = [
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
+  { run = 'open "$@"', desc = "Open" },
   { run = 'mpv "$@"' },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
+  { run = 'open "$@"', desc = "Open" },
   { run = 'mpv "$@"' },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
