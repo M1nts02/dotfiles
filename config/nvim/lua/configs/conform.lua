@@ -4,37 +4,58 @@ local opts = {
   formatters_by_ft = {
     c = { "clang_format" },
     cpp = { "clang_format" },
+    css = { "prettier" },
     gdscript = { "gdformat" },
+    graphql = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    json = { { "jq", "prettier" } },
     lua = { "stylua" },
-    python = { "black" },
+    markdown = { "prettier" },
+    python = { { "isort", "black" } },
     rust = { "rustfmt" },
-    json = { "jq" },
+    svelte = { "prettier" },
+    typescriptreact = { "prettier" },
+    typescript = { "prettier" },
+    yaml = { "prettier" },
+    zig = { "zigfmt" },
   },
+  format_on_save = function(bufnr)
+    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+      return
+    end
+    return { timeout_ms = 1000, lsp_fallback = true }
+  end,
 }
 
--- Auto-format
-vim.g.auto_format_id = nil
-vim.api.nvim_create_user_command("AutoFormatToggle", function()
-  if vim.g.auto_format_id == nil then
-    vim.g.auto_format_id = vim.api.nvim_create_autocmd("BufWritePost", {
-      callback = function(args)
-        pcall(require("conform").format, { bufnr = args.buf })
-        vim.cmd "w"
-      end,
-    })
-    vim.notify "AutoFormat enabled"
+-- Disable auto format
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+  if args.bang then
+    vim.b.disable_autoformat = true
   else
-    vim.api.nvim_del_autocmd(vim.g.auto_format_id)
-    vim.g.auto_format_id = nil
-    vim.notify "AutoFormat disabled"
+    vim.g.disable_autoformat = true
   end
 end, {
-  desc = "Toggle auto-format",
+  desc = "Disable autoformat-on-save",
+  bang = true,
 })
+
+-- Enable auto format
+vim.api.nvim_create_user_command("FormatEnable", function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+end, {
+  desc = "Re-enable autoformat-on-save",
+})
+
+function M.init()
+  vim.g.zig_fmt_autosave = 0
+  vim.g.disable_autoformat = false -- Enable auto format
+end
 
 function M.config()
   require("conform").setup(opts) -- Options
-  vim.cmd "AutoFormatToggle" -- Enable auto-format
 end
 
 return M

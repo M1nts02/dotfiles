@@ -12,6 +12,7 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufRead", "BufNewFile" },
+    init = require("configs.conform").init,
     config = require("configs.conform").config,
   },
 
