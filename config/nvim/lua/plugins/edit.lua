@@ -42,10 +42,7 @@ return {
     branch = "dev",
     cmd = { "Templ", "TemplAdd", "TemplDel" },
     opts = {
-      templ_dir = vim.fn.stdpath "config" .. "/template",
-      templ_register_file = vim.fn.stdpath "config" .. "/template.json",
-      author = vim.g.author,
-      email = vim.g.email,
+      git_info = true,
     },
   },
 

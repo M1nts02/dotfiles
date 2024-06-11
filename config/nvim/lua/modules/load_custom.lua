@@ -5,8 +5,6 @@ local config = vim.fn.stdpath "config"
 vim.g.transparent = false
 vim.g.following_system = false
 vim.g.start_only = false
-vim.g.author = "XXX"
-vim.g.email = "XXX@XX.com"
 
 -- Get path of custom file
 local custom_path = config .. "/lua/custom.lua"

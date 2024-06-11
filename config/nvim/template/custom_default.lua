@@ -2,9 +2,6 @@
 local utils = require "modules.utils"
 local executable = utils.executable
 
-vim.g.author = "M1nts02"
-vim.g.email = "zyh1032712227@outlook.com"
-
 if vim.g.is_mac and executable "/opt/homebrew/bin/nu" then
   vim.o.shell = "/opt/homebrew/bin/nu"
 end
