@@ -63,6 +63,7 @@ return {
   FileNew = "",
   FileModified = "",
   FileReadOnly = "",
+  FittenCode = "",
   FoldClosed = "",
   FoldOpened = "",
   FoldSeparator = " ",
