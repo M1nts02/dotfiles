@@ -6,7 +6,7 @@ return {
     "simonmclean/triptych.nvim",
     keys = { { "<Space>e", "<CMD>Triptych<CR>", desc = "Triptych" } },
     opts = {
-      mappings = { toggle_hidden = "'", show_help = "?" },
+      mappings = { toggle_hidden = "'", show_help = "?", open_tab = "t", copy = "y" },
       options = { backdrop = 100, border = "rounded" },
     },
     dependencies = {
@@ -80,7 +80,7 @@ return {
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
-    keys = { [[<C-\>]] },
+    keys = require("configs.toggleterm").keys,
     main = "toggleterm",
     opts = require("configs.toggleterm").opts,
   },
