@@ -1,31 +1,16 @@
-let sep = (if $nu.os-info.name == "windows" {"\\"} else {"/"})
-
 $env.PROMPT_COMMAND = {
-    mut home = ""
-    try {
-        if $nu.os-info.name == "windows" {
-            $home = $env.USERPROFILE
-        } else {
-            $home = $env.HOME
-        }
-    }
+  let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
+    null => $env.PWD
+    '' => '~'
+    $relative_pwd => ([~ $relative_pwd] | path join)
+  }
 
-    let dir = ([
-        ($env.PWD | str substring 0..($home | str length) | str replace $home "~"),
-        ($env.PWD | str substring ($home | str length)..)
-    ] | str join)
+  let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
+  let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
+  let path_segment = $"($path_color)($dir)"
 
-    let workspace = (if (($dir | str length) > 40) {
-      let path = $dir | split row $sep
-      let last = ($path | length) - 1
-      ($path | select $last).0
-    } else { $dir })
-
-    let path_color = (if (is-admin) { ansi "#ff6a6a" } else { ansi "#008b8b" })
-    let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
-    let path_segment = $"($path_color)($workspace)"
-
-    $"($path_segment)\n "
+  let path = ($path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)")
+  $"($path)\n "
 }
 
 $env.PROMPT_COMMAND_RIGHT = {
