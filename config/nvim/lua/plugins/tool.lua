@@ -4,6 +4,7 @@ return {
   -- File browser
   {
     "simonmclean/triptych.nvim",
+    enabled = not utils.executable "yazi",
     keys = { { "<Space>e", "<CMD>Triptych<CR>", desc = "Triptych" } },
     opts = {
       mappings = { toggle_hidden = "'", show_help = "?", open_tab = "t", copy = "y" },
@@ -12,6 +13,26 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
+    },
+  },
+  {
+    "rolv-apneseth/tfm.nvim",
+    enabled = utils.executable "yazi",
+    keys = { {
+      "<Space>e",
+      function()
+        require("tfm").open()
+      end,
+      desc = "tfm",
+    } },
+    opts = {
+      ui = {
+        border = "rounded",
+        height = 0.8,
+        width = 0.8,
+        x = 0.5,
+        y = 0.5,
+      },
     },
   },
 
