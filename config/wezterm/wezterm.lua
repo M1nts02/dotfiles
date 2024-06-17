@@ -7,11 +7,7 @@ local is_linux = string.find(wezterm.target_triple, "linux") ~= nil
 local is_mac = string.find(wezterm.target_triple, "apple") ~= nil
 
 -- Shell
-if is_mac then
-  options.default_prog = { "/opt/homebrew/bin/nu", "-l" }
-elseif is_windows then
-  options.default_prog = { "C:\\Program Files\\nu\\bin\\nu.exe" }
-end
+-- options.default_prog = { "/usr/bin/zsh", "-l" }
 
 -- Init options
 options.term = "xterm-256color"
@@ -38,6 +34,9 @@ options.font = wezterm.font_with_fallback {
 require "tab_bar"
 require "mapping"
 require "colorscheme"
-require "startup"
+
+if not is_windows then
+  require "startup"
+end
 
 return options
