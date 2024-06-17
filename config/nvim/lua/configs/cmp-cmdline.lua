@@ -5,6 +5,7 @@ M.opts = function()
   return {
     {
       type = "/",
+      enabled = true,
       mapping = cmp.mapping.preset.cmdline {
         ["<C-n>"] = {
           c = function(fallback)
@@ -21,6 +22,7 @@ M.opts = function()
     },
     {
       type = { ":", "@" },
+      enabled = true,
       mapping = cmp.mapping.preset.cmdline {
         ["<C-n>"] = {
           c = function(fallback)

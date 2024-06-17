@@ -1,13 +1,21 @@
 local cmp = require "cmp"
 local icons = require "modules.icons"
 
+local function get_cmp_status()
+  if vim.g.cmp_disable == true or vim.b.cmp_disable == true then
+    return false
+  else
+    return true
+  end
+end
+
 cmp.setup {
   enabled = function()
     local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
-    if buftype == "prompt" or vim.g.cmp_toggle == nil then
+    if buftype == "prompt" then
       return false
     end
-    return vim.g.cmp_toggle
+    return get_cmp_status()
   end,
   completion = {
     keyword_length = 3,
@@ -44,7 +52,7 @@ cmp.setup {
         cmp.select_next_item()
       elseif vim.snippet.active { direction = 1 } then
         vim.snippet.jump(1)
-      elseif vim.g.cmp_toggle then
+      elseif get_cmp_status() then
         cmp.complete()
       else
         fallback()
@@ -58,7 +66,7 @@ cmp.setup {
         cmp.select_prev_item()
       elseif vim.snippet.active { direction = -1 } then
         vim.snippet.jump(-1)
-      elseif vim.g.cmp_toggle then
+      elseif get_cmp_status() then
         cmp.complete()
       else
         fallback()
@@ -85,15 +93,20 @@ cmp.setup {
   },
 }
 
--- Toggle cmp
-vim.api.nvim_create_user_command("CmpToggle", function()
-  if vim.g.cmp_toggle == false or vim.g.cmp_toggle == nil then
-    vim.g.cmp_toggle = true
-    vim.notify "Auto-completion enabled"
-  else
-    vim.g.cmp_toggle = false
-    vim.notify "Auto-completion disabled"
-  end
+-- Enable cmp
+vim.api.nvim_create_user_command("CmpEnable", function()
+  vim.g.cmp_disable = false
+  vim.b.cmp_disable = false
+  vim.notify "Cmp enabled"
 end, {
-  desc = "Toggle auto-completion",
+  desc = "Enable cmp",
+})
+
+-- Disable cmp
+vim.api.nvim_create_user_command("CmpDisable", function()
+  vim.g.cmp_disable = true
+  vim.b.cmp_disable = true
+  vim.notify "Cmp disabled"
+end, {
+  desc = "Cmp disabled",
 })

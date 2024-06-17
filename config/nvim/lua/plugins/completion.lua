@@ -5,7 +5,7 @@ return {
     event = "InsertEnter",
     cmd = { "CmpToggle" },
     init = function()
-      vim.g.cmp_toggle = true
+      vim.g.cmp_disable = false
     end,
     config = function()
       require "configs.nvim-cmp"
@@ -16,7 +16,12 @@ return {
       "hrsh7th/cmp-buffer", -- Buffer
       { -- AI
         "luozhiya/fittencode.nvim",
-        opts = { completion_mode = "source" },
+        opts = {
+          completion_mode = "source",
+          disable_specific_inline_completion = {
+            suffixes = { "csv", "log", "md", "org", "tsv" },
+          },
+        },
       },
     },
   },
