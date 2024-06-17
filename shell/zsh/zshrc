@@ -1,0 +1,48 @@
+export HOMEBREW_FORCE_BREWED_GIT=1
+export HOMEBREW_PIP_INDEX_URL=https://pypi.mirrors.ustc.edu.cn/simple
+export HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+eval $(/opt/homebrew/bin/brew shellenv)
+
+export PATH=/opt/homebrew/include:$PATH
+export LIBRARY_PATH=/opt/homebrew/lib
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+proxy () {
+  export http_proxy="http://127.0.0.1:1080"
+  export https_proxy="http://127.0.0.1:1080"
+  echo "HTTP Proxy on"
+}
+
+noproxy () {
+  unset http_proxy
+  unset https_proxy
+  echo "HTTP Proxy off"
+}
+
+icloud () {
+  cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs
+}
+
+alias python3=/opt/homebrew/bin/python3
+alias python=/opt/homebrew/bin/python3
+alias pip3=/opt/homebrew/bin/pip3
+alias pip=/opt/homebrew/bin/pip3
+alias godot=/Applications/Godot.app/Contents/MacOS/Godot
+
+eval "$(starship init zsh)"
