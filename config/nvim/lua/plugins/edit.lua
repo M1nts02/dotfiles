@@ -32,9 +32,6 @@ return {
     cmd = require("configs.nvim-treesitter").cmd,
     init = require("configs.nvim-treesitter").init,
     config = require("configs.nvim-treesitter").config,
-    dependencies = {
-      "nushell/tree-sitter-nu",
-    },
   },
 
   -- Template

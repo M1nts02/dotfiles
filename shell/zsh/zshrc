@@ -44,5 +44,6 @@ alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
 alias pip=/opt/homebrew/bin/pip3
 alias godot=/Applications/Godot.app/Contents/MacOS/Godot
+alias ls=eza
 
 eval "$(starship init zsh)"
