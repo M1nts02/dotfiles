@@ -12,7 +12,7 @@ local rg = {
   ["<Space>q"] = { "<CMD>q<CR>", "Quit" },
 
   -- Window
-  ["<Space>w"] = { name = "Window+" },
+  ["<Space>w"] = { "<C-w>", "Window+" },
 
   -- Visual
   ["v"] = { name = "Visual+", ["v"] = { "v", "Visual Mode" }, ["b"] = { "<C-v>", "Visual Block" } },

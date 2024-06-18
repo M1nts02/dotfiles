@@ -87,20 +87,6 @@ return {
     opts = require("configs.toggleterm").opts,
   },
 
-  -- Neogit
-  {
-    "NeogitOrg/neogit",
-    cmd = { "Neogit" },
-    opts = {
-      integrations = { diffview = true },
-      commit_editor = { staged_diff_split_kind = "auto" },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-  },
-
   -- Gitsigns
   {
     "lewis6991/gitsigns.nvim",
@@ -114,11 +100,5 @@ return {
     "folke/which-key.nvim",
     keys = require("configs.which-key").keys,
     config = require("configs.which-key").config,
-    dependencies = {
-      { -- Hydra
-        "nvimtools/hydra.nvim",
-        config = require("configs.hydra").config,
-      },
-    },
   },
 }
