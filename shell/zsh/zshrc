@@ -22,6 +22,7 @@ if type brew &>/dev/null; then
 fi
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+zstyle ':completion:*' menu select
 
 proxy () {
   export http_proxy="http://127.0.0.1:1080"
@@ -37,6 +38,10 @@ noproxy () {
 
 icloud () {
   cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs
+}
+
+tree () {
+  eza --tree
 }
 
 alias python3=/opt/homebrew/bin/python3
