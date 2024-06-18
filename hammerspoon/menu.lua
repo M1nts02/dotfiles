@@ -7,17 +7,17 @@ return {
   mods = { "command" },
   key = "space",
   message = {
-    -- English
+    -- ABC
     [singleKey("1", "English")] = function()
       hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
     end,
-    -- Chinese
-    [singleKey("2", "Chinese")] = function()
-      hs.keycodes.currentSourceID "com.apple.inputmethod.SCIM.ITABC"
+    -- Rime
+    [singleKey("2", "Rime")] = function()
+      hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
     end,
-    -- Japanese
-    [singleKey("3", "Japanese")] = function()
-      hs.keycodes.currentSourceID "com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese"
+    -- Rime Switcher
+    [singleKey("3", "Rime Switcher")] = function()
+      hs.eventtap.keyStroke({ "control", "shift" }, "`")
     end,
 
     -- LaunchPad
