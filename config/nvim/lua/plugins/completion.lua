@@ -19,7 +19,7 @@ return {
         opts = {
           completion_mode = "source",
           disable_specific_inline_completion = {
-            suffixes = { "csv", "log", "md", "org", "tsv" },
+            suffixes = { "csv", "log", "md", "org", "tsv", "txt" },
           },
         },
       },

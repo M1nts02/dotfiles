@@ -72,11 +72,3 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     highlight.set_groups(palette)
   end,
 })
-
--- Disable cmp
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.csv", "*.log", "*.md", "*.org", "*.tsv" },
-  callback = function()
-    vim.b.cmp_disable = true
-  end,
-})

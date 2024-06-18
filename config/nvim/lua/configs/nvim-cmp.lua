@@ -2,10 +2,10 @@ local cmp = require "cmp"
 local icons = require "modules.icons"
 
 local function get_cmp_status()
-  if vim.g.cmp_disable == true or vim.b.cmp_disable == true then
-    return false
-  else
+  if vim.g.cmp_disable == false and vim.b.cmp_disable == false then
     return true
+  else
+    return false
   end
 end
 
