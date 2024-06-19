@@ -1,6 +1,4 @@
 -- Please write your custom file, then save and restart.
-local utils = require "modules.utils"
-local executable = utils.executable
 
 -- vim.o.shell = "/usr/bin/zsh"
 
@@ -17,6 +15,6 @@ local executable = utils.executable
 -- end
 
 -- neovim-qt
-if vim.fn.has "gui_running" then
-  vim.opt.guifont = "RecMonoCasual Nerd Font:h13"
-end
+-- if vim.fn.has "gui_running" then
+--   vim.opt.guifont = "RecMonoCasual Nerd Font:h13"
+-- end

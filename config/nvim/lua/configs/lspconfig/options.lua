@@ -16,6 +16,7 @@ vim.diagnostic.config {
   float = { border = "rounded" },
 }
 
+-- Enable cmp when LspAttach is triggered
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.b[args.buf].cmp_disable = false

@@ -1,5 +1,46 @@
 local cmp = require "cmp"
-local icons = require "modules.icons"
+local icons = {
+  Namespace = "󰌗",
+  Text = "󰉿",
+  Method = "󰆧",
+  Constructor = "",
+  Field = "󰜢",
+  Variable = "󰀫",
+  Class = "󰠱",
+  Interface = "",
+  Module = "",
+  Property = "󰜢",
+  Unit = "󰑭",
+  Value = "󰎠",
+  Enum = "",
+  EnumMember = "",
+  Keyword = "󰌋",
+  Snippet = "",
+  Color = "󰏘",
+  File = "󰈚",
+  Reference = "󰈇",
+  Folder = "󰉋",
+  Constant = "󰏿",
+  Struct = "󰙅",
+  Event = "",
+  Operator = "󰆕",
+  TypeParameter = "󰊄",
+  Table = "",
+  Object = "󰅩",
+  Tag = "",
+  Array = "[]",
+  Boolean = "",
+  Number = "",
+  Null = "󰟢",
+  String = "󰉿",
+  Calendar = "",
+  Watch = "󰥔",
+  Package = "",
+  Copilot = "",
+  Codeium = "",
+  TabNine = "",
+  Function = "󰊕",
+}
 
 local function get_cmp_status()
   if vim.g.cmp_disable == false and vim.b.cmp_disable == false then
@@ -86,8 +127,9 @@ cmp.setup {
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(_, item)
+      local icon = icons[item.kind] and icons[item.kind] or icons.Text
       item.menu = "    (" .. item.kind .. ")"
-      item.kind = " " .. icons[item.kind] .. " "
+      item.kind = " " .. icon .. " "
       return item
     end,
   },

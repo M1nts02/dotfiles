@@ -1,5 +1,4 @@
 local M = {}
-local icons = require "modules.icons"
 
 local opts = {
   options = {
@@ -42,11 +41,11 @@ local opts = {
           table.insert(names, server.name)
         end
         local name = table.concat(names, " ")
-        return name == "" and "" or icons.ActiveLSP .. "  " .. name
+        return name == "" and "" or " " .. " " .. name
       end,
     },
     lualine_y = {
-      { "branch", icon = icons.Git },
+      { "branch", icon = "󰊢 " },
     },
     lualine_z = { "location", "progress" },
   },
