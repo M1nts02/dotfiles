@@ -22,31 +22,25 @@ local opts = {
     zig = { "zigfmt" },
   },
   format_on_save = function(bufnr)
-    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+    if vim.g.disable_autoformat == true then
       return
     end
     return { timeout_ms = 1000, lsp_fallback = true }
   end,
 }
 
--- Disable auto format
-vim.api.nvim_create_user_command("FormatDisable", function(args)
-  if args.bang then
-    vim.b.disable_autoformat = true
+-- Toggle auto format
+vim.api.nvim_create_user_command("AutoformatToggle", function(args)
+  if vim.g.disable_autoformat == true then
+    vim.g.disable_autoformat = false
+    vim.notify "Autoformat enabled"
   else
     vim.g.disable_autoformat = true
+    vim.notify "Autoformat disabled"
   end
 end, {
-  desc = "Disable autoformat-on-save",
+  desc = "Toggle autoformat",
   bang = true,
-})
-
--- Enable auto format
-vim.api.nvim_create_user_command("FormatEnable", function()
-  vim.b.disable_autoformat = false
-  vim.g.disable_autoformat = false
-end, {
-  desc = "Enable autoformat-on-save",
 })
 
 function M.init()

@@ -12,5 +12,4 @@
 - Install [fd](https://github.com/sharkdp/fd)
 - Install [fzf](https://github.com/junegunn/fzf)
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep)
-- Install `make`
 - Install [bat](https://github.com/sharkdp/bat)
