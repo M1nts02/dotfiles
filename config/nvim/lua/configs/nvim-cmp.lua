@@ -123,11 +123,12 @@ cmp.setup {
     { name = "path" },
     { name = "buffer" },
     { name = "fittencode", group_index = 1 },
+    { name = "lazydev", group_index = 2 },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(_, item)
-      local icon = icons[item.kind] and icons[item.kind] or icons.Text
+      local icon = icons[item.kind] or icons.Text
       item.menu = "    (" .. item.kind .. ")"
       item.kind = " " .. icon .. " "
       return item
