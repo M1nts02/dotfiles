@@ -1,0 +1,33 @@
+theme = "mytheme"
+
+[editor]
+line-number = "absolute"
+completion-trigger-len = 3
+undercurl = true
+color-modes = true
+popup-border = "all"
+auto-pairs = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.search]
+smart-case = false
+
+[editor.statusline]
+left = ["mode", "read-only-indicator", "file-name", "file-modification-indicator" ]
+center = ["spinner"]
+right = ["diagnostics", "register", "position", "total-line-numbers"]
+separator = ""
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
