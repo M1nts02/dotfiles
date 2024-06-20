@@ -3,18 +3,13 @@ local utils = require "modules.utils"
 return {
   -- File browser
   {
-    "echasnovski/mini.files",
-    version = "*",
-    keys = {
-      {
-        "<Space>e",
-        function()
-          require("mini.files").open()
-        end,
-        desc = "Mini-files",
-      },
+    "simonmclean/triptych.nvim",
+    keys = { { "<Space>e", "<CMD>Triptych<CR>", desc = "File browser" } },
+    opts = { options = { backdrop = 100, border = "rounded" } },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
-    opts = { mappings = { show_help = "?" } },
   },
 
   -- Install tool
@@ -66,17 +61,11 @@ return {
   -- Search
   {
     "ibhagwan/fzf-lua",
+    enabled = utils.executable "fzf",
     cmd = { "FzfLua" },
     keys = require("configs.fzf-lua").keys,
     opts = require("configs.fzf-lua").opts,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      {
-        "junegunn/fzf",
-        enabled = not utils.executable "fzf",
-        build = "./install --bin",
-      },
-    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- Terminal
