@@ -7,6 +7,7 @@ undercurl = true
 color-modes = true
 popup-border = "all"
 auto-pairs = false
+insert-final-newline = false
 
 [editor.cursor-shape]
 insert = "bar"

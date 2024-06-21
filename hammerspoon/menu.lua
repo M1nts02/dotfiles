@@ -17,7 +17,7 @@ return {
     end,
     -- Rime Switcher
     [singleKey("3", "Rime Switcher")] = function()
-      hs.eventtap.keyStroke({ "control", "shift" }, "`")
+      hs.eventtap.keyStroke({ "control", "shift" }, "f4")
     end,
 
     -- LaunchPad

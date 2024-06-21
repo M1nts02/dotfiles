@@ -1,19 +1,20 @@
 "ui.background" = { fg = "white"}
 "ui.background.separator" = { fg = "gray" }
 
+"ui.text" = { fg = "gray" }
 "ui.menu" = { fg = "light-blue" }
 "ui.menu.selected" = { modifiers = ["reversed"] }
-"ui.menu.scroll" = { fg = "light-gray" }
+"ui.menu.scroll" = { fg = "gray" }
 "ui.linenr" = { fg = "light-cyan" }
 "ui.window" = { fg = "black" }
 "ui.selection" = { fg = "white", bg = "gray" }
-"comment" = { fg = "light-gray", modifiers = ["italic"] }
+"comment" = { fg = "gray", modifiers = ["italic"] }
 "ui.statusline" = { fg = "blue" }
 "ui.statusline.inactive" = { fg = "gray" }
 "ui.help" = { fg = "light-blue" }
-"ui.cursor" = { fg = "light-gray", modifiers = ["reversed"] }
-"ui.cursor.primary" = { fg = "light-gray", modifiers = ["reversed"] }
-"ui.virtual.whitespace" = "light-gray"
+"ui.cursor" = { fg = "#ffffff", bg = "blue" }
+"ui.cursor.primary" = { fg = "#ffffff", bg = "blue" }
+"ui.virtual.whitespace" = "gray"
 "ui.virtual.jump-label" = { fg = "blue", modifiers = ["bold", "underlined"] }
 "ui.virtual.ruler" = { bg = "black" }
 "variable" = "light-red"
@@ -47,9 +48,12 @@
 "diff.minus" = "light-red"
 
 "diagnostic" = { modifiers = ["underlined"] }
-"ui.gutter" = "gray"
+"ui.gutter" = "black"
 "info" = "light-blue"
 "hint" = "gray"
 "debug" = "gray"
 "warning" = "yellow"
 "error" = "light-red"
+
+[palette]
+gray = "#778899"
