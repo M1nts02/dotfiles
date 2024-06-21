@@ -7,7 +7,9 @@ local is_linux = string.find(wezterm.target_triple, "linux") ~= nil
 local is_mac = string.find(wezterm.target_triple, "apple") ~= nil
 
 -- Shell
--- options.default_prog = { "/usr/bin/zsh", "-l" }
+if is_windows then
+  options.default_prog = { "powershell" }
+end
 
 -- Init options
 options.term = "xterm-256color"
