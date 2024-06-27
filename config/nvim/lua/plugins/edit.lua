@@ -8,6 +8,14 @@ return {
     opts = {},
   },
 
+  -- TODO
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoQuickFix", "TodoLocList" },
+    opts = {},
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
   -- Code format
   {
     "stevearc/conform.nvim",
