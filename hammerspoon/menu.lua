@@ -76,11 +76,6 @@ return {
         hs.application.launchOrFocus "Brave Browser"
       end,
 
-      -- Vscode
-      [singleKey("c", "Vscode")] = function()
-        hs.application.launchOrFocus "Visual Studio Code"
-      end,
-
       -- Finder
       [singleKey("f", "Finder")] = function()
         hs.application.launchOrFocus "Finder"

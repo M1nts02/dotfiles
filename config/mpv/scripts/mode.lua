@@ -43,14 +43,14 @@ audio_mode_bindings = {
   {
     "Left",
     function()
-      mp.command "no-osd seek -5"
+      mp.command "no-osd seek -2"
     end,
     "repeatable",
   }, -- make audio mode seek length longer than video mode seek length
   {
     "Right",
     function()
-      mp.command "no-osd seek  5"
+      mp.command "no-osd seek  2"
     end,
     "repeatable",
   }, -- make audio mode seek length longer than video mode seek length
