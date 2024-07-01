@@ -3,13 +3,11 @@ local utils = require "modules.utils"
 return {
   -- File browser
   {
-    "simonmclean/triptych.nvim",
-    keys = { { "<Space>e", "<CMD>Triptych<CR>", desc = "File browser" } },
-    opts = { options = { backdrop = 100, border = "rounded" } },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    keys = { { "<Space>e", "<CMD>NvimTreeFindFileToggle<CR>", desc = "File browser" } },
+    config = require("configs.nvim-tree").config,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- Install tool
