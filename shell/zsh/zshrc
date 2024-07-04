@@ -6,6 +6,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 export PATH=/opt/homebrew/include:$PATH
 export LIBRARY_PATH=/opt/homebrew/lib
+export VCPKG_ROOT="$HOME/.vcpkg"
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
