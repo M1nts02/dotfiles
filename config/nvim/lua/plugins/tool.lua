@@ -66,17 +66,6 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        enabled = utils.executable { "cmake", "make" } and utils.executable { "gcc", "clang", "cc", "cl" },
-        build = utils.executable "cmake"
-            and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
-          or "make",
-        config = function()
-          require("telescope").setup { extensions = { fzf = { fuzzy = false } } }
-          require("telescope").load_extension "fzf"
-        end,
-      },
-      {
         "LukasPietzschmann/telescope-tabs",
         keys = {
           {
