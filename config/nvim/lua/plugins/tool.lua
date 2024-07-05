@@ -58,12 +58,41 @@ return {
 
   -- Search
   {
-    "ibhagwan/fzf-lua",
-    enabled = utils.executable "fzf",
-    cmd = { "FzfLua" },
-    keys = require("configs.fzf-lua").keys,
-    opts = require("configs.fzf-lua").opts,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    "nvim-telescope/telescope.nvim",
+    version = "*",
+    cmd = { "Telescope" },
+    keys = require("configs.telescope").keys,
+    opts = require("configs.telescope").opts,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        enabled = utils.executable { "cmake", "make" } and utils.executable { "gcc", "clang", "cc", "cl" },
+        build = utils.executable "cmake"
+            and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+          or "make",
+        config = function()
+          require("telescope").setup { extensions = { fzf = { fuzzy = false } } }
+          require("telescope").load_extension "fzf"
+        end,
+      },
+      {
+        "LukasPietzschmann/telescope-tabs",
+        keys = {
+          {
+            "<Space>f<Tab>",
+            function()
+              require("telescope-tabs").list_tabs()
+            end,
+            desc = "Tabs",
+          },
+        },
+        config = function()
+          require("telescope").load_extension "telescope-tabs"
+          require("telescope-tabs").setup {}
+        end,
+      },
+    },
   },
 
   -- Terminal

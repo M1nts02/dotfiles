@@ -127,6 +127,7 @@ function M.set_groups(palette)
 
     -- Telescope
     TelescopeSelection = { fg = palette.fg, bg = palette.bg1 },
+    TelescopeNormal = { fg = palette.blue, bg = palette.bg },
 
     -- Lazy
     LazyNormal = { fg = palette.fg, bg = palette.bg },

@@ -24,6 +24,14 @@ return {
     },
   },
 
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {
+      input = { enabled = false },
+    },
+  },
+
   -- Previewe for quick window
   {
     "kevinhwang91/nvim-bqf",
