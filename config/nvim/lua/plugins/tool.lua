@@ -63,25 +63,16 @@ return {
     cmd = { "Telescope" },
     keys = require("configs.telescope").keys,
     opts = require("configs.telescope").opts,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "LukasPietzschmann/telescope-tabs",
-        keys = {
-          {
-            "<Space>f<Tab>",
-            function()
-              require("telescope-tabs").list_tabs()
-            end,
-            desc = "Tabs",
-          },
-        },
-        config = function()
-          require("telescope").load_extension "telescope-tabs"
-          require("telescope-tabs").setup {}
-        end,
-      },
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+
+  -- FZF
+  {
+    "junegunn/fzf.vim",
+    cmd = { "FZF" },
+    keys = require("configs.fzf").keys,
+    config = require("configs.fzf").config,
+    dependencies = { { "junegunn/fzf", build = "fzf#install()" } },
   },
 
   -- Terminal

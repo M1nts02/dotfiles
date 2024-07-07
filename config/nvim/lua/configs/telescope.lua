@@ -2,7 +2,6 @@ local M = {}
 
 M.keys = {
   { "<Space>f<CR>", "<CMD>Telescope builtin<CR>", desc = "Builtin" },
-  { "<Space>ff", "<CMD>Telescope find_files<CR>", desc = "File" },
   { "<Space>fo", "<CMD>Telescope oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
   { "<Space>lS", "<CMD>Telescope lsp_workspace_symbols<CR>", desc = "Symbol Workspace" },
