@@ -72,7 +72,7 @@ return {
     cmd = { "FZF" },
     keys = require("configs.fzf").keys,
     config = require("configs.fzf").config,
-    dependencies = { { "junegunn/fzf", build = "fzf#install()" } },
+    dependencies = { { "junegunn/fzf", version = "*", build = "fzf#install()" } },
   },
 
   -- Terminal
