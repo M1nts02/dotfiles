@@ -68,11 +68,12 @@ return {
 
   -- FZF
   {
-    "junegunn/fzf.vim",
+    "junegunn/fzf",
+    version = "*",
+    build = "fzf#install()",
     cmd = { "FZF" },
     keys = require("configs.fzf").keys,
     config = require("configs.fzf").config,
-    dependencies = { { "junegunn/fzf", version = "*", build = "fzf#install()" } },
   },
 
   -- Terminal
