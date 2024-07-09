@@ -20,7 +20,7 @@ return {
 
   -- Color highlighting
   {
-    "NvChad/nvim-colorizer.lua",
+    "norcalli/nvim-colorizer.lua",
     cmd = {
       "ColorizerAttachToBuffer",
       "ColorizerDetachFromBuffer",
