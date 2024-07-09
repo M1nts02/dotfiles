@@ -92,18 +92,6 @@ return {
     opts = { signcolumn = true },
   },
 
-  -- Neogit
-  {
-    "NeogitOrg/neogit",
-    cmd = { "Neogit" },
-    keys = { { "<Space>gn", "<CMD>Neogit<CR>", desc = "Neogit" } },
-    opts = {},
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-    },
-  },
-
   -- Which key
   {
     "folke/which-key.nvim",
