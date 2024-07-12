@@ -45,6 +45,10 @@ tree () {
   eza --tree
 }
 
+knvim () {
+  NVIM_APPNAME=knvim nvim
+}
+
 alias python3=/opt/homebrew/bin/python3
 alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3

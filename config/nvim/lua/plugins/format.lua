@@ -1,5 +1,3 @@
-local M = {}
-
 local opts = {
   formatters_by_ft = {
     c = { "clang_format" },
@@ -43,13 +41,13 @@ end, {
   bang = true,
 })
 
-function M.init()
-  vim.g.zig_fmt_autosave = 0
-  vim.g.disable_autoformat = false -- Enable auto format
-end
-
-function M.config()
-  require("conform").setup(opts) -- Options
-end
-
-return M
+return {
+  "stevearc/conform.nvim",
+  cmd = { "AutoformatToggle" },
+  event = { "BufRead", "BufNewFile" },
+  init = function()
+    vim.g.zig_fmt_autosave = 0
+    vim.g.disable_autoformat = false -- Enable auto format
+  end,
+  opts = opts,
+}

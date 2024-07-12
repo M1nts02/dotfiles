@@ -1,6 +1,4 @@
-local M = {}
-
-M.cmd = {
+local cmd = {
   "Mason",
   "MasonInstall",
   "MasonLog",
@@ -9,7 +7,7 @@ M.cmd = {
   "MasonUpdate",
 }
 
-M.opts = {
+local opts = {
   PATH = "skip",
   ui = {
     border = "rounded",
@@ -28,4 +26,9 @@ M.opts = {
   max_concurrent_installers = 10,
 }
 
-return M
+return {
+  "williamboman/mason.nvim",
+  main = "mason",
+  cmd = cmd,
+  opts = opts,
+}

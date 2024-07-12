@@ -37,56 +37,6 @@ function on_type_change(old_ext, new_ext)
   end
 end
 
--- binding configuration
-
-audio_mode_bindings = {
-  {
-    "Left",
-    function()
-      mp.command "no-osd seek -2"
-    end,
-    "repeatable",
-  }, -- make audio mode seek length longer than video mode seek length
-  {
-    "Right",
-    function()
-      mp.command "no-osd seek  2"
-    end,
-    "repeatable",
-  }, -- make audio mode seek length longer than video mode seek length
-}
-
-image_mode_bindings = {
-  {
-    "UP",
-    function()
-      mp.command "no-osd add video-pan-y -0.02"
-    end,
-    "repeatable",
-  }, -- move image up
-  {
-    "DOWN",
-    function()
-      mp.command "no-osd add video-pan-y  0.02"
-    end,
-    "repeatable",
-  }, -- move image down
-  {
-    "LEFT",
-    function()
-      mp.command "playlist-prev"
-    end,
-    "repeatable",
-  }, -- show previous image
-  {
-    "RIGHT",
-    function()
-      mp.command "playlist-next"
-    end,
-    "repeatable",
-  }, -- show next image
-}
-
 -- extension configuration
 image_file_extensions = { ".jpg", ".png", ".bmp", ".gif", ".webp" }
 audio_file_extensions = {
@@ -140,30 +90,6 @@ function list_contains(list, value)
   return false
 end
 
------ key bindings
-
-function add_bindings(definition)
-  if type(active_bindings) ~= "table" then
-    active_bindings = {}
-  end
-
-  local script_name = mp.get_script_name()
-
-  for _, bind in ipairs(definition) do
-    local name = script_name .. "_key_" .. (#active_bindings + 1)
-    active_bindings[#active_bindings + 1] = name
-    mp.add_forced_key_binding(bind[1], name, bind[2], bind[3])
-  end
-end
-
-function remove_bindings()
-  if type(active_bindings) == "table" then
-    for _, name in ipairs(active_bindings) do
-      mp.remove_key_binding(name)
-    end
-  end
-end
-
 ----- main
 
 active_mode = "video"
@@ -174,7 +100,6 @@ function enable_video_mode()
     return
   end
   active_mode = "video"
-  remove_bindings()
   on_video_mode_activate()
 end
 
@@ -183,8 +108,6 @@ function enable_audio_mode()
     return
   end
   active_mode = "audio"
-  remove_bindings()
-  add_bindings(audio_mode_bindings)
   on_audio_mode_activate()
 end
 
@@ -193,8 +116,6 @@ function enable_image_mode()
     return
   end
   active_mode = "image"
-  remove_bindings()
-  add_bindings(image_mode_bindings)
   on_image_mode_activate()
 end
 
@@ -203,7 +124,6 @@ function disable_video_mode()
     return
   end
   active_mode = ""
-  remove_bindings()
   on_video_mode_deactivate()
 end
 
@@ -212,7 +132,6 @@ function disable_image_mode()
     return
   end
   active_mode = ""
-  remove_bindings()
   on_image_mode_deactivate()
 end
 
@@ -221,7 +140,6 @@ function disable_audio_mode()
     return
   end
   active_mode = ""
-  remove_bindings()
   on_audio_mode_deactivate()
 end
 

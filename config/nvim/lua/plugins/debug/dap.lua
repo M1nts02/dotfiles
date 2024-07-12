@@ -23,9 +23,9 @@ M.keys = {
 }
 
 function M.configs()
-  require "configs.dap.configurations" -- Load configurations
-  require "configs.dap.adapters" -- Load adapters
-  require "configs.dap.options"
+  require "plugins.debug.configurations" -- Load configurations
+  require "plugins.debug.adapters" -- Load adapters
+  require "plugins.debug.options"
 end
 
 return M

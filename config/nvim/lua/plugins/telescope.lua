@@ -1,6 +1,4 @@
-local M = {}
-
-M.keys = {
+local keys = {
   { "<Space>f<CR>", "<CMD>Telescope builtin<CR>", desc = "Builtin" },
   { "<Space>fo", "<CMD>Telescope oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
@@ -10,7 +8,7 @@ M.keys = {
   { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
 }
 
-M.opts = {
+local opts = {
   defaults = {
     preview = false,
     selection_strategy = "reset",
@@ -35,4 +33,11 @@ M.opts = {
   },
 }
 
-return M
+return {
+  "nvim-telescope/telescope.nvim",
+  version = "*",
+  cmd = { "Telescope" },
+  keys = keys,
+  opts = opts,
+  dependencies = { "nvim-lua/plenary.nvim" },
+}

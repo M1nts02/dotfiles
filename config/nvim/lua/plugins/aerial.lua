@@ -1,6 +1,4 @@
-local M = {}
-
-M.keys = {
+local keys = {
   {
     "<Space>ls",
     "<CMD>AerialToggle<CR>",
@@ -8,7 +6,7 @@ M.keys = {
   },
 }
 
-M.opts = {
+local opts = {
   backends = { "markdown", "lsp", "treesitter", "man" },
   layout = {
     max_width = 0.3,
@@ -18,4 +16,9 @@ M.opts = {
   },
 }
 
-return M
+return {
+  "stevearc/aerial.nvim",
+  keys = keys,
+  opts = opts,
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+}

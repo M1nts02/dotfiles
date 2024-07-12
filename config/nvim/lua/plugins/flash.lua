@@ -1,6 +1,4 @@
-local M = {}
-
-M.keys = {
+local keys = {
   {
     "<C-f>",
     mode = { "n", "x", "o", "v" },
@@ -19,11 +17,15 @@ M.keys = {
   },
 }
 
-M.opts = {
+local opts = {
   modes = {
     search = { enabled = false },
     char = { enabled = false },
   },
 }
 
-return M
+return {
+  "folke/flash.nvim",
+  keys = keys,
+  opts = opts,
+}

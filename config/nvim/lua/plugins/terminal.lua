@@ -1,8 +1,6 @@
-local M = {}
-
 local executable = require("modules.utils").executable
 
-M.opts = {
+local opts = {
   open_mapping = [[<c-\>]],
   hide_numbers = true,
   autochdir = false,
@@ -14,7 +12,7 @@ M.opts = {
   winbar = { enabled = false },
 }
 
-M.keys = {
+local keys = {
   [[<C-\>]],
   {
     "<Space>gg",
@@ -31,4 +29,9 @@ M.keys = {
   },
 }
 
-return M
+return {
+  "akinsho/toggleterm.nvim",
+  keys = keys,
+  main = "toggleterm",
+  opts = opts,
+}

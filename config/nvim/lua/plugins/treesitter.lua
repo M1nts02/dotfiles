@@ -1,4 +1,4 @@
-local M = {}
+local utils = require "modules.utils"
 
 local opts = {
   ensure_installed = { "c", "lua", "markdown", "org", "query", "ron", "vim", "vimdoc" },
@@ -7,9 +7,7 @@ local opts = {
   highlight = { enable = false, additional_vim_regex_highlighting = false },
 }
 
-M.cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUpdate" }
-
-function M.init()
+local function init()
   -- Enable highlight
   vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = { "*.kdl", "*.md", "*.ron", "*.toml", "*.yaml" },
@@ -17,8 +15,16 @@ function M.init()
   })
 end
 
-function M.config()
+local function config()
   require("nvim-treesitter.configs").setup(opts)
 end
 
-return M
+return {
+  "nvim-treesitter/nvim-treesitter",
+  enabled = utils.executable { "gcc", "clang", "zig", "cc", "cl" },
+  build = ":TSUpdate",
+  event = { "BufRead", "BufNewFile" },
+  cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUpdate" },
+  init = init,
+  config = config,
+}

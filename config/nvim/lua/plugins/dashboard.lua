@@ -1,5 +1,3 @@
-local M = {}
-
 local custom_header = {
   "⠀⠀⣸⣿⣿⣿⡏⠀⡀⠀⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠘⡇⠀⢷⠀⠀⠀⠀⠀⠀⠀⠈⡅⠀⠀⢀⠀⠀⠀⠘⡆⠀⠀",
   "⠀⠀⣿⣿⣿⡟⠀⢀⡇⠀⢠⡏⣀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⣁⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⠀⠆⠀⠀⠀⢳⠀⠀",
@@ -26,7 +24,7 @@ local custom_header = {
   "",
 }
 
-M.opts = {
+local opts = {
   theme = "doom",
   config = {
     header = custom_header,
@@ -59,4 +57,10 @@ M.opts = {
   },
 }
 
-return M
+return {
+  "nvimdev/dashboard-nvim",
+  event = "VimEnter",
+  main = "dashboard",
+  opts = opts,
+  dependencies = { { "nvim-tree/nvim-web-devicons" } },
+}

@@ -1,8 +1,12 @@
-local M = {}
+local keys = {
+  {
+    "<Space>ff",
+    "<CMD>FZF --reverse<CR>",
+    desc = "File",
+  },
+}
 
-M.keys = { { "<Space>ff", "<CMD>FZF --reverse<CR>", desc = "File" } }
-
-M.config = function()
+local config = function()
   vim.g.fzf_layout = { window = { width = 0.7, height = 0.6 } }
   vim.g.fzf_colors = {
     ["fg"] = { "fg", "Normal" },
@@ -21,4 +25,11 @@ M.config = function()
   }
 end
 
-return M
+return {
+  "junegunn/fzf",
+  version = "*",
+  build = "fzf#install()",
+  cmd = { "FZF" },
+  keys = keys,
+  config = config,
+}

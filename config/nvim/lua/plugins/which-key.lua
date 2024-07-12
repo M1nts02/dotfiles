@@ -1,8 +1,6 @@
-local M = {}
+local keys = { "c", "d", "g", "v", "y", "z", "<Space>", "\\" }
 
-M.keys = { "c", "d", "g", "v", "y", "z", "<Space>", "\\" }
-
-local options = {
+local opts = {
   icons = { breadcrumb = "»", separator = "➜", group = "" },
   layout = { height = { min = 2, max = 10 }, align = "center" },
 }
@@ -111,9 +109,13 @@ local rg = {
   },
 }
 
-function M.config()
-  require("which-key").setup(options)
-  require("which-key").register(rg)
-end
-
-return M
+return {
+  {
+    "folke/which-key.nvim",
+    keys = keys,
+    config = function()
+      require("which-key").setup(opts)
+      require("which-key").register(rg)
+    end,
+  },
+}
