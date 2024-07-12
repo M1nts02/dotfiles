@@ -21,6 +21,7 @@ end
 
 return {
   "nvim-treesitter/nvim-treesitter",
+  version = "*",
   enabled = utils.executable { "gcc", "clang", "zig", "cc", "cl" },
   build = ":TSUpdate",
   event = { "BufRead", "BufNewFile" },

@@ -20,7 +20,6 @@ local opts = {
 return {
   "M1nts02/toggle-theme.nvim",
   lazy = false,
-  event = "VeryLazy",
   priority = 1000,
   keys = keys,
   opts = opts,
