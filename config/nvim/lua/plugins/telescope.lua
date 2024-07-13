@@ -39,5 +39,32 @@ return {
   cmd = { "Telescope" },
   keys = keys,
   opts = opts,
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    {
+      "natecraddock/workspaces.nvim",
+      keys = {
+        {
+          "<Space>fw",
+          "<CMD>Telescope workspaces<CR>",
+          desc = "Workspace",
+        },
+      },
+      cmd = {
+        "WorkspacesAdd",
+        "WorkspacesAddDir",
+        "WorkspacesList",
+        "WorkspacesListDirs",
+        "WorkspacesOpen",
+        "WorkspacesRemove",
+        "WorkspacesRemoveDir",
+        "WorkspacesRename",
+        "WorkspacesSyncDirs",
+      },
+      config = function()
+        require("workspaces").setup()
+        require("telescope").load_extension "workspaces"
+      end,
+    },
+  },
 }

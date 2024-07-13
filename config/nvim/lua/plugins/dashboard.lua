@@ -44,7 +44,7 @@ local opts = {
       {
         desc = "Find Workspaces",
         desc_hl = "SpecialComment",
-        action = "WorkspacesOpen",
+        action = "Telescope workspaces",
         key = "w",
       },
       {

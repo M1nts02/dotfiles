@@ -19,7 +19,7 @@ local keys = {
     function()
       if executable "gitui" then
         local Terminal = require("toggleterm.terminal").Terminal
-        local gitui = Terminal:new { cmd = "gitui", hidden = true }
+        local gitui = Terminal:new { cmd = "gitui", hidden = true, direction = "tab" }
         gitui:toggle()
       else
         vim.notify "Don't install gitui"

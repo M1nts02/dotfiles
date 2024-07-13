@@ -13,10 +13,11 @@ local rg = {
   ["<Space>w"] = { "<C-w>", "Window+" },
 
   -- Visual
-  ["v"] = { name = "Visual+", ["v"] = { "v", "Visual Mode" }, ["b"] = { "<C-v>", "Visual Block" } },
-
-  -- Debug
-  ["<Space>d"] = { name = "Debug+" },
+  ["v"] = {
+    name = "Visual+",
+    ["v"] = { "v", "Visual Mode" },
+    ["b"] = { "<C-v>", "Visual Block" },
+  },
 
   -- Git
   ["<Space>g"] = { name = "Git+" },
@@ -37,6 +38,22 @@ local rg = {
       end
     end,
     "Hover",
+  },
+  ["<Space>k"] = {
+    function()
+      if vim.inspect(vim.lsp.get_clients { bufnr = 0 }) == "{}" then
+        pcall(vim.cmd, "Man")
+      else
+        vim.lsp.buf.hover()
+      end
+    end,
+    "Hover",
+  },
+  ["<Space>d"] = {
+    function()
+      vim.diagnostic.open_float()
+    end,
+    "Dianostic",
   },
   ["<Space>l"] = {
     name = "LSP+",
@@ -106,6 +123,8 @@ local rg = {
     ["r"] = { "<CMD>RelativenumberToggle<CR>", "Relativenumber" },
     ["l"] = { "<CMD>StatuslineToggle<CR>", "Statusline" },
     ["w"] = { "<CMD>WrapToggle<CR>", "Wrap" },
+    ["d"] = { "<CMD>ToggleDianosticVirtualText<CR>", "VirtualText" },
+    ["i"] = { "<CMD>ToggleInlayHints<CR>", "Inlay Hints" },
   },
 }
 

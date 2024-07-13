@@ -61,6 +61,9 @@ local function on_attach(client, bufnr)
       group = inlay_hints_group,
       buffer = bufnr,
       callback = function(args)
+        if not vim.g.inlay_hints then
+          return
+        end
         local mode = vim.fn.mode()
         if mode == "i" or mode == "v" or mode == "V" or mode == "\22" or mode == "R" then
           if vim.lsp.inlay_hint.is_enabled { bufnr = bufnr } then
