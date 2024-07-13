@@ -1,8 +1,15 @@
-local keys = { "c", "d", "g", "v", "y", "z", "<Space>", "\\" }
-
 local opts = {
-  icons = { breadcrumb = "»", separator = "➜", group = "" },
-  layout = { height = { min = 2, max = 10 }, align = "center" },
+  notify = false,
+  icons = {
+    rules = false,
+    breadcrumb = "»",
+    separator = "➜",
+    group = "",
+  },
+  layout = {
+    height = { min = 2, max = 10 },
+    align = "center",
+  },
 }
 
 local rg = {
@@ -129,12 +136,11 @@ local rg = {
 }
 
 return {
-  {
-    "folke/which-key.nvim",
-    keys = keys,
-    config = function()
-      require("which-key").setup(opts)
-      require("which-key").register(rg)
-    end,
-  },
+  "folke/which-key.nvim",
+  version = "*",
+  event = { "VeryLazy" },
+  config = function()
+    require("which-key").setup(opts)
+    require("which-key").register(rg)
+  end,
 }
