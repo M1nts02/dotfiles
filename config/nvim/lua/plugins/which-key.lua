@@ -20,11 +20,8 @@ local rg = {
   ["<Space>w"] = { "<C-w>", "Window+" },
 
   -- Visual
-  ["v"] = {
-    name = "Visual+",
-    ["v"] = { "v", "Visual Mode" },
-    ["b"] = { "<C-v>", "Visual Block" },
-  },
+  ["<Space>v"] = { "V", "Visual Line" },
+  ["<Space>b"] = { "<C-v>", "Visual Block" },
 
   -- Git
   ["<Space>g"] = { name = "Git+" },
@@ -130,7 +127,7 @@ local rg = {
     ["r"] = { "<CMD>RelativenumberToggle<CR>", "Relativenumber" },
     ["l"] = { "<CMD>StatuslineToggle<CR>", "Statusline" },
     ["w"] = { "<CMD>WrapToggle<CR>", "Wrap" },
-    ["d"] = { "<CMD>ToggleDianosticVirtualText<CR>", "VirtualText" },
+    ["v"] = { "<CMD>ToggleDianosticVirtualText<CR>", "VirtualText" },
     ["i"] = { "<CMD>ToggleInlayHints<CR>", "Inlay Hints" },
   },
 }

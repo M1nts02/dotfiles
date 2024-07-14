@@ -13,19 +13,6 @@ return {
     end,
   },
 
-  -- Color highlighting
-  {
-    "norcalli/nvim-colorizer.lua",
-    cmd = {
-      "ColorizerAttachToBuffer",
-      "ColorizerDetachFromBuffer",
-      "ColorizerReloadAllBuffers",
-      "ColorizerToggle",
-    },
-    main = "colorizer",
-    opts = {},
-  },
-
   -- Previewer for quick window
   {
     "kevinhwang91/nvim-bqf",

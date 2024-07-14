@@ -79,6 +79,12 @@ function M.set_groups(palette)
     WhichKeyFloat = { fg = palette.fg, bg = palette.bg },
     WhichKeyBorder = { bg = palette.bg },
 
+    -- Mini.nvim
+    MiniHipatternsFixme = { fg = palette.bg, bg = palette.red },
+    MiniHipatternsHack = { fg = palette.bg, bg = palette.orange },
+    MiniHipatternsTodo = { fg = palette.bg, bg = palette.blue },
+    MiniHipatternsNote = { fg = palette.bg, bg = palette.fg1 },
+
     -- Neogit.
     NeogitChangeDeleted = { fg = palette.fg1, bg = palette.bg },
     NeogitDiffContextHighlight = { bg = palette.bg1 },

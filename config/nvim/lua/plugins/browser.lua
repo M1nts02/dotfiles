@@ -45,22 +45,4 @@ return {
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-
-  -- Yazi
-  {
-    "mikavilpas/yazi.nvim",
-    enable = utils.executable "yazi",
-    keys = {
-      {
-        "<Space>E",
-        function()
-          require("yazi").yazi()
-        end,
-        desc = "Yazi",
-      },
-    },
-    opts = {
-      open_for_directories = false,
-    },
-  },
 }
