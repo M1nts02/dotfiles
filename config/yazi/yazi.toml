@@ -13,7 +13,7 @@ archive = [
   { run = 'unar "$1"', desc = "Extract here" },
 ]
 text = [
-  { run = 'hx "$@"', block = true },
+  { run = 'nvim "$@"', block = true },
 ]
 image = [
   { run = 'open "$@"', desc = "Open" },

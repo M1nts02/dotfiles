@@ -7,6 +7,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 export PATH=/opt/homebrew/include:$PATH
 export LIBRARY_PATH=/opt/homebrew/lib
 export VCPKG_ROOT="$HOME/.vcpkg"
+export CMAKE_TOOLCHAIN_FILE="$HOME/.vcpkg/scripts/buildsystems/vcpkg.cmake"
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -56,4 +57,6 @@ alias pip=/opt/homebrew/bin/pip3
 alias godot=/Applications/Godot.app/Contents/MacOS/Godot
 alias ls=eza
 
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
 eval "$(starship init zsh)"
