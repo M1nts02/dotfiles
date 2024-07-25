@@ -23,8 +23,8 @@
 "attribute" = "yellow"
 "type" = "light-yellow"
 "ui.cursor.match" = { fg = "light-yellow", modifiers = ["underlined"] }
-"string"  = "light-green"
-"variable.other.member" = "light-green"
+"string"  = "green"
+"variable.other.member" = "green"
 "constant.character.escape" = "light-cyan"
 "function" = "light-blue"
 "constructor" = "light-blue"
@@ -41,9 +41,9 @@
 "markup.link.url" = { fg = "yellow", modifiers = ["underlined"] }
 "markup.link.text" = "light-red"
 "markup.quote" = "light-cyan"
-"markup.raw" = "light-green"
+"markup.raw" = "green"
 
-"diff.plus" = "light-green"
+"diff.plus" = "green"
 "diff.delta" = "yellow"
 "diff.minus" = "light-red"
 
@@ -57,3 +57,4 @@
 
 [palette]
 gray = "#778899"
+green = "#69ac00"
