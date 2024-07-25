@@ -1,7 +1,7 @@
 local confpath = vim.fn.stdpath "config"
 
 return {
-  "M1nts02/simplemenu.nvim",
+  name = "menu",
   dir = confpath,
   keys = {
     {

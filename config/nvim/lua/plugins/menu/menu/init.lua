@@ -49,6 +49,7 @@ function M.open(name)
           quit()
           item[2]()
           return
+
         -- if quit = false
         else
           item[2]()
