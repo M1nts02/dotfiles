@@ -6,15 +6,9 @@ vim.g.is_windows = os_name:find "Windows" ~= nil
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 local confpath = vim.fn.stdpath "config"
 
--- Load custom.lua
-local result = require "modules.load_custom"
-
-if not result then
-  return
-end
-
--- Load options
-require "modules.options"
+require "modules.load_custom" -- Custom options
+require "modules.options" -- Options
+require("modules.cache").load() -- Save options
 
 -- Don't load shada
 local shada = vim.o.shada
@@ -53,7 +47,6 @@ require("lazy").setup({
       vim.o.shada = shada
       pcall(vim.cmd.rshada, { bang = true })
       -- Load mapping
-      require "modules.commands"
       require "modules.mapping"
     end,
   },

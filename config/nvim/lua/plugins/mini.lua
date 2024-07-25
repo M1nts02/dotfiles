@@ -7,18 +7,6 @@ local keys = {
     desc = "Mini Files",
   },
   {
-    "<Space>tp",
-    function()
-      vim.g.minipairs_disable = not vim.g.minipairs_disable
-      if vim.g.minipairs_disable == true then
-        vim.notify "Autopairs Disabled"
-      else
-        vim.notify "Autopairs Enabled"
-      end
-    end,
-    desc = "Autopairs",
-  },
-  {
     "<Space>tc",
     function()
       require("mini.hipatterns").enable(0)
@@ -39,9 +27,6 @@ return {
   version = "*",
   event = { "VeryLazy" },
   keys = keys,
-  init = function()
-    vim.g.minipairs_disable = true
-  end,
   config = function()
     require("mini.files").setup()
     require("mini.pairs").setup()

@@ -1,10 +1,5 @@
 -- Please write your custom file, then save and restart.
 
--- vim.o.shell = "/usr/bin/zsh"
-
--- vim.g.transparent = true
--- vim.g.following_system = true
--- vim.g.start_only = true
 -- vim.g.python3_host_prog = "python3"
 
 -- neovide

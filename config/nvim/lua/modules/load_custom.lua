@@ -18,14 +18,9 @@ end, {
 })
 
 -- Load custom file
-if vim.loop.fs_stat(custom_path) then
-  require "custom"
-  return true
+if not vim.loop.fs_stat(custom_path) then
+  -- Create and open custom.lua
+  utils.copy_file(template_path, custom_path)
 end
 
--- Create and open custom.lua
-utils.copy_file(template_path, custom_path)
-vim.cmd "colorscheme habamax"
-vim.cmd("e " .. custom_path)
-
-return false
+require "custom"

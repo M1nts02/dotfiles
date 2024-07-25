@@ -137,31 +137,9 @@ local function config()
   }
 end
 
--- Enable cmp
-vim.api.nvim_create_user_command("CmpEnable", function()
-  vim.g.cmp_disable = false
-  vim.b.cmp_disable = false
-  vim.notify "Cmp enabled"
-end, {
-  desc = "Enable cmp",
-})
-
--- Disable cmp
-vim.api.nvim_create_user_command("CmpDisable", function()
-  vim.g.cmp_disable = true
-  vim.b.cmp_disable = true
-  vim.notify "Cmp disabled"
-end, {
-  desc = "Cmp disabled",
-})
-
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
-  cmd = { "CmpEnable", "CmpDisable" },
-  init = function()
-    vim.g.cmp_disable = false
-  end,
   config = config,
   dependencies = {
     "hrsh7th/cmp-path", -- Support path

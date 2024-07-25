@@ -17,11 +17,15 @@ local rg = {
   ["<Space>q"] = { "<CMD>q<CR>", "Quit" },
 
   -- Window
-  ["<Space>w"] = { "<C-w>", "Window+" },
-
-  -- Visual
-  ["<Space>v"] = { "V", "Visual Line" },
-  ["<Space>b"] = { "<C-v>", "Visual Block" },
+  ["<Space>w"] = {
+    function()
+      require("which-key").show {
+        keys = "<c-w>",
+        loop = true,
+      }
+    end,
+    "Window+",
+  },
 
   -- Git
   ["<Space>g"] = { name = "Git+" },
@@ -121,15 +125,7 @@ local rg = {
   ["<Space>p"] = { name = "Preview+" },
 
   -- Toggle
-  ["<Space>t"] = {
-    name = "Toggle+",
-    ["n"] = { "<CMD>NumberToggle<CR>", "Number" },
-    ["r"] = { "<CMD>RelativenumberToggle<CR>", "Relativenumber" },
-    ["l"] = { "<CMD>StatuslineToggle<CR>", "Statusline" },
-    ["w"] = { "<CMD>WrapToggle<CR>", "Wrap" },
-    ["v"] = { "<CMD>ToggleDianosticVirtualText<CR>", "VirtualText" },
-    ["i"] = { "<CMD>ToggleInlayHints<CR>", "Inlay Hints" },
-  },
+  ["<Space>t"] = { name = "Toggle+" },
 }
 
 return {
