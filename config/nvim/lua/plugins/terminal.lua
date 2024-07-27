@@ -22,7 +22,7 @@ local keys = {
         local gitui = Terminal:new { cmd = "gitui", hidden = true, direction = "tab" }
         gitui:toggle()
       else
-        vim.notify "Don't install gitui"
+        vim.notify "Gitui is not installed"
       end
     end,
     desc = "Gitui",

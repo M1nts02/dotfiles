@@ -42,20 +42,13 @@ icloud () {
   cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs
 }
 
-tree () {
-  eza --tree
-}
-
-knvim () {
-  NVIM_APPNAME=knvim nvim
-}
-
 alias python3=/opt/homebrew/bin/python3
 alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
 alias pip=/opt/homebrew/bin/pip3
 alias godot=/Applications/Godot.app/Contents/MacOS/Godot
-alias ls=eza
+alias ls="eza --icons -F"
+alias tree="eza --tree"
 
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
