@@ -1,7 +1,7 @@
 theme = "mytheme"
 
 [editor]
-line-number = "absolute"
+line-number = "relative"
 completion-trigger-len = 3
 undercurl = true
 color-modes = true

@@ -11,6 +11,13 @@ return {
       end,
       { desc = "Menu" },
     },
+    {
+      "<Space>D",
+      function()
+        require("plugins.menu.menu").open "Dap"
+      end,
+      { desc = "Debug" },
+    },
   },
   config = require "plugins.menu.menus",
 }

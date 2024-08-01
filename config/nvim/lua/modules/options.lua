@@ -31,13 +31,13 @@ o.mouse = "nvic"
 o.virtualedit = "block"
 o.encoding = "utf-8"
 o.foldmethod = "indent"
-o.clipboard = "unnamedplus"
 o.inccommand = "nosplit"
 o.backspace = "indent," .. "eol," .. "start"
 o.showbreak = "+---"
 o.listchars = "tab:»·," .. "nbsp:+," .. "trail:·," .. "extends:→," .. "precedes:←"
 o.omnifunc = "syntaxcomplete#Complete"
 
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 opt.undofile = true
 opt.expandtab = true
 opt.termguicolors = true

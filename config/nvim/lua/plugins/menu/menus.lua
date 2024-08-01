@@ -192,54 +192,17 @@ menu.add("Menu", {
     {
       "f",
       function()
-        local s = not get_status().g.following_system
-        update { g = { following_system = s } }
+        local s = not get_status().g.disable_autoformat
+        update { g = { disable_autoformat = s } }
       end,
       {
-        desc = "Theme follow system",
+        desc = "Auto format",
         flag = function()
-          local s = get_status().g.following_system
-          if s then
-            return true
-          else
+          local s = get_status().g.disable_autoformat
+          if s == true then
             return false
-          end
-        end,
-      },
-    },
-    {
-      "F",
-      function()
-        local s = not get_status().g.start_only
-        update { g = { start_only = s } }
-      end,
-      {
-        desc = "Start only follow system",
-        flag = function()
-          local s = get_status().g.start_only
-          if s then
-            return true
           else
-            return false
-          end
-        end,
-      },
-    },
-    {
-      "T",
-      function()
-        local s = not get_status().g.transparent
-        update { g = { transparent = s } }
-      end,
-      {
-        desc = "Transparent theme",
-        hidden = false,
-        flag = function()
-          local s = get_status().g.transparent
-          if s then
             return true
-          else
-            return false
           end
         end,
       },
@@ -325,6 +288,63 @@ menu.add("Status line", {
             return false
           end
         end,
+      },
+    },
+  },
+})
+
+menu.add("Dap", {
+  config = {
+    foreign_keys = true,
+    quit = false,
+    window = {
+      position = "BR",
+    },
+  },
+  items = {
+    {
+      "b",
+      function()
+        vim.cmd "DapToggleBreakpoint"
+      end,
+      {
+        desc = "Breakpoint",
+      },
+    },
+    {
+      "c",
+      function()
+        vim.cmd "DapContinue"
+      end,
+      {
+        desc = "Continue",
+      },
+    },
+    {
+      "i",
+      function()
+        vim.cmd "DapStepInto"
+      end,
+      {
+        desc = "Step into",
+      },
+    },
+    {
+      "o",
+      function()
+        vim.cmd "DapStepOut"
+      end,
+      {
+        desc = "Step out",
+      },
+    },
+    {
+      "r",
+      function()
+        vim.cmd "DapRestartFrame"
+      end,
+      {
+        desc = "Restart frame",
       },
     },
   },

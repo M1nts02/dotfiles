@@ -54,7 +54,10 @@ local function on_attach(client, bufnr)
   -- inlay hints
   if client.server_capabilities.inlayHintProvider then
     local inlay_hints_group = vim.api.nvim_create_augroup("InlayHints", { clear = false })
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
+    if vim.g.inlay_hints == true then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
 
     -- Disable inlay hints with insert mode and visual mode
     vim.api.nvim_create_autocmd("ModeChanged", {

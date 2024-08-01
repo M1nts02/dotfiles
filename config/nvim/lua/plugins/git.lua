@@ -11,11 +11,6 @@ return {
         desc = "Line blame",
       },
       {
-        "<Space>gd",
-        "<CMD>Gitsigns diffthis<CR>",
-        desc = "Diff current buffer",
-      },
-      {
         "<Space>gh",
         "<CMD>Gitsigns preview_hunk<CR>",
         desc = "Preview hunk",

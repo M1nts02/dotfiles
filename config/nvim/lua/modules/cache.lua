@@ -7,12 +7,10 @@ local cache_path = vim.fn.stdpath "cache" .. "/nvim_cache.json"
 local cache = {
   g = {
     minipairs_disable = false,
-    transparent = false,
-    following_system = false,
-    start_only = false,
     cmp_disable = false,
     dianostic_virtualtext = false,
     inlay_hints = true,
+    disable_autoformat = false,
   },
   o = {
     laststatus = 3,

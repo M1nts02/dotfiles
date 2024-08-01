@@ -1,11 +1,3 @@
-local keys = {
-  {
-    "<Space>tt",
-    "<CMD>ToggleTheme<CR>",
-    desc = "Theme",
-  },
-}
-
 local opts = {
   following_system = vim.g.following_system,
   start_only = vim.g.start_only,
@@ -21,7 +13,6 @@ return {
   "M1nts02/toggle-theme.nvim",
   lazy = false,
   priority = 1000,
-  keys = keys,
   opts = opts,
   dependencies = {
     {

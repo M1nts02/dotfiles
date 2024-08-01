@@ -21,27 +21,28 @@ local opts = {
   end,
 }
 
--- Toggle auto format
-vim.api.nvim_create_user_command("AutoformatToggle", function(args)
-  if vim.g.disable_autoformat == true then
-    vim.g.disable_autoformat = false
-    vim.notify "Autoformat enabled"
-  else
-    vim.g.disable_autoformat = true
-    vim.notify "Autoformat disabled"
-  end
-end, {
-  desc = "Toggle autoformat",
-  bang = true,
-})
-
 return {
   "stevearc/conform.nvim",
   cmd = { "AutoformatToggle" },
   event = { "BufRead", "BufNewFile" },
   init = function()
     vim.g.zig_fmt_autosave = 0
-    vim.g.disable_autoformat = false -- Enable auto format
   end,
-  opts = opts,
+  config = function()
+    require("conform").setup(opts)
+
+    -- Toggle auto format
+    vim.api.nvim_create_user_command("AutoformatToggle", function(args)
+      if vim.g.disable_autoformat == true then
+        vim.g.disable_autoformat = false
+        vim.notify "Autoformat enabled"
+      else
+        vim.g.disable_autoformat = true
+        vim.notify "Autoformat disabled"
+      end
+    end, {
+      desc = "Toggle autoformat",
+      bang = true,
+    })
+  end,
 }
