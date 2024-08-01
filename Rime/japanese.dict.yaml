@@ -1,0 +1,14 @@
+# Rime dictionary
+# encoding: utf-8
+
+---
+name: japanese
+version: '2024-08-01'
+
+import_tables:
+  - 'japanese.mozc'
+  - 'japanese.jmdict'
+  - 'japanese.kana'
+  - 'japanese.kana'
+  - 'jp_dicts/jp'
+...

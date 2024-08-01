@@ -1,0 +1,16 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.16.1
+  generator: "Weasel::UIStyleSettings"
+  modified_time: "Fri Jun 21 12:57:14 2024"
+  rime_version: 1.11.2
+patch:
+  app_options:
+    windowsterminal.exe:
+      ascii_mode: true
+      vim_mode: true
+    code.exe:
+      ascii_mode: true
+      vim_mode: true
+  "style/color_scheme": flypy
+
