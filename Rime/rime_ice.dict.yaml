@@ -11,6 +11,9 @@ import_tables:
   - cn_dicts/ext      # 扩展词库
   - cn_dicts/tencent  # 腾讯词向量（大词库，部署时间较长）
   - cn_dicts/others   # 一些杂项
+  - cn_dicts/custom
+  - cn_dicts/zhwiki-20240722
+  - cn_dicts/moegirl
   - kaomoji_pinyin    # 颜文字
 
   # 建议把扩展词库放到下面，有重复词条时，最上面的权重生效

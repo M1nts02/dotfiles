@@ -1,4 +1,23 @@
 patch:
+  app_options:
+    com.apple.Spotlight:
+      ascii_mode: true
+      vim_mode: true
+    org.alacritty:
+      ascii_mode: true
+      vim_mode: true
+    com.brave.Browser:
+      ascii_mode: true
+      vim_mode: true
+    com.microsoft.VSCode:
+      ascii_mode: true
+      vim_mode: true
+    com.github.wez.wezterm:
+      ascii_mode: true
+      vim_mode: true
+    org.vim.MacVim:
+      ascii_mode: true
+      vim_mode: true
   schema_list:
     - schema: rime_ice # 雾凇拼音（全拼）
     - schema: japanese
