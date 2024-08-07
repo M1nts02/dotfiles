@@ -1,0 +1,6 @@
+set guifont=RecMonoSmCasual\ Nerd\ Font\ Mono:h14
+
+if has("mac")
+  let $PATH.=":/opt/homebrew/bin/"
+  set guioptions+=T
+endif

@@ -1,0 +1,133 @@
+set nocompatible
+filetype off
+
+
+" config path
+let configpath=fnamemodify(expand('$MYVIMRC'), ':p:h')
+
+if has('termguicolors')
+  set termguicolors
+endif
+
+set history=500
+
+set encoding=utf8
+set ffs=unix,dos,mac
+if has("mac")
+  set clipboard+=unnamed
+else
+  set clipboard+=unnamedplus
+endif
+
+syntax enable
+set number relativenumber
+set whichwrap+=<,>,h,l
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set magic
+set showmatch
+set mat=2
+set noswapfile
+set nowritebackup
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+set omnifunc=syntaxcomplete#Complete
+set listchars=tab:»·,nbsp:+,trail:·,extends:→,precedes:←
+set backspace=indent,eol,start
+set mouse=nvic " mouse
+set wildmenu
+
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" Get termguicolors to work on st
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" Check plugin manager
+let vundlepath = configpath . "/bundle/Vundle.vim"
+if empty(glob(vundlepath))
+ execute "!git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git " . vundlepath
+endif
+
+
+""""" Plugins
+let &rtp .= "," . vundlepath
+call vundle#begin()
+
+" plugin manager
+Plugin 'VundleVim/Vundle.vim'
+
+" theme
+Plugin 'catppuccin/vim', { 'as': 'catppuccin' }
+
+" fzf
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+nmap <Space>ff :FZF --reverse<CR>
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" undo tree
+Plugin 'mbbill/undotree'
+if has("persistent_undo")
+  let target_path = expand(configpath . "/.undo")
+
+  " if the location does not exist.
+  if !isdirectory(target_path)
+      call mkdir(target_path, "p", 0700)
+  endif
+
+  let &undodir=target_path
+  set undofile
+endif
+
+" file browser
+Plugin 'preservim/nerdtree'
+nmap <Space>e :NERDTreeToggle<CR>
+
+" zig
+Plugin 'ziglang/zig.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+
+""""" Map
+vmap < <gv
+vmap > >gv
+vmap <C-a> <C-a>gv
+vmap <C-x> <C-x>gv
+imap <C-l> <C-x><C-f>
+
+
+""""" theme
+if has('win32') || exists('$WSLENV')
+elseif has('linux')
+elseif has('osx')
+  if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+    set background=dark
+    colorscheme catppuccin_mocha
+  else
+    set background=light
+    colorscheme catppuccin_latte
+  endif
+endif

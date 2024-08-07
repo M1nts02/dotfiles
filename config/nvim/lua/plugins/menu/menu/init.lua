@@ -10,22 +10,23 @@ local Menu = {
     config = {},
   },
 }
+local Status = Menu.status
 
 local function quit()
-  buffer.delete_buffer(Menu.status.buf_id)
-  window.exit_window(Menu.status.win_id)
-  Menu.status.buf_id = nil
-  Menu.status.win_id = nil
+  buffer.delete_buffer(Status.buf_id)
+  window.exit_window(Status.win_id)
+  Status.buf_id = nil
+  Status.win_id = nil
 end
 
 -- TODO: open menu
 function M.open(name)
-  if Menu.status.buf_id == nil then
-    Menu.status.buf_id, Menu.status.config = buffer.create(Menu.menus[name])
+  if Status.buf_id == nil then
+    Status.buf_id, Status.config = buffer.create(Menu.menus[name])
   end
 
-  Menu.menus[name].config.max_width = Menu.status.config.width
-  Menu.status.win_id = window.open_window(Menu.status.buf_id, Menu.menus[name].config)
+  Menu.menus[name].config.max_width = Status.config.width
+  Status.win_id = window.open_window(Status.buf_id, Menu.menus[name].config)
   vim.api.nvim_command "redraw"
 
   vim.schedule(function()
@@ -53,7 +54,7 @@ function M.open(name)
         -- if quit = false
         else
           item[2]()
-          buffer.update(Menu.status.buf_id, Menu.menus[name])
+          buffer.update(Status.buf_id, Menu.menus[name])
           vim.api.nvim_command "redraw"
         end
 
@@ -67,8 +68,8 @@ function M.open(name)
         end)
 
         if loop == true then
-          window.exit_window(Menu.status.win_id)
-          Menu.status.win_id = nil
+          window.exit_window(Status.win_id)
+          Status.win_id = nil
           M.open(name)
           return
         end
@@ -115,10 +116,10 @@ end
 -- TODO: get current status
 function M.get_status()
   local res = {}
-  if Menu.status.buf_id ~= nil then
+  if Status.buf_id ~= nil then
     res.enabled = true
-    res.buf_id = Menu.status.buf_id
-    res.foreign_keys = Menu.status.config.foreign_keys
+    res.buf_id = Status.buf_id
+    res.foreign_keys = Status.config.foreign_keys
   else
     res.enabled = false
   end

@@ -4,7 +4,7 @@ spoon.RecursiveBinder.escapeKey = { {}, "escape" } -- Press escape to abort
 
 spoon.RecursiveBinder.helperFormat = {
   atScreenEdge = 0,
-  textStyle = { font = { name = "RecMonoLinear Nerd Font", size = 16 } },
+  textStyle = { font = { name = "Chalkboard", size = 16 } },
 }
 
 local menu = require "menu"
