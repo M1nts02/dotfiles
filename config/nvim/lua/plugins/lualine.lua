@@ -24,7 +24,6 @@ local function config()
           return "[" .. tab_id .. "]"
         end,
         "filename",
-        "aerial",
       },
       lualine_c = {
         "%=",

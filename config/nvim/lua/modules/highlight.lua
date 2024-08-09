@@ -26,6 +26,9 @@ function M.set_groups(palette)
   local groups = {
     NormalFloat = { bg = palette.bg },
 
+    -- Aerial.nvim
+    AerialLine = { bg = palette.bg1 },
+
     -- Gitsigns.
     GitSignsAddLn = { fg = palette.green },
     GitSignsDeleteLn = { fg = palette.yellow },

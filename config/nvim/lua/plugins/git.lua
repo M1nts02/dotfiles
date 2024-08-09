@@ -24,4 +24,44 @@ return {
     event = { "BufRead", "BufNewFile" },
     opts = { signcolumn = true },
   },
+
+  -- Neogit
+  {
+    "NeogitOrg/neogit",
+    cmd = { "Neogit" },
+    keys = {
+      {
+        "<Space>gn",
+        "<CMD>Neogit<CR>",
+        desc = "Neogit",
+      },
+    },
+    opts = {
+      commit_editor = {
+        staged_diff_split_kind = "vsplit",
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+    },
+  },
+
+  -- Diff
+  {
+    "sindrets/diffview.nvim",
+    cmd = {
+      "DiffviewFocusFiles",
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewLog",
+      "DiffviewRefresh",
+      "DiffviewFileHistory",
+      "DiffviewToggleFiles",
+    },
+    keys = {
+      { "<Space>gd", "<CMD>DiffviewOpen<CR>", desc = "Diffview" },
+      { "<Space>gD", "<CMD>DiffviewClose<CR>", desc = "Diffview Close" },
+    },
+  },
 }
