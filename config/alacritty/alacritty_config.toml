@@ -9,7 +9,7 @@ dimensions.columns = 120
 dimensions.lines = 40
 
 decorations = "None"
-opacity = 0.5
+opacity = 0.6
 blur = true
 
 title = "Alacritty"
