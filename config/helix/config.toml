@@ -1,0 +1,51 @@
+theme = "mytheme"
+
+[editor]
+line-number = "relative"
+completion-trigger-len = 3
+undercurl = true
+color-modes = true
+popup-border = "all"
+auto-pairs = false
+insert-final-newline = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.search]
+smart-case = false
+
+[editor.statusline]
+left = ["mode", "read-only-indicator", "file-name", "file-modification-indicator" ]
+center = ["spinner"]
+right = ["diagnostics", "register", "position", "total-line-numbers"]
+separator = ""
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = false
+
+[keys.normal.space."w"]
+c = "goto_window_center"
+
+[keys.normal.space."f"]
+b = "buffer_picker"
+f = "file_picker"
+F = "file_picker_in_current_directory"
+g = "global_search"
+[keys.normal.space."l"]
+a = "code_action"
+d = "diagnostics_picker"
+D = "workspace_diagnostics_picker"
+h = "select_references_to_symbol_under_cursor"
+r = "rename_symbol"
+s = "symbol_picker"
+S = "workspace_symbol_picker"
