@@ -25,7 +25,7 @@ local rg = {
         loop = true,
       }
     end,
-    "Window+",
+    desc = "Window+",
   },
 
   -- Git
