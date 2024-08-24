@@ -52,7 +52,7 @@ function on_type_change(old_ext, new_ext)
 end
 
 -- extension configuration
-image_file_extensions = { ".jpg", ".png", ".bmp", ".gif", ".webp" }
+image_file_extensions = { ".jpg", ".jpeg", ".png", ".bmp", ".gif", ".webp" }
 audio_file_extensions = {
   ".mp3",
   ".ogg",
