@@ -1,5 +1,3 @@
-hs.loadSpoon "ModalMgr"
-
 local Apps = {
   ["Alacritty"] = "Max",
   ["Blender"] = "Max",
