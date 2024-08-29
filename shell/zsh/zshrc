@@ -5,6 +5,7 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 eval $(/opt/homebrew/bin/brew shellenv)
 
 export PATH=/opt/homebrew/include:$PATH
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export LIBRARY_PATH=/opt/homebrew/lib
 export VCPKG_ROOT="$HOME/.vcpkg"
 export CMAKE_TOOLCHAIN_FILE="$HOME/.vcpkg/scripts/buildsystems/vcpkg.cmake"
