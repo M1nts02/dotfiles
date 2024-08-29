@@ -11,7 +11,6 @@ end
 
 local function config()
   local cmp = require "cmp"
-  local luasnip = require "luasnip"
   local lspkind = require "lspkind"
   cmp.setup {
     enabled = function()
@@ -36,11 +35,6 @@ local function config()
         scrollbar = false,
       },
     },
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
-    },
     mapping = {
       ["<C-u>"] = cmp.mapping.scroll_docs(-4),
       ["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -58,10 +52,8 @@ local function config()
       ["<C-n>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
-        -- elseif vim.snippet.active { direction = 1 } then
-        --   vim.snippet.jump(1)
-        elseif luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
+        elseif vim.snippet.active { direction = 1 } then
+          vim.snippet.jump(1)
         elseif get_cmp_status() then
           cmp.complete()
         else
@@ -74,10 +66,8 @@ local function config()
       ["<C-p>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
-        -- elseif vim.snippet.active { direction = -1 } then
-        --   vim.snippet.jump(-1)
-        elseif luasnip.jumpable(-1) then
-          luasnip.jump(-1)
+        elseif vim.snippet.active { direction = -1 } then
+          vim.snippet.jump(-1)
         elseif get_cmp_status() then
           cmp.complete()
         else
@@ -89,9 +79,8 @@ local function config()
       }),
     },
     sources = {
-      { name = "luasnip" },
       { name = "nvim_lsp" },
-      -- { name = "snippets", max_item_count = 10 },
+      { name = "snippets", max_item_count = 10 },
       { name = "path" },
       { name = "buffer" },
       { name = "fittencode", group_index = 1 },
@@ -156,18 +145,15 @@ return {
         end
       end,
     },
-    { -- snippet
-      "saadparwaiz1/cmp_luasnip",
+    { -- snippets
+      "garymjr/nvim-snippets",
+      config = function()
+        require("snippets").setup {
+          friendly_snippets = true,
+        }
+      end,
       dependencies = {
         "rafamadriz/friendly-snippets",
-        {
-          "L3MON4D3/LuaSnip",
-          version = "*",
-          build = (not vim.g.is_windows) and "make install_jsregexp" or nil,
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-          end,
-        },
       },
     },
   },

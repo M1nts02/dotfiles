@@ -1,19 +1,6 @@
 local utils = require "modules.utils"
+local executable = utils.executable
 local dap = require "dap"
-
-local function lldb()
-  if utils.executable "codelldb" then
-    return "codelldb"
-  end
-
-  if utils.executable "lldb-dap" then
-    return "lldb-dap"
-  end
-
-  if utils.executable "lldb-vscode" then
-    return "lldb-vscode"
-  end
-end
 
 -- Adapters
 local M = {}
@@ -21,7 +8,7 @@ local M = {}
 -- debugpy
 M.python = {
   type = "executable",
-  command = vim.g.python,
+  command = "python",
   args = { "-m", "debugpy.adapter" },
 }
 
@@ -31,7 +18,7 @@ M.codelldb = {
   name = "lldb",
   port = "${port}",
   executable = {
-    command = lldb(),
+    command = executable "codelldb" and "codelldb" or "lldb-dap",
     args = { "--port", "${port}" },
   },
 }

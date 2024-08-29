@@ -1,5 +1,12 @@
 local keys = {
   {
+    "<Space>E",
+    function()
+      require("mini.files").open()
+    end,
+    desc = "Mini Files",
+  },
+  {
     "<Space>tc",
     function()
       require("mini.hipatterns").enable(0)
@@ -29,6 +36,7 @@ return {
   keys = keys,
   config = function()
     require("mini.pairs").setup()
+    require("mini.files").setup()
     require("mini.diff").setup {
       delay = { text_change = 1000 },
       mappings = {

@@ -9,7 +9,7 @@ M.python = {
     request = "launch",
     name = "Launch file",
     program = "${file}",
-    pythonPath = vim.g.python,
+    pythonPath = "python",
     console = "integratedTerminal",
   },
 }

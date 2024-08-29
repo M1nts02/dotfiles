@@ -225,6 +225,46 @@ menu.add("Menu", {
         end,
       },
     },
+    {
+      "s",
+      function()
+        local s = not get_status().opt.cursorline
+        local i = s == true and "true" or "false"
+        vim.cmd("tabdo windo lua vim.opt.cursorline = " .. i)
+        update { opt = { cursorline = s } }
+      end,
+      {
+        desc = "CursorLine",
+        flag = function()
+          local s = get_status().opt.cursorline
+          if s then
+            return true
+          else
+            return false
+          end
+        end,
+      },
+    },
+    {
+      "S",
+      function()
+        local s = not get_status().opt.cursorcolumn
+        local i = s == true and "true" or "false"
+        vim.cmd("tabdo windo lua vim.opt.cursorcolumn = " .. i)
+        update { opt = { cursorcolumn = s } }
+      end,
+      {
+        desc = "CursorColumn",
+        flag = function()
+          local s = get_status().opt.cursorcolumn
+          if s then
+            return true
+          else
+            return false
+          end
+        end,
+      },
+    },
   },
 })
 

@@ -48,18 +48,4 @@ return {
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
-  {
-    "rolv-apneseth/tfm.nvim",
-    enable = executable "yazi",
-    keys = {
-      {
-        "<Space>E",
-        function()
-          require("tfm").open()
-        end,
-        desc = "tfm",
-      },
-    },
-    opts = {},
-  },
 }
