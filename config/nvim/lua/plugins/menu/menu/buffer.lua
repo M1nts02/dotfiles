@@ -58,8 +58,8 @@ end
 
 function M.create(menu)
   local buf_id = vim.api.nvim_create_buf(true, true)
-  -- vim.api.nvim_buf_set_option(buf_id, "bufhidden", "wipe")
-  vim.api.nvim_buf_set_option(buf_id, "modifiable", true)
+  -- vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf_id })
+  vim.api.nvim_set_option_value("modifiable", true, { buf = buf_id })
   local width = get_width(menu.config, menu.items[1], string.format("%-" .. menu.config.flag_len .. "s", " "))
 
   local lines = {}
