@@ -5,27 +5,19 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 eval $(/opt/homebrew/bin/brew shellenv)
 
 export PATH=/opt/homebrew/include:$PATH
-export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export LIBRARY_PATH=/opt/homebrew/lib
 export VCPKG_ROOT="$HOME/.vcpkg"
 export CMAKE_TOOLCHAIN_FILE="$HOME/.vcpkg/scripts/buildsystems/vcpkg.cmake"
 
+source $(brew --prefix)/opt/fzf/shell/completion.zsh
+source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' fzf-search-display true
 
 proxy () {
   export http_proxy="http://127.0.0.1:1080"
@@ -52,7 +44,7 @@ alias vim=/opt/homebrew/bin/nvim
 alias godot=/Applications/Godot.app/Contents/MacOS/Godot
 alias ls="eza --icons -F"
 alias tree="eza --tree"
+alias cd="z"
 
 eval "$(zoxide init zsh)"
-eval "$(atuin init zsh)"
 eval "$(starship init zsh)"

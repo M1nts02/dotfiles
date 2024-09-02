@@ -4,6 +4,12 @@ local keys = {
   { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
   { "<Space>fh", "<CMD>Telescope help_tags<CR>", desc = "Help" },
   { "<Space>fc", "<CMD>Telescope commands<CR>", desc = "Commands" },
+  { "<Space>fq", "<CMD>Telescope quickfix<CR>", desc = "Quickfix" },
+  { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
+  { "<Space>lr", "<CMD>Telescope lsp_references<CR>", desc = "References" },
+  { "<Space>ls", "<CMD>Telescope aerial<CR>", desc = "Symbols" },
+  { "<Space>lg", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+  { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
   { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
 }
 
@@ -27,8 +33,12 @@ local opts = {
     },
   },
   pickers = {
-    live_grep = { preview = true, layout_config = { width = 0.85, height = 0.85 } },
-    lsp_workspace_symbols = { preview = true, layout_config = { width = 0.85, height = 0.85 } },
+    live_grep = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    lsp_workspace_symbols = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    lsp_definitions = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    lsp_references = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    diagnostics = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    quickfix = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
   },
 }
 
@@ -64,6 +74,18 @@ return {
         require("workspaces").setup()
         require("telescope").load_extension "workspaces"
       end,
+    },
+    {
+      "stevearc/aerial.nvim",
+      cmd = { "AerialToggle", "AerialOpen", "AerialNavToggle", "AerialNavOpen" },
+      config = function()
+        require("aerial").setup { backends = { "markdown", "treesitter", "lsp", "asciidoc", "man" } }
+        require("telescope").load_extension "aerial"
+      end,
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons",
+      },
     },
   },
 }

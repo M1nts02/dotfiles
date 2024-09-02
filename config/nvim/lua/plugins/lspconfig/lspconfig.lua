@@ -1,25 +1,26 @@
+local utils = require "modules.utils"
+local executable = utils.executable
 local lspconfig = require "lspconfig"
 
 local lsp_servers = {
-  "autotools_ls",
-  "bashls",
-  "biome",
-  "clangd",
-  "cmake",
-  "csharp_ls",
-  "gdscript",
-  "gopls",
-  "jdtls",
-  "jsonls",
-  "lua_ls",
-  "marksman",
-  "neocmake",
-  "nushell",
-  "pylsp",
-  "rust_analyzer",
-  "sqls",
-  "taplo",
-  "zls",
+  ["autotools_ls"] = "autotools-language-server",
+  ["bashls"] = "bash-language-server",
+  ["biome"] = "",
+  ["clangd"] = "",
+  ["cmake"] = "cmake-language-server",
+  ["csharp_ls"] = "csharp-ls",
+  ["gopls"] = "",
+  ["jedi_language_server"] = "jedi-language-server",
+  ["jdtls"] = "",
+  ["jsonls"] = "vscode-json-language-server",
+  ["lua_ls"] = "lua-language-server",
+  ["marksman"] = "",
+  ["neocmake"] = "neocmakelsp",
+  ["nushell"] = "nu",
+  ["pylsp"] = "",
+  ["rust_analyzer"] = "rust-analyzer",
+  ["sqls"] = "",
+  ["zls"] = "",
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -82,11 +83,14 @@ local function on_attach(client, bufnr)
   end
 end
 
-for _, lsp in pairs(lsp_servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+for lsp, cmd in pairs(lsp_servers) do
+  cmd = cmd == "" and lsp or cmd
+  if executable(cmd) then
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+  end
 end
 
 lspconfig.lua_ls.setup {
@@ -104,11 +108,6 @@ lspconfig.lua_ls.setup {
 if vim.g.is_mac then
   lspconfig.clangd.setup {
     cmd = { "/usr/bin/clangd" },
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-  lspconfig.gdscript.setup {
-    cmd = { "/Applications/Godot.app/Contents/MacOS/Godot" },
     on_attach = on_attach,
     capabilities = capabilities,
   }

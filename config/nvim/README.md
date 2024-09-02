@@ -13,3 +13,5 @@
 - Install [fzf](https://github.com/junegunn/fzf)
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Install [bat](https://github.com/sharkdp/bat)
+- Install [yazi](https://github.com/sxyazi/yazi)
+- Install [gitui](https://github.com/extrawurst/gitui)

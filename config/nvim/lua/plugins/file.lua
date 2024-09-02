@@ -6,13 +6,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    keys = {
-      {
-        "<Space>e",
-        "<CMD>NvimTreeFindFileToggle<CR>",
-        desc = "File browser",
-      },
-    },
+    cmd = { "NvimTreeOpen", "NvimTreeToggle" },
     opts = function()
       local HEIGHT_RATIO = 0.7
       local WIDTH_RATIO = 0.6
@@ -47,5 +41,19 @@ return {
       }
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
+    "rolv-apneseth/tfm.nvim",
+    enable = executable "yazi",
+    keys = {
+      {
+        "<Space>e",
+        function()
+          require("tfm").open()
+        end,
+        desc = "Yazi",
+      },
+    },
+    opts = {},
   },
 }
