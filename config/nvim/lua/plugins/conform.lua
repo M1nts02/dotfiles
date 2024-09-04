@@ -4,20 +4,20 @@ local opts = {
     cpp = { "clang_format" },
     gdscript = { "gdformat" },
     javascript = { "biome" },
-    json = { { "jq" } },
+    json = { "jq" },
     lua = { "stylua" },
     markdown = { "mdformat" },
-    python = { { "isort", "black" } },
-    rust = { "rustfmt" },
+    python = { "isort", "black", stop_after_first = true },
+    rust = { "rustfmt", lsp_format = "fallback" },
     typescript = { "biome" },
     yaml = { "yamlfmt" },
-    zig = { "zigfmt" },
+    zig = { "zigfmt", lsp_format = "fallback" },
   },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat == true then
       return
     end
-    return { timeout_ms = 1000, lsp_fallback = true }
+    return { timeout_ms = 1000, lsp_format = "fallback" }
   end,
 }
 

@@ -16,7 +16,7 @@ add("Applications", {
   {
     singleKey("w", "Web Browser"),
     function()
-      hs.application.launchOrFocus "Zen Browser"
+      hs.application.launchOrFocus "Brave Browser"
     end,
   },
 

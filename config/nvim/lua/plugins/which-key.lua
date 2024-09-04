@@ -45,8 +45,8 @@ local rg = {
     desc = "Hover",
   },
   { "<Space>d", vim.diagnostic.open_float, desc = "Dianostic" },
-  { "<Space>la", vim.lsp.buf.rename, desc = "Rename" },
-  { "<Space>lc", vim.lsp.buf.code_action, desc = "Code Action" },
+  { "<Space>lr", vim.lsp.buf.rename, desc = "Rename" },
+  { "<Space>la", vim.lsp.buf.code_action, desc = "Code Action" },
 
   -- Search
   { "<Space>f", group = "Find+" },

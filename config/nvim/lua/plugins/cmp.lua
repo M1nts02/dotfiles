@@ -11,7 +11,6 @@ end
 
 local function config()
   local cmp = require "cmp"
-  local lspkind = require "lspkind"
   cmp.setup {
     enabled = function()
       local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
@@ -83,17 +82,8 @@ local function config()
       { name = "snippets", max_item_count = 10 },
       { name = "path" },
       { name = "buffer" },
+      { name = "nvim_lsp_signature_help" },
       { name = "fittencode", group_index = 1 },
-    },
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(_, item)
-        local kind = item.kind
-        local icon = lspkind.symbol_map[kind] or kind
-        item.menu = "    (" .. kind .. ")"
-        item.kind = " " .. icon .. " "
-        return item
-      end,
     },
   }
 end
@@ -106,36 +96,11 @@ return {
     "hrsh7th/cmp-path", -- Support path
     "hrsh7th/cmp-nvim-lsp", -- Support LSP
     "hrsh7th/cmp-buffer", -- Buffer
-    { -- Icons
-      "onsails/lspkind.nvim",
-      opts = {
-        symbol_map = {
-          Array = "[]",
-          Boolean = "",
-          Calendar = "",
-          Codeium = "",
-          Copilot = "",
-          EnumMember = "",
-          FittenCode = "",
-          Namespace = "󰌗",
-          Null = "󰟢",
-          Number = "",
-          Object = "󰅩",
-          Package = "",
-          String = "󰉿",
-          Table = "",
-          TabNine = "",
-          Tag = "",
-          Watch = "󰥔",
-        },
-      },
-    },
-    { -- AI
+    "hrsh7th/cmp-nvim-lsp-signature-help",
+    { -- FittenCode
       "luozhiya/fittencode.nvim",
       cmd = "Fitten",
-      opts = {
-        completion_mode = "source",
-      },
+      opts = { completion_mode = "source" },
       config = function(_, opts)
         require("fittencode").setup(opts)
         if get_status().g.fittencode then
@@ -144,17 +109,6 @@ return {
           vim.cmd "Fitten disable_completions"
         end
       end,
-    },
-    { -- snippets
-      "garymjr/nvim-snippets",
-      config = function()
-        require("snippets").setup {
-          friendly_snippets = true,
-        }
-      end,
-      dependencies = {
-        "rafamadriz/friendly-snippets",
-      },
     },
   },
 }

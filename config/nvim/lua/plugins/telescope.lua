@@ -6,8 +6,7 @@ local keys = {
   { "<Space>fc", "<CMD>Telescope commands<CR>", desc = "Commands" },
   { "<Space>fq", "<CMD>Telescope quickfix<CR>", desc = "Quickfix" },
   { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
-  { "<Space>lr", "<CMD>Telescope lsp_references<CR>", desc = "References" },
-  { "<Space>ls", "<CMD>Telescope aerial<CR>", desc = "Symbols" },
+  { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
   { "<Space>lg", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
   { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
@@ -16,6 +15,15 @@ local keys = {
 local opts = {
   defaults = {
     preview = false,
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "-l",
+    },
     selection_strategy = "reset",
     sorting_strategy = "ascending",
     layout_strategy = "horizontal",
@@ -50,42 +58,5 @@ return {
   opts = opts,
   dependencies = {
     "nvim-lua/plenary.nvim",
-    {
-      "natecraddock/workspaces.nvim",
-      keys = {
-        {
-          "<Space>fw",
-          "<CMD>Telescope workspaces<CR>",
-          desc = "Workspace",
-        },
-      },
-      cmd = {
-        "WorkspacesAdd",
-        "WorkspacesAddDir",
-        "WorkspacesList",
-        "WorkspacesListDirs",
-        "WorkspacesOpen",
-        "WorkspacesRemove",
-        "WorkspacesRemoveDir",
-        "WorkspacesRename",
-        "WorkspacesSyncDirs",
-      },
-      config = function()
-        require("workspaces").setup()
-        require("telescope").load_extension "workspaces"
-      end,
-    },
-    {
-      "stevearc/aerial.nvim",
-      cmd = { "AerialToggle", "AerialOpen", "AerialNavToggle", "AerialNavOpen" },
-      config = function()
-        require("aerial").setup { backends = { "markdown", "treesitter", "lsp", "asciidoc", "man" } }
-        require("telescope").load_extension "aerial"
-      end,
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons",
-      },
-    },
   },
 }

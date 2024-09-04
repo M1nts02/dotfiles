@@ -51,51 +51,23 @@ local function config()
 end
 
 return {
-  { -- statusline
-    "nvim-lualine/lualine.nvim",
-    event = { "BufRead", "BufNewFile" },
-    config = config,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      {
-        "linrongbin16/lsp-progress.nvim",
-        opts = {
-          spinner = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" },
-          spin_update_time = 500,
-          format = function(client_messages)
-            if #client_messages > 0 then
-              return table.concat(client_messages, " ")
-            end
-            return ""
-          end,
-        },
+  "nvim-lualine/lualine.nvim",
+  event = { "BufRead", "BufNewFile" },
+  config = config,
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    {
+      "linrongbin16/lsp-progress.nvim",
+      opts = {
+        spinner = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" },
+        spin_update_time = 500,
+        format = function(client_messages)
+          if #client_messages > 0 then
+            return table.concat(client_messages, " ")
+          end
+          return ""
+        end,
       },
-    },
-  },
-  { -- statuscol
-    "luukvbaal/statuscol.nvim",
-    event = { "BufRead", "BufNewFile" },
-    config = function()
-      local builtin = require "statuscol.builtin"
-      require("statuscol").setup {
-        relculright = true,
-        ft_ignore = nil,
-        bt_ignore = nil,
-        segments = {
-          { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-          { text = { "%C" }, click = "v:lua.ScFa" },
-          { text = { "%s" }, click = "v:lua.ScSa" },
-          {
-            text = { builtin.lnumfunc, " " },
-            condition = { true, builtin.not_empty },
-            click = "v:lua.ScLa",
-          },
-        },
-        clickmod = "c",
-      }
-    end,
-    dependencies = {
-      "lewis6991/gitsigns.nvim",
     },
   },
 }

@@ -1,18 +1,18 @@
 {
+  "cmake(c)": {
+    "template": "cmake(c).txt",
+    "target": "CMakeLists.txt"
+  },
   "xmake(c)": {
-    "target": "xmake.lua",
-    "template": "xmake_c.lua"
+    "template": "xmake_c.lua",
+    "target": "xmake.lua"
   },
   "stylua": {
-    "target": "stylua.toml",
-    "template": "stylua.toml"
+    "template": "stylua.toml",
+    "target": "stylua.toml"
   },
   "launch(lldb)": {
-    "target": ".vscode/launch.json",
-    "template": "launch_lldb.json"
-  },
-  "cmake(c)": {
-    "target": "CMakeLists.txt",
-    "template": "cmake(c).txt"
+    "template": "launch_lldb.json",
+    "target": ".vscode/launch.json"
   }
 }

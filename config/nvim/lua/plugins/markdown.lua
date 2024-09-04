@@ -1,5 +1,4 @@
 return {
-  -- Markdown
   {
     "iamcco/markdown-preview.nvim",
     cmd = {

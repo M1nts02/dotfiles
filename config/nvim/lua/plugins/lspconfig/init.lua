@@ -5,4 +5,5 @@ return {
     require "plugins.lspconfig.lspconfig"
     require "plugins.lspconfig.options"
   end,
+  dependencies = { "b0o/schemastore.nvim" },
 }
