@@ -8,6 +8,8 @@ color-modes = true
 popup-border = "all"
 auto-pairs = false
 insert-final-newline = false
+cursorline = false
+cursorcolumn = false
 
 [editor.cursor-shape]
 insert = "bar"

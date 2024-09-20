@@ -33,20 +33,10 @@ local rg = {
 
   -- LSP
   { "<Space>l", group = "LSP+" },
-  {
-    "<Space>k",
-    function()
-      if vim.inspect(vim.lsp.get_clients { bufnr = 0 }) == "{}" then
-        pcall(vim.cmd, "Man")
-      else
-        vim.lsp.buf.hover()
-      end
-    end,
-    desc = "Hover",
-  },
-  { "<Space>d", vim.diagnostic.open_float, desc = "Dianostic" },
   { "<Space>lr", vim.lsp.buf.rename, desc = "Rename" },
+  { "gr", vim.lsp.buf.rename, desc = "Rename" },
   { "<Space>la", vim.lsp.buf.code_action, desc = "Code Action" },
+  { "ga", vim.lsp.buf.code_action, desc = "Code Action" },
 
   -- Search
   { "<Space>f", group = "Find+" },

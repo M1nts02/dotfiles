@@ -3,7 +3,6 @@ local opts = {
     { path = "luvit-meta/library", words = { "vim%.uv" } },
     { path = "wezterm-types", mods = { "wezterm" } },
     { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
-    { path = "${3rd}/love2d/library" },
   },
 }
 

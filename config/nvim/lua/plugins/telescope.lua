@@ -7,8 +7,10 @@ local keys = {
   { "<Space>fq", "<CMD>Telescope quickfix<CR>", desc = "Quickfix" },
   { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
   { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
-  { "<Space>lg", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+  { "<Space>lo", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+  { "go", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
+  { "gh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
   { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
 }
 

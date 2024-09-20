@@ -20,5 +20,14 @@ return {
     },
   },
   event = { "BufRead", "BufNewFile" },
-  opts = { signcolumn = true },
+  opts = {
+    signcolumn = true,
+    signs = {
+      add = { text = "+" },
+      change = { text = "~" },
+      delete = { text = "_" },
+      topdelete = { text = "‾" },
+      changedelete = { text = "~" },
+    },
+  },
 }

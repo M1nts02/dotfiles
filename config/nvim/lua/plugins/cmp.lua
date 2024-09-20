@@ -84,6 +84,7 @@ local function config()
       { name = "buffer" },
       { name = "nvim_lsp_signature_help" },
       { name = "fittencode", group_index = 1 },
+      { name = "calc" },
     },
   }
 end
@@ -97,6 +98,7 @@ return {
     "hrsh7th/cmp-nvim-lsp", -- Support LSP
     "hrsh7th/cmp-buffer", -- Buffer
     "hrsh7th/cmp-nvim-lsp-signature-help",
+    "hrsh7th/cmp-calc", -- math calculation
     { -- FittenCode
       "luozhiya/fittencode.nvim",
       cmd = "Fitten",

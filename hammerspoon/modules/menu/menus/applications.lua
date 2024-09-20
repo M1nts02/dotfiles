@@ -28,6 +28,14 @@ add("Applications", {
     end,
   },
 
+  -- Trash
+  {
+    singleKey("h", "Trash"),
+    function()
+      hs.execute "open -a finder ~/.Trash"
+    end,
+  },
+
   -- Tools
   {
     singleKey("m", "DarkMode"),

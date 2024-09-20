@@ -27,6 +27,7 @@ end
 return {
   "stevearc/oil.nvim",
   version = "*",
+  cmd = "Oil",
   keys = {
     {
       "<Space>e",

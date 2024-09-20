@@ -17,7 +17,7 @@ M.python = {
 M.cpp = {
   {
     name = "Launch",
-    type = "codelldb",
+    type = "lldb",
     request = "launch",
     console = "integratedTerminal",
     program = function()

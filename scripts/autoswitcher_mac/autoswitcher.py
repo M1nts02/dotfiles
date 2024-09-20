@@ -35,6 +35,26 @@ def wallpaper_change(mode: bool):
     os.popen(command.replace("{$path}", path))
 
 
+# def update_config(mode: bool):
+#    if mode:
+#        os.popen(
+#            "cp -f "
+#            + home
+#            + "/dotfiles/config/alacritty/alacritty_dark.toml "
+#            + home
+#            + "/.config/alacritty/alacritty.toml"
+#        )
+#    else:
+#        os.popen(
+#            "cp -f "
+#            + home
+#            + "/dotfiles/config/alacritty/alacritty_light.toml "
+#            + home
+#            + "/.config/alacritty/alacritty.toml"
+#        )
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] == "true"
     wallpaper_change(mode)
+    # update_config(mode)

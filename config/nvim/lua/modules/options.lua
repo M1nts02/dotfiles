@@ -15,10 +15,8 @@ o.splitbelow = true
 o.splitright = true
 o.showmode = false
 o.ruler = false
-o.list = true
 o.showcmd = true
 o.timeoutlen = 500
-o.scrolloff = 5
 o.foldlevelstart = 99
 o.showtabline = 0
 o.pumheight = 15
@@ -31,17 +29,19 @@ o.mouse = "nvic"
 o.virtualedit = "block"
 o.encoding = "utf-8"
 o.foldmethod = "indent"
-o.inccommand = "nosplit"
 o.backspace = "indent," .. "eol," .. "start"
 o.showbreak = "+---"
-o.listchars = "tab:»·," .. "nbsp:+," .. "trail:·," .. "extends:→," .. "precedes:←"
 o.omnifunc = "syntaxcomplete#Complete"
 
-opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+opt.inccommand = "split"
+opt.list = true
+opt.listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", precedes = "←" }
 opt.undofile = true
 opt.expandtab = true
 opt.termguicolors = true
 opt.tabstop = 2
+opt.scrolloff = 5
+opt.signcolumn = "yes"
 opt.shiftwidth = 2
 opt.shortmess:append { c = true }
 opt.softtabstop = -1
@@ -51,6 +51,24 @@ opt.fillchars = { eob = " " }
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.mapleader = "\\"
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+g.loaded_netrwFileHandlers = 1
+g.loaded_gzip = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_getscript = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_2html_plugin = 1
+g.loaded_logipat = 1
+g.loaded_rrhelper = 1
+g.loaded_spellfile_plugin = 1
+g.loaded_matchit = 1
 
 cmd "unmenu PopUp"
 cmd "filetype indent off"
@@ -63,3 +81,16 @@ if vim.fn.executable "rg" == 1 then
   vim.o.grepprg = "rg --vimgrep "
   vim.o.grepformat = "%f:%l:%c:%m"
 end
+
+-- Run after UIEnter
+vim.schedule(function()
+  opt.clipboard = "unnamedplus"
+end)
+
+-- highlight yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

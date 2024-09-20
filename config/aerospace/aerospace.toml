@@ -1,0 +1,48 @@
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+start-at-login = true
+
+[gaps]
+inner.horizontal = 7
+inner.vertical =   7
+outer.left =       7
+outer.bottom =     7
+outer.top =        7
+outer.right =      7
+
+[mode.main.binding]
+alt-leftSquareBracket = 'focus up'
+alt-slash  = 'focus down'
+alt-semicolon = 'focus left'
+alt-quote = 'focus right'
+alt-shift-leftSquareBracket = 'move up'
+alt-shift-slash  = 'move down'
+alt-shift-semicolon = 'move left'
+alt-shift-quote = 'move right'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+
+cmd-h = []
+cmd-alt-h = []
+alt-comma = []
+
+[mode.service.binding]
+r = []
+f = []
+esc = []
+backspace = []
+
+alt-shift-h = []
+alt-shift-j = []
+alt-shift-k = []
+alt-shift-l = []

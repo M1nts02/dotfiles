@@ -66,7 +66,7 @@ add("Main Menu", {
   { -- Window
     singleKey("w", "Window"),
     function()
-      run "Window"
+      run "Aerospace"
     end,
   },
   { -- Screenshot

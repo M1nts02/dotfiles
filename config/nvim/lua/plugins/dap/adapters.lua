@@ -13,7 +13,7 @@ M.python = {
 }
 
 -- lldb
-M.codelldb = {
+M.lldb = {
   type = "server",
   name = "lldb",
   port = "${port}",

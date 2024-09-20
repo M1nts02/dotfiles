@@ -23,6 +23,11 @@
 "attribute" = "yellow"
 "type" = "light-yellow"
 "ui.cursor.match" = { fg = "light-yellow", modifiers = ["underlined"] }
+"ui.cursor.secondary" = { modifiers = ["reversed"] }
+"ui.cursorline.primary" = { underline = { color = "light-gray", style = "line" } }
+"ui.cursorline.secondary" = { underline = { color = "light-gray", style = "line" } }
+"ui.cursorcolumn.primary" = { bg = "gray" }
+"ui.cursorcolumn.secondary" = { bg = "gray" }
 "string"  = "green"
 "variable.other.member" = "green"
 "constant.character.escape" = "light-cyan"
@@ -57,4 +62,4 @@
 
 [palette]
 gray = "#778899"
-green = "#69ac00"
+green = "#69ac49"
