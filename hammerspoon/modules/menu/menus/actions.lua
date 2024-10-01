@@ -3,23 +3,7 @@ local add = menu.add
 local run = menu.run
 local singleKey = menu.singleKey
 
-add("Applications", {
-  -- Terminal
-  {
-    singleKey("t", "Terminal"),
-    function()
-      hs.application.launchOrFocus "Wezterm"
-    end,
-  },
-
-  -- Browser
-  {
-    singleKey("w", "Web Browser"),
-    function()
-      hs.application.launchOrFocus "Brave Browser"
-    end,
-  },
-
+add("Actions", {
   -- Finder
   {
     singleKey("f", "Finder"),

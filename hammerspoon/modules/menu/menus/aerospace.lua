@@ -90,3 +90,8 @@ add("Aerospace", {
 }, {
   helper = helper,
 })
+
+
+hs.hotkey.bind({ "alt" }, "w", function()
+  run "Aerospace"
+end)

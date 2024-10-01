@@ -4,11 +4,16 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 start-at-login = true
 
+after-startup-command = ['exec-and-forget brew services restart sketchybar']
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
 [gaps]
 inner.horizontal = 7
 inner.vertical =   7
 outer.left =       7
-outer.bottom =     7
+outer.bottom =     27
 outer.top =        7
 outer.right =      7
 

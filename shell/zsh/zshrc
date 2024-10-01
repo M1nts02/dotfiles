@@ -7,14 +7,10 @@ export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottle
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 eval $(/opt/homebrew/bin/brew shellenv)
 
-export PATH=/opt/homebrew/include:$PATH
-export LIBRARY_PATH=/opt/homebrew/lib
+export PATH=$(brew --prefix)/include:$PATH
+export LIBRARY_PATH=$(brew --prefix)/lib
 export VCPKG_ROOT="$HOME/.vcpkg"
 export CMAKE_TOOLCHAIN_FILE="$HOME/.vcpkg/scripts/buildsystems/vcpkg.cmake"
-
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 source $(brew --prefix)/opt/fzf/shell/completion.zsh
 source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
@@ -39,7 +35,7 @@ noproxy () {
 }
 
 icloud () {
-  cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs
+  cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs
 }
 
 alias python3=/opt/homebrew/bin/python3

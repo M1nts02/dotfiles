@@ -49,6 +49,13 @@ local opts = {
     lsp_references = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
     diagnostics = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
     quickfix = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    buffers = {
+      mappings = {
+        n = {
+          ["d"] = "delete_buffer",
+        },
+      },
+    },
   },
 }
 
