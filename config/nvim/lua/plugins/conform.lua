@@ -21,6 +21,15 @@ local opts = {
   end,
 }
 
+local function formatters()
+  require("conform").formatters.zigfmt = function(bufnr)
+    return {
+      command = "zig",
+      arg = { "fmt" },
+    }
+  end
+end
+
 return {
   "stevearc/conform.nvim",
   cmd = { "AutoformatToggle" },
@@ -30,6 +39,7 @@ return {
   end,
   config = function()
     require("conform").setup(opts)
+    formatters()
 
     -- Toggle auto format
     vim.api.nvim_create_user_command("AutoformatToggle", function(args)
