@@ -8,6 +8,7 @@ local keys = {
   { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
   { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
   { "<Space>lo", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+  { "<Space>b", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
   { "go", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
   { "gh", "<CMD>Telescope lsp_references<CR>", desc = "References" },

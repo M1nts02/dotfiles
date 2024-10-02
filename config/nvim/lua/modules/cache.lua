@@ -1,7 +1,7 @@
 local M = {}
 
 -- default cache file path
-local cache_path = vim.fn.stdpath "cache" .. "/nvim_cache.json"
+local cache_path = vim.fn.stdpath "config" .. "/.cache.json"
 
 -- default cache
 local cache = {
