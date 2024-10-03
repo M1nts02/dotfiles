@@ -2,12 +2,12 @@
 
 calendar=(
   icon=cal
-  icon.font="$FONT:Normal:$FONT_SIZE"
+  icon.font="$FONT:Bold:$FONT_SIZE"
   icon.padding_right=0
   label.width=45
   label.align=right
-  label.font="$FONT:Normal:$FONT_SIZE"
-  padding_left=15
+  label.font="$FONT:Bold:$FONT_SIZE"
+  padding_left=2
   update_freq=30
   script="$PLUGIN_DIR/calendar.sh"
 )

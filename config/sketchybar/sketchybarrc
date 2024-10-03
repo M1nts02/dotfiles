@@ -13,7 +13,7 @@ sketchybar --bar height=20 \
   position=bottom  \
   padding_left=10  \
   padding_right=10 \
-  color=0x30ffffff \
+  color=0x15ffffff \
   shadow=on
 
 sketchybar --default updates=when_shown \
@@ -35,7 +35,6 @@ source $ITEM_DIR/calendar.sh
 source $ITEM_DIR/aerospace.sh
 
 ########## right ###########
-sketchybar --add item right_space right drawing=on label="" label.padding_left=2
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/volume.sh
 source $ITEM_DIR/wifi.sh

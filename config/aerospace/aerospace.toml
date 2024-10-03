@@ -51,3 +51,34 @@ alt-shift-h = []
 alt-shift-j = []
 alt-shift-k = []
 alt-shift-l = []
+
+[[on-window-detected]]
+if.app-id = "com.baidu.netdisk"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.aone.keka"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.colliderli.iina"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.apple.QuickTimePlayerX"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.xjbeta.iina-plus"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.apple.logic10"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.blackmagic-design.DaVinciResolveLite"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.dreamtonics.svstudio.pro"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "org.olivevideoeditor.Olive"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "jp.co.celsys.CLIPSTUDIOPAINT"
+run = "layout floating"

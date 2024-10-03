@@ -35,26 +35,18 @@ def wallpaper_change(mode: bool):
     os.popen(command.replace("{$path}", path))
 
 
-# def update_config(mode: bool):
-#    if mode:
-#        os.popen(
-#            "cp -f "
-#            + home
-#            + "/dotfiles/config/alacritty/alacritty_dark.toml "
-#            + home
-#            + "/.config/alacritty/alacritty.toml"
-#        )
-#    else:
-#        os.popen(
-#            "cp -f "
-#            + home
-#            + "/dotfiles/config/alacritty/alacritty_light.toml "
-#            + home
-#            + "/.config/alacritty/alacritty.toml"
-#        )
+def update_config(mode: bool):
+    if mode:
+        os.popen(
+            "/opt/homebrew/bin/sketchybar --set '/.*/' icon.color=0xffffffff label.color=0xffffffff"
+        )
+    else:
+        os.popen(
+            "/opt/homebrew/bin/sketchybar --set '/.*/' icon.color=0xff000000 label.color=0xff000000"
+        )
 
 
 if __name__ == "__main__":
     mode = sys.argv[1] == "true"
     wallpaper_change(mode)
-    # update_config(mode)
+    update_config(mode)
