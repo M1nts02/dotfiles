@@ -5,10 +5,11 @@ local singleKey = menu.singleKey
 
 local helper = [[
 
- [SPC]: Actions       [s]: Screenshot
- [1]: ABC    [2]: Rime  [3]: Switcher
- [⏎]: Play   [']: Next  [;]: Previous
-                                      ]]
+ [s]: Screenshot [o]: System Setting
+ [1]: ABC        [2]: Rime       [3]: Switcher
+ [f]: Finder     [h]: Trash      [m]: DarkMode
+ [⏎]: Play       [']: Next       [;]: Previous
+                                               ]]
 
 add("Main Menu", {
   { -- ABC
@@ -29,16 +30,39 @@ add("Main Menu", {
       hs.eventtap.keyStroke({ "control", "shift" }, "f4")
     end,
   },
-  { -- Actions
-    singleKey("space", "Actions"),
-    function()
-      run "Actions"
-    end,
-  },
   { -- Screenshot
     singleKey("s", "Screenshot"),
     function()
       run "Screenshot"
+    end,
+  },
+  -- Finder
+  {
+    singleKey("f", "Finder"),
+    function()
+      hs.application.launchOrFocus "Finder"
+    end,
+  },
+
+  -- Trash
+  {
+    singleKey("h", "Trash"),
+    function()
+      hs.execute "open -a finder ~/.Trash"
+    end,
+  },
+  -- Tools
+  {
+    singleKey("m", "DarkMode"),
+    function()
+      hs.shortcuts.run "切换黑暗模式"
+    end,
+  },
+  -- System Setting
+  {
+    singleKey("o", "SystemSetting"),
+    function()
+      hs.execute "open -b com.apple.systempreferences /System/Library/PreferencePanes/Security.prefPane"
     end,
   },
 
