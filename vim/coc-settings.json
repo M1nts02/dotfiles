@@ -19,7 +19,7 @@
     "zig": {
       "command": "zls",
       "rootPatterns": [
-        "build.zig",
+        "build.zig"
       ],
       "filetypes": [
         "zig"

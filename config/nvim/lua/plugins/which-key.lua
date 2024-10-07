@@ -41,7 +41,7 @@ local rg = {
   -- Search
   { "<Space>f", group = "Find+" },
 
-  -- Color
+  -- Preview
   { "<Space>p", group = "Preview+" },
 
   -- Toggle

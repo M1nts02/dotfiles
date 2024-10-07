@@ -38,6 +38,7 @@ opt.list = true
 opt.listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", precedes = "←" }
 opt.undofile = true
 opt.expandtab = true
+opt.fileencodings = "utf-8,gbk,ucs-bom,default,latin1"
 opt.termguicolors = true
 opt.tabstop = 2
 opt.scrolloff = 5
