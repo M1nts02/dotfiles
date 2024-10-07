@@ -82,3 +82,12 @@ run = "layout floating"
 [[on-window-detected]]
 if.app-id = "jp.co.celsys.CLIPSTUDIOPAINT"
 run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.kv.Aural"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.interversehq.qView"
+run = "layout floating"
+[[on-window-detected]]
+if.app-id = "com.jordanbaird.Ice"
+run = "layout floating"

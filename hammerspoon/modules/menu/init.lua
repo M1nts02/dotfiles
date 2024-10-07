@@ -7,7 +7,6 @@ menu.helperFormat = {
 }
 
 require "modules.menu.menus.main"
-require "modules.menu.menus.actions"
 -- require "modules.menu.menus.window"
 require "modules.menu.menus.aerospace"
 require "modules.menu.menus.screenshot"
