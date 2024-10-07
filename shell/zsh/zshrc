@@ -9,8 +9,6 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 export PATH=$(brew --prefix)/include:$PATH
 export LIBRARY_PATH=$(brew --prefix)/lib
-export VCPKG_ROOT="$HOME/.vcpkg"
-export CMAKE_TOOLCHAIN_FILE="$HOME/.vcpkg/scripts/buildsystems/vcpkg.cmake"
 
 source $(brew --prefix)/opt/fzf/shell/completion.zsh
 source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
