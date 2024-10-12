@@ -5,9 +5,9 @@ local singleKey = menu.singleKey
 
 local helper = [[
 
- [s]: Screenshot [o]: Setting  [a]: monitor
+ [s]: Screenshot [o]: Setting  [m]: Mission
  [1]: ABC        [2]: Rime     [3]: Switcher
- [f]: Finder     [h]: Trash    [m]: DarkMode
+ [f]: Finder     [h]: Trash    [d]: DarkMode
  [⏎]: Play       [']: Next     [;]: Previous
                                              ]]
 
@@ -53,7 +53,7 @@ add("Main Menu", {
   },
   -- Tools
   {
-    singleKey("m", "DarkMode"),
+    singleKey("d", "DarkMode"),
     function()
       hs.shortcuts.run "暗色模式"
     end,
@@ -65,11 +65,11 @@ add("Main Menu", {
       hs.execute "open -b com.apple.systempreferences /System/Library/PreferencePanes"
     end,
   },
-  -- Activity Monitor
+  -- Mission Control
   {
-    singleKey("a", "monitor"),
+    singleKey("m", "MissionControl"),
     function()
-      hs.execute "open -a 'Activity Monitor'"
+      hs.spaces.openMissionControl()
     end,
   },
 

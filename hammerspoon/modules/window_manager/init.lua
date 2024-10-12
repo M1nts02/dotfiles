@@ -7,6 +7,7 @@ local Apps = {
   ["WezTerm"] = "Max",
   ["WPS Office"] = "Max",
   ["QQ"] = "Float",
+  ["Zen Browser"] = "Max",
 }
 
 applicationWatcher = hs.application.watcher.new(function(appName, eventType, appObject)

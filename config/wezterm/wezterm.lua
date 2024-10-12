@@ -22,8 +22,10 @@ options.text_background_opacity = 1.0
 options.macos_window_background_blur = 40
 options.adjust_window_size_when_changing_font_size = true
 options.window_frame = {}
-options.window_decorations = is_windows and "TITLE" or "RESIZE"
+--options.window_decorations = is_windows and "TITLE" or "RESIZE"
 options.window_close_confirmation = "AlwaysPrompt"
+options.initial_cols = 100
+options.initial_rows = 40
 
 -- Font
 options.font_size = 13
