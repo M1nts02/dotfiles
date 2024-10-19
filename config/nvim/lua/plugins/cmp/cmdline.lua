@@ -1,4 +1,6 @@
-local options = function()
+local M = {}
+
+function M.options()
   local cmp = require "cmp"
   return {
     {
@@ -41,19 +43,4 @@ local options = function()
   }
 end
 
-return {
-  "hrsh7th/cmp-cmdline",
-  keys = { ":", "/", "?" },
-  dependencies = {
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-path", -- Path
-    "hrsh7th/cmp-buffer", -- Buffer
-  },
-  opts = options,
-  config = function(_, opts)
-    local cmp = require "cmp"
-    vim.tbl_map(function(val)
-      cmp.setup.cmdline(val.type, val)
-    end, opts)
-  end,
-}
+return M

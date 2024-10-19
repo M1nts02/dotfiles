@@ -1,3 +1,5 @@
+local M = {}
+
 local opts = {
   symbol_map = {
     Array = "[]",
@@ -20,7 +22,7 @@ local opts = {
   },
 }
 
-local function config()
+function M.config()
   local lspkind = require "lspkind"
   lspkind.setup(opts)
   local cmp = require "cmp"
@@ -38,12 +40,4 @@ local function config()
   cmp.setup(conf)
 end
 
-return {
-  "hrsh7th/nvim-cmp",
-  dependencies = {
-    {
-      "onsails/lspkind.nvim",
-      config = config,
-    },
-  },
-}
+return M

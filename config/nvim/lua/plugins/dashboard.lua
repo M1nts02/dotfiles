@@ -1,3 +1,6 @@
+local utils = require "modules.utils"
+local executable = utils.executable
+
 local custom_header = {
   "⠀⠀⣸⣿⣿⣿⡏⠀⡀⠀⠀⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠘⡇⠀⢷⠀⠀⠀⠀⠀⠀⠀⠈⡅⠀⠀⢀⠀⠀⠀⠘⡆⠀⠀",
   "⠀⠀⣿⣿⣿⡟⠀⢀⡇⠀⢠⡏⣀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⣁⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⢱⠀⠀⠀⠆⠀⠀⠀⢳⠀⠀",
@@ -40,6 +43,14 @@ local opts = {
         desc_hl = "Question",
         action = "Mason",
         key = "m",
+      },
+      {
+        desc = "File Browser",
+        desc_hl = "String",
+        action = function()
+          require("oil").open_float()
+        end,
+        key = "e",
       },
       {
         desc = "Find Workspaces",

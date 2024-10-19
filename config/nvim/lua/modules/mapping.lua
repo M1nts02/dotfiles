@@ -1,4 +1,7 @@
 local map = {
+  -- Paste
+  { { "n" }, "gp", '"+p' },
+  { { "n" }, "gP", '"+P' },
   -- Move
   { { "i", "c" }, "<M-0>", "<Home>" },
   { { "i", "c" }, "<M-a>", "<Home>" },
@@ -18,6 +21,11 @@ local map = {
   -- Change number
   { { "v" }, "<C-a>", "<C-a>gv" },
   { { "v" }, "<C-x>", "<C-x>gv" },
+  -- Yank
+  { { "n" }, "gy", '"+y' },
+  { { "n" }, "gY", '"+Y' },
+  { { "v" }, "gy", '"+y' },
+  { { "v" }, "gY", '"+Y' },
 }
 
 for _, m in ipairs(map) do
