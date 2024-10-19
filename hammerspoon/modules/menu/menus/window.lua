@@ -3,18 +3,6 @@ local add = menu.add
 local run = menu.run
 local singleKey = menu.singleKey
 
-spaces = require "hs.spaces"
-
-function MoveWindowToSpace(sp)
-  local win = hs.window.focusedWindow() -- current window
-  local cur_screen = hs.screen.mainScreen()
-  local cur_screen_id = cur_screen:getUUID()
-  local all_spaces = spaces.allSpaces()
-  local spaceID = all_spaces[cur_screen_id][sp]
-  spaces.moveWindowToSpace(win:id(), spaceID)
-  spaces.gotoSpace(spaceID) -- follow window to new space
-end
-
 add("Window", {
   {
     singleKey("o", "Maximize"),
@@ -60,18 +48,6 @@ add("Window", {
     singleKey("t", "Top"),
     function()
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.93 }
-    end,
-  },
-  {
-    singleKey("1", "Move Space1"),
-    function()
-      MoveWindowToSpace(1)
-    end,
-  },
-  {
-    singleKey("2", "Move Space1"),
-    function()
-      MoveWindowToSpace(2)
     end,
   },
 })

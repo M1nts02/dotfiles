@@ -131,9 +131,15 @@ call plug#end()
 """"" Map
 vmap < <gv
 vmap > >gv
+vmap gy "+y
+vmap gY "+Y
 vmap <C-a> <C-a>gv
 vmap <C-x> <C-x>gv
 imap <C-l> <C-x><C-f>
+nmap gy "+y
+nmap gY "+Y
+nmap gp "+p
+nmap gP "+P
 nmap <Space>q :q<CR>
 nmap <Leader>1 :tabnext 1<CR>
 nmap <Leader>2 :tabnext 2<CR>
