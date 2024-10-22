@@ -74,6 +74,13 @@ endif
 execute "source " . plugpath . "/plug.vim"
 call plug#begin()
 
+" plugin manager
+Plug 'junegunn/vim-plug'
+
+" file explore
+Plug 'preservim/nerdtree'
+nmap <space>e :NERDTreeToggle<CR>
+
 " theme
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
@@ -112,18 +119,6 @@ endif
 
 " zig
 Plug 'ziglang/zig.vim'
-
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
-let g:coc_global_extensions = [
-      \'coc-clangd',
-      \'coc-explorer',
-      \'coc-json', 
-      \'coc-lua', 
-      \'coc-markdownlint',
-      \'coc-python',
-      \]
-nmap <space>e <Cmd>CocCommand explorer<CR>
 
 call plug#end()
 
