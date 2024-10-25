@@ -5,7 +5,6 @@ return {
     event = "InsertEnter",
     config = require("plugins.cmp.cmp").config,
     dependencies = {
-      "hrsh7th/cmp-path", -- Support path
       "hrsh7th/cmp-nvim-lsp", -- Support LSP
       "hrsh7th/cmp-buffer", -- Buffer
       "hrsh7th/cmp-nvim-lsp-signature-help",
@@ -45,6 +44,10 @@ return {
           "saadparwaiz1/cmp_luasnip",
         },
       },
+      { -- Path
+        name = "cmp-async-path",
+        url = "https://codeberg.org/FelipeLema/cmp-async-path",
+      },
     },
   },
 
@@ -54,8 +57,11 @@ return {
     keys = { ":", "/", "?" },
     dependencies = {
       "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-path", -- Path
       "hrsh7th/cmp-buffer", -- Buffer
+      { -- Path
+        name = "cmp-async-path",
+        url = "https://codeberg.org/FelipeLema/cmp-async-path",
+      },
     },
     opts = require("plugins.cmp.cmdline").options,
     config = function(_, opts)

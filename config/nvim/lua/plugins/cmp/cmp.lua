@@ -89,7 +89,7 @@ function M.config()
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "path" },
+      { name = "async_path" },
       { name = "buffer" },
       { name = "nvim_lsp_signature_help" },
       { name = "fittencode", group_index = 1 },

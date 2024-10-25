@@ -36,7 +36,7 @@ function M.options()
         },
       },
       sources = cmp.config.sources(
-        { { name = "path" } },
+        { { name = "async_path" } },
         { { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } } }
       ),
     },
