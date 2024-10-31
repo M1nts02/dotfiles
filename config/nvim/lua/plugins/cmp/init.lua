@@ -48,6 +48,12 @@ return {
         name = "cmp-async-path",
         url = "https://codeberg.org/FelipeLema/cmp-async-path",
       },
+      { -- Auto pair
+        "windwp/nvim-autopairs",
+        config = function()
+          require("plugins.cmp.nvim-autopairs").config()
+        end,
+      },
     },
   },
 

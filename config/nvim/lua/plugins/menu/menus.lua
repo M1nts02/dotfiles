@@ -18,17 +18,22 @@ menu.add("Menu", {
     {
       "p",
       function()
-        local s = not get_status().g.minipairs_disable
-        update { g = { minipairs_disable = s } }
+        local s = not get_status().g.autopairs
+        update { g = { autopairs = s } }
+        if s == true then
+          require("nvim-autopairs").enable()
+        else
+          require("nvim-autopairs").disable()
+        end
       end,
       {
         desc = "Auto pairs",
         flag = function()
-          local s = get_status().g.minipairs_disable
+          local s = get_status().g.autopairs
           if s then
-            return false
-          else
             return true
+          else
+            return false
           end
         end,
       },
