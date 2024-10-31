@@ -77,10 +77,6 @@ call plug#begin()
 " plugin manager
 Plug 'junegunn/vim-plug'
 
-" file explore
-Plug 'preservim/nerdtree'
-nmap <space>e :NERDTreeToggle<CR>
-
 " theme
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
