@@ -5,6 +5,7 @@ local keys = {
   { "<Space>fh", "<CMD>Telescope help_tags<CR>", desc = "Help" },
   { "<Space>fc", "<CMD>Telescope commands<CR>", desc = "Commands" },
   { "<Space>fq", "<CMD>Telescope quickfix<CR>", desc = "Quickfix" },
+  { "<Space>fm", "<CMD>Telescope marks<CR>", desc = "Marks" },
   { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
   { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
   { "<Space>lo", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
@@ -50,6 +51,7 @@ local opts = {
     lsp_references = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
     diagnostics = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
     quickfix = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
+    marks = { preview = true, layout_config = { width = 0.9, height = 0.9 } },
     buffers = {
       mappings = {
         n = {

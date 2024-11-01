@@ -22,5 +22,9 @@ return {
   end,
   dependencies = {
     "lewis6991/gitsigns.nvim",
+    {
+      "chentoast/marks.nvim",
+      opts = {},
+    },
   },
 }
