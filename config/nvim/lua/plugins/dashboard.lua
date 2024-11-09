@@ -47,16 +47,20 @@ local opts = {
       {
         desc = "File Browser",
         desc_hl = "String",
-        action = function()
-          require("oil").open_float()
-        end,
+        action = "NvimTreeToggle",
         key = "e",
       },
       {
-        desc = "Find Workspaces",
+        desc = "Workspaces",
         desc_hl = "SpecialComment",
         action = "Telescope workspaces",
         key = "w",
+      },
+      {
+        desc = "Sessions",
+        desc_hl = "Identifier",
+        action = "SessionSelect",
+        key = "s",
       },
       {
         desc = "Configuration",

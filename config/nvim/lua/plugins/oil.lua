@@ -30,7 +30,7 @@ return {
   cmd = "Oil",
   keys = {
     {
-      "<Space>e",
+      "<Space>o",
       function()
         local oil = require "oil"
         local opts = get_options()
