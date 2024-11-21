@@ -7,7 +7,7 @@ local opts = {
     json = { "jq" },
     lua = { "stylua" },
     markdown = { "mdformat" },
-    python = { "isort", "black", stop_after_first = true },
+    python = { "ruff_format", "isort", "black", stop_after_first = true },
     rust = { "rustfmt", lsp_format = "fallback" },
     typescript = { "biome" },
     yaml = { "yamlfmt" },

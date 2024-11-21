@@ -43,7 +43,7 @@ return {
         oil.setup(opts)
         oil.open_float()
       end,
-      desc = "Files",
+      desc = "Oil",
     },
   },
   opts = function()

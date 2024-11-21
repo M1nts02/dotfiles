@@ -5,6 +5,9 @@
 -- vim.g.start_only = true
 -- vim.g.transparent = true
 
+-- "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot"
+vim.g.ai_provider = "claude"
+
 -- neovide
 -- if vim.g.neovide then
 --   vim.o.guifont = "RecMonoCasual Nerd Font:h13"

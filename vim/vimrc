@@ -132,6 +132,7 @@ nmap gY "+Y
 nmap gp "+p
 nmap gP "+P
 nmap <Space>q :q<CR>
+nmap <Space>e :Ex<CR>
 nmap <Leader>1 :tabnext 1<CR>
 nmap <Leader>2 :tabnext 2<CR>
 nmap <Leader>3 :tabnext 3<CR>
