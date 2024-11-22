@@ -93,7 +93,6 @@ function M.config()
       { name = "buffer" },
       { name = "nvim_lsp_signature_help" },
       { name = "fittencode", group_index = 1 },
-      { name = "calc" },
     },
   }
 end

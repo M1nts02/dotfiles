@@ -6,7 +6,7 @@ return {
   enable = executable "yazi",
   keys = {
     {
-      "<Space>y",
+      "<Space>e",
       function()
         require("tfm").open()
       end,

@@ -33,7 +33,6 @@ options.command_palette_font_size = 15.0
 options.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 options.font = wezterm.font_with_fallback {
   { family = "RecMonoSmCasual Nerd Font Mono" },
-  { family = "SF Pro" },
 }
 
 -- Tab bar

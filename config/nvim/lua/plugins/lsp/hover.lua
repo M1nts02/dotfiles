@@ -9,13 +9,6 @@ M.keys = {
     desc = "Hover",
   },
   {
-    "<Space>k",
-    function()
-      require("hover").hover()
-    end,
-    desc = "Hover",
-  },
-  {
     "gk",
     function()
       require("hover").hover_select()

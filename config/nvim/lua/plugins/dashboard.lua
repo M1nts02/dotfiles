@@ -42,12 +42,6 @@ local opts = {
         key = "m",
       },
       {
-        desc = "File Browser",
-        desc_hl = "String",
-        action = "NvimTreeToggle",
-        key = "e",
-      },
-      {
         desc = "Workspaces",
         desc_hl = "SpecialComment",
         action = "Telescope workspaces",

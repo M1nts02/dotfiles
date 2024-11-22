@@ -13,7 +13,7 @@ local keys = {
   { "go", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
   { "gh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
-  { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
+  { "g/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
 }
 
 local opts = {

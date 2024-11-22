@@ -8,7 +8,6 @@ return {
       "hrsh7th/cmp-nvim-lsp", -- Support LSP
       "hrsh7th/cmp-buffer", -- Buffer
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      "hrsh7th/cmp-calc", -- math calculation
       { -- FittenCode
         "luozhiya/fittencode.nvim",
         cmd = "Fitten",
@@ -24,7 +23,6 @@ return {
         config = require("plugins.cmp.lazydev").config,
         dependencies = {
           { "Bilal2453/luvit-meta", lazy = true }, -- libuv
-          { "justinsgithub/wezterm-types", lazy = true }, -- wezterm
           { "LelouchHe/xmake-luals-addon", lazy = true }, -- xmake
         },
       },
