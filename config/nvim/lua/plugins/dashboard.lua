@@ -43,7 +43,7 @@ local opts = {
       },
       {
         desc = "Workspaces",
-        desc_hl = "SpecialComment",
+        desc_hl = "String",
         action = "Telescope workspaces",
         key = "w",
       },

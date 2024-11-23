@@ -9,6 +9,7 @@ local helper = [[
  [1]: ABC        [2]: Rime     [3]: Switcher
  [f]: Finder     [h]: Trash    [d]: DarkMode
  [⏎]: Play       [']: Next     [;]: Previous
+ [Space]: LaunchPad
                                              ]]
 
 add("Main Menu", {
@@ -70,6 +71,12 @@ add("Main Menu", {
     singleKey("m", "MissionControl"),
     function()
       hs.spaces.openMissionControl()
+    end,
+  },
+  {
+    singleKey("space", "LaunchPad"),
+    function()
+      hs.spaces.toggleLaunchPad()
     end,
   },
 
