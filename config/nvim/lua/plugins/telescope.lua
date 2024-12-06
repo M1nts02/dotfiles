@@ -10,6 +10,7 @@ local keys = {
   { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
   { "<Space>lo", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "<Space>b", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
+  { "<Space>c", "<CMD>Telescope cmdline<CR>", desc = "Cmdline" },
   { "go", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
   { "gh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
@@ -70,5 +71,11 @@ return {
   opts = opts,
   dependencies = {
     "nvim-lua/plenary.nvim",
+    {
+      "jonarrien/telescope-cmdline.nvim",
+      config = function()
+        require("telescope").load_extension "cmdline"
+      end,
+    },
   },
 }
