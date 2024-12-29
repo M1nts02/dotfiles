@@ -1,0 +1,19 @@
+theme = light:catppuccin-latte,dark:catppuccin-mocha
+
+auto-update = off
+quick-terminal-position = center
+quit-after-last-window-closed = true
+macos-option-as-alt = true
+window-save-state = always
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+
+window-inherit-font-size = false
+font-family = RecMonoSmCasual Nerd Font Mono
+font-size = 14
+
+window-padding-balance = true
+
+keybind = cmd+b>r=reload_config
