@@ -25,6 +25,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
+      "saghen/blink.cmp",
     },
   },
 }

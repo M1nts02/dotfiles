@@ -27,6 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
+-- M.capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 M.capabilities.textDocument.completion.completionItem = {
   documentationFormat = { "markdown", "plaintext" },

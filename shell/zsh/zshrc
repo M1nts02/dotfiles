@@ -41,11 +41,21 @@ alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
 alias pip=/opt/homebrew/bin/pip3
 alias vi=/opt/homebrew/bin/nvim
-alias godot=/Applications/Godot.app/Contents/MacOS/Godot
+alias vim=/opt/homebrew/bin/nvim
+
+godot=/Applications/Godot.app/Contents/MacOS/Godot
+godot_mono=/Applications/Godot_mono.app/Contents/MacOS/Godot
+if test -e $godot; then
+  alias godot=$godot
+elif test -e $godot_mono; then
+  alias godot=$godot_mono
+fi
+
 alias ls="eza --icons -F"
 alias ll="eza -l --color=auto"
 alias tree="eza --tree"
 alias cd="z"
+alias sed=gsed
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
