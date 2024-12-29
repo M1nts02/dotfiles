@@ -20,6 +20,7 @@ add("Window", {
     singleKey("k", "Up"),
     function()
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.4925 }
+      -- hs.eventtap.keyStroke({ "control", "fn" }, "f")
     end,
     { keep = true },
   },

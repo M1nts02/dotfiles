@@ -29,17 +29,19 @@ syntect_theme = "~/.config/bat/themes/Catppuccin-latte.tmTheme"
 # : }}}
 
 
-# : Status {{{
+[mode]
+normal_main = { fg = "#eff1f5", bg = "#1e66f5", bold = true }
+select_main = { fg = "#eff1f5", bg = "#40a02b", bold = true }
+unset_main  = { fg = "#eff1f5", bg = "#dd7878", bold = true }
+
+normal_alt = { fg = "#1e66f5" ,bg = "#bcc0cc", bold = true }
+select_alt = { fg = "#40a02b" ,bg = "#bcc0cc", bold = true }
+unset_alt  = { fg = "#dd7878" ,bg = "#bcc0cc", bold = true }
 
 [status]
 separator_open  = ""
 separator_close = ""
 separator_style = { fg = "#bcc0cc", bg = "#bcc0cc" }
-
-# Mode
-mode_normal = { fg = "#eff1f5", bg = "#1e66f5", bold = true }
-mode_select = { fg = "#eff1f5", bg = "#40a02b", bold = true }
-mode_unset  = { fg = "#eff1f5", bg = "#dd7878", bold = true }
 
 # Progress
 progress_label  = { fg = "#ffffff", bold = true }
