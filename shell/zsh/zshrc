@@ -41,7 +41,6 @@ alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
 alias pip=/opt/homebrew/bin/pip3
 alias vi=/opt/homebrew/bin/nvim
-alias vim=/opt/homebrew/bin/nvim
 
 godot=/Applications/Godot.app/Contents/MacOS/Godot
 godot_mono=/Applications/Godot_mono.app/Contents/MacOS/Godot

@@ -1,3 +1,6 @@
+local cache = require "modules.cache"
+local get_status = cache.get_status
+
 local function get_cmp_status()
   if vim.g.cmp_disable == false and vim.b.cmp_disable == false then
     return true
@@ -8,9 +11,9 @@ end
 
 return {
   "saghen/blink.cmp",
-  enabled = false,
   version = "*",
   event = { "InsertEnter", "CmdLineEnter" },
+  keys = { "/", "?", ":" },
   config = function()
     local cmp = require "blink-cmp"
     local luasnip = require "luasnip"
@@ -34,10 +37,10 @@ return {
         ["<Up>"] = { "select_prev", "fallback" },
         ["<C-u>"] = { "show_documentation", "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
+        ["<Esc>"] = { "hide", "fallback" },
         cmdline = {
           ["<CR>"] = { "fallback" },
           ["<C-y>"] = { "select_and_accept" },
-          ["<Esc>"] = { "hide", "fallback" },
           ["<C-c>"] = { "hide", "fallback" },
           ["<Tab>"] = { "select_next", "show", "fallback" },
           ["<S-Tab>"] = { "select_prev", "show", "fallback" },
@@ -65,7 +68,18 @@ return {
       },
       sources = {
         default = { "lsp", "path", "buffer", "luasnip", "lazydev", "fittencode" },
-        cmdline = {},
+        min_keyword_length = 3,
+        cmdline = function()
+          local type = vim.fn.getcmdtype()
+          if type == "/" or type == "?" then
+            return { "buffer" }
+          elseif type == ":" then
+            return { "cmdline", "path" }
+          elseif type == "@" then
+            return { "path", "buffer" }
+          end
+          return {}
+        end,
         providers = {
           lazydev = {
             name = "LazyDev",
@@ -92,7 +106,7 @@ return {
           direction_priority = { "s", "n" },
           auto_show = true,
           draw = {
-            align_to_component = "label",
+            align_to = "label",
             padding = 1,
             gap = 1,
             columns = {
@@ -146,7 +160,13 @@ return {
         },
         ghost_text = { enabled = false },
       },
-      signature = { enabled = true },
+      signature = {
+        enabled = true,
+        window = {
+          border = "rounded",
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
+        },
+      },
     }
   end,
   dependencies = {
@@ -217,7 +237,14 @@ return {
     { -- FittenCode
       "luozhiya/fittencode.nvim",
       cmd = "Fitten",
-      config = require("plugins.cmp.fittencode").config,
+      config = function()
+        require("fittencode").setup { completion_mode = "source" }
+        if get_status().g.fittencode then
+          vim.cmd "Fitten enable_completions"
+        else
+          vim.cmd "Fitten disable_completions"
+        end
+      end,
     },
     {
       "saghen/blink.compat",

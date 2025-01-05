@@ -22,15 +22,4 @@ return {
       highlight = { enable = false, additional_vim_regex_highlighting = false },
     }
   end,
-  dependencies = {
-    {
-      "folke/twilight.nvim",
-      cmd = {
-        "Twilight",
-        "TwilightEnable",
-        "TwilightDisable",
-      },
-      opts = {},
-    },
-  },
 }

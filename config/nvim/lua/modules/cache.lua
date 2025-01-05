@@ -13,14 +13,7 @@ local cache = {
     disable_autoformat = false,
     fittencode = false,
   },
-  o = {
-    laststatus = 3,
-  },
   opt = {
-    number = true,
-    relativenumber = true,
-    cursorline = false,
-    cursorcolumn = false,
     wrap = true,
   },
 }

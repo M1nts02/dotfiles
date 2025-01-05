@@ -12,7 +12,6 @@ local lsp_servers = {
   ["clangd"] = "",
   ["cmake"] = "cmake-language-server",
   ["csharp_ls"] = "csharp-ls",
-  ["gdscript"] = "",
   ["gopls"] = "",
   ["jedi_language_server"] = "jedi-language-server",
   ["jdtls"] = "",

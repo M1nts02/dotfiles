@@ -57,12 +57,3 @@ require("lazy").setup({
     backdrop = 100,
   },
 })
-
--- Highlights
-vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
-  callback = function()
-    local highlight = require "modules.highlight"
-    local palette = highlight.get_palette()
-    highlight.set_groups(palette)
-  end,
-})
