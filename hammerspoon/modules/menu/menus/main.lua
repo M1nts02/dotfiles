@@ -7,10 +7,9 @@ local helper = [[
 
  [s]: Screenshot [o]: Setting  [m]: Mission
  [1]: ABC        [2]: Rime     [3]: Switcher
- [f]: Finder     [h]: Trash    [d]: DarkMode
+ [f]: Finder     [h]: Trash    [Space]: LaunchPad
  [⏎]: Play       [']: Next     [;]: Previous
- [Space]: LaunchPad
-                                             ]]
+                                                   ]]
 
 add("Main Menu", {
   { -- ABC
@@ -50,13 +49,6 @@ add("Main Menu", {
     singleKey("h", "Trash"),
     function()
       hs.execute "open -a finder ~/.Trash"
-    end,
-  },
-  -- Tools
-  {
-    singleKey("d", "DarkMode"),
-    function()
-      hs.shortcuts.run "暗色模式"
     end,
   },
   -- System Setting

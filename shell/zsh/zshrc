@@ -32,6 +32,10 @@ noproxy () {
   echo "HTTP Proxy off"
 }
 
+mpv_back () {
+  nohup mpv ${1} >> ~/.cache/log/log.log &
+}
+
 icloud () {
   cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs
 }
