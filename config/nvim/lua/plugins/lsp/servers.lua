@@ -39,25 +39,29 @@ for lsp, cmd in pairs(lsp_servers) do
   end
 end
 
-lspconfig.lua_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      completion = {
-        callSnippet = "Replace",
+if executable "lua-language-server" then
+  lspconfig.lua_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace",
+        },
       },
     },
-  },
-}
+  }
+end
 
-lspconfig.jsonls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    json = {
-      schemas = require("schemastore").json.schemas(),
-      validate = { enable = true },
+if executable "vscode-json-language-server" then
+  lspconfig.jsonls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas(),
+        validate = { enable = true },
+      },
     },
-  },
-}
+  }
+end

@@ -34,18 +34,13 @@ local rg = {
   -- LSP
   { "<Space>l", group = "LSP+" },
   { "<Space>lr", vim.lsp.buf.rename, desc = "Rename" },
-  { "gr", vim.lsp.buf.rename, desc = "Rename" },
   { "<Space>la", vim.lsp.buf.code_action, desc = "Code Action" },
-  { "ga", vim.lsp.buf.code_action, desc = "Code Action" },
 
   -- Search
   { "<Space>f", group = "Find+" },
 
   -- Preview
   { "<Space>p", group = "Preview+" },
-
-  -- Toggle
-  { "<Space>t", group = "Toggle+" },
 }
 
 return {

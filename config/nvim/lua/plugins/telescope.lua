@@ -1,20 +1,21 @@
 local keys = {
   { "<Space>f<CR>", "<CMD>Telescope builtin<CR>", desc = "Builtin" },
+  { "<Space>ff", "<CMD>Telescope fd<CR>", desc = "Fd" },
   { "<Space>fo", "<CMD>Telescope oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
   { "<Space>fh", "<CMD>Telescope help_tags<CR>", desc = "Help" },
-  { "<Space>fc", "<CMD>Telescope commands<CR>", desc = "Commands" },
   { "<Space>fq", "<CMD>Telescope quickfix<CR>", desc = "Quickfix" },
   { "<Space>fm", "<CMD>Telescope marks<CR>", desc = "Marks" },
   { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
+  { "<Space>fw", "<CMD>Telescope workspaces<CR>", desc = "Workspace" },
   { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
   { "<Space>lo", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+  { "<Space>ls", "<CMD>Telescope lsp_document_symbols<CR>", desc = "Symbols" },
+  { "<Space>lS", "<CMD>Telescope lsp_workspace_symbols<CR>", desc = "Symbols(Workspace)" },
   { "<Space>gs", "<CMD>Telescope git_status<CR>", desc = "Git status" },
   { "<Space>b", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
-  { "go", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+  { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
   { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
-  { "gh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
-  { "g/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
 }
 
 local opts = {
@@ -71,5 +72,39 @@ return {
   opts = opts,
   dependencies = {
     "nvim-lua/plenary.nvim",
+    { -- Workspace
+      "natecraddock/workspaces.nvim",
+      cmd = {
+        "WorkspacesAdd",
+        "WorkspacesAddDir",
+        "WorkspacesList",
+        "WorkspacesListDirs",
+        "WorkspacesOpen",
+        "WorkspacesRemove",
+        "WorkspacesRemoveDir",
+        "WorkspacesRename",
+        "WorkspacesSyncDirs",
+      },
+      config = function()
+        require("telescope").load_extension "workspaces"
+      end,
+    },
+    { -- Session
+      "olimorris/persisted.nvim",
+      cmd = {
+        "SessionToggle",
+        "SessionStart",
+        "SessionStop",
+        "SessionSave",
+        "SessionSelect",
+        "SessionLoad",
+        "SessionLoadLast",
+        "SessionLoadFromFile",
+        "SessionDelete",
+      },
+      config = function()
+        require("telescope").load_extension "persisted"
+      end,
+    },
   },
 }

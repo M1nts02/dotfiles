@@ -48,7 +48,6 @@ require("lazy").setup({
       pcall(vim.cmd.rshada, { bang = true })
       -- Load mapping
       require "modules.mapping"
-      require "modules.commands"
     end,
   },
 }, { -- Lazy.nvim config

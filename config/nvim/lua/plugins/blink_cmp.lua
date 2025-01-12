@@ -49,6 +49,7 @@ return {
         },
       },
       snippets = {
+        preset = "luasnip",
         expand = function(snippet)
           luasnip.lsp_expand(snippet)
         end,
@@ -67,7 +68,7 @@ return {
         nerd_font_variant = "normal",
       },
       sources = {
-        default = { "lsp", "path", "buffer", "luasnip", "lazydev", "fittencode" },
+        default = { "lsp", "path", "buffer", "snippets", "lazydev", "fittencode" },
         min_keyword_length = 3,
         cmdline = function()
           local type = vim.fn.getcmdtype()
@@ -94,7 +95,7 @@ return {
       },
       completion = {
         accept = { auto_brackets = { enabled = true } },
-        list = { selection = "auto_insert" },
+        list = { selection = { preselect = true, auto_insert = true } },
         menu = {
           enabled = true,
           min_width = 15,
@@ -200,13 +201,11 @@ return {
       config = function()
         require("lazydev").setup {
           library = {
-            { path = "luvit-meta/library", words = { "vim%.uv" } },
             { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
           },
         }
       end,
       dependencies = {
-        { "Bilal2453/luvit-meta", lazy = true }, -- libuv
         { "LelouchHe/xmake-luals-addon", lazy = true }, -- xmake
       },
     },
