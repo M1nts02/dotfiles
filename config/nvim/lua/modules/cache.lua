@@ -16,6 +16,8 @@ local cache = {
   },
   opt = {
     wrap = true,
+    number = true,
+    relativenumber = true,
   },
 }
 

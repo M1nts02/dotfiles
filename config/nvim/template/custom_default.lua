@@ -6,8 +6,6 @@
 -- vim.g.transparent = true
 vim.opt.cursorline = false
 vim.opt.cursorcolumn = false
-vim.opt.number = true
-vim.opt.relativenumber = true
 
 -- neovim-qt
 -- if vim.fn.has "gui_running" then

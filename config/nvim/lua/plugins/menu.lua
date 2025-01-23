@@ -193,6 +193,46 @@ local config = function()
           end,
         },
       },
+      {
+        "n",
+        function()
+          local s = not get_status().opt.number
+          local i = s == true and "true" or "false"
+          vim.cmd("tabdo windo lua vim.opt.number = " .. i)
+          update { opt = { number = s } }
+        end,
+        {
+          desc = "Number",
+          flag = function()
+            local s = get_status().opt.number
+            if s then
+              return true
+            else
+              return false
+            end
+          end,
+        },
+      },
+      {
+        "N",
+        function()
+          local s = not get_status().opt.relativenumber
+          local i = s == true and "true" or "false"
+          vim.cmd("tabdo windo lua vim.opt.relativenumber = " .. i)
+          update { opt = { relativenumber = s } }
+        end,
+        {
+          desc = "Relativenumber",
+          flag = function()
+            local s = get_status().opt.relativenumber
+            if s then
+              return true
+            else
+              return false
+            end
+          end,
+        },
+      },
     },
   })
 end
