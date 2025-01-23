@@ -38,9 +38,6 @@ local rg = {
 
   -- Search
   { "<Space>f", group = "Find+" },
-
-  -- Preview
-  { "<Space>p", group = "Preview+" },
 }
 
 return {
