@@ -51,13 +51,19 @@ local config = function()
       {
         "t",
         function()
-          vim.cmd "ToggleTheme"
+          local s = not get_status().g.dark
+          update { g = { dark = s } }
+          if s == true then
+            vim.cmd "colorscheme akane-dark"
+          else
+            vim.cmd "colorscheme akane-light"
+          end
         end,
         {
           desc = "Dark mode",
           flag = function()
-            local dark_mode = require("toggle-theme").get_dark_mode()
-            if dark_mode then
+            local s = get_status().g.dark
+            if s then
               return true
             else
               return false

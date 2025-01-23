@@ -39,7 +39,6 @@ return {
         ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
         cmdline = {
-          ["<CR>"] = { "fallback" },
           ["<C-y>"] = { "select_and_accept" },
           ["<C-c>"] = { "hide", "fallback" },
           ["<Tab>"] = { "select_next", "show", "fallback" },
@@ -95,7 +94,13 @@ return {
       },
       completion = {
         accept = { auto_brackets = { enabled = true } },
-        list = { selection = { preselect = true, auto_insert = true } },
+        trigger = {
+          show_on_keyword = true,
+          show_on_trigger_character = true,
+          show_on_insert_on_trigger_character = false,
+          show_on_accept_on_trigger_character = true,
+        },
+        list = { selection = { preselect = false, auto_insert = true } },
         menu = {
           enabled = true,
           min_width = 15,

@@ -12,6 +12,7 @@ local cache = {
     inlay_hints = true,
     disable_autoformat = false,
     fittencode = false,
+    dark = true,
   },
   opt = {
     wrap = true,
