@@ -3,9 +3,9 @@
 dark_mode=$(osascript -e 'tell app "System Events" to tell appearance preferences to get dark mode')
 
 if [ $dark_mode = "true" ]; then
-  dir=~/Pictures/壁纸/Light
+  dir=~/Pictures/Light
 else
-  dir=~/Pictures/壁纸/Dark
+  dir=~/Pictures/Dark
 fi
 
 path=$(ls $dir | /opt/homebrew/bin/gshuf -n 1)

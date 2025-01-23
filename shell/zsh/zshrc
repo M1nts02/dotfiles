@@ -1,7 +1,4 @@
 export HOMEBREW_FORCE_BREWED_GIT=1
-#export HOMEBREW_PIP_INDEX_URL=https://pypi.mirrors.ustc.edu.cn/simple
-#export HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api
-#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/simple"
 export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
@@ -33,7 +30,7 @@ noproxy () {
 }
 
 mpv_back () {
-  nohup mpv ${1} >> ~/.cache/log/log.log &
+  nohup mpv ${*} >> ~/.cache/log/log.log &
 }
 
 icloud () {
@@ -45,14 +42,6 @@ alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
 alias pip=/opt/homebrew/bin/pip3
 alias vi=/opt/homebrew/bin/nvim
-
-godot=/Applications/Godot.app/Contents/MacOS/Godot
-godot_mono=/Applications/Godot_mono.app/Contents/MacOS/Godot
-if test -e $godot; then
-  alias godot=$godot
-elif test -e $godot_mono; then
-  alias godot=$godot_mono
-fi
 
 alias ls="eza --icons -F"
 alias ll="eza -l --color=auto"
