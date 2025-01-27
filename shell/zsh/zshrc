@@ -42,6 +42,7 @@ alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
 alias pip=/opt/homebrew/bin/pip3
 alias vi=/opt/homebrew/bin/nvim
+alias vimdiff="/opt/homebrew/bin/nvim -d"
 
 alias ls="eza --icons -F"
 alias ll="eza -l --color=auto"

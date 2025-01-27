@@ -203,13 +203,11 @@ return {
     { -- Lua api for lsp
       "folke/lazydev.nvim",
       ft = "lua",
-      config = function()
-        require("lazydev").setup {
-          library = {
-            { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
-          },
-        }
-      end,
+      opts = {
+        library = {
+          { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
+        },
+      },
       dependencies = {
         { "LelouchHe/xmake-luals-addon", lazy = true }, -- xmake
       },
