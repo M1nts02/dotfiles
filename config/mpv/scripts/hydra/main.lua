@@ -11,7 +11,6 @@ mp.register_script_message("hydra-leader", function()
       },
     },
 
-    ["e"] = { "Playlist", "script-message playlist-view-toggle" },
     ["l"] = { "ab-loop", "ab-loop" },
     ["o"] = { "Progress", "script-message cycle-visibility" },
 
