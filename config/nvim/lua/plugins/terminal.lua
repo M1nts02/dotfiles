@@ -18,11 +18,18 @@ local keys = {
     "<Space>gl",
     function()
       if executable "lazygit" then
+        local h = math.floor(vim.opt.lines:get() * 1)
+        local w = math.floor(vim.opt.columns:get() * 1)
+
         local Terminal = require("toggleterm.terminal").Terminal
         local lazygit = Terminal:new {
           cmd = "lazygit",
           hidden = true,
-          direction = "tab",
+          direction = "float",
+          float_opts = {
+            width = w < 40 and 40 or w,
+            height = h < 15 and 15 or h,
+          },
         }
         lazygit:toggle()
       else

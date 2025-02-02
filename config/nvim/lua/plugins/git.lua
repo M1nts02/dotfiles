@@ -17,6 +17,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
+      "nvim-lualine/lualine.nvim",
     },
   },
   {
