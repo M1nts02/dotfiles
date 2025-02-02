@@ -7,12 +7,15 @@ eval $(/opt/homebrew/bin/brew shellenv)
 export PATH=$(brew --prefix)/include:$PATH
 export LIBRARY_PATH=$(brew --prefix)/lib
 
+autoload -U compinit; compinit
+source $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
+
 source $(brew --prefix)/opt/fzf/shell/completion.zsh
 source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-autoload -Uz compinit && compinit
+#autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' fzf-search-display true
@@ -45,7 +48,8 @@ alias vi=/opt/homebrew/bin/nvim
 alias vimdiff="/opt/homebrew/bin/nvim -d"
 
 alias ls="eza --icons -F"
-alias ll="eza -l --color=auto"
+alias l="eza -l --color=auto"
+alias ll="eza -l --color=auto --total-size"
 alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed
