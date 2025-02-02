@@ -2,7 +2,7 @@ local cache = require "modules.cache"
 local get_status = cache.get_status
 
 local function get_cmp_status()
-  if vim.g.cmp_disable == false and vim.b.cmp_disable == false then
+  if vim.g.cmp_disable == false and vim.b.cmp_disable ~= true then
     return true
   else
     return false
@@ -39,7 +39,7 @@ return {
         ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
         cmdline = {
-          ["<C-y>"] = { "select_and_accept" },
+          ["<C-y>"] = { "select_and_accept", "fallback" },
           ["<C-c>"] = { "hide", "fallback" },
           ["<Tab>"] = { "select_next", "show", "fallback" },
           ["<S-Tab>"] = { "select_prev", "show", "fallback" },
@@ -67,7 +67,7 @@ return {
         nerd_font_variant = "normal",
       },
       sources = {
-        default = { "lsp", "path", "buffer", "snippets", "lazydev", "fittencode" },
+        default = { "lsp", "path", "buffer", "snippets", "fittencode" },
         min_keyword_length = 3,
         cmdline = function()
           local type = vim.fn.getcmdtype()
@@ -81,11 +81,6 @@ return {
           return {}
         end,
         providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            score_offset = 100,
-          },
           fittencode = {
             name = "fittencode",
             module = "blink.compat.source",
@@ -199,18 +194,6 @@ return {
           require("nvim-autopairs").disable()
         end
       end,
-    },
-    { -- Lua api for lsp
-      "folke/lazydev.nvim",
-      ft = "lua",
-      opts = {
-        library = {
-          { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
-        },
-      },
-      dependencies = {
-        { "LelouchHe/xmake-luals-addon", lazy = true }, -- xmake
-      },
     },
     { -- Icons
       "onsails/lspkind.nvim",

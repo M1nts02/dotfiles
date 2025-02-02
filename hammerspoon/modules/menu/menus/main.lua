@@ -7,8 +7,9 @@ local helper = [[
 
  [s]: Screenshot [o]: Setting  [m]: Mission
  [1]: ABC        [2]: Rime     [3]: Switcher
- [f]: Finder     [h]: Trash    [Space]: LaunchPad
+ [f]: Finder     [h]: Trash    [d]: Dark
  [⏎]: Play       [']: Next     [;]: Previous
+ [Space]: LaunchPad
                                                    ]]
 
 add("Main Menu", {
@@ -49,6 +50,21 @@ add("Main Menu", {
     singleKey("h", "Trash"),
     function()
       hs.execute "open -a finder ~/.Trash"
+    end,
+  },
+  -- Dark Mode
+  {
+    singleKey("d", "Dark"),
+    function()
+      local output =
+        hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
+      print(output)
+      if output == "true\n" then
+        hs.execute "cp -f ~/dotfiles/config/alacritty/alacritty_light.toml ~/.config/alacritty/alacritty.toml"
+      else
+        hs.execute "cp -f ~/dotfiles/config/alacritty/alacritty_dark.toml ~/.config/alacritty/alacritty.toml"
+      end
+      hs.shortcuts.run "暗色模式"
     end,
   },
   -- System Setting

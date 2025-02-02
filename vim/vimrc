@@ -19,6 +19,7 @@ endif
 
 
 " syntax enable
+syntax on
 set number relativenumber
 set whichwrap+=<,>,h,l
 set ignorecase
