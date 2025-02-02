@@ -15,28 +15,21 @@ local opts = {
 local keys = {
   [[<C-\>]],
   {
-    "<Space>gg",
+    "<Space>gl",
     function()
-      if executable "gitui" then
-        local h = math.floor(vim.opt.lines:get() * 0.9)
-        local w = math.floor(vim.opt.columns:get() * 0.9)
-
+      if executable "lazygit" then
         local Terminal = require("toggleterm.terminal").Terminal
-        local gitui = Terminal:new {
-          cmd = "gitui",
+        local lazygit = Terminal:new {
+          cmd = "lazygit",
           hidden = true,
-          direction = "float",
-          float_opts = {
-            width = w < 40 and 40 or w,
-            height = h < 15 and 15 or h,
-          },
+          direction = "tab",
         }
-        gitui:toggle()
+        lazygit:toggle()
       else
-        vim.notify "Gitui is not installed"
+        vim.notify "lazygit is not installed"
       end
     end,
-    desc = "Gitui",
+    desc = "lazygit",
   },
 }
 
