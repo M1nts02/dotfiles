@@ -5,7 +5,7 @@ local function config()
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
-        statusline = { "dashboard", "NeogitStatus" },
+        statusline = { "dashboard", "NeogitStatus", "qf" },
       },
       ignore_focus = {},
       always_divide_middle = true,

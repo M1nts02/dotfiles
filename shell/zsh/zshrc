@@ -7,6 +7,10 @@ eval $(/opt/homebrew/bin/brew shellenv)
 export PATH=$(brew --prefix)/include:$PATH
 export LIBRARY_PATH=$(brew --prefix)/lib
 
+export VISUAL="nvim"
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
+
 autoload -U compinit; compinit
 source $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
 
