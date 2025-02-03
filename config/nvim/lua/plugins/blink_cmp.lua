@@ -17,7 +17,7 @@ return {
   config = function()
     local cmp = require "blink-cmp"
     local luasnip = require "luasnip"
-    local lspkind = require "lspkind"
+    local icons = require "modules.icons"
     cmp.setup {
       enabled = function()
         local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
@@ -119,7 +119,7 @@ return {
               kind_icon = {
                 ellipsis = false,
                 text = function(ctx)
-                  local icon = lspkind.symbol_map[ctx.kind] or " "
+                  local icon = icons.symbol_map[ctx.kind] or " "
                   return ctx.icon_gap .. icon .. ctx.icon_gap
                 end,
               },
@@ -194,30 +194,6 @@ return {
           require("nvim-autopairs").disable()
         end
       end,
-    },
-    { -- Icons
-      "onsails/lspkind.nvim",
-      opts = {
-        symbol_map = {
-          Array = "[]",
-          Boolean = "",
-          Calendar = "",
-          Codeium = "",
-          Copilot = "",
-          EnumMember = "",
-          FittenCode = "",
-          Namespace = "󰌗",
-          Null = "󰟢",
-          Number = "",
-          Object = "󰅩",
-          Package = "",
-          String = "󰉿",
-          Table = "",
-          TabNine = "",
-          Tag = "",
-          Watch = "󰥔",
-        },
-      },
     },
     { -- FittenCode
       "luozhiya/fittencode.nvim",
