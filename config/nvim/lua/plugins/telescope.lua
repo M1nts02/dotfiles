@@ -4,15 +4,10 @@ local keys = {
   { "<Space>fo", "<CMD>Telescope oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
   { "<Space>fh", "<CMD>Telescope help_tags<CR>", desc = "Help" },
-  { "<Space>fq", "<CMD>Telescope quickfix<CR>", desc = "Quickfix" },
   { "<Space>fm", "<CMD>Telescope marks<CR>", desc = "Marks" },
-  { "<Space>fg", "<CMD>Telescope live_grep<CR>", desc = "Grep" },
   { "<Space>fw", "<CMD>Telescope workspaces<CR>", desc = "Workspace" },
-  { "<Space>lh", "<CMD>Telescope lsp_references<CR>", desc = "References" },
-  { "<Space>lo", "<CMD>Telescope lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
   { "<Space>b", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
   { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
-  { "gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Definition" },
 }
 
 local opts = {
@@ -55,6 +50,9 @@ local opts = {
       mappings = {
         n = {
           ["d"] = "delete_buffer",
+        },
+        i = {
+          ["<C-x>"] = "delete_buffer",
         },
       },
     },
