@@ -1,3 +1,3 @@
 # Hammerspoon
 
-Move `hammerspoon` into `~/.hammerspoon`
+link `hammerspoon` into `~/.hammerspoon`
