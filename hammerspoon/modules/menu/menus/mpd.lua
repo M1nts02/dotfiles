@@ -9,6 +9,7 @@ add("Mpd", {
     function()
       hs.execute("mpc toggle", true)
     end,
+    { keep = true },
   },
   {
     singleKey("]", "Next"),
@@ -69,6 +70,7 @@ add("Mpd", {
     function()
       hs.execute("mpc stop", true)
     end,
+    { keep = true },
   },
   {
     singleKey("o", "Status"),
