@@ -57,7 +57,6 @@ alias ll="eza -l --color=auto --total-size"
 alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed
-alias npc="ncmpc --host=127.0.0.1"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
