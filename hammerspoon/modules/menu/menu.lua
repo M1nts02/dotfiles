@@ -3,7 +3,7 @@ M.__index = M
 
 M.helperEntryEachLine = 5
 M.helperEntryLengthInChar = 20
-M.helperFormat = { atScreenEdge = 2, strokeColor = { white = 0, alpha = 2 }, textFont = "Courier", textSize = 20 }
+M.helperFormat = { atScreenEdge = 2, textFont = "Courier", textSize = 20 }
 M.showBindHelper = true
 M.helperModifierMapping = {
   command = "⌘",
@@ -12,7 +12,13 @@ M.helperModifierMapping = {
   shift = "⇧",
 }
 
-local menus = {} -- all menus
+M.color = {
+  strokeColor = { white = 0.95, alpha = 1 },
+  fillColor = { white = 0.95, alpha = 1 },
+  textColor = { white = 0.5, alpha = 1 },
+}
+
+local menus = {} -- all menu
 local previousHelperID = nil -- used by next model to close previous helper
 
 local function killHelper()
@@ -73,7 +79,12 @@ local function showHelper(helper, helperFormat)
     end
   end
 
+  helperFormat.strokeColor = M.color.strokeColor
+  helperFormat.fillColor = M.color.fillColor
+  helperFormat.textColor = M.color.textColor
+
   previousHelperID = hs.alert.show(helper, helperFormat, true)
+  print("字体颜色" .. helperFormat.textColor.white)
 end
 
 function M.add(name, items, opts)
