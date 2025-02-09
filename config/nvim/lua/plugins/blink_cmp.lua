@@ -37,7 +37,6 @@ return {
         ["<Up>"] = { "select_prev", "fallback" },
         ["<C-u>"] = { "show_documentation", "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
-        ["<Esc>"] = { "hide", "fallback" },
         cmdline = {
           ["<C-y>"] = { "select_and_accept", "fallback" },
           ["<C-c>"] = { "hide", "fallback" },
