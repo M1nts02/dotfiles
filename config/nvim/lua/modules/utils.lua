@@ -1,12 +1,5 @@
 local M = {}
 
---- Get highlight
----@param name string The group name
----@return string[]
-function M.get_hl(name)
-  return vim.api.nvim_get_hl(0, { name = name, link = false })
-end
-
 --- A function to copy file
 ---@param oldPath string The old file path
 ---@param newPath string The new file path

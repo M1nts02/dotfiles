@@ -3,8 +3,6 @@ local config = vim.fn.stdpath "config"
 
 -- default global value
 vim.g.transparent = false
-vim.g.following_system = false
-vim.g.start_only = false
 
 -- Get path of custom file
 local custom_path = config .. "/lua/custom.lua"
