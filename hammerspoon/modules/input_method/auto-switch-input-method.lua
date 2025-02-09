@@ -1,9 +1,5 @@
 -- app to expected ime config
 local app2Ime = {
-  { "/Applications/Visual Studio Code.app", "English" },
-  { "/Applications/WezTerm.app", "English" },
-  { "/Applications/Alacritty.app", "English" },
-  { "/Applications/mpv.app", "English" },
   { "/Applications/wpsoffice.app", "Chinese" },
   { "/Applications/QQ.app", "Chinese" },
 }

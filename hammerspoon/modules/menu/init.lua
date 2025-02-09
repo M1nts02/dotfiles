@@ -9,3 +9,4 @@ menu.helperFormat = {
 require "modules.menu.menus.main"
 require "modules.menu.menus.window"
 require "modules.menu.menus.screenshot"
+require "modules.menu.menus.mpd"
