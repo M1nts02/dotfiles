@@ -51,6 +51,24 @@ add("Window", {
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.93 }
     end,
   },
+  {
+    singleKey("tab", "MissionControl"),
+    function()
+      hs.spaces.openMissionControl()
+    end,
+  },
+  {
+    singleKey("q", "Quit"),
+    function() end,
+  },
+}, {
+  helper = [[
+
+   [h]: Left   [o]: Max
+   [j]: Down   [f]: Float
+   [k]: Up     [t]: Top
+   [l]: Right
+                            ]],
 })
 
 hs.hotkey.bind({ "alt" }, "w", function()

@@ -37,4 +37,8 @@ add("Screenshot", {
       hs.task.new("/usr/sbin/screencapture", nil, { "-l" .. windowId, fileName }):start()
     end,
   },
+  {
+    singleKey("q", "Quit"),
+    function() end,
+  },
 })

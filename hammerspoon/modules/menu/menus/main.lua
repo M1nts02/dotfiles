@@ -5,32 +5,12 @@ local singleKey = menu.singleKey
 
 local helper = [[
 
- [s]: Screenshot [o]: Setting  [m]: Mission
- [1]: ABC        [2]: Rime     [3]: Switcher
- [f]: Finder     [h]: Trash    [d]: Dark
- [⏎]: Play       [']: Next     [;]: Previous
- [Space]: LaunchPad
-                                                   ]]
+   [s]: Screenshot [o]: Setting  [m]: Mission
+   [f]: Finder     [h]: Trash    [d]: Dark
+   [e]: LaunchPad
+                                                ]]
 
 add("Main Menu", {
-  { -- ABC
-    singleKey("1", "English"),
-    function()
-      hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
-    end,
-  },
-  { -- Rime
-    singleKey("2", "Rime"),
-    function()
-      hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
-    end,
-  },
-  { -- Rime Switcher
-    singleKey("3", "Rime Switcher"),
-    function()
-      hs.eventtap.keyStroke({ "control", "shift" }, "f4")
-    end,
-  },
   { -- Screenshot
     singleKey("s", "Screenshot"),
     function()
@@ -56,14 +36,6 @@ add("Main Menu", {
   {
     singleKey("d", "Dark"),
     function()
-      local output =
-        hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
-      print(output)
-      if output == "true\n" then
-        hs.execute "cp -f ~/dotfiles/config/alacritty/alacritty_light.toml ~/.config/alacritty/alacritty.toml"
-      else
-        hs.execute "cp -f ~/dotfiles/config/alacritty/alacritty_dark.toml ~/.config/alacritty/alacritty.toml"
-      end
       hs.shortcuts.run "暗色模式"
     end,
   },
@@ -82,35 +54,15 @@ add("Main Menu", {
     end,
   },
   {
-    singleKey("space", "LaunchPad"),
+    singleKey("e", "LaunchPad"),
     function()
+      hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
       hs.spaces.toggleLaunchPad()
     end,
   },
-
-  { -- Next Song
-    singleKey("'", "Next"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
-      hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
-    end,
-    { keep = true },
-  },
-  { -- Previous Song
-    singleKey(";", "Previous"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
-      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
-    end,
-    { keep = true },
-  },
-  { -- Play
-    singleKey("return", "Play"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
-      hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
-    end,
-    { keep = true },
+  {
+    singleKey("q", "Quit"),
+    function() end,
   },
 }, {
   helper = helper,
