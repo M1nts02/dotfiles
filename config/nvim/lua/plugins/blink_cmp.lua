@@ -37,14 +37,6 @@ return {
         ["<Up>"] = { "select_prev", "fallback" },
         ["<C-u>"] = { "show_documentation", "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
-        cmdline = {
-          ["<C-y>"] = { "select_and_accept", "fallback" },
-          ["<C-c>"] = { "hide", "fallback" },
-          ["<Tab>"] = { "select_next", "show", "fallback" },
-          ["<S-Tab>"] = { "select_prev", "show", "fallback" },
-          ["<Up>"] = { "fallback" },
-          ["<Down>"] = { "fallback" },
-        },
       },
       snippets = {
         preset = "luasnip",
@@ -68,17 +60,6 @@ return {
       sources = {
         default = { "lsp", "path", "buffer", "snippets", "fittencode" },
         min_keyword_length = 3,
-        cmdline = function()
-          local type = vim.fn.getcmdtype()
-          if type == "/" or type == "?" then
-            return { "buffer" }
-          elseif type == ":" then
-            return { "cmdline", "path" }
-          elseif type == "@" then
-            return { "path", "buffer" }
-          end
-          return {}
-        end,
         providers = {
           fittencode = {
             name = "fittencode",
@@ -165,6 +146,37 @@ return {
         window = {
           border = "rounded",
           winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
+        },
+      },
+      cmdline = {
+        keymap = {
+          ["<C-y>"] = { "select_and_accept", "fallback" },
+          ["<C-c>"] = { "hide", "fallback" },
+          ["<Tab>"] = { "select_next", "show", "fallback" },
+          ["<S-Tab>"] = { "select_prev", "show", "fallback" },
+          ["<Up>"] = { "fallback" },
+          ["<Down>"] = { "fallback" },
+        },
+        sources = function()
+          local type = vim.fn.getcmdtype()
+          if type == "/" or type == "?" then
+            return { "buffer" }
+          elseif type == ":" then
+            return { "cmdline", "path" }
+          elseif type == "@" then
+            return { "path", "buffer" }
+          end
+          return {}
+        end,
+        completion = {
+          menu = {
+            draw = {
+              columns = {
+                { "kind_icon" },
+                { "label", gap = 1 },
+              },
+            },
+          },
         },
       },
     }

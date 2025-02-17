@@ -14,4 +14,3 @@
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Install [bat](https://github.com/sharkdp/bat)
 - Install [yazi](https://github.com/sxyazi/yazi)
-- Install [lazygit](https://github.com/jesseduffield/lazygit)

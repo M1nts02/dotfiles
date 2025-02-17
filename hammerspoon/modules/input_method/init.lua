@@ -1,20 +1,26 @@
--- Switch input method into English
-local sourceID = "com.apple.inputmethod.SCIM.ITABC"
-hs.hotkey.bind("alt", "a", function()
-  local enid = "com.apple.keylayout.ABC"
+-- switch rime and abc
+hs.hotkey.bind("alt", "q", function()
+  local abc = "com.apple.keylayout.ABC"
+  local rime = "im.rime.inputmethod.Squirrel.Hans"
   local sid = hs.keycodes.currentSourceID()
-  if sid == enid then
-    hs.keycodes.currentSourceID(sourceID)
+  if sid == abc then
+    hs.keycodes.currentSourceID(rime)
   else
-    sourceID = sid
-    hs.keycodes.currentSourceID(enid)
+    hs.keycodes.currentSourceID(abc)
   end
 end)
 
--- Rimer Switcher
-hs.hotkey.bind({ "alt" }, "q", function()
-  hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
-  hs.eventtap.keyStroke({ "control", "shift" }, "f4")
-end)
+-- Switch input method into English
+--local sourceID = "com.apple.inputmethod.SCIM.ITABC"
+--hs.hotkey.bind("alt", "q", function()
+--  local enid = "com.apple.keylayout.ABC"
+--  local sid = hs.keycodes.currentSourceID()
+--  if sid == enid then
+--    hs.keycodes.currentSourceID(sourceID)
+--  else
+--    sourceID = sid
+--    hs.keycodes.currentSourceID(enid)
+--  end
+--end)
 
 -- require "modules.input_method.auto-switch-input-method"

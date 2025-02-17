@@ -57,7 +57,7 @@ add("Main Menu", {
     end,
   },
   {
-    singleKey("space", "LaunchPad"),
+    singleKey("l", "LaunchPad"),
     function()
       hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
       hs.spaces.toggleLaunchPad()
@@ -65,72 +65,24 @@ add("Main Menu", {
   },
   -- Finder
   {
-    singleKey("1", "Finder"),
+    singleKey("f", "Finder"),
     function()
       hs.application.launchOrFocus "Finder"
     end,
   },
-  -- Ghosty
-  {
-    singleKey("2", "Ghostty"),
-    function()
-      hs.application.launchOrFocus "Ghostty"
-    end,
-  },
-  -- Cantata
-  {
-    singleKey("3", "Cantat"),
-    function()
-      hs.application.launchOrFocus "Cantata"
-    end,
-  },
-  -- MacVim
-  {
-    singleKey("4", "MacVim"),
-    function()
-      hs.application.launchOrFocus "MacVim"
-    end,
-  },
-  -- App Store
-  {
-    singleKey("5", "App Store"),
-    function()
-      hs.application.launchOrFocus "App Store"
-    end,
-  },
-  -- Note
-  {
-    singleKey("6", "Notes"),
-    function()
-      hs.application.launchOrFocus "Notes"
-    end,
-  },
-  -- Reminders
-  {
-    singleKey("7", "Reminders"),
-    function()
-      hs.application.launchOrFocus "Reminders"
-    end,
-  },
   -- Trash
   {
-    singleKey("8", "Trash"),
+    singleKey("t", "Trash"),
     function()
       hs.execute "open -a finder ~/.Trash"
     end,
   },
-  -- Safari
+  -- Rimer Switcher
   {
-    singleKey("9", "Safari"),
+    singleKey("r", "Rime"),
     function()
-      hs.application.launchOrFocus "Safari"
-    end,
-  },
-  -- Zen Browser
-  {
-    singleKey("0", "Zen Browser"),
-    function()
-      hs.application.launchOrFocus "Zen Browser"
+      hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
+      hs.eventtap.keyStroke({ "control", "shift" }, "f4")
     end,
   },
   {
@@ -140,29 +92,23 @@ add("Main Menu", {
 }, {
   helper = [[
 
+     [l]: LaunchPad
 
-     [SPC]: LaunchPad                                              [1]: Finder
+     [d]: Dark
 
-     [d]: Dark                                                     [2]: Ghostty
+     [r]: Rime
 
-     [s]: Screenshot                                               [3]: Cantata
+     [s]: Screenshot
 
-     [m]: Mission                                                  [4]: MacVim
+     [m]: Mission
 
-     [o]: Setting                                                  [5]: App store
+     [o]: Setting
 
-                                                                   [6]: Notes
+     [f]: Finder
 
-                                                                   [7]: Reminders
+     [t]: Trash
 
-                                                                   [8]: Trash
-
-                                                                   [9]: Safari
-
-                                                                   [0]: Zen Browser
-
-
-                                                                                            ]],
+                         ]],
 
   helperFormat = {
     atScreenEdge = 0,
@@ -418,10 +364,10 @@ hs.hotkey.bind({ "alt" }, "w", function()
   run "Window"
 end)
 
-hs.hotkey.bind({ "alt" }, "d", function()
+hs.hotkey.bind({ "alt" }, "e", function()
   run "Mpd"
 end)
 
-hs.hotkey.bind({ "alt" }, "space", function()
+hs.hotkey.bind({ "alt" }, "a", function()
   run "Main Menu"
 end)
