@@ -178,7 +178,7 @@ local config = function()
         "f",
         function()
           local s = not get_status().g.disable_autoformat
-          vim.g.zig_fmt_autosave = vim.g.zig_fmt_autosave == 1 and 0 or 1
+          vim.g.zig_fmt_autosave = s == true and 0 or 1
           update { g = { disable_autoformat = s } }
         end,
         {

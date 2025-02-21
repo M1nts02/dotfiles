@@ -24,7 +24,11 @@ return {
   "stevearc/conform.nvim",
   cmd = { "AutoformatToggle" },
   event = { "BufRead", "BufNewFile" },
-  init = function() end,
+  init = function()
+    if vim.g.disable_autoformat == true then
+      vim.g.zig_fmt_autosave = 0
+    end
+  end,
   config = function()
     require("conform").setup(opts)
     -- Toggle auto format
