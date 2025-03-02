@@ -2,17 +2,6 @@ local map = {
   -- Paste
   { { "n" }, "gp", '"+p' },
   { { "n" }, "gP", '"+P' },
-  -- Move
-  { { "i", "c" }, "<M-0>", "<Home>" },
-  { { "i", "c" }, "<M-a>", "<Home>" },
-  { { "i", "c" }, "<M-4>", "<End>" },
-  { { "i", "c" }, "<M-e>", "<End>" },
-  { { "i", "c" }, "<M-u>", "<PageUp>" },
-  { { "i", "c" }, "<M-d>", "<PageDown>" },
-  { { "i", "c" }, "<M-l>", "<Right>" },
-  { { "i", "c" }, "<M-j>", "<Down>" },
-  { { "i", "c" }, "<M-h>", "<Left>" },
-  { { "i", "c" }, "<M-k>", "<Up>" },
   -- Completion
   { { "i" }, "<C-l>", "<C-x><C-f>" },
   -- Indenting

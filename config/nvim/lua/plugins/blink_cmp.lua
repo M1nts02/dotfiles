@@ -170,6 +170,7 @@ return {
         end,
         completion = {
           menu = {
+            auto_show = true,
             draw = {
               columns = {
                 { "kind_icon" },
