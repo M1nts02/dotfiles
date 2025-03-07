@@ -27,11 +27,6 @@ add("Main Menu", {
       local output =
         hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
       if output == "true\n" then
-        hs.execute "cp -f ~/dotfiles/config/alacritty/alacritty_light.toml ~/.config/alacritty/alacritty.toml"
-      else
-        hs.execute "cp -f ~/dotfiles/config/alacritty/alacritty_dark.toml ~/.config/alacritty/alacritty.toml"
-      end
-      if output == "true\n" then
         menu.color = {
           strokeColor = { white = 0.95, alpha = 1 },
           fillColor = { white = 0.95, alpha = 1 },
