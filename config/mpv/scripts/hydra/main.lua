@@ -12,7 +12,6 @@ mp.register_script_message("hydra-leader", function()
     },
 
     ["l"] = { "ab-loop", "ab-loop" },
-    ["o"] = { "Progress", "script-message cycle-visibility" },
 
     -- Window
     ["w"] = {
