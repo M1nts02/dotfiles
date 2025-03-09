@@ -12,17 +12,13 @@ export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 
 autoload -U compinit; compinit
-source $HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh
 
-source $(brew --prefix)/opt/fzf/shell/completion.zsh
-source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' fzf-search-display true
 
 proxy () {
   export http_proxy="http://127.0.0.1:7890"
@@ -54,13 +50,6 @@ function y() {
   rm -f -- "$tmp"
 }
 
-# autoload ${PWD}/.env
-#function chpwd() {
-#  if [ -r $PWD/.env ]; then
-#    source $PWD/.env
-#  fi
-#}
-
 alias python3=/opt/homebrew/bin/python3
 alias python=/opt/homebrew/bin/python3
 alias pip3=/opt/homebrew/bin/pip3
@@ -75,6 +64,7 @@ alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed
 
+eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

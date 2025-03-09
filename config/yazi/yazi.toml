@@ -9,7 +9,6 @@ linemode = "size_and_mtime"
 folder = [
   { run = 'open -R "$@"', desc = "Reveal in Finder" },
   { run = 'mpv "$@"', desc = "MPV" },
-  { run = 'iina "$@"', desc = "IINA", for = "macos" },
   { run = 'open -a kid3 "$@"', desc = "Kid3"},
   { run = '$EDITOR "$@"' },
 ]
@@ -20,20 +19,18 @@ text = [
   { run = 'nvim "$@"', block = true },
 ]
 image = [
-  { run = 'open "$@"', desc = "Open" },
   { run = 'mpv "$@"', desc = "Mpv" },
+  { run = 'open "$@"', desc = "Open" },
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
-  { run = 'open "$@"', desc = "Open" },
   { run = 'mpv "$@"', desc = "Mpv" },
-  { run = 'iina "$@"', desc = "IINA", for = "macos" },
+  { run = 'open "$@"', desc = "Open" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
-  { run = 'open "$@"', desc = "Open" },
   { run = 'mpv "$@"', desc = "Mpv" },
-  { run = 'iina "$@"', desc = "IINA", for = "macos" },
+  { run = 'open "$@"', desc = "Open" },
   { run = 'open -a kid3 "$@"', desc = "Kid3"},
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
