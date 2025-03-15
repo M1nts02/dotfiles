@@ -16,6 +16,10 @@ local rg = {
   -- Quit
   { "<Space>q", "<CMD>q<CR>", desc = "Quit" },
 
+  -- Visual
+  { "gb", "<C-v>", desc = "Visual Block" },
+  { "gl", "V", desc = "Visual Line" },
+
   -- Window
   {
     "<Space>w",
