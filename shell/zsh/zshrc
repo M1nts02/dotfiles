@@ -12,7 +12,9 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 
-PROMPT="%F{blue}%~ "
+NEWLINE=$'\n'
+PROMPT="%F{blue}%~ %#%f %F{green}%T%f${NEWLINE}"
+export LESS='-Pslines %lt-%lb'
 
 # completion
 autoload -Uz compinit && compinit
@@ -34,21 +36,21 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 bindkey "^p" up-line-or-beginning-search # Up
 bindkey "^n" down-line-or-beginning-search # Down
 
-proxy () {
+p () {
   export http_proxy="http://127.0.0.1:7890"
   export https_proxy="http://127.0.0.1:7890"
   echo "HTTP Proxy on"
 }
 
-noproxy () {
+np () {
   unset http_proxy
   unset https_proxy
   echo "HTTP Proxy off"
 }
 
 # mpv with nohup
-mpv_back () {
-  nohup mpv ${*} >> ~/.cache/log/log.log &
+mb () {
+  nohup mpv ${*} >> ~/.cache/mpv_nohup.log &
 }
 
 # icloud path
@@ -79,7 +81,8 @@ alias ll="eza -l --color=auto --total-size"
 alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed
+alias g="gitu"
+alias c="clear"
 
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
-#eval "$(starship init zsh)"
