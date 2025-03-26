@@ -17,7 +17,6 @@ return {
   config = function()
     local cmp = require "blink-cmp"
     local luasnip = require "luasnip"
-    local icons = require "modules.icons"
     cmp.setup {
       enabled = function()
         local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
@@ -54,8 +53,50 @@ return {
         end,
       },
       appearance = {
-        use_nvim_cmp_as_default = true,
         nerd_font_variant = "normal",
+        kind_icons = {
+          Array = " []",
+          Boolean = " ",
+          Calendar = " ",
+          Class = " 󰠱",
+          Codeium = " ",
+          Color = " 󰏘",
+          Constant = " 󰏿",
+          Constructor = " ",
+          Copilot = " ",
+          Enum = " ",
+          EnumMember = " ",
+          Event = " ",
+          Field = " 󰜢",
+          File = " 󰈙",
+          FittenCode = " ",
+          Folder = " 󰉋",
+          Function = " 󰊕",
+          Interface = " ",
+          Keyword = " 󰌋",
+          Method = " 󰆧",
+          Module = " ",
+          Namespace = " 󰌗",
+          Null = " 󰟢",
+          Number = " ",
+          Object = " 󰅩",
+          Operator = " 󰆕",
+          Package = " ",
+          Property = " 󰜢",
+          Reference = " 󰈇",
+          Snippet = " ",
+          String = " 󰉿",
+          Struct = " 󰙅",
+          TabNine = " ",
+          Table = " ",
+          Tag = " ",
+          Text = " 󰉿",
+          TypeParameter = " ",
+          Unit = " 󰑭",
+          Value = " 󰎠",
+          Variable = " 󰀫",
+          Watch = " 󰥔",
+        },
       },
       sources = {
         default = { "lsp", "path", "buffer", "snippets", "fittencode" },
@@ -82,7 +123,6 @@ return {
           max_height = 10,
           border = "rounded",
           winblend = 0,
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
           scrollbar = false,
           direction_priority = { "s", "n" },
           auto_show = true,
@@ -97,11 +137,7 @@ return {
             },
             components = {
               kind_icon = {
-                ellipsis = false,
-                text = function(ctx)
-                  local icon = icons.symbol_map[ctx.kind] or " "
-                  return ctx.icon_gap .. icon .. ctx.icon_gap
-                end,
+                ellipsis = true,
               },
               label = {
                 width = { fill = true, max = 60 },
@@ -130,7 +166,6 @@ return {
             max_width = 60,
             max_height = 20,
             border = "rounded",
-            winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
             winblend = 0,
             scrollbar = true,
             direction_priority = {
@@ -145,7 +180,6 @@ return {
         enabled = true,
         window = {
           border = "rounded",
-          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
         },
       },
       cmdline = {
@@ -169,11 +203,11 @@ return {
           return {}
         end,
         completion = {
+          list = { selection = { preselect = false, auto_insert = true } },
           menu = {
             auto_show = true,
             draw = {
               columns = {
-                { "kind_icon" },
                 { "label", gap = 1 },
               },
             },

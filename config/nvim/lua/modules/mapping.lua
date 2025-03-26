@@ -1,4 +1,6 @@
 local map = {
+  -- Clear highlights on search when pressing <Esc> in normal mode
+  { { "n" }, "<Esc>", "<CMD>nohlsearch<CR>" },
   -- Paste
   { { "n" }, "gp", '"+p' },
   { { "n" }, "gP", '"+P' },
