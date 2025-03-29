@@ -3,8 +3,8 @@ vim.g.is_mac = os_name:find "OSX" ~= nil
 vim.g.is_linux = os_name:find "Linux" ~= nil
 vim.g.is_windows = os_name:find "Windows" ~= nil
 
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-local confpath = vim.fn.stdpath "config"
+vim.g.lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+vim.g.confpath = vim.fn.stdpath "config"
 
 require "modules.load_custom" -- Custom options
 require "modules.options" -- Options
@@ -15,7 +15,7 @@ local shada = vim.o.shada
 vim.o.shada = ""
 
 -- Check plugin manager
-if not vim.uv.fs_stat(lazypath) then
+if not vim.uv.fs_stat(vim.g.lazypath) then
   print "Downloading ..."
   vim.fn.system {
     "git",
@@ -23,12 +23,12 @@ if not vim.uv.fs_stat(lazypath) then
     "--filter=blob:none",
     "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
-    lazypath,
+    vim.g.lazypath,
   }
 end
 
 -- Load lazy.nvim
-vim.opt.runtimepath:prepend(lazypath)
+vim.opt.runtimepath:prepend(vim.g.lazypath)
 
 require("lazy").setup({
   -- Plugins manager
@@ -40,7 +40,7 @@ require("lazy").setup({
   -- Lazy-load
   {
     name = "lazy-load",
-    dir = confpath,
+    dir = vim.g.confpath,
     event = "VeryLazy",
     config = function()
       -- Load shada

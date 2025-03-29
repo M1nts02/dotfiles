@@ -69,9 +69,6 @@ M.keys = {
 function M.config()
   require "plugins.dap.configurations" -- Load configurations
   require "plugins.dap.adapters" -- Load adapters
-  require("dap.ext.vscode").load_launchjs(nil, {
-    lldb = { "cc", "cpp", "c", "rs", "zig" },
-  })
 end
 
 return M
