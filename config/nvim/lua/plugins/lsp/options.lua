@@ -1,18 +1,19 @@
 local M = {}
+local hover = vim.lsp.buf.hover
+local signature_help = vim.lsp.buf.signature_help
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  title = "  hover ",
-  border = "rounded",
-})
+vim.lsp.buf.hover = function()
+  hover {
+    title = "  hover ",
+    border = "rounded",
+  }
+end
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  signs = true,
-  update_in_insert = false,
-})
+vim.lsp.buf.signature_help = function()
+  signature_help {
+    border = "rounded",
+  }
+end
 
 vim.diagnostic.config {
   float = { border = "rounded" },

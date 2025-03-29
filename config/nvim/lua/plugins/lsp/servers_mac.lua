@@ -1,5 +1,3 @@
-local utils = require "modules.utils"
-local executable = utils.executable
 local lspconfig = require "lspconfig"
 local opts = require "plugins.lsp.options"
 local on_attach = opts.on_attach
