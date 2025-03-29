@@ -82,7 +82,6 @@ alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed
 alias g="gitu"
-alias c="clear"
 
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"

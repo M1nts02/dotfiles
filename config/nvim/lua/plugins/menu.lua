@@ -98,24 +98,6 @@ local config = function()
         },
       },
       {
-        "C",
-        function()
-          local s = not get_status().g.fittencode
-          update { g = { fittencode = s } }
-          if s == true then
-            vim.cmd "Fitten enable_completions"
-          else
-            vim.cmd "Fitten disable_completions"
-          end
-        end,
-        {
-          desc = "Fitten Code AI",
-          flag = function()
-            return get_status().g.fittencode
-          end,
-        },
-      },
-      {
         "w",
         function()
           local s = not get_status().opt.wrap

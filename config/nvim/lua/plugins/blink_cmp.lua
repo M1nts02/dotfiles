@@ -1,5 +1,5 @@
-local cache = require "modules.cache"
-local get_status = cache.get_status
+local utils = require "modules.utils"
+local executable = utils.executable
 
 local function get_cmp_status()
   if vim.g.cmp_disable == false and vim.b.cmp_disable ~= true then
@@ -54,49 +54,7 @@ return {
       },
       appearance = {
         nerd_font_variant = "normal",
-        kind_icons = {
-          Array = " []",
-          Boolean = " ",
-          Calendar = " ",
-          Class = " 󰠱",
-          Codeium = " ",
-          Color = " 󰏘",
-          Constant = " 󰏿",
-          Constructor = " ",
-          Copilot = " ",
-          Enum = " ",
-          EnumMember = " ",
-          Event = " ",
-          Field = " 󰜢",
-          File = " 󰈙",
-          FittenCode = " ",
-          Folder = " 󰉋",
-          Function = " 󰊕",
-          Interface = " ",
-          Keyword = " 󰌋",
-          Method = " 󰆧",
-          Module = " ",
-          Namespace = " 󰌗",
-          Null = " 󰟢",
-          Number = " ",
-          Object = " 󰅩",
-          Operator = " 󰆕",
-          Package = " ",
-          Property = " 󰜢",
-          Reference = " 󰈇",
-          Snippet = " ",
-          String = " 󰉿",
-          Struct = " 󰙅",
-          TabNine = " ",
-          Table = " ",
-          Tag = " ",
-          Text = " 󰉿",
-          TypeParameter = " ",
-          Unit = " 󰑭",
-          Value = " 󰎠",
-          Variable = " 󰀫",
-          Watch = " 󰥔",
-        },
+        kind_icons = require("lspkind").symbol_map,
       },
       sources = {
         default = { "lsp", "path", "buffer", "snippets", "fittencode" },
@@ -104,7 +62,7 @@ return {
         providers = {
           fittencode = {
             name = "fittencode",
-            module = "blink.compat.source",
+            module = "fittencode.sources.blink",
           },
         },
       },
@@ -138,6 +96,9 @@ return {
             components = {
               kind_icon = {
                 ellipsis = true,
+                text = function(ctx)
+                  return ctx.icon_gap .. ctx.kind_icon .. ctx.icon_gap
+                end,
               },
               label = {
                 width = { fill = true, max = 60 },
@@ -208,6 +169,7 @@ return {
             auto_show = true,
             draw = {
               columns = {
+                { "kind_icon" },
                 { "label", gap = 1 },
               },
             },
@@ -222,9 +184,23 @@ return {
       version = "*",
       build = not vim.g.is_windows and "make install_jsregexp" or nil,
       config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.g.confpath .. "/snippets" } }
       end,
-      dependencies = { "rafamadriz/friendly-snippets" },
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+        {
+          "chrisgrieser/nvim-scissors",
+          dependencies = "nvim-telescope/telescope.nvim",
+          opts = {
+            snippetDir = vim.g.confpath .. "/snippets",
+            jsonFormatter = executable "jq" and "jq" or "none",
+            backdrop = {
+              enabled = true,
+              blend = 100,
+            },
+          },
+        },
+      },
     },
     { -- Auto pair
       "windwp/nvim-autopairs",
@@ -245,12 +221,24 @@ return {
       "luozhiya/fittencode.nvim",
       cmd = "Fitten",
       config = function()
-        require("fittencode").setup { completion_mode = "source" }
-        if get_status().g.fittencode then
-          vim.cmd "Fitten enable_completions"
-        else
-          vim.cmd "Fitten disable_completions"
-        end
+        require("fittencode").setup {
+          use_default_keymaps = false,
+          source_completion = { engine = "blink" },
+          completion_mode = "source",
+        }
+      end,
+    },
+    {
+      "onsails/lspkind.nvim",
+      config = function()
+        require("lspkind").init {
+          mode = "symbol_text",
+          symbol_map = {
+            FittenCode = "",
+            Codeium = "",
+            Copilot = "",
+          },
+        }
       end,
     },
     {

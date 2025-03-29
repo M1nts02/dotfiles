@@ -11,7 +11,6 @@ local cache = {
     dianostic_virtualtext = false,
     inlay_hints = true,
     disable_autoformat = false,
-    fittencode = false,
     dark = true,
   },
   opt = {
