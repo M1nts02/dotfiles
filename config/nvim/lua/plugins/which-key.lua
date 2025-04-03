@@ -36,9 +36,9 @@ local rg = {
   { "<Space>g", group = "Git+" },
 
   -- LSP
-  { "<Space>l", group = "LSP+" },
-  { "<Space>lr", vim.lsp.buf.rename, desc = "Rename" },
-  { "<Space>la", vim.lsp.buf.code_action, desc = "Code Action" },
+  { "gr", group = "LSP+" },
+  { "grn", vim.lsp.buf.rename, desc = "Rename" },
+  { "gra", vim.lsp.buf.code_action, desc = "Code Action" },
 
   -- Search
   { "<Space>f", group = "Find+" },

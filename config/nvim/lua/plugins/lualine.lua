@@ -5,13 +5,13 @@ local function config()
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
-        statusline = { "dashboard", "NeogitStatus", "qf" },
+        statusline = { "dashboard", "NeogitStatus", "oil", "qf" },
       },
       ignore_focus = {},
       always_divide_middle = true,
       globalstatus = true,
       refresh = {
-        statusline = 3000,
+        statusline = 500,
         tabline = 3000,
         winbar = 3000,
       },
@@ -27,23 +27,20 @@ local function config()
       },
       lualine_c = {
         "%=",
-        function()
-          return require("lsp-progress").progress()
-        end,
       },
       lualine_x = {
         "diagnostics",
-        function()
-          local names = {}
-          for _, server in pairs(vim.lsp.get_clients { bufnr = 0 }) do
-            table.insert(names, server.name)
-          end
-          local name = table.concat(names, " ")
-          return name == "" and "" or " " .. " " .. name
-        end,
+        {
+          "lsp_status",
+          icon = "",
+          symbols = {
+            spinner = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" },
+          },
+        },
       },
       lualine_y = {
         { "branch", icon = "󰊢 " },
+        "encoding",
       },
       lualine_z = { "location", "progress" },
     },
@@ -56,18 +53,5 @@ return {
   config = config,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    {
-      "linrongbin16/lsp-progress.nvim",
-      opts = {
-        spinner = { "", "󰪞", "󰪟", "󰪠", "󰪢", "󰪣", "󰪤", "󰪥" },
-        spin_update_time = 500,
-        format = function(client_messages)
-          if #client_messages > 0 then
-            return table.concat(client_messages, " ")
-          end
-          return ""
-        end,
-      },
-    },
   },
 }

@@ -54,9 +54,9 @@ local config = function()
           local s = not get_status().g.dark
           update { g = { dark = s } }
           if s == true then
-            vim.cmd "colorscheme akane-dark"
+            vim.cmd("colorscheme " .. vim.g.dark_theme)
           else
-            vim.cmd "colorscheme akane-light"
+            vim.cmd("colorscheme " .. vim.g.light_theme)
           end
         end,
         {

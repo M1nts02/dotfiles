@@ -20,13 +20,6 @@ vim.diagnostic.config {
   virtual_text = vim.g.dianostic_virtualtext,
 }
 
--- Enable cmp when LspAttach is triggered
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    vim.b[args.buf].cmp_disable = false
-  end,
-})
-
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 
 M.capabilities.textDocument.completion.completionItem = {

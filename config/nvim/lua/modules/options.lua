@@ -69,7 +69,7 @@ g.loaded_rrhelper = 1
 g.loaded_spellfile_plugin = 1
 g.loaded_matchit = 1
 
-cmd "unmenu PopUp"
+--cmd "unmenu PopUp"
 cmd "filetype indent off"
 
 -- Add env for mason

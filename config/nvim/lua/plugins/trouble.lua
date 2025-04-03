@@ -33,17 +33,18 @@ return {
   {
     "folke/trouble.nvim",
     version = "*",
-    event = { "QuickFixCmdPre", "LspAttach" },
+    event = { "VeryLazy" },
     cmd = "Trouble",
     keys = {
       { "<Space>fG", "<CMD>Rgc<CR>", desc = "Grep Case" },
       { "<Space>fg", "<CMD>Rg<CR>", desc = "Grep" },
       { "<Space>fq", "<CMD>Trouble qflist toggle<CR>", desc = "Quickfix" },
-      { "<Space>ld", "<CMD>Trouble diagnostics toggle<CR>", desc = "Diagnostics" },
-      { "<Space>lh", "<CMD>Trouble lsp_references toggle<CR>", desc = "References" },
-      { "<Space>lo", "<CMD>Trouble lsp_outgoing_calls toggle<CR>", desc = "Outgoing Calls" },
-      { "<Space>ls", "<CMD>Trouble symbols toggle<CR>", desc = "Symbols" },
       { "gd", "<CMD>Trouble lsp_definitions<CR>", desc = "Definition" },
+      { "gO", "<CMD>Trouble symbols toggle<CR>", desc = "Symbols" },
+      { "grd", "<CMD>Trouble diagnostics toggle<CR>", desc = "Diagnostics" },
+      { "gri", "<CMD>Trouble lsp_implementations<CR>", desc = "Implementations" },
+      { "gro", "<CMD>Trouble lsp_outgoing_calls toggle<CR>", desc = "Outgoing Calls" },
+      { "grr", "<CMD>Trouble lsp_references toggle<CR>", desc = "References" },
     },
     opts = {
       focus = true,

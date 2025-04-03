@@ -2,10 +2,7 @@ local file_detail = false
 
 local function get_options()
   return {
-    float = {
-      max_height = math.floor(vim.opt.lines:get() * 0.7),
-      max_width = math.floor(vim.opt.columns:get() * 0.6),
-    },
+    float = {},
     keymaps = {
       ["q"] = "actions.close",
       ["<F1>"] = { "actions.show_help", mode = "n" },
@@ -29,8 +26,8 @@ end
 local function set_opt()
   local oil = require "oil"
   local opts = get_options()
-  local h = math.floor(vim.opt.lines:get() * 0.7)
-  local w = math.floor(vim.opt.columns:get() * 0.6)
+  local h = math.floor(vim.opt.lines:get() * 0.8)
+  local w = math.floor(vim.opt.columns:get() * 0.9)
   h = h < 15 and 0 or h
   w = w < 40 and 0 or w
   opts.float.max_width = w
