@@ -1,24 +1,12 @@
 local M = {}
-local hover = vim.lsp.buf.hover
-local signature_help = vim.lsp.buf.signature_help
 
-vim.lsp.buf.hover = function()
-  hover {
-    title = "  hover ",
-    border = "rounded",
-  }
+-- virtual_lines
+vim.diagnostic.config {}
+if vim.g.dianostic_virtualtext == true then
+  vim.diagnostic.config { virtual_lines = { current_line = true }, float = { border = "rounded" } }
+else
+  vim.diagnostic.config { virtual_lines = false, float = { border = "rounded" } }
 end
-
-vim.lsp.buf.signature_help = function()
-  signature_help {
-    border = "rounded",
-  }
-end
-
-vim.diagnostic.config {
-  float = { border = "rounded" },
-  virtual_text = vim.g.dianostic_virtualtext,
-}
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 

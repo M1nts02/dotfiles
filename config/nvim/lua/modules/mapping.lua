@@ -17,6 +17,24 @@ local map = {
   { { "n" }, "gY", '"+Y' },
   { { "v" }, "gy", '"+y' },
   { { "v" }, "gY", '"+Y' },
+  -- LSP
+  {
+    { "n" },
+    "K",
+    function()
+      vim.lsp.buf.hover {
+        title = "  hover ",
+        border = "rounded",
+      }
+    end,
+  },
+  {
+    { "i" },
+    "<C-s>",
+    function()
+      vim.lsp.buf.signature_help { border = "rounded" }
+    end,
+  },
 }
 
 for _, m in ipairs(map) do

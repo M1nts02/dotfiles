@@ -11,6 +11,7 @@ local opts = {
   PATH = "skip",
   ui = {
     border = "rounded",
+    backdrop = 100,
     keymaps = {
       toggle_package_expand = "<CR>",
       install_package = "i",

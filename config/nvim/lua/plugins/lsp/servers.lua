@@ -26,7 +26,6 @@ local lsp_servers = {
   ["pylsp"] = "",
   ["pyright"] = "",
   ["rust_analyzer"] = "rust-analyzer",
-  ["sourcekit"] = "sourcekit-lsp",
   ["sqls"] = "",
   ["zls"] = "",
 }

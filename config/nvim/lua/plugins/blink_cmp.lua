@@ -86,7 +86,7 @@ return {
           auto_show = true,
           draw = {
             align_to = "label",
-            padding = 1,
+            padding = { 0, 1 },
             gap = 1,
             columns = {
               { "kind_icon" },
@@ -118,7 +118,7 @@ return {
           },
         },
         documentation = {
-          auto_show = true,
+          auto_show = false,
           auto_show_delay_ms = 200,
           update_delay_ms = 200,
           treesitter_highlighting = true,
@@ -138,7 +138,7 @@ return {
         ghost_text = { enabled = false },
       },
       signature = {
-        enabled = true,
+        enabled = false,
         window = {
           border = "rounded",
         },

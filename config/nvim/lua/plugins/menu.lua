@@ -122,7 +122,11 @@ local config = function()
         function()
           local s = not get_status().g.dianostic_virtualtext
           update { g = { dianostic_virtualtext = s } }
-          vim.diagnostic.config { virtual_text = vim.g.dianostic_virtualtext }
+          if vim.g.dianostic_virtualtext == true then
+            vim.diagnostic.config { virtual_lines = { current_line = true } }
+          else
+            vim.diagnostic.config { virtual_lines = false }
+          end
         end,
         {
           desc = "Virtual Text",
