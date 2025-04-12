@@ -19,17 +19,16 @@ text = [
   { run = 'nvim "$@"', block = true },
 ]
 image = [
-  { run = 'mpv "$@"', desc = "Mpv" },
   { run = 'open "$@"', desc = "Open" },
+  { run = 'mpv "$@"', desc = "Mpv" },
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
-  { run = 'mpv "$@"', desc = "Mpv" },
   { run = 'open "$@"', desc = "Open" },
+  { run = 'mpv "$@"', desc = "Mpv" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
-  { run = 'mpv "$@"', desc = "Mpv" },
   { run = 'open "$@"', desc = "Open" },
   { run = 'open -a kid3 "$@"', desc = "Kid3"},
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
