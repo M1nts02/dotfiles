@@ -46,10 +46,10 @@ local opts = {
         key = "m",
       },
       {
-        desc = "Workspaces",
+        desc = "Git",
         desc_hl = "String",
-        action = "Telescope workspaces",
-        key = "w",
+        action = "Neogit",
+        key = "g",
       },
       {
         desc = "Sessions",
