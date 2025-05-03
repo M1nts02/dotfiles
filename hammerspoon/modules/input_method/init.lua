@@ -23,4 +23,4 @@ end)
 --  end
 --end)
 
--- require "modules.input_method.auto-switch-input-method"
+require "modules.input_method.auto-switch-input-method"

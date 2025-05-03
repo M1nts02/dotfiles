@@ -1,7 +1,12 @@
 -- app to expected ime config
 local app2Ime = {
-  { "/Applications/wpsoffice.app", "Chinese" },
-  { "/Applications/QQ.app", "Chinese" },
+  { "/Applications/QQ.app", "Rime" },
+  { "/Applications/Pages.app", "Rime" },
+  { "/Applications/Thorium.app", "Rime" },
+  { "/Applications/Alacritty.app", "English" },
+  { "/Applications/Ghostty.app", "English" },
+  { "/System/Applications/App Store.app", "Rime" },
+  { "/System/Applications/Notes.app", "Rime" },
 }
 
 function updateFocusAppInputMethod(appObject)
@@ -23,11 +28,17 @@ function updateFocusAppInputMethod(appObject)
     if enid ~= sid then
       hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
     end
+  elseif ime == "Rime" then
+    local rmid = "im.rime.inputmethod.Squirrel.Hans"
+    local sid = hs.keycodes.currentSourceID()
+    if rmid ~= sid then
+      hs.keycodes.currentSourceID(rmid)
+    end
   elseif ime == "Chinese" then
     local cnid = "com.apple.inputmethod.SCIM.ITABC"
     local sid = hs.keycodes.currentSourceID()
     if cnid ~= sid then
-      hs.keycodes.currentSourceID "com.apple.inputmethod.SCIM.ITABC"
+      hs.keycodes.currentSourceID(cnid)
     end
   end
 end
