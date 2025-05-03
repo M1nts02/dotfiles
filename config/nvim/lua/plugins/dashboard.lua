@@ -46,14 +46,8 @@ local opts = {
         key = "m",
       },
       {
-        desc = "Git",
-        desc_hl = "String",
-        action = "Neogit",
-        key = "g",
-      },
-      {
         desc = "Sessions",
-        desc_hl = "Identifier",
+        desc_hl = "String",
         action = "SessionSelect",
         key = "s",
       },

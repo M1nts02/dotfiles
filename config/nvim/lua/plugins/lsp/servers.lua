@@ -1,6 +1,5 @@
 local utils = require "modules.utils"
 local executable = utils.executable
-local lspconfig = require "lspconfig"
 local opts = require "plugins.lsp.options"
 local on_attach = opts.on_attach
 local capabilities = opts.capabilities
@@ -30,39 +29,32 @@ local lsp_servers = {
   ["zls"] = "",
 }
 
+vim.lsp.config("*", { on_attach = on_attach, capabilities = capabilities })
+vim.lsp.config("lua_ls", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      completion = {
+        callSnippet = "Replace",
+      },
+    },
+  },
+})
+vim.lsp.config("jsonls", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
 for lsp, cmd in pairs(lsp_servers) do
   cmd = cmd == "" and lsp or cmd
   if executable(cmd) then
-    lspconfig[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-    }
+    vim.lsp.enable(lsp)
   end
-end
-
-if executable "lua-language-server" then
-  lspconfig.lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = "Replace",
-        },
-      },
-    },
-  }
-end
-
-if executable "vscode-json-language-server" then
-  lspconfig.jsonls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-      json = {
-        schemas = require("schemastore").json.schemas(),
-        validate = { enable = true },
-      },
-    },
-  }
 end
