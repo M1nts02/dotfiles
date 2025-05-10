@@ -6,12 +6,13 @@ local cache_path = vim.fn.stdpath "config" .. "/.cache.json"
 -- default cache
 local cache = {
   g = {
-    autopairs = false,
     cmp_disable = false,
     dianostic_virtualtext = false,
     inlay_hints = true,
     disable_autoformat = false,
     dark = true,
+    minipairs_disable = true,
+    enable_fittencode = false,
   },
   opt = {
     wrap = true,

@@ -1,3 +1,6 @@
+local utils = require "modules.utils"
+local setmap = utils.setmap
+
 local map = {
   -- Clear highlights on search when pressing <Esc> in normal mode
   { { "n" }, "<Esc>", "<CMD>nohlsearch<CR>" },
@@ -37,9 +40,4 @@ local map = {
   },
 }
 
-for _, m in ipairs(map) do
-  if m[4] == nil then
-    m[4] = { noremap = true }
-  end
-  vim.keymap.set(m[1], m[2], m[3], m[4])
-end
+setmap(map)

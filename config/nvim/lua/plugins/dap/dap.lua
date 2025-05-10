@@ -1,68 +1,40 @@
+local utils = require "modules.utils"
+local setmap = utils.setmap
+
 local M = {}
 
-vim.fn.sign_define("DapBreakpoint", {
-  text = "⊚",
-  texthl = "LspDiagnosticsSignError",
-  linehl = "",
-  numhl = "",
-})
-
-vim.fn.sign_define("Dapstooped", {
-  text = "❀",
-  texthl = "LspDiagnosticsSignHint",
-  linehl = "",
-  numhl = "",
-})
-
-vim.fn.sign_define("DapBreakpointRejected", {
-  text = "▷",
-  texthl = "LspDiagnosticsSignInformation",
-  linehl = "DiagnosticUnderlineInfo",
-  numhl = "LspDiagnosticsSignInformation",
-})
-
-M.cmd = {
-  "DapContinue",
-  "DapLoadLaunchJSON",
-  "DapRestartFrame",
-  "DapSetLogLevel",
-  "DapShowLog",
-  "DapStepInto",
-  "DapStepOut",
-  "DapStepOver",
-  "DapTerminate",
-  "DapToggleBreakpoint",
-  "DapToggleRepl",
-}
-
-M.keys = {
+setmap {
   {
+    { "n" },
     "<F5>",
     function()
       require("dap").continue()
     end,
-    desc = "Debug:Continue",
+    { noremap = true, desc = "Debug:Continue" },
   },
   {
+    { "n" },
     "<F9>",
     function()
       require("dap").toggle_breakpoint()
     end,
-    desc = "Debug:Toggle Breakpoint",
+    { noremap = true, desc = "Debug:Toggle Breakpoint" },
   },
   {
+    { "n" },
     "<F10>",
     function()
       require("dap").step_over()
     end,
-    desc = "Debug:Step Over",
+    { noremap = true, desc = "Debug:Step Over" },
   },
   {
+    { "n" },
     "<F11>",
     function()
       require("dap").step_into()
     end,
-    desc = "Debug:Step Into",
+    { noremap = true, desc = "Debug:Step Into" },
   },
 }
 

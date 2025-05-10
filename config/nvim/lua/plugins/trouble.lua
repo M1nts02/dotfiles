@@ -1,3 +1,6 @@
+local utils = require "modules.utils"
+local setmap = utils.setmap
+
 -- grep
 vim.api.nvim_create_user_command("Rg", function()
   local arg = vim.fn.input "Grep: "
@@ -29,30 +32,23 @@ vim.api.nvim_create_user_command("Rgc", function()
   vim.cmd "Trouble qflist"
 end, { desc = "Grep (Case Sensitive)" })
 
-return {
-  {
-    "folke/trouble.nvim",
-    version = "*",
-    event = { "VeryLazy" },
-    cmd = "Trouble",
-    keys = {
-      { "<Space>fG", "<CMD>Rgc<CR>", desc = "Grep Case" },
-      { "<Space>fg", "<CMD>Rg<CR>", desc = "Grep" },
-      { "<Space>fq", "<CMD>Trouble qflist toggle<CR>", desc = "Quickfix" },
-      { "gd", "<CMD>Trouble lsp_definitions<CR>", desc = "Definition" },
-      { "gO", "<CMD>Trouble symbols toggle<CR>", desc = "Symbols" },
-      { "grd", "<CMD>Trouble diagnostics toggle<CR>", desc = "Diagnostics" },
-      { "gri", "<CMD>Trouble lsp_implementations<CR>", desc = "Implementations" },
-      { "gro", "<CMD>Trouble lsp_outgoing_calls toggle<CR>", desc = "Outgoing Calls" },
-      { "grr", "<CMD>Trouble lsp_references toggle<CR>", desc = "References" },
-    },
-    opts = {
+require("trouble").setup {
+  focus = true,
+  modes = {
+    symbols = {
       focus = true,
-      modes = {
-        symbols = {
-          focus = true,
-        },
-      },
     },
   },
+}
+
+setmap {
+  { { "n" }, "<Space>fG", "<CMD>Rgc<CR>", { noremap = true, desc = "Grep Case" }},
+  { { "n" }, "<Space>fg", "<CMD>Rg<CR>",  { noremap = true, desc = "Grep" }},
+  { { "n" }, "<Space>fq", "<CMD>Trouble qflist toggle<CR>", desc = "Quickfix" },
+  { { "n" }, "gd", "<CMD>Trouble lsp_definitions<CR>",           { noremap = true, desc = "Definition" }},
+  { { "n" }, "gO", "<CMD>Trouble symbols toggle<CR>",            { noremap = true, desc = "Symbols" }},
+  { { "n" }, "grd", "<CMD>Trouble diagnostics toggle<CR>",       { noremap = true, desc = "Diagnostics" }},
+  { { "n" }, "gri", "<CMD>Trouble lsp_implementations<CR>",      { noremap = true, desc = "Implementations" }},
+  { { "n" }, "gro", "<CMD>Trouble lsp_outgoing_calls toggle<CR>",{ noremap = true, desc = "Outgoing Calls" }},
+  { { "n" }, "grr", "<CMD>Trouble lsp_references toggle<CR>",    { noremap = true, desc = "References" }},
 }

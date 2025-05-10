@@ -93,3 +93,25 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- dap
+vim.fn.sign_define("DapBreakpoint", {
+  text = "⊚",
+  texthl = "LspDiagnosticsSignError",
+  linehl = "",
+  numhl = "",
+})
+
+vim.fn.sign_define("Dapstooped", {
+  text = "❀",
+  texthl = "LspDiagnosticsSignHint",
+  linehl = "",
+  numhl = "",
+})
+
+vim.fn.sign_define("DapBreakpointRejected", {
+  text = "▷",
+  texthl = "LspDiagnosticsSignInformation",
+  linehl = "DiagnosticUnderlineInfo",
+  numhl = "LspDiagnosticsSignInformation",
+})

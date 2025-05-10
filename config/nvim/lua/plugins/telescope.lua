@@ -1,17 +1,11 @@
-local keys = {
-  { "<Space>f<CR>", "<CMD>Telescope builtin<CR>", desc = "Builtin" },
-  { "<Space>ff", "<CMD>Telescope fd<CR>", desc = "Fd" },
-  { "<Space>fo", "<CMD>Telescope oldfiles<CR>", desc = "Oldfile" },
-  { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
-  { "<Space>fh", "<CMD>Telescope help_tags<CR>", desc = "Help" },
-  { "<Space>fm", "<CMD>Telescope marks<CR>", desc = "Marks" },
-  { "<Space>fw", "<CMD>Telescope workspaces<CR>", desc = "Workspace" },
-  { "<Space>c", "<CMD>Telescope cmdline<CR>", desc = "Cmdline" },
-  { "<Space>b", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
-  { "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", desc = "Line" },
-}
+local utils = require "modules.utils"
+local setmap = utils.setmap
+local telescope = require "telescope"
 
-local opts = {
+require("workspaces").setup()
+require("persisted").setup()
+
+telescope.setup {
   defaults = {
     preview = false,
     vimgrep_arguments = {
@@ -60,32 +54,19 @@ local opts = {
   },
 }
 
-return {
-  "nvim-telescope/telescope.nvim",
-  version = "*",
-  event = { "VeryLazy" },
-  keys = keys,
-  opts = opts,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    { -- Workspace
-      "natecraddock/workspaces.nvim",
-      config = function()
-        require("workspaces").setup()
-        require("telescope").load_extension "workspaces"
-      end,
-    },
-    { -- Session
-      "olimorris/persisted.nvim",
-      config = function()
-        require("telescope").load_extension "persisted"
-      end,
-    },
-    { -- Cmdline
-      "jonarrien/telescope-cmdline.nvim",
-      config = function()
-        require("telescope").load_extension "cmdline"
-      end,
-    },
-  },
+telescope.load_extension "workspaces"
+telescope.load_extension "persisted"
+telescope.load_extension "cmdline"
+
+setmap {
+  { { "n" }, "<Space>f<CR>", "<CMD>Telescope builtin<CR>", { noremap = true, desc = "Builtin" } },
+  { { "n" }, "<Space>ff", "<CMD>Telescope fd<CR>", { noremap = true, desc = "Fd" } },
+  { { "n" }, "<Space>fo", "<CMD>Telescope oldfiles<CR>", { noremap = true, desc = "Oldfile" } },
+  { { "n" }, "<Space>fb", "<CMD>Telescope buffers<CR>", { noremap = true, desc = "Buffers" } },
+  { { "n" }, "<Space>fh", "<CMD>Telescope help_tags<CR>", { noremap = true, desc = "Help" } },
+  { { "n" }, "<Space>fm", "<CMD>Telescope marks<CR>", { noremap = true, desc = "Marks" } },
+  { { "n" }, "<Space>fw", "<CMD>Telescope workspaces<CR>", { noremap = true, desc = "Workspace" } },
+  { { "n" }, "<Space>c", "<CMD>Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" } },
+  { { "n" }, "<Space>b", "<CMD>Telescope buffers<CR>", { noremap = true, desc = "Buffers" } },
+  { { "n" }, "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", { noremap = true, desc = "Line" } },
 }

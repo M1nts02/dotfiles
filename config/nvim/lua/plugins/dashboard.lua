@@ -28,15 +28,16 @@ local custom_header = {
   "",
 }
 
-local opts = {
+require("dashboard").setup {
   theme = "doom",
   config = {
     header = custom_header,
+    footer = {},
     center = {
       {
-        desc = "Plugin Manager",
+        desc = "Plugins Update",
         desc_hl = "Keyword",
-        action = "Lazy",
+        action = "DepsUpdate",
         key = "p",
       },
       {
@@ -48,7 +49,7 @@ local opts = {
       {
         desc = "Sessions",
         desc_hl = "String",
-        action = "SessionSelect",
+        action = "Telescope persisted",
         key = "s",
       },
       {
@@ -73,12 +74,4 @@ local opts = {
       },
     },
   },
-}
-
-return {
-  "nvimdev/dashboard-nvim",
-  event = "VimEnter",
-  main = "dashboard",
-  opts = opts,
-  dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }

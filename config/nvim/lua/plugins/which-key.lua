@@ -1,4 +1,4 @@
-local opts = {
+require("which-key").setup {
   notify = false,
   icons = {
     rules = false,
@@ -12,7 +12,7 @@ local opts = {
   },
 }
 
-local rg = {
+require("which-key").add {
   -- Quit
   { "<Space>q", "<CMD>q<CR>", desc = "Quit" },
 
@@ -42,14 +42,4 @@ local rg = {
 
   -- Search
   { "<Space>f", group = "Find+" },
-}
-
-return {
-  "folke/which-key.nvim",
-  version = "*",
-  event = { "VeryLazy" },
-  config = function()
-    require("which-key").setup(opts)
-    require("which-key").add(rg)
-  end,
 }
