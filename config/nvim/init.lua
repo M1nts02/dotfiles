@@ -3,7 +3,6 @@ vim.g.is_mac = os_name:find "OSX" ~= nil
 vim.g.is_linux = os_name:find "Linux" ~= nil
 vim.g.is_windows = os_name:find "Windows" ~= nil
 
-vim.g.lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 vim.g.confpath = vim.fn.stdpath "config"
 
 require "modules.load_custom" -- Custom options
