@@ -3,6 +3,7 @@ local app2Ime = {
   { "/Applications/QQ.app", "Rime" },
   { "/Applications/Pages.app", "Rime" },
   { "/Applications/Thorium.app", "Rime" },
+  { "/Applications/Zen.app", "Rime" },
   { "/Applications/Alacritty.app", "English" },
   { "/Applications/Ghostty.app", "English" },
   { "/System/Applications/App Store.app", "Rime" },
