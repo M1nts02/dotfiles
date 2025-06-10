@@ -16,8 +16,13 @@ require("lualine").setup {
     },
   },
   sections = {
-    lualine_a = { "mode" },
+    lualine_a = {
+      "mode",
+    },
     lualine_b = {
+      function()
+        return require("debugmaster.debug.mode").is_active() and "[DEBUG]" or ""
+      end,
       function()
         local tab_id = vim.api.nvim_tabpage_get_number(0)
         return "[" .. tab_id .. "]"

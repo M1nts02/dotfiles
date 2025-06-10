@@ -56,7 +56,6 @@ telescope.setup {
 
 telescope.load_extension "workspaces"
 telescope.load_extension "persisted"
-telescope.load_extension "cmdline"
 
 setmap {
   { { "n" }, "<Space>f<CR>", "<CMD>Telescope builtin<CR>", { noremap = true, desc = "Builtin" } },
@@ -66,7 +65,6 @@ setmap {
   { { "n" }, "<Space>fh", "<CMD>Telescope help_tags<CR>", { noremap = true, desc = "Help" } },
   { { "n" }, "<Space>fm", "<CMD>Telescope marks<CR>", { noremap = true, desc = "Marks" } },
   { { "n" }, "<Space>fw", "<CMD>Telescope workspaces<CR>", { noremap = true, desc = "Workspace" } },
-  { { "n" }, "<Space>c", "<CMD>Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" } },
   { { "n" }, "<Space>b", "<CMD>Telescope buffers<CR>", { noremap = true, desc = "Buffers" } },
   { { "n" }, "<Space>/", "<CMD>Telescope current_buffer_fuzzy_find<CR>", { noremap = true, desc = "Line" } },
 }

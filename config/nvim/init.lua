@@ -37,17 +37,11 @@ end)
 --- file browser
 pack({
   source = "mikavilpas/yazi.nvim",
-  depends = { "folke/snacks.nvim", "nvim-lua/plenary.nvim" },
+  depends = { "folke/snacks.nvim" },
 }, {
-  enable = executable "yazi",
-  now = function()
-    local yazi = require "yazi"
-    yazi.setup {
-      open_for_directories = true,
-      floating_window_scaling_factor = 1.0,
-      yazi_floating_window_border = "none",
-    }
-    setmap { { { "n" }, "<Space>e", "<CMD>Yazi<CR>", { noremap = true, desc = "Yazi" } } }
+  later = function()
+    require("yazi").setup { floating_window_scaling_factor = 1.0, yazi_floating_window_border = "single" }
+    setmap { { { "n" }, "<Space>e", require("yazi").yazi } }
   end,
 })
 
@@ -59,6 +53,11 @@ pack({
     require "plugins.which-key"
   end,
 })
+
+--- Comment
+later(function()
+  require("mini.comment").setup()
+end)
 
 --- colorscheme
 pack({
@@ -78,7 +77,7 @@ pack({
 --- statusline
 pack({
   source = "nvim-lualine/lualine.nvim",
-  depends = { "nvim-tree/nvim-web-devicons" },
+  depends = { "nvim-tree/nvim-web-devicons", "miroshQa/debugmaster.nvim" },
 }, {
   later = function()
     require "plugins.lualine"
@@ -131,7 +130,7 @@ pack({
   end,
 })
 
---- termplate
+--- Template
 pack({
   source = "M1nts02/nvim-template",
   checkout = "dev",
@@ -165,39 +164,6 @@ pack({
       sync_install = false,
       auto_install = true,
       highlight = { enable = false, additional_vim_regex_highlighting = false },
-    }
-  end,
-})
-
---- cursor jump
-pack({
-  source = "folke/flash.nvim",
-}, {
-  later = function()
-    local flash = require "flash"
-    flash.setup {
-      modes = {
-        search = { enabled = false },
-        char = { enabled = false },
-      },
-    }
-    setmap {
-      {
-        { "n", "x", "o", "v" },
-        "<C-f>",
-        function()
-          flash.jump { search = { forward = true, wrap = false, multi_window = false } }
-        end,
-        { noremap = true, desc = "Jump forward" },
-      },
-      {
-        { "n", "x", "o", "v" },
-        "<C-b>",
-        function()
-          flash.jump { search = { forward = false, wrap = false, multi_window = false } }
-        end,
-        { noremap = true, desc = "Jump backward" },
-      },
     }
   end,
 })
@@ -236,7 +202,6 @@ pack({
   depends = {
     "natecraddock/workspaces.nvim",
     "olimorris/persisted.nvim",
-    "jonarrien/telescope-cmdline.nvim",
     "nvim-lua/plenary.nvim",
   },
 }, {
@@ -244,11 +209,6 @@ pack({
     require "plugins.telescope"
   end,
 })
-
---- git
-later(function()
-  require("mini.git").setup()
-end)
 
 --- formatter
 pack({
@@ -260,58 +220,19 @@ pack({
     end
   end,
   later = function()
-    require("conform").setup {
-      formatters_by_ft = {
-        c = { "clang_format" },
-        cpp = { "clang_format" },
-        gdscript = { "gdformat" },
-        javascript = { "biome" },
-        json = { "jq" },
-        lua = { "stylua" },
-        markdown = { "mdformat" },
-        python = { "ruff_format", "isort", "black", stop_after_first = true },
-        rust = { "rustfmt", lsp_format = "fallback" },
-        typescript = { "biome" },
-        yaml = { "yamlfmt" },
-      },
-      format_on_save = function(bufnr)
-        if vim.g.disable_autoformat == true then
-          return
-        end
-        return { timeout_ms = 1000, lsp_format = "fallback" }
-      end,
-    }
-
-    -- Toggle auto format
-    vim.api.nvim_create_user_command("AutoformatToggle", function(args)
-      if vim.g.disable_autoformat == true then
-        vim.g.disable_autoformat = false
-        vim.g.zig_fmt_autosave = 1
-        vim.notify "Autoformat enabled"
-      else
-        vim.g.disable_autoformat = true
-        vim.g.zig_fmt_autosave = 0
-        vim.notify "Autoformat disabled"
-      end
-    end, {
-      desc = "Toggle autoformat",
-      bang = true,
-    })
+    require "plugins.conform"
   end,
 })
 
 --- snippets
 pack({
-  source = "L3MON4D3/LuaSnip",
+  source = "chrisgrieser/nvim-scissors",
   depends = {
     "rafamadriz/friendly-snippets",
-    "nvim-telescope/telescope.nvim",
-    "chrisgrieser/nvim-scissors",
   },
 }, {
   build = not vim.g.is_windows and { "make", "install_jsregexp" } or nil,
   later = function()
-    require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.g.confpath .. "/snippets" } }
     require("scissors").setup {
       snippetDir = vim.g.confpath .. "/snippets",
       jsonFormatter = executable "jq" and "jq" or "none",
@@ -327,10 +248,10 @@ pack({
 pack({
   source = "saghen/blink.cmp",
   depends = {
-    "L3MON4D3/LuaSnip",
     "onsails/lspkind.nvim",
+    "rafamadriz/friendly-snippets",
   },
-  checkout = "v1.2.0",
+  checkout = "v1.3.1",
 }, {
   later = function()
     require "plugins.blink_cmp"
@@ -363,7 +284,7 @@ pack({
     "LelouchHe/xmake-luals-addon",
   },
 }, {
-  later = function()
+  now = function()
     require "plugins.lspconfig"
     require("lazydev").setup {
       library = {
@@ -380,10 +301,10 @@ pack({
 --- debug
 pack({
   source = "mfussenegger/nvim-dap",
-  depends = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
+  depends = { "miroshQa/debugmaster.nvim" },
 }, {
   later = function()
-    require("plugins.dap.dap").config()
-    require "plugins.dap.dap-ui"
+    require "plugins.dap"
+    require "plugins.debugmaster"
   end,
 })

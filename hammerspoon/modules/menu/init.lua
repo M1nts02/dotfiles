@@ -225,10 +225,10 @@ add("Window", {
   },
 })
 
-hs.hotkey.bind({ "alt" }, "w", function()
+hs.hotkey.bind({ "alt", "ctrl", "cmd", "shift" }, "w", function()
   run "Window"
 end)
 
-hs.hotkey.bind({ "alt" }, "a", function()
+hs.hotkey.bind({ "alt", "ctrl", "cmd", "shift" }, "a", function()
   run "Main Menu"
 end)

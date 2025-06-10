@@ -35,10 +35,10 @@ require("dashboard").setup {
     footer = {},
     center = {
       {
-        desc = "Plugins Update",
+        desc = "Update Plugins",
         desc_hl = "Keyword",
         action = "DepsUpdate",
-        key = "p",
+        key = "u",
       },
       {
         desc = "LSP and Debuger",

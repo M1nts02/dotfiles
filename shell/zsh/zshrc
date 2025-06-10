@@ -86,5 +86,4 @@ alias sed=gsed
 alias awk=gawk
 alias grep=ggrep
 
-eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"

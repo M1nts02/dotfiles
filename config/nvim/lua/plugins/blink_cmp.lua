@@ -1,6 +1,3 @@
-local utils = require "modules.utils"
-local executable = utils.executable
-
 local function get_cmp_status()
   if vim.g.cmp_disable == false and vim.b.cmp_disable ~= true then
     return true
@@ -10,7 +7,6 @@ local function get_cmp_status()
 end
 
 local cmp = require "blink-cmp"
-local luasnip = require "luasnip"
 
 cmp.setup {
   enabled = function()
@@ -31,21 +27,6 @@ cmp.setup {
     ["<Up>"] = { "select_prev", "fallback" },
     ["<C-u>"] = { "show_documentation", "scroll_documentation_up", "fallback" },
     ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
-  },
-  snippets = {
-    preset = "luasnip",
-    expand = function(snippet)
-      luasnip.lsp_expand(snippet)
-    end,
-    active = function(filter)
-      if filter and filter.direction then
-        return luasnip.jumpable(filter.direction)
-      end
-      return luasnip.in_snippet()
-    end,
-    jump = function(direction)
-      luasnip.jump(direction)
-    end,
   },
   appearance = {
     nerd_font_variant = "normal",
