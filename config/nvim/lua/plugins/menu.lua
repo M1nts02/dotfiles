@@ -12,37 +12,27 @@ menu.add("Menu", {
     -- flag_len = 1,
     quit = false,
     foreign_keys = false,
-    window = {
-      position = "CC",
-    },
+    position = "CC",
+    type = "menu",
   },
   items = {
     {
-      "p",
-      function()
-        local s = not get_status().g.minipairs_disable
-        update { g = { minipairs_disable = s } }
-      end,
       {
+        key = "p",
         desc = "Auto pairs",
         flag = function()
           local s = not get_status().g.minipairs_disable
           return s
         end,
       },
+      function()
+        local s = not get_status().g.minipairs_disable
+        update { g = { minipairs_disable = s } }
+      end,
     },
     {
-      "t",
-      function()
-        local s = not get_status().g.dark
-        update { g = { dark = s } }
-        if s == true then
-          vim.cmd("colorscheme " .. vim.g.dark_theme)
-        else
-          vim.cmd("colorscheme " .. vim.g.light_theme)
-        end
-      end,
       {
+        key = "t",
         desc = "Dark mode",
         flag = function()
           local s = get_status().g.dark
@@ -53,9 +43,29 @@ menu.add("Menu", {
           end
         end,
       },
+      function()
+        local s = not get_status().g.dark
+        update { g = { dark = s } }
+        if s == true then
+          vim.cmd("colorscheme " .. vim.g.dark_theme)
+        else
+          vim.cmd("colorscheme " .. vim.g.light_theme)
+        end
+      end,
     },
     {
-      "c",
+      {
+        key = "c",
+        desc = "Auto Completion",
+        flag = function()
+          local enable = (vim.g.cmp_disable == false and vim.b.cmp_disable ~= true) and true or false
+          if enable then
+            return true
+          else
+            return false
+          end
+        end,
+      },
       function()
         local enable = (vim.g.cmp_disable == false and vim.b.cmp_disable == false) and true or false
         if enable then
@@ -68,27 +78,10 @@ menu.add("Menu", {
           update { g = { cmp_disable = false } }
         end
       end,
-      {
-        desc = "Auto Completion",
-        flag = function()
-          local enable = (vim.g.cmp_disable == false and vim.b.cmp_disable ~= true) and true or false
-          if enable then
-            return true
-          else
-            return false
-          end
-        end,
-      },
     },
     {
-      "w",
-      function()
-        local s = not get_status().opt.wrap
-        local i = s == true and "true" or "false"
-        vim.cmd("tabdo windo lua vim.opt.wrap = " .. i)
-        update { opt = { wrap = s } }
-      end,
       {
+        key = "w",
         desc = "Wrap",
         flag = function()
           local s = get_status().opt.wrap
@@ -99,19 +92,16 @@ menu.add("Menu", {
           end
         end,
       },
+      function()
+        local s = not get_status().opt.wrap
+        local i = s == true and "true" or "false"
+        vim.cmd("tabdo windo lua vim.opt.wrap = " .. i)
+        update { opt = { wrap = s } }
+      end,
     },
     {
-      "v",
-      function()
-        local s = not get_status().g.dianostic_virtualtext
-        update { g = { dianostic_virtualtext = s } }
-        if vim.g.dianostic_virtualtext == true then
-          vim.diagnostic.config { virtual_lines = { current_line = true } }
-        else
-          vim.diagnostic.config { virtual_lines = false }
-        end
-      end,
       {
+        key = "v",
         desc = "Virtual Text",
         flag = function()
           local s = get_status().g.dianostic_virtualtext
@@ -122,16 +112,19 @@ menu.add("Menu", {
           end
         end,
       },
+      function()
+        local s = not get_status().g.dianostic_virtualtext
+        update { g = { dianostic_virtualtext = s } }
+        if vim.g.dianostic_virtualtext == true then
+          vim.diagnostic.config { virtual_lines = { current_line = true } }
+        else
+          vim.diagnostic.config { virtual_lines = false }
+        end
+      end,
     },
     {
-      "i",
-      function()
-        local s = not get_status().g.inlay_hints
-        update { g = { inlay_hints = s } }
-        local enable = vim.g.inlay_hints and "true" or "false"
-        vim.cmd("tabdo windo lua vim.lsp.inlay_hint.enable(" .. enable .. ", { bufnr = 0 })")
-      end,
       {
+        key = "i",
         desc = "Inlay hints",
         flag = function()
           local s = get_status().g.inlay_hints
@@ -142,15 +135,16 @@ menu.add("Menu", {
           end
         end,
       },
+      function()
+        local s = not get_status().g.inlay_hints
+        update { g = { inlay_hints = s } }
+        local enable = vim.g.inlay_hints and "true" or "false"
+        vim.cmd("tabdo windo lua vim.lsp.inlay_hint.enable(" .. enable .. ", { bufnr = 0 })")
+      end,
     },
     {
-      "f",
-      function()
-        local s = not get_status().g.disable_autoformat
-        vim.g.zig_fmt_autosave = s == true and 0 or 1
-        update { g = { disable_autoformat = s } }
-      end,
       {
+        key = "f",
         desc = "Auto format",
         flag = function()
           local s = get_status().g.disable_autoformat
@@ -161,6 +155,11 @@ menu.add("Menu", {
           end
         end,
       },
+      function()
+        local s = not get_status().g.disable_autoformat
+        vim.g.zig_fmt_autosave = s == true and 0 or 1
+        update { g = { disable_autoformat = s } }
+      end,
     },
   },
 })

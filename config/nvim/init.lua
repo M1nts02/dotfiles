@@ -301,7 +301,7 @@ pack({
 --- debug
 pack({
   source = "mfussenegger/nvim-dap",
-  depends = { "miroshQa/debugmaster.nvim" },
+  depends = { "miroshQa/debugmaster.nvim", "M1nts02/nvim-menu" },
 }, {
   later = function()
     require "plugins.dap"
