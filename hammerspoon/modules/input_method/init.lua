@@ -1,5 +1,5 @@
 -- switch rime and abc
-hs.hotkey.bind({ "alt", "ctrl", "cmd", "shift" }, "s", function()
+hs.hotkey.bind({ "alt" }, "q", function()
   local abc = "com.apple.keylayout.ABC"
   local rime = "im.rime.inputmethod.Squirrel.Hans"
   local sid = hs.keycodes.currentSourceID()

@@ -37,11 +37,20 @@ end)
 --- file browser
 pack({
   source = "mikavilpas/yazi.nvim",
-  depends = { "folke/snacks.nvim" },
+  depends = { "nvim-lua/plenary.nvim" },
 }, {
-  later = function()
-    require("yazi").setup { floating_window_scaling_factor = 1.0, yazi_floating_window_border = "single" }
-    setmap { { { "n" }, "<Space>e", require("yazi").yazi } }
+  now = function()
+    require("yazi").setup {
+      open_for_directories = true,
+    }
+    setmap {
+      {
+        { "n" },
+        "<Space>e",
+        require("yazi").yazi,
+        { noremap = true, desc = "Oil" },
+      },
+    }
   end,
 })
 
@@ -251,7 +260,7 @@ pack({
     "onsails/lspkind.nvim",
     "rafamadriz/friendly-snippets",
   },
-  checkout = "v1.3.1",
+  checkout = "v1.5.1",
 }, {
   later = function()
     require "plugins.blink_cmp"

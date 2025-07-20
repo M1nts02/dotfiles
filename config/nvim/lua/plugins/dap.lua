@@ -1,6 +1,5 @@
 local utils = require "modules.utils"
 local executable = utils.executable
-local setmap = utils.setmap
 local dap = require "dap"
 
 ----------- Adapters --------------
@@ -62,10 +61,3 @@ conf.zig = conf.cpp
 for k, v in pairs(conf) do
   dap.configurations[k] = v
 end
-
-setmap {
-  { { "n" }, "<F5>", dap.continue, { noremap = true, desc = "Debug:Continue" } },
-  { { "n" }, "<F9>", dap.toggle_breakpoint, { noremap = true, desc = "Debug:Toggle Breakpoint" } },
-  { { "n" }, "<F10>", dap.step_over, { noremap = true, desc = "Debug:Step Over" } },
-  { { "n" }, "<F11>", dap.step_into, { noremap = true, desc = "Debug:Step Into" } },
-}

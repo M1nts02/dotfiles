@@ -3,7 +3,6 @@ sort_sensitive = false
 sort_reverse   = false
 show_symlink   = true
 ratio = [1, 4, 3]
-linemode = "size_and_mtime"
 
 [opener]
 folder = [
