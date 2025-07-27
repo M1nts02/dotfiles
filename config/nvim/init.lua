@@ -3,317 +3,56 @@ vim.g.is_mac = os_name:find "OSX" ~= nil
 vim.g.is_linux = os_name:find "Linux" ~= nil
 vim.g.is_windows = os_name:find "Windows" ~= nil
 
+vim.g.lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 vim.g.confpath = vim.fn.stdpath "config"
 
 require "modules.load_custom" -- Custom options
 require "modules.options" -- Options
 require("modules.cache").load() -- Save options
 
-local utils = require "modules.utils"
-local setmap = utils.setmap
-local executable = utils.executable
-local deps = require "modules.deps"
-local pack, add, now, later = deps.pack, deps.add, deps.now, deps.later
-
 -- Don't load shada
 local shada = vim.o.shada
 vim.o.shada = ""
 
------------ Lazy-load ----------
-later(function()
-  -- Load shada
-  vim.o.shada = shada
-  pcall(vim.cmd.rshada, { bang = true })
-  -- Load mapping
-  require "modules.mapping"
-end)
+-- Check plugin manager
+if not vim.uv.fs_stat(vim.g.lazypath) then
+  print "Downloading ..."
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    vim.g.lazypath,
+  }
+end
 
------------ Plugins ------------
---- auto pair
-later(function()
-  require("mini.pairs").setup()
-end)
+-- Load lazy.nvim
+vim.opt.runtimepath:prepend(vim.g.lazypath)
 
---- file browser
-pack({
-  source = "mikavilpas/yazi.nvim",
-  depends = { "nvim-lua/plenary.nvim" },
-}, {
-  now = function()
-    require("yazi").setup {
-      open_for_directories = true,
-    }
-    setmap {
-      {
-        { "n" },
-        "<Space>e",
-        require("yazi").yazi,
-        { noremap = true, desc = "Oil" },
-      },
-    }
-  end,
-})
+require("lazy").setup({
+  -- Plugins manager
+  { "folke/lazy.nvim", version = "*" },
 
---- which key
-pack({
-  source = "folke/which-key.nvim",
-}, {
-  later = function()
-    require "plugins.which-key"
-  end,
-})
+  -- Load plugins
+  { import = "plugins" },
 
---- Comment
-later(function()
-  require("mini.comment").setup()
-end)
-
---- colorscheme
-pack({
-  source = "M1nts02/akane.nvim",
-}, {
-  now = function()
-    require("akane").setup { transparent = vim.g.transparent }
-    -- Theme
-    if vim.g.dark == true then
-      vim.cmd("colorscheme " .. vim.g.dark_theme)
-    else
-      vim.cmd("colorscheme " .. vim.g.light_theme)
-    end
-  end,
-})
-
---- statusline
-pack({
-  source = "nvim-lualine/lualine.nvim",
-  depends = { "nvim-tree/nvim-web-devicons", "miroshQa/debugmaster.nvim" },
-}, {
-  later = function()
-    require "plugins.lualine"
-  end,
-})
-
---- dashboard
-pack({
-  source = "nvimdev/dashboard-nvim",
-  depends = { "nvim-tree/nvim-web-devicons" },
-}, {
-  now = function()
-    require "plugins.dashboard"
-  end,
-})
-
---- Installer
-pack({
-  source = "mason-org/mason.nvim",
-}, {
-  later = function()
-    require("mason").setup {
-      PATH = "skip",
-      max_concurrent_installers = 10,
-      ui = {
-        border = "rounded",
-        backdrop = 100,
-        keymaps = {
-          toggle_package_expand = "<CR>",
-          install_package = "i",
-          update_package = "u",
-          check_package_version = "c",
-          update_all_packages = "U",
-          check_outdated_packages = "C",
-          uninstall_package = "X",
-          cancel_installation = "<C-c>",
-          apply_language_filter = "<C-f>",
-        },
-      },
-    }
-  end,
-})
-
---- Menu
-pack({
-  source = "M1nts02/nvim-menu",
-}, {
-  later = function()
-    require "plugins.menu"
-  end,
-})
-
---- Template
-pack({
-  source = "M1nts02/nvim-template",
-  checkout = "dev",
-}, {
-  later = function()
-    require("nvim-template").setup {
-      git_info = true,
-    }
-  end,
-})
-
---- treesitter
-pack({
-  source = "nvim-treesitter/nvim-treesitter",
-  hooks = {
-    post_checkout = function()
-      vim.cmd "TSUpdate"
+  -- Lazy-load
+  {
+    name = "lazy-load",
+    dir = vim.g.confpath,
+    event = "VeryLazy",
+    config = function()
+      -- Load shada
+      vim.o.shada = shada
+      pcall(vim.cmd.rshada, { bang = true })
+      -- Load mapping
+      require "modules.mapping"
     end,
   },
-}, {
-  enabled = executable { "gcc", "clang", "zig", "cc", "cl" },
-  now = function()
-    vim.api.nvim_create_autocmd("BufReadPost", {
-      pattern = { "*.kdl", "*.md", "*.ron", "*.toml", "*.yaml" },
-      command = "TSBufEnable highlight",
-    })
-  end,
-  later = function()
-    require("nvim-treesitter.configs").setup {
-      ensure_installed = { "c", "lua", "markdown", "query", "ron", "vim", "vimdoc" },
-      sync_install = false,
-      auto_install = true,
-      highlight = { enable = false, additional_vim_regex_highlighting = false },
-    }
-  end,
-})
-
---- a list ui
-pack({
-  source = "folke/trouble.nvim",
-}, {
-  later = function()
-    require "plugins.trouble"
-  end,
-})
-
---- terminal
-pack({
-  source = "akinsho/toggleterm.nvim",
-}, {
-  later = function()
-    require("toggleterm").setup {
-      open_mapping = [[<c-\>]],
-      hide_numbers = true,
-      autochdir = false,
-      start_in_insert = true,
-      direction = "float",
-      close_on_exit = true,
-      auto_scroll = true,
-      float_opts = { border = "curved" },
-      winbar = { enabled = false },
-    }
-  end,
-})
-
---- search
-pack({
-  source = "nvim-telescope/telescope.nvim",
-  depends = {
-    "natecraddock/workspaces.nvim",
-    "olimorris/persisted.nvim",
-    "nvim-lua/plenary.nvim",
+}, { -- Lazy.nvim config
+  ui = {
+    border = "rounded",
+    backdrop = 100,
   },
-}, {
-  later = function()
-    require "plugins.telescope"
-  end,
-})
-
---- formatter
-pack({
-  source = "stevearc/conform.nvim",
-}, {
-  now = function()
-    if vim.g.disable_autoformat == true then
-      vim.g.zig_fmt_autosave = 0
-    end
-  end,
-  later = function()
-    require "plugins.conform"
-  end,
-})
-
---- snippets
-pack({
-  source = "chrisgrieser/nvim-scissors",
-  depends = {
-    "rafamadriz/friendly-snippets",
-  },
-}, {
-  build = not vim.g.is_windows and { "make", "install_jsregexp" } or nil,
-  later = function()
-    require("scissors").setup {
-      snippetDir = vim.g.confpath .. "/snippets",
-      jsonFormatter = executable "jq" and "jq" or "none",
-      backdrop = {
-        enabled = true,
-        blend = 100,
-      },
-    }
-  end,
-})
-
---- completion
-pack({
-  source = "saghen/blink.cmp",
-  depends = {
-    "onsails/lspkind.nvim",
-    "rafamadriz/friendly-snippets",
-  },
-  checkout = "v1.5.1",
-}, {
-  later = function()
-    require "plugins.blink_cmp"
-  end,
-})
-
---- icons
-pack({
-  source = "onsails/lspkind.nvim",
-}, {
-  later = function()
-    require("lspkind").init {
-      mode = "symbol_text",
-      symbol_map = {
-        FittenCode = "",
-        Codeium = "",
-        Copilot = "",
-      },
-    }
-  end,
-})
-
---- lsp
-pack({
-  source = "neovim/nvim-lspconfig",
-  depends = {
-    "folke/lazydev.nvim",
-    "saghen/blink.cmp",
-    "b0o/schemastore.nvim",
-    "LelouchHe/xmake-luals-addon",
-  },
-}, {
-  now = function()
-    require "plugins.lspconfig"
-    require("lazydev").setup {
-      library = {
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
-      },
-      enabled = function(root_dir)
-        return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
-      end,
-    }
-  end,
-})
-
---- debug
-pack({
-  source = "mfussenegger/nvim-dap",
-  depends = { "miroshQa/debugmaster.nvim", "M1nts02/nvim-menu" },
-}, {
-  later = function()
-    require "plugins.dap"
-    require "plugins.debugmaster"
-  end,
 })

@@ -1,4 +1,4 @@
-require("conform").setup {
+local opts = {
   formatters_by_ft = {
     c = { "clang_format" },
     cpp = { "clang_format" },
@@ -35,3 +35,17 @@ end, {
   desc = "Toggle autoformat",
   bang = true,
 })
+
+return {
+  "stevearc/conform.nvim",
+  cmd = { "AutoformatToggle" },
+  event = { "BufRead", "BufNewFile" },
+  init = function()
+    if vim.g.disable_autoformat == true then
+      vim.g.zig_fmt_autosave = 0
+    end
+  end,
+  config = function()
+    require("conform").setup(opts)
+  end,
+}

@@ -28,50 +28,56 @@ local custom_header = {
   "",
 }
 
-require("dashboard").setup {
-  theme = "doom",
-  config = {
-    header = custom_header,
-    footer = {},
-    center = {
-      {
-        desc = "Update Plugins",
-        desc_hl = "Keyword",
-        action = "DepsUpdate",
-        key = "u",
+return {
+  "nvimdev/dashboard-nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("dashboard").setup {
+      theme = "doom",
+      config = {
+        header = custom_header,
+        footer = {},
+        center = {
+          {
+            desc = "Plugins",
+            desc_hl = "Keyword",
+            action = "Lazy",
+            key = "l",
+          },
+          {
+            desc = "LSP and Debuger",
+            desc_hl = "Question",
+            action = "Mason",
+            key = "m",
+          },
+          {
+            desc = "Sessions",
+            desc_hl = "String",
+            action = "Telescope persisted",
+            key = "s",
+          },
+          {
+            desc = "Dark Mode",
+            desc_hl = "Character",
+            action = function()
+              local s = not get_status().g.dark
+              update { g = { dark = s } }
+              if s == true then
+                vim.cmd("colorscheme " .. vim.g.dark_theme)
+              else
+                vim.cmd("colorscheme " .. vim.g.light_theme)
+              end
+            end,
+            key = "t",
+          },
+          {
+            desc = "Configuration",
+            desc_hl = "Conceal",
+            action = "CustomOpen",
+            key = "c",
+          },
+        },
       },
-      {
-        desc = "LSP and Debuger",
-        desc_hl = "Question",
-        action = "Mason",
-        key = "m",
-      },
-      {
-        desc = "Sessions",
-        desc_hl = "String",
-        action = "Telescope persisted",
-        key = "s",
-      },
-      {
-        desc = "Dark Mode",
-        desc_hl = "Character",
-        action = function()
-          local s = not get_status().g.dark
-          update { g = { dark = s } }
-          if s == true then
-            vim.cmd("colorscheme " .. vim.g.dark_theme)
-          else
-            vim.cmd("colorscheme " .. vim.g.light_theme)
-          end
-        end,
-        key = "t",
-      },
-      {
-        desc = "Configuration",
-        desc_hl = "Conceal",
-        action = "CustomOpen",
-        key = "c",
-      },
-    },
-  },
+    }
+  end,
 }

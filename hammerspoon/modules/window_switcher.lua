@@ -14,11 +14,11 @@ switcher_currentAllSpace = hs.window.switcher.new(wf.new():setCurrentSpace(true)
   minimizeModeBackgroundColor = { 0.5, 0.5, 0.5, 1 },
 })
 
-hs.hotkey.bind("alt", "`", "Next window", function()
+hs.hotkey.bind("cmd", "]", "Next window", function()
   switcher_currentAllSpace:next()
   hs.alert.closeAll()
 end)
-hs.hotkey.bind("alt-shift", "`", "Prev window", function()
+hs.hotkey.bind("cmd", "[", "Prev window", function()
   switcher_currentAllSpace:previous()
   hs.alert.closeAll()
 end)
@@ -37,11 +37,11 @@ switcher_currentSpace_onScreen = hs.window.switcher.new(wf.new():setCurrentSpace
   minimizeModeBackgroundColor = { 0.5, 0.5, 0.5, 1 },
 })
 
-hs.hotkey.bind("alt", "tab", "Next window", function()
+hs.hotkey.bind("cmd", "'", "Next window", function()
   switcher_currentSpace_onScreen:next()
   hs.alert.closeAll()
 end)
-hs.hotkey.bind("alt-shift", "tab", "Prev window", function()
+hs.hotkey.bind("cmd", ";", "Prev window", function()
   switcher_currentSpace_onScreen:previous()
   hs.alert.closeAll()
 end)
