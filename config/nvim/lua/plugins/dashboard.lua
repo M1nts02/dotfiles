@@ -42,7 +42,7 @@ return {
             desc = "Plugins",
             desc_hl = "Keyword",
             action = "Lazy",
-            key = "l",
+            key = "p",
           },
           {
             desc = "LSP and Debuger",

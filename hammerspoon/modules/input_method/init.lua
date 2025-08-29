@@ -1,14 +1,21 @@
 -- switch rime and abc
-hs.hotkey.bind({ "alt" }, "q", function()
-  local abc = "com.apple.keylayout.ABC"
-  local rime = "im.rime.inputmethod.Squirrel.Hans"
-  local sid = hs.keycodes.currentSourceID()
-  if sid == abc then
-    hs.keycodes.currentSourceID(rime)
-  else
-    hs.keycodes.currentSourceID(abc)
-  end
+hs.hotkey.bind({ "cmd" }, ";", function()
+  hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
 end)
+hs.hotkey.bind({ "cmd" }, "'", function()
+  hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
+end)
+
+--hs.hotkey.bind({ "alt" }, "e", function()
+--  local abc = "com.apple.keylayout.ABC"
+--  local rime = "im.rime.inputmethod.Squirrel.Hans"
+--  local sid = hs.keycodes.currentSourceID()
+--  if sid == abc then
+--    hs.keycodes.currentSourceID(rime)
+--  else
+--    hs.keycodes.currentSourceID(abc)
+--  end
+--end)
 
 -- Switch input method into English
 --local sourceID = "com.apple.inputmethod.SCIM.ITABC"

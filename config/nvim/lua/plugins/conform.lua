@@ -11,6 +11,7 @@ local opts = {
     rust = { "rustfmt", lsp_format = "fallback" },
     typescript = { "biome" },
     yaml = { "yamlfmt" },
+    zig = { "zigfmt" },
   },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat == true then
@@ -24,11 +25,9 @@ local opts = {
 vim.api.nvim_create_user_command("AutoformatToggle", function(args)
   if vim.g.disable_autoformat == true then
     vim.g.disable_autoformat = false
-    vim.g.zig_fmt_autosave = 1
     vim.notify "Autoformat enabled"
   else
     vim.g.disable_autoformat = true
-    vim.g.zig_fmt_autosave = 0
     vim.notify "Autoformat disabled"
   end
 end, {
@@ -40,11 +39,6 @@ return {
   "stevearc/conform.nvim",
   cmd = { "AutoformatToggle" },
   event = { "BufRead", "BufNewFile" },
-  init = function()
-    if vim.g.disable_autoformat == true then
-      vim.g.zig_fmt_autosave = 0
-    end
-  end,
   config = function()
     require("conform").setup(opts)
   end,

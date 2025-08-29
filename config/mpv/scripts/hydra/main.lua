@@ -2,15 +2,6 @@ local set = require("hydra").set
 
 mp.register_script_message("hydra-leader", function()
   set {
-    ["f"] = {
-      "Search",
-      {
-        ["c"] = { "Command", "script-message show-command-palette Commands" },
-        ["l"] = { "Playlist", "script-message show-command-palette Playlist" },
-        ["p"] = { "Chapters", "script-message show-command-palette Chapters" },
-      },
-    },
-
     ["l"] = { "ab-loop", "ab-loop" },
 
     -- Window

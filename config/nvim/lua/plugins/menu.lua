@@ -172,6 +172,14 @@ return {
             update { g = { disable_autoformat = s } }
           end,
         },
+        {
+          {
+            key = "q",
+            desc = "Quit",
+            quit = true,
+            hidden = true,
+          },
+        },
       },
     })
   end,

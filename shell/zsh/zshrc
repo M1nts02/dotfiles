@@ -80,6 +80,7 @@ alias g=gitu
 alias ls="eza --icons -F"
 alias l="eza -l --color=auto"
 alias ll="eza -l --color=auto --total-size"
+alias lg="eza --git"
 alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed

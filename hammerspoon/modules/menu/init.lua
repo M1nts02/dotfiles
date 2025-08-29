@@ -219,7 +219,7 @@ add("Window", {
    [l]: Right
                              ]],
   helperFormat = {
-    atScreenEdge = 1,
+    atScreenEdge = 0,
     radius = 0,
     textStyle = { font = { name = "Monaco", size = 13 } },
   },
