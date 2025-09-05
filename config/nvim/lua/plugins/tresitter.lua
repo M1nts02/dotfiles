@@ -7,6 +7,7 @@ return {
   build = ":TSUpdate",
   event = { "BufRead", "BufNewFile" },
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo", "TSUpdate" },
+  dependencies = { "OXY2DEV/markview.nvim" },
   init = function()
     -- Enable highlight
     vim.api.nvim_create_autocmd("BufReadPost", {
