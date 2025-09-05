@@ -51,6 +51,12 @@ return {
             key = "m",
           },
           {
+            desc = "Neogit",
+            desc_hl = "Define",
+            action = "Neogit",
+            key = "n",
+          },
+          {
             desc = "Sessions",
             desc_hl = "String",
             action = "Telescope persisted",

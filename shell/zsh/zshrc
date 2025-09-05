@@ -75,7 +75,6 @@ function y() {
 #alias pip3=/opt/homebrew/bin/pip3
 #alias pip=/opt/homebrew/bin/pip3
 alias v=/opt/homebrew/bin/nvim
-alias g=gitu
 
 alias ls="eza --icons -F"
 alias l="eza -l --color=auto"
