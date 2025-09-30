@@ -1,0 +1,30 @@
+theme = light:catppuccin latte,dark:catppuccin mocha
+
+auto-update = off
+quick-terminal-position = center
+quit-after-last-window-closed = true
+macos-option-as-alt = true
+window-save-state = always
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+
+window-inherit-font-size = false
+font-family = RecMonoSmCasual Nerd Font Mono
+font-size = 14
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+window-padding-balance = true
+
+keybind = cmd+b>r=reload_config
+
+keybind = cmd+b>v=new_split:right
+keybind = cmd+b>s=new_split:down
+
+keybind = cmd+b>j=goto_split:bottom
+keybind = cmd+b>k=goto_split:top
+keybind = cmd+b>h=goto_split:left
+keybind = cmd+b>l=goto_split:right

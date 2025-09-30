@@ -1,0 +1,1 @@
+{"cmake(c)":{"template":"cmake(c).txt","target":"CMakeLists.txt"},"stylua":{"template":"stylua.toml","target":"stylua.toml"},"xmake(c)":{"template":"xmake_c.lua","target":"xmake.lua"}}

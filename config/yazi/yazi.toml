@@ -1,0 +1,43 @@
+[mgr]
+sort_sensitive = false
+sort_reverse   = false
+show_symlink   = true
+ratio = [1, 4, 3]
+
+[opener]
+folder = [
+  { run = 'open -R "$@"', desc = "Reveal in Finder" },
+  { run = 'open -a kid3 "$@"', desc = "Kid3"},
+  { run = '$EDITOR "$@"' },
+]
+archive = [
+  { run = 'unar "$1"', desc = "Extract here" },
+]
+text = [
+  { run = 'nvim "$@"', block = true },
+]
+image = [
+  { run = 'open "$@"', desc = "Open" },
+  { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
+]
+video = [
+  { run = 'open "$@"', desc = "Open" },
+  { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
+]
+audio = [
+  { run = 'open "$@"', desc = "Open" },
+  { run = 'open -a kid3 "$@"', desc = "Kid3"},
+  { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
+]
+fallback = [
+  { run = 'open "$@"', desc = "Open" },
+  { run = 'open -R "$@"', desc = "Reveal in Finder" },
+]
+
+[tasks]
+micro_workers = 5
+macro_workers = 10
+bizarre_retry = 5
+
+[log]
+enabled = false

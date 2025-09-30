@@ -1,0 +1,7 @@
+if has('win32') || exists('$WSLENV')
+  set guifont=Cascadia\ Code:h11
+elseif has("mac")
+  let $PATH.=":/opt/homebrew/bin/"
+  set guioptions+=T
+  set guifont=Monaco:h14
+endif

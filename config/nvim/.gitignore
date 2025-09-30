@@ -1,0 +1,8 @@
+lazy-lock.json
+lua/custom.lua
+custom.lua
+.cache.json
+.DS_Store
+.luarc.json
+zig-cache
+template/zig-cache
