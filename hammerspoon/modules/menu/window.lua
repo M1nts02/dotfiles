@@ -51,8 +51,9 @@ add("Window", {
   {
     singleKey("t", "Top"),
     function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.93 }
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.5, 0.6 }
     end,
+    { keep = true },
   },
   {
     singleKey("q", "Quit"),

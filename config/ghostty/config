@@ -1,10 +1,13 @@
 theme = light:catppuccin latte,dark:catppuccin mocha
+custom-shader = ghostty-shaders/cursor_blaze.glsl
 
 auto-update = off
 quick-terminal-position = center
 quit-after-last-window-closed = true
 macos-option-as-alt = true
 window-save-state = always
+window-width = 150
+window-height = 50
 
 shell-integration-features = no-cursor
 cursor-style = block
@@ -18,6 +21,9 @@ font-feature = -liga
 font-feature = -dlig
 
 window-padding-balance = true
+window-decoration = none
+background-opacity = 0.8
+background-blur = true
 
 keybind = cmd+b>r=reload_config
 
@@ -28,3 +34,4 @@ keybind = cmd+b>j=goto_split:bottom
 keybind = cmd+b>k=goto_split:top
 keybind = cmd+b>h=goto_split:left
 keybind = cmd+b>l=goto_split:right
+keybind = cmd+b>f=toggle_quick_terminal

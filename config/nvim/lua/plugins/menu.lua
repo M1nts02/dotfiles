@@ -7,7 +7,7 @@ return {
   "M1nts02/nvim-menu",
   keys = {
     {
-      "gm",
+      "<Space>m",
       function()
         local menu = require "nvim-menu"
         menu.open "Menu"

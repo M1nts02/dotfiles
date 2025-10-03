@@ -3,6 +3,7 @@ local keys = {
   { "<Space>ff", "<CMD>Telescope fd<CR>", desc = "Fd" },
   { "<Space>fo", "<CMD>Telescope oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fb", "<CMD>Telescope buffers<CR>", desc = "Buffers" },
+  { "<Space>fc", "<CMD>Telescope commands<CR>", desc = "Commands" },
   { "<Space>fh", "<CMD>Telescope help_tags<CR>", desc = "Help" },
   { "<Space>fm", "<CMD>Telescope marks<CR>", desc = "Marks" },
   { "<Space>fw", "<CMD>Telescope workspaces<CR>", desc = "Workspace" },

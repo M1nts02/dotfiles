@@ -15,13 +15,13 @@ M.helperModifierMapping = {
 M.color = hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
       == "true\n"
     and {
-      strokeColor = { white = 0.05, alpha = 1 },
-      fillColor = { white = 0.05, alpha = 1 },
+      strokeColor = { white = 0.05, alpha = 0.9 },
+      fillColor = { white = 0.05, alpha = 0.9 },
       textColor = { white = 0.5, alpha = 1 },
     }
   or {
-    strokeColor = { white = 0.95, alpha = 1 },
-    fillColor = { white = 0.95, alpha = 1 },
+    strokeColor = { white = 0.95, alpha = 0.9 },
+    fillColor = { white = 0.95, alpha = 0.9 },
     textColor = { white = 0.5, alpha = 1 },
   }
 

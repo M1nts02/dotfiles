@@ -2,7 +2,7 @@ local menu = require "modules.menu.menu"
 
 menu.helperFormat = {
   atScreenEdge = 0,
-  radius = 20,
+  radius = 10,
   textStyle = { font = { name = "Monaco", size = 14 } },
 }
 
@@ -26,14 +26,14 @@ add("Main Menu", {
 
       if output == "true\n" then
         menu.color = {
-          strokeColor = { white = 0.95, alpha = 1 },
-          fillColor = { white = 0.95, alpha = 1 },
+          strokeColor = { white = 0.95, alpha = 0.9 },
+          fillColor = { white = 0.95, alpha = 0.9 },
           textColor = { white = 0.5, alpha = 1 },
         }
       else
         menu.color = {
-          strokeColor = { white = 0.05, alpha = 1 },
-          fillColor = { white = 0.05, alpha = 1 },
+          strokeColor = { white = 0.05, alpha = 0.9 },
+          fillColor = { white = 0.05, alpha = 0.9 },
           textColor = { white = 0.5, alpha = 1 },
         }
       end
@@ -74,6 +74,27 @@ add("Main Menu", {
       hs.application.launchOrFocus "Ghostty"
     end,
   },
+  -- Yazi
+  {
+    singleKey("y", "Yazi"),
+    function()
+      hs.execute("nohup /Applications/Ghostty.app/Contents/MacOS/ghostty -e yazi > /tmp/yazi.log &", true)
+    end,
+  },
+  -- Rmpc
+  {
+    singleKey("p", "Rmpc"),
+    function()
+      hs.execute("nohup /Applications/Ghostty.app/Contents/MacOS/ghostty  -e rmpc > /tmp/ghostty.log &", true)
+    end,
+  },
+  -- Activity Monitor
+  {
+    singleKey("a", "Monitor"),
+    function()
+      hs.application.launchOrFocus "Activity Monitor"
+    end,
+  },
   -- Finder
   {
     singleKey("f", "Finder"),
@@ -109,27 +130,21 @@ end tell
 }, {
   helper = [[
 
-     [l]: LaunchPad
+     [l]: LaunchPad       [f]: Finder
 
-     [d]: Dark
+     [d]: Dark            [g]: Ghostty
 
-     [e]: ScreenSaver
+     [e]: ScreenSaver     [y]: Yazi(Ghostty)
 
-     [r]: Rime
+     [r]: Rime            [p]: Rmpc(Ghostty)
 
-     [s]: Screenshot
+     [s]: Screenshot      [a]: Activity Monitor
 
-     [m]: Mission
+     [m]: Mission         [t]: Trash
 
      [o]: Setting
 
-     [f]: Finder
-
-     [g]: Ghostty
-
-     [t]: Trash
-
-                         ]],
+                                                    ]],
 
   helperFormat = {
     atScreenEdge = 0,

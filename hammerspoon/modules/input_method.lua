@@ -1,4 +1,4 @@
-hs.hotkey.bind({ "cmd" }, "e", function()
+hs.hotkey.bind({ "alt" }, "s", function()
   local abc = "com.apple.keylayout.ABC"
   local rime = "im.rime.inputmethod.Squirrel.Hans"
   local sid = hs.keycodes.currentSourceID()

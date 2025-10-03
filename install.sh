@@ -8,6 +8,7 @@ ln -s ${DIR}/config/yazi    ${HOME}/.config/yazi
 ln -s ${DIR}/config/ghostty ${HOME}/.config/ghostty
 ln -s ${DIR}/config/mpv     ${HOME}/.config/mpv
 ln -s ${DIR}/config/aria2   ${HOME}/.config/aria2
+ln -s ${DIR}/config/rmpc    ${HOME}/.config/rmpc
 
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
 

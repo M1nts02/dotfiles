@@ -4,7 +4,7 @@ imageObj = hs.image.imageFromPath(os.getenv "HOME" .. "/.hammerspoon/icons/ena.p
 
 menu.helperFormat = {
   atScreenEdge = 0,
-  radius = 20,
+  radius = 10,
   textStyle = { font = { name = "Monaco", size = 14 } },
 }
 
@@ -32,26 +32,6 @@ add("Mpd", {
   },
   {
     singleKey("[", "Prev"),
-    function()
-      local result = hs.execute("mpc prev", true)
-      local i = string.find(result, "\n")
-      local r = string.sub(result, 1, i)
-      hs.notify.new():title("Mpd Prev"):subTitle(r):setIdImage(imageObj):contentImage(imageObj):send()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("d", "Next"),
-    function()
-      local result = hs.execute("mpc next", true)
-      local i = string.find(result, "\n")
-      local r = string.sub(result, 1, i)
-      hs.notify.new():title("Mpd Next"):subTitle(r):setIdImage(imageObj):contentImage(imageObj):send()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("a", "Prev"),
     function()
       local result = hs.execute("mpc prev", true)
       local i = string.find(result, "\n")
@@ -139,8 +119,8 @@ add("Mpd", {
   helper = [[
 
    [,]: Single [.]: Random  [l]: Repeat
-   [a]: Prev   [d]: Next    [s]: Stop
-   [u]: Update [r]: Restart [o]: Status
+   [s]: Stop   [u]: Update  [r]: Restart
+   [o]: Status
                                          ]],
   helperFormat = {
     atScreenEdge = 1,
@@ -148,6 +128,6 @@ add("Mpd", {
   },
 })
 
-hs.hotkey.bind({ "alt" }, "e", function()
+hs.hotkey.bind({ "alt" }, "d", function()
   run "Mpd"
 end)
