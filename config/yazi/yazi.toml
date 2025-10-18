@@ -8,6 +8,7 @@ ratio = [1, 4, 3]
 folder = [
   { run = 'open -R "$@"', desc = "Reveal in Finder" },
   { run = 'open -a kid3 "$@"', desc = "Kid3"},
+  { run = 'nohup mpv "$@" > /tmp/mpv.log &' , desc = "Mpv"},
   { run = '$EDITOR "$@"' },
 ]
 archive = [
@@ -18,14 +19,17 @@ text = [
 ]
 image = [
   { run = 'open "$@"', desc = "Open" },
+  { run = 'nohup mpv "$@" > /tmp/mpv.log &',  desc = "Mpv" },
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
   { run = 'open "$@"', desc = "Open" },
+  { run = 'nohup mpv "$@" > /tmp/mpv.log &',  desc = "Mpv" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
   { run = 'open "$@"', desc = "Open" },
+  { run = 'nohup mpv "$@" > /tmp/mpv.log &',  desc = "Mpv" },
   { run = 'open -a kid3 "$@"', desc = "Kid3"},
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]

@@ -69,7 +69,7 @@ add("Window", {
                              ]],
   helperFormat = {
     atScreenEdge = 0,
-    radius = 20,
+    radius = 0,
     textStyle = { font = { name = "Monaco", size = 13 } },
   },
 })

@@ -15,14 +15,15 @@ cursor-style-blink = true
 
 window-inherit-font-size = false
 font-family = RecMonoSmCasual Nerd Font Mono
-font-size = 14
+font-size = 15
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 
 window-padding-balance = true
-window-decoration = none
-background-opacity = 0.8
+macos-titlebar-style = tabs
+macos-window-buttons = hidden
+macos-titlebar-proxy-icon = hidden
 background-blur = true
 
 keybind = cmd+b>r=reload_config

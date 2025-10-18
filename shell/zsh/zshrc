@@ -5,9 +5,9 @@ export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottle
 export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 eval $(/opt/homebrew/bin/brew shellenv)
 
-export PATH=$(brew --prefix)/include:$PATH
-export LIBRARY_PATH=$(brew --prefix)/lib
 export HOMEBREW=$(brew --prefix)
+export PATH=${HOMEBREW}/include:$PATH
+export LIBRARY_PATH=${HOMEBREW}/lib
 
 export VISUAL="nvim"
 export EDITOR="nvim"
@@ -98,6 +98,7 @@ alias ls="eza --icons -F"
 alias l="eza -l --color=auto"
 alias ll="eza -l --color=auto --total-size"
 alias lg="eza --git"
+alias hf='history | fzf -e'
 alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed
@@ -105,3 +106,5 @@ alias awk=gawk
 alias grep=ggrep
 
 eval "$(zoxide init zsh)"
+
+export ORX="/Users/m1nts02/project/orx/code"

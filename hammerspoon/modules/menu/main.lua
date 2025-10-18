@@ -2,13 +2,14 @@ local menu = require "modules.menu.menu"
 
 menu.helperFormat = {
   atScreenEdge = 0,
-  radius = 10,
+  radius = 0,
   textStyle = { font = { name = "Monaco", size = 14 } },
 }
 
 local add = menu.add
 local run = menu.run
 local singleKey = menu.singleKey
+local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none --background-opacity=0.85"
 
 add("Main Menu", {
   { -- Screenshot
@@ -71,21 +72,21 @@ add("Main Menu", {
   {
     singleKey("g", "Ghostty"),
     function()
-      hs.application.launchOrFocus "Ghostty"
+      hs.execute "open -a Ghostty -n"
     end,
   },
   -- Yazi
   {
     singleKey("y", "Yazi"),
     function()
-      hs.execute("nohup /Applications/Ghostty.app/Contents/MacOS/ghostty -e yazi > /tmp/yazi.log &", true)
+      hs.execute("nohup " .. terminal .. " -e yazi > /tmp/yazi.log &", true)
     end,
   },
   -- Rmpc
   {
     singleKey("p", "Rmpc"),
     function()
-      hs.execute("nohup /Applications/Ghostty.app/Contents/MacOS/ghostty  -e rmpc > /tmp/ghostty.log &", true)
+      hs.execute("nohup " .. terminal .. " -e rmpc > /tmp/ghostty.log &", true)
     end,
   },
   -- Activity Monitor
@@ -134,9 +135,9 @@ end tell
 
      [d]: Dark            [g]: Ghostty
 
-     [e]: ScreenSaver     [y]: Yazi(Ghostty)
+     [e]: ScreenSaver     [y]: Yazi
 
-     [r]: Rime            [p]: Rmpc(Ghostty)
+     [r]: Rime            [p]: Rmpc
 
      [s]: Screenshot      [a]: Activity Monitor
 

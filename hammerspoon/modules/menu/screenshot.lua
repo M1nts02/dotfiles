@@ -42,4 +42,10 @@ add("Screenshot", {
     singleKey("q", "Quit"),
     function() end,
   },
+}, {
+  helperFormat = {
+    atScreenEdge = 0,
+    radius = 0,
+    textStyle = { font = { name = "Monaco", size = 13 } },
+  },
 })

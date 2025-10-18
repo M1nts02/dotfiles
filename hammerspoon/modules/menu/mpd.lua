@@ -4,7 +4,7 @@ imageObj = hs.image.imageFromPath(os.getenv "HOME" .. "/.hammerspoon/icons/ena.p
 
 menu.helperFormat = {
   atScreenEdge = 0,
-  radius = 10,
+  radius = 0,
   textStyle = { font = { name = "Monaco", size = 14 } },
 }
 
