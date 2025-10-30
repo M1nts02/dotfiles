@@ -82,13 +82,6 @@ add("Main Menu", {
       hs.execute("nohup " .. terminal .. " -e yazi > /tmp/yazi.log &", true)
     end,
   },
-  -- Rmpc
-  {
-    singleKey("p", "Rmpc"),
-    function()
-      hs.execute("nohup " .. terminal .. " -e rmpc > /tmp/ghostty.log &", true)
-    end,
-  },
   -- Activity Monitor
   {
     singleKey("a", "Monitor"),
@@ -137,13 +130,12 @@ end tell
 
      [e]: ScreenSaver     [y]: Yazi
 
-     [r]: Rime            [p]: Rmpc
+     [r]: Rime            [s]: Screenshot
 
-     [s]: Screenshot      [a]: Activity Monitor
+     [o]: Setting         [a]: Activity Monitor
 
      [m]: Mission         [t]: Trash
 
-     [o]: Setting
 
                                                     ]],
 

@@ -92,7 +92,6 @@ function y() {
 #alias pip=/opt/homebrew/bin/pip3
 alias v=nvim
 alias vi=nvim
-alias vim=nvim
 
 alias ls="eza --icons -F"
 alias l="eza -l --color=auto"

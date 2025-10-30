@@ -6,8 +6,10 @@ quick-terminal-position = center
 quit-after-last-window-closed = true
 macos-option-as-alt = true
 window-save-state = always
-window-width = 150
-window-height = 50
+window-width = 130
+window-height = 40
+window-decoration = none
+background-opacity = 0.85
 
 shell-integration-features = no-cursor
 cursor-style = block
