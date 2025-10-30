@@ -96,6 +96,13 @@ add("Main Menu", {
       hs.application.launchOrFocus "Finder"
     end,
   },
+  -- Safari
+  {
+    singleKey("b", "Safari"),
+    function()
+      hs.application.launchOrFocus "Safari"
+    end,
+  },
   -- Trash
   {
     singleKey("t", "Trash"),
@@ -134,8 +141,9 @@ end tell
 
      [o]: Setting         [a]: Activity Monitor
 
-     [m]: Mission         [t]: Trash
+     [b]: Safari          [m]: Mission
 
+     [t]: Trash
 
                                                     ]],
 
