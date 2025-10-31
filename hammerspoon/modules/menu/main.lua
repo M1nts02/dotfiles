@@ -41,12 +41,6 @@ add("Main Menu", {
       hs.shortcuts.run "暗色模式"
     end,
   },
-  {
-    singleKey("e", "ScreenSaver"),
-    function()
-      hs.osascript.applescript 'tell application "ScreenSaverEngine" to run'
-    end,
-  },
   -- System Setting
   {
     singleKey("o", "SystemSetting"),
@@ -59,13 +53,6 @@ add("Main Menu", {
     singleKey("m", "MissionControl"),
     function()
       hs.spaces.openMissionControl()
-    end,
-  },
-  {
-    singleKey("l", "LaunchPad"),
-    function()
-      hs.keycodes.currentSourceID "com.apple.keylayout.ABC"
-      hs.spaces.toggleLaunchPad()
     end,
   },
   -- Ghostty
@@ -82,38 +69,11 @@ add("Main Menu", {
       hs.execute("nohup " .. terminal .. " -e yazi > /tmp/yazi.log &", true)
     end,
   },
-  -- Activity Monitor
-  {
-    singleKey("a", "Monitor"),
-    function()
-      hs.application.launchOrFocus "Activity Monitor"
-    end,
-  },
   -- Finder
   {
     singleKey("f", "Finder"),
     function()
       hs.application.launchOrFocus "Finder"
-    end,
-  },
-  -- Safari
-  {
-    singleKey("b", "Safari"),
-    function()
-      hs.application.launchOrFocus "Safari"
-    end,
-  },
-  -- Trash
-  {
-    singleKey("t", "Trash"),
-    function()
-      hs.osascript.applescript [[
-tell application "Finder"
-  open trash
-  set the current view of the front Finder window to list view
-  activate
-end tell
-]]
     end,
   },
   -- Rimer Switcher
@@ -131,19 +91,13 @@ end tell
 }, {
   helper = [[
 
-     [l]: LaunchPad       [f]: Finder
-
      [d]: Dark            [g]: Ghostty
 
-     [e]: ScreenSaver     [y]: Yazi
+     [y]: Yazi            [f]: Finder
 
      [r]: Rime            [s]: Screenshot
 
-     [o]: Setting         [a]: Activity Monitor
-
-     [b]: Safari          [m]: Mission
-
-     [t]: Trash
+     [m]: Mission         [o]: Setting
 
                                                     ]],
 

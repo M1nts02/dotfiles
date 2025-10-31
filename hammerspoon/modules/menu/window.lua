@@ -63,8 +63,11 @@ add("Window", {
   helper = [[
 
    [h]: Left   [o]: Max
+
    [j]: Down   [f]: Float
+
    [k]: Up     [t]: Top
+
    [l]: Right
                              ]],
   helperFormat = {

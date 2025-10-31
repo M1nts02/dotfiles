@@ -1,5 +1,6 @@
 local application = require "hs.application"
 local hotkey = require "hs.hotkey"
+local actions = require "actions"
 
 local config = {
   debounceDelay = 100,
@@ -15,7 +16,7 @@ local applicationsCacheTime = nil
 local applicationsCacheDuration = 3600
 local searchTimer = nil
 
-local function getApplications()
+local function getItems()
   local currentTime = os.time()
   if
     applicationsCache
@@ -25,12 +26,13 @@ local function getApplications()
     return applicationsCache
   end
 
-  local apps = {}
+  local items = {}
   local appPaths = {
     "/Applications/",
     "~/Applications/",
     "/System/Applications/",
     "/System/Applications/Utilities/",
+    "/System/Cryptexes/App/System/Applications",
   }
 
   for _, path in ipairs(appPaths) do
@@ -41,37 +43,28 @@ local function getApplications()
       for line in handle:lines() do
         local appName = line:match "([^/]+)%.app$"
         if appName then
-          table.insert(apps, { name = appName, path = line })
+          table.insert(items, { name = appName, path = line })
         end
       end
       handle:close()
     end
   end
 
-  applicationsCache = apps
+  applicationsCache = items
   applicationsCacheTime = currentTime
 
-  return apps
+  return items
 end
 
-local function launchApplication(app)
-  if not app then
+local function launchItem(item)
+  if not item then
     return
   end
 
-  local runningApps = application.runningApplications()
-  local appRunning = false
-
-  for _, runningApp in ipairs(runningApps) do
-    if runningApp:name() == app.name or runningApp:path() == app.path then
-      runningApp:activate()
-      appRunning = true
-      break
-    end
-  end
-
-  if not appRunning then
-    application.launchOrFocus(app.path)
+  if item.type == "App" then
+    application.launchOrFocus(item.path)
+  elseif item.type == "Action" then
+    actions[item.name]()
   end
 
   if chooser then
@@ -81,39 +74,44 @@ end
 
 chooser = hs.chooser.new(function(selection)
   if selection then
-    launchApplication(selection)
+    launchItem(selection)
   end
 end)
 
 chooser:rows(config.maxResults)
 chooser:searchSubText(false)
 
-local function searchApplications(query)
+local function searchItems(query)
   if not query or query == "" then
     chooser:choices {}
     return
   end
 
-  local allApps = getApplications()
-  local filteredApps = {}
+  local allItems = getItems()
+  local filteredItems = {}
 
-  for _, app in ipairs(allApps) do
-    if config.matcher(app.name, query) then
+  for _, item in ipairs(allItems) do
+    if config.matcher(item.name, query) then
       local appInfo = {
-        text = app.name,
-        subText = app.path,
-        name = app.name,
-        path = app.path,
+        text = item.name,
+        subText = item.path,
+        name = item.name,
+        path = item.path,
+        type = "App",
       }
-      table.insert(filteredApps, appInfo)
+      table.insert(filteredItems, appInfo)
 
-      if #filteredApps >= config.maxResults then
+      if #filteredItems >= config.maxResults then
         break
       end
     end
   end
 
-  chooser:choices(filteredApps)
+  for i, _ in pairs(actions) do
+    table.insert(filteredItems, { text = i, subText = "Action", name = i, type = "Action" })
+  end
+
+  chooser:choices(filteredItems)
 end
 
 chooser:queryChangedCallback(function(query)
@@ -122,7 +120,7 @@ chooser:queryChangedCallback(function(query)
   end
 
   searchTimer = hs.timer.doAfter(config.debounceDelay / 1000, function()
-    searchApplications(query)
+    searchItems(query)
   end)
 end)
 
