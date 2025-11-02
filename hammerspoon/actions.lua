@@ -1,23 +1,5 @@
-local menu = require "modules.menu.menu"
-
 return {
   ["Dark Mode"] = function()
-    local output =
-      hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
-
-    if output == "true\n" then
-      menu.color = {
-        strokeColor = { white = 0.95, alpha = 0.9 },
-        fillColor = { white = 0.95, alpha = 0.9 },
-        textColor = { white = 0.5, alpha = 1 },
-      }
-    else
-      menu.color = {
-        strokeColor = { white = 0.05, alpha = 0.9 },
-        fillColor = { white = 0.05, alpha = 0.9 },
-        textColor = { white = 0.5, alpha = 1 },
-      }
-    end
     hs.shortcuts.run "暗色模式"
   end,
   ["Finder"] = function()

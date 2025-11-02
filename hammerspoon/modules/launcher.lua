@@ -108,7 +108,7 @@ local function searchItems(query)
   end
 
   for i, _ in pairs(actions) do
-    table.insert(filteredItems, { text = i, subText = "Action", name = i, type = "Action" })
+    table.insert(filteredItems, { text = i, subText = "Action:" .. i, name = i, type = "Action" })
   end
 
   chooser:choices(filteredItems)

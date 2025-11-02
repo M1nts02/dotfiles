@@ -41,9 +41,13 @@ keymap = [
   { on = [ "g", "m" ], run = "cd ~/Movies/", desc = "Goto movies" },
   { on = [ "g", "t" ], run = "cd ~/Desktop/", desc = "Goto desktop" },
   { on = [ "g", "/" ], run = "cd /", desc = "Goto root" },
+  { on = [ "g", "h" ], run = "cd ~", desc = "Go to the home directory" },
   { on = [ "G" ],      run = "arrow bot", desc = "Move cursor to the bottom" },
   { on = [ "<Home>" ], run = "arrow top", desc = "Move cursor to the top" },
   { on = [ "<End>" ],  run = "arrow bot", desc = "Move cursor to the bottom" },
+
+  # Filtering
+  { on = [ "f" ], run = "filter", desc = "Filter" },
 
   # Selection
   { on = [ "<Space>" ], run = [ "toggle --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
@@ -80,6 +84,11 @@ keymap = [
   { on = [ "c", "f" ], run = "copy filename",         desc = "Copy the name of the file" },
   { on = [ "c", "n" ], run = "copy name_without_ext", desc = "Copy the name of the file without the extension" },
 
+  # Compress
+  { on = [ "c", "7" ], run = 'shell --block --confirm -- 7za a "archive_$(date +%Y%m%d_%H%M%S).7z" "$@"',    desc = "compress(7z)" },
+  { on = [ "c", "z" ], run = 'shell --block --confirm -- zip "archive_$(date +%Y%m%d_%H%M%S).zip" "$@"',     desc = "compress(zip)" },
+  { on = [ "c", "t" ], run = 'shell --block --confirm -- tar -cf "archive_$(date +%Y%m%d_%H%M%S).tar" "$@"', desc = "compress(tar)" },
+
   # Find
   { on = [ "/" ], run = "find --smart" },
   { on = [ "?" ], run = "find --previous --smart" },
@@ -97,6 +106,12 @@ keymap = [
   { on = [ "z", "N" ], run = "sort natural --reverse --dir_first",      desc = "Sort naturally (reverse)" },
   { on = [ "z", "s" ], run = "sort size --dir_first",                   desc = "Sort by size" },
   { on = [ "z", "S" ], run = "sort size --reverse --dir_first",         desc = "Sort by size (reverse)" },
+  { on = [ "Z"],   run = "cd --interactive", desc = "Go to a directory interactively" },
+
+  # fzf
+  { on = [ "z", "f" ], run = "plugin fzf", desc = "Jump to a file/directory via fzf" },
+  # zoxide
+  { on = [ "z", "z" ], run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
 
   # Tabs
   { on = [ "t" ], run = "tab_create --current", desc = "Create a new tab using the current path" },
@@ -120,14 +135,8 @@ keymap = [
   # Tasks
   { on = [ "W" ], run = "tasks_show", desc = "Show the tasks manager" },
 
-  # Goto
-  { on = [ "g", "h" ],  run = "cd ~",             desc = "Go to the home directory" },
-  { on = [ "z", "z"],   run = "cd --interactive", desc = "Go to a directory interactively" },
-
   # Help
   { on = [ "~" ], run = "help", desc = "Open help" },
-
-  #{ on = [ "<Tab>" ], run = "plugin toggle-pane max-preview", desc = "Maximize or restore the preview pane" },
 ]
 
 [tasks]

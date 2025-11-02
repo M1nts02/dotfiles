@@ -2,7 +2,7 @@ local menu = require "modules.menu.menu"
 
 menu.helperFormat = {
   atScreenEdge = 0,
-  radius = 0,
+  radius = 10,
   textStyle = { font = { name = "Monaco", size = 14 } },
 }
 
@@ -16,43 +16,6 @@ add("Main Menu", {
     singleKey("s", "Screenshot"),
     function()
       run "Screenshot"
-    end,
-  },
-  -- Dark Mode
-  {
-    singleKey("d", "Dark"),
-    function()
-      local output =
-        hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
-
-      if output == "true\n" then
-        menu.color = {
-          strokeColor = { white = 0.95, alpha = 0.9 },
-          fillColor = { white = 0.95, alpha = 0.9 },
-          textColor = { white = 0.5, alpha = 1 },
-        }
-      else
-        menu.color = {
-          strokeColor = { white = 0.05, alpha = 0.9 },
-          fillColor = { white = 0.05, alpha = 0.9 },
-          textColor = { white = 0.5, alpha = 1 },
-        }
-      end
-      hs.shortcuts.run "暗色模式"
-    end,
-  },
-  -- System Setting
-  {
-    singleKey("o", "SystemSetting"),
-    function()
-      hs.osascript.applescript [[tell application "System Preferences" to activate]]
-    end,
-  },
-  -- Mission Control
-  {
-    singleKey("m", "MissionControl"),
-    function()
-      hs.spaces.openMissionControl()
     end,
   },
   -- Ghostty
@@ -71,17 +34,124 @@ add("Main Menu", {
   },
   -- Finder
   {
-    singleKey("f", "Finder"),
+    singleKey("1", "Finder"),
     function()
       hs.application.launchOrFocus "Finder"
     end,
   },
   -- Rimer Switcher
   {
-    singleKey("r", "Rime"),
+    singleKey("i", "Rime"),
     function()
       hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
       hs.eventtap.keyStroke({ "control", "shift" }, "f4")
+    end,
+  },
+  {
+    singleKey("o", "Maximize"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.99 }
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("f", "Float"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.075, 0.075, 0.85, 0.85 }
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("k", "Up"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.4925 }
+      -- hs.eventtap.keyStroke({ "control", "fn" }, "f")
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("j", "Down"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.99, 0.4925 }
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("h", "Left"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("l", "Right"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("t", "Top"),
+    function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.5, 0.6 }
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("-", "Volume Down"),
+    function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local newVolume = math.min(current - 5, 100)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("=", "Volume Up"),
+    function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local newVolume = math.min(current + 5, 100)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("0", "Mute Toggle"),
+    function()
+      local device = hs.audiodevice.defaultOutputDevice()
+      local muted = device:muted()
+      device:setMuted(not muted)
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("]", "Next"),
+    function()
+      hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
+      hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("[", "Previous"),
+    function()
+      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
+      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("p", "Play"),
+    function()
+      hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
+      hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("r", "Reload"),
+    function()
+      hs.reload()
     end,
   },
   {
@@ -91,15 +161,21 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [d]: Dark            [g]: Ghostty
+     [1]: Finder          [y]: Yazi
 
-     [y]: Yazi            [f]: Finder
+     [g]: Ghostty         [s]: Screenshot
 
-     [r]: Rime            [s]: Screenshot
+     [i]: Rime            [r]: Reload
 
-     [m]: Mission         [o]: Setting
+     [o]: Window Max      [f]: Window Float
 
-                                                    ]],
+     [h]: Window Left     [l]: Window Right
+
+     [k]: Window Up       [j]: Window Down
+
+     [t]: Window Top
+
+                                                ]],
 
   helperFormat = {
     atScreenEdge = 0,
@@ -146,6 +222,21 @@ add("Screenshot", {
   },
 })
 
-hs.hotkey.bind({ "alt" }, "a", function()
+hs.hotkey.bind({ "cmd" }, "`", function()
+  local output = hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
+
+  if output == "true\n" then
+    menu.color = {
+      strokeColor = { white = 0.05, alpha = 0.9 },
+      fillColor = { white = 0.05, alpha = 0.9 },
+      textColor = { white = 0.5, alpha = 1 },
+    }
+  else
+    menu.color = {
+      strokeColor = { white = 0.95, alpha = 0.9 },
+      fillColor = { white = 0.95, alpha = 0.9 },
+      textColor = { white = 0.5, alpha = 1 },
+    }
+  end
   run "Main Menu"
 end)

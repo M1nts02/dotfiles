@@ -1,5 +1,7 @@
 theme = light:catppuccin latte,dark:catppuccin mocha
 custom-shader = ghostty-shaders/cursor_blaze.glsl
+window-padding-x = 5,5
+window-padding-y = 5,5
 
 auto-update = off
 quick-terminal-position = center
@@ -8,7 +10,7 @@ macos-option-as-alt = true
 window-save-state = always
 window-width = 130
 window-height = 40
-window-decoration = none
+#window-decoration = none
 background-opacity = 0.85
 
 shell-integration-features = no-cursor

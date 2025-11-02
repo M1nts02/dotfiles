@@ -99,7 +99,6 @@ alias cd="z"
 alias sed=gsed
 alias awk=gawk
 alias grep=ggrep
+alias keka="/Applications/Keka.app/Contents/MacOS/Keka --cli"
 
 eval "$(zoxide init zsh)"
-
-export ORX="/Users/m1nts02/project/orx/code"

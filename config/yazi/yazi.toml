@@ -6,13 +6,11 @@ ratio = [1, 4, 3]
 
 [opener]
 folder = [
-  { run = 'open -R "$@"', desc = "Reveal in Finder" },
-  { run = 'open -a kid3 "$@"', desc = "Kid3"},
   { run = 'nohup mpv "$@" > /tmp/mpv.log &' , desc = "Mpv"},
-  { run = '$EDITOR "$@"' },
+  { run = 'open -a kid3 "$@"', desc = "Kid3"},
 ]
 archive = [
-  { run = 'unar "$1"', desc = "Extract here" },
+  { run = 'open "$@"', desc = "Open" },
 ]
 text = [
   { run = 'nvim "$@"', block = true },
@@ -34,8 +32,18 @@ audio = [
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 fallback = [
-  { run = 'open "$@"', desc = "Open" },
-  { run = 'open -R "$@"', desc = "Reveal in Finder" },
+  { run = 'open -R "$@"', desc = "Reveal in Finder", for = "unix" },
+]
+
+[open]
+rules = [
+    { name = "*/",      use = ["fallback", "folder"] },
+    { mime = "text/*",  use = ["text", "fallback"] },
+    { mime = "image/*", use = ["image", "fallback"] },
+    { mime = "video/*", use = ["video", "fallback"] },
+    { mime = "audio/*", use = ["audio", "fallback"] },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["archive", "fallback"] },
+    { name = "*",       use = ["text", "fallback"] },
 ]
 
 [tasks]
