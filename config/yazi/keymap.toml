@@ -38,7 +38,7 @@ keymap = [
   { on = [ "g", "d" ], run = "cd ~/Downloads/", desc = "Goto download" },
   { on = [ "g", "p" ], run = "cd ~/Pictures/", desc = "Goto pictures" },
   { on = [ "g", "c" ], run = "cd ~/Documents/", desc = "Goto documents" },
-  { on = [ "g", "m" ], run = "cd ~/Movies/", desc = "Goto movies" },
+  { on = [ "g", "m" ], run = "cd ~/Music/", desc = "Goto music" },
   { on = [ "g", "t" ], run = "cd ~/Desktop/", desc = "Goto desktop" },
   { on = [ "g", "/" ], run = "cd /", desc = "Goto root" },
   { on = [ "g", "h" ], run = "cd ~", desc = "Go to the home directory" },
@@ -77,6 +77,7 @@ keymap = [
   { on = [ "S" ],         run = "search rg",                          desc = "Search files by content using ripgrep" },
   { on = [ "<C-s>" ],     run = "search none",                        desc = "Cancel the ongoing search" },
   { on = [ "'" ],         run = "shell \"$SHELL\" --block --confirm", desc = "open shell" },
+  { on = [ "m" ],         run = "shell --block --confirm -- nohup mpv \"$@\" > /tmp/mpv.log &", desc = "Mpv" },
 
   # Copy
   { on = [ "c", "c" ], run = "copy path",             desc = "Copy the absolute path" },

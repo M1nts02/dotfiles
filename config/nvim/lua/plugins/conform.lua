@@ -21,20 +21,6 @@ local opts = {
   end,
 }
 
--- Toggle auto format
-vim.api.nvim_create_user_command("AutoformatToggle", function(args)
-  if vim.g.disable_autoformat == true then
-    vim.g.disable_autoformat = false
-    vim.notify "Autoformat enabled"
-  else
-    vim.g.disable_autoformat = true
-    vim.notify "Autoformat disabled"
-  end
-end, {
-  desc = "Toggle autoformat",
-  bang = true,
-})
-
 return {
   "stevearc/conform.nvim",
   cmd = { "AutoformatToggle" },

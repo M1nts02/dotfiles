@@ -1,9 +1,10 @@
 local menu = require "modules.menu.menu"
+local utils = require "utils"
 
 menu.helperFormat = {
   atScreenEdge = 0,
   radius = 10,
-  textStyle = { font = { name = "Monaco", size = 14 } },
+  textStyle = { font = { name = "Monaco", size = 15 } },
 }
 
 local add = menu.add
@@ -13,21 +14,21 @@ local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-deco
 
 add("Main Menu", {
   { -- Screenshot
-    singleKey("s", "Screenshot"),
+    singleKey("4", "Screenshot"),
     function()
       run "Screenshot"
     end,
   },
   -- Ghostty
   {
-    singleKey("g", "Ghostty"),
+    singleKey("3", "Ghostty"),
     function()
       hs.execute "open -a Ghostty -n"
     end,
   },
   -- Yazi
   {
-    singleKey("y", "Yazi"),
+    singleKey("2", "Yazi"),
     function()
       hs.execute("nohup " .. terminal .. " -e yazi > /tmp/yazi.log &", true)
     end,
@@ -98,6 +99,19 @@ add("Main Menu", {
     { keep = true },
   },
   {
+    singleKey("f3", "Misson Control"),
+    function()
+      hs.spaces.openMissionControl()
+    end,
+  },
+  -- Finder
+  {
+    singleKey("f4", "spotlight"),
+    function()
+      hs.spotlight:start()
+    end,
+  },
+  {
     singleKey("-", "Volume Down"),
     function()
       local current = hs.audiodevice.defaultOutputDevice():volume()
@@ -117,6 +131,33 @@ add("Main Menu", {
   },
   {
     singleKey("0", "Mute Toggle"),
+    function()
+      local device = hs.audiodevice.defaultOutputDevice()
+      local muted = device:muted()
+      device:setMuted(not muted)
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("f11", "Volume Down"),
+    function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local newVolume = math.min(current - 5, 100)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("f12", "Volume Up"),
+    function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local newVolume = math.min(current + 5, 100)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("f10", "Mute Toggle"),
     function()
       local device = hs.audiodevice.defaultOutputDevice()
       local muted = device:muted()
@@ -149,9 +190,34 @@ add("Main Menu", {
     { keep = true },
   },
   {
+    singleKey("f9", "Next"),
+    function()
+      hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
+      hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("f7", "Prev"),
+    function()
+      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
+      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
+    end,
+    { keep = true },
+  },
+  {
+    singleKey("f8", "Play"),
+    function()
+      hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
+      hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
+    end,
+    { keep = true },
+  },
+  {
     singleKey("r", "Reload"),
     function()
       hs.reload()
+      hs.notify.new():title("Reload"):subTitle("Hammerspoon reload done!"):send()
     end,
   },
   {
@@ -161,9 +227,9 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [1]: Finder          [y]: Yazi
+     [1]: Finder          [2]: Yazi
 
-     [g]: Ghostty         [s]: Screenshot
+     [3]: Ghostty         [4]: Screenshot
 
      [i]: Rime            [r]: Reload
 
@@ -197,6 +263,7 @@ add("Screenshot", {
       local timeStamp = string.gsub(os.date "%Y-%m-%d_%T", ":", ".")
       local fileName = os.getenv "HOME" .. "/Downloads/ss-" .. timeStamp .. ".png"
       hs.task.new("/usr/sbin/screencapture", nil, { fileName }):start()
+      hs.notify.new():title("Screenshot"):subTitle(fileName):send()
     end,
   },
   {
@@ -214,6 +281,7 @@ add("Screenshot", {
       local fileName = os.getenv "HOME" .. "/Downloads/ss-" .. timeStamp .. ".png"
       local windowId = hs.window.frontmostWindow():id()
       hs.task.new("/usr/sbin/screencapture", nil, { "-l" .. windowId, fileName }):start()
+      hs.notify.new():title("Screenshot"):subTitle(fileName):send()
     end,
   },
   {
@@ -223,20 +291,6 @@ add("Screenshot", {
 })
 
 hs.hotkey.bind({ "cmd" }, "`", function()
-  local output = hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
-
-  if output == "true\n" then
-    menu.color = {
-      strokeColor = { white = 0.05, alpha = 0.9 },
-      fillColor = { white = 0.05, alpha = 0.9 },
-      textColor = { white = 0.5, alpha = 1 },
-    }
-  else
-    menu.color = {
-      strokeColor = { white = 0.95, alpha = 0.9 },
-      fillColor = { white = 0.95, alpha = 0.9 },
-      textColor = { white = 0.5, alpha = 1 },
-    }
-  end
+  menu.color = utils.get_helper_color()
   run "Main Menu"
 end)

@@ -50,6 +50,10 @@ local function getItems()
     end
   end
 
+  for actionName, _ in pairs(actions) do
+    table.insert(items, { name = actionName })
+  end
+
   applicationsCache = items
   applicationsCacheTime = currentTime
 
@@ -66,14 +70,14 @@ local function launchItem(item)
   elseif item.type == "Action" then
     actions[item.name]()
   end
-
-  if chooser then
-    chooser:hide()
-  end
 end
 
 chooser = hs.chooser.new(function(selection)
   if selection then
+    if chooser then
+      chooser:hide()
+    end
+
     launchItem(selection)
   end
 end)
@@ -92,23 +96,26 @@ local function searchItems(query)
 
   for _, item in ipairs(allItems) do
     if config.matcher(item.name, query) then
-      local appInfo = {
-        text = item.name,
-        subText = item.path,
-        name = item.name,
-        path = item.path,
-        type = "App",
-      }
+      local appInfo = item.path ~= nil
+          and {
+            text = item.name,
+            subText = item.path,
+            name = item.name,
+            path = item.path,
+            type = "App",
+          }
+        or {
+          text = item.name,
+          subText = "Action: " .. item.name,
+          name = item.name,
+          type = "Action",
+        }
       table.insert(filteredItems, appInfo)
 
       if #filteredItems >= config.maxResults then
         break
       end
     end
-  end
-
-  for i, _ in pairs(actions) do
-    table.insert(filteredItems, { text = i, subText = "Action:" .. i, name = i, type = "Action" })
   end
 
   chooser:choices(filteredItems)

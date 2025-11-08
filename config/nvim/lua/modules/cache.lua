@@ -12,7 +12,6 @@ local cache = {
     disable_autoformat = false,
     dark = true,
     minipairs_disable = true,
-    enable_fittencode = false,
   },
   opt = {
     wrap = true,

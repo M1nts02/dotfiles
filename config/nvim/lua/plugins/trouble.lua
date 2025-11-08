@@ -41,6 +41,7 @@ return {
       { "<Space>fq", "<CMD>Trouble qflist toggle<CR>", desc = "Quickfix" },
       { "gd", "<CMD>Trouble lsp_definitions<CR>", desc = "Definition" },
       { "gO", "<CMD>Trouble symbols toggle<CR>", desc = "Symbols" },
+      { "grt", "<CMD>Trouble lsp_type_definitions<CR>", desc = "Type Definition" },
       { "grd", "<CMD>Trouble diagnostics toggle<CR>", desc = "Diagnostics" },
       { "gri", "<CMD>Trouble lsp_implementations<CR>", desc = "Implementations" },
       { "gro", "<CMD>Trouble lsp_outgoing_calls toggle<CR>", desc = "Outgoing Calls" },
