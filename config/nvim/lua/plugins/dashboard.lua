@@ -51,10 +51,10 @@ return {
             key = "m",
           },
           {
-            desc = "Sessions",
+            desc = "Workspaces",
             desc_hl = "String",
-            action = "Telescope persisted",
-            key = "s",
+            action = "Telescope workspaces",
+            key = "w",
           },
           {
             desc = "Dark Mode",

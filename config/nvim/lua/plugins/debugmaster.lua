@@ -12,7 +12,7 @@ return {
         if require("debugmaster.debug.mode").is_active() then
           menu.open "Debug"
         else
-          menu.close()
+          menu.close "Debug"
         end
       end,
       mode = { "n", "v" },

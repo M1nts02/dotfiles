@@ -112,7 +112,7 @@ add("Main Menu", {
     end,
   },
   {
-    singleKey("-", "Volume Down"),
+    singleKey(";", "Volume Down"),
     function()
       local current = hs.audiodevice.defaultOutputDevice():volume()
       local newVolume = math.min(current - 5, 100)
@@ -121,7 +121,7 @@ add("Main Menu", {
     { keep = true },
   },
   {
-    singleKey("=", "Volume Up"),
+    singleKey("'", "Volume Up"),
     function()
       local current = hs.audiodevice.defaultOutputDevice():volume()
       local newVolume = math.min(current + 5, 100)
