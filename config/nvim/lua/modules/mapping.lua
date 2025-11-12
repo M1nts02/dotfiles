@@ -7,6 +7,18 @@ local map = {
   -- Paste
   { { "n" }, "gp", '"+p' },
   { { "n" }, "gP", '"+P' },
+  -- Tab
+  { { "n" }, "<C-w>e", "<CMD>tabnew<CR>" },
+  { { "n" }, "<C-w>1", "<CMD>tabnext 1<CR>" },
+  { { "n" }, "<C-w>2", "<CMD>tabnext 2<CR>" },
+  { { "n" }, "<C-w>3", "<CMD>tabnext 3<CR>" },
+  { { "n" }, "<C-w>4", "<CMD>tabnext 4<CR>" },
+  { { "n" }, "<C-w>5", "<CMD>tabnext 5<CR>" },
+  { { "n" }, "<C-w>6", "<CMD>tabnext 6<CR>" },
+  { { "n" }, "<C-w>7", "<CMD>tabnext 7<CR>" },
+  { { "n" }, "<C-w>8", "<CMD>tabnext 8<CR>" },
+  { { "n" }, "<C-w>9", "<CMD>tablast<CR>" },
+  { { "n" }, "<C-w>0", "<CMD>tabfirst<CR>" },
   -- Completion
   { { "i" }, "<C-l>", "<C-x><C-f>" },
   -- Indenting

@@ -57,6 +57,12 @@ return {
             key = "w",
           },
           {
+            desc = "Neogit",
+            desc_hl = "Define",
+            action = "Neogit",
+            key = "n",
+          },
+          {
             desc = "Dark Mode",
             desc_hl = "Character",
             action = function()

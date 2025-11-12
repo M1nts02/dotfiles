@@ -1,5 +1,6 @@
 local menu = require "modules.menu.menu"
 local utils = require "utils"
+local actions = require "actions"
 
 menu.helperFormat = {
   atScreenEdge = 0,
@@ -10,27 +11,33 @@ menu.helperFormat = {
 local add = menu.add
 local run = menu.run
 local singleKey = menu.singleKey
-local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none --background-opacity=0.85"
 
 add("Main Menu", {
+  -- Yazi
+  {
+    singleKey("v", "Vim"),
+    function()
+      actions["Nvim"]()
+    end,
+  },
   { -- Screenshot
-    singleKey("4", "Screenshot"),
+    singleKey("s", "Screenshot"),
     function()
       run "Screenshot"
     end,
   },
   -- Ghostty
   {
-    singleKey("3", "Ghostty"),
+    singleKey("2", "Ghostty"),
     function()
       hs.execute "open -a Ghostty -n"
     end,
   },
   -- Yazi
   {
-    singleKey("2", "Yazi"),
+    singleKey("y", "Yazi"),
     function()
-      hs.execute("nohup " .. terminal .. " -e yazi > /tmp/yazi.log &", true)
+      actions["Yazi"]()
     end,
   },
   -- Finder
@@ -102,13 +109,6 @@ add("Main Menu", {
     singleKey("f3", "Misson Control"),
     function()
       hs.spaces.openMissionControl()
-    end,
-  },
-  -- Finder
-  {
-    singleKey("f4", "spotlight"),
-    function()
-      hs.spotlight:start()
     end,
   },
   {
@@ -227,11 +227,11 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [1]: Finder          [2]: Yazi
+     [1]: Finder          [2]: Ghostty
 
-     [3]: Ghostty         [4]: Screenshot
+     [s]: Screenshot      [i]: Rime
 
-     [i]: Rime            [r]: Reload
+     [v]: Vim             [y]: Yazi
 
      [o]: Window Max      [f]: Window Float
 
@@ -239,7 +239,7 @@ add("Main Menu", {
 
      [k]: Window Up       [j]: Window Down
 
-     [t]: Window Top
+     [t]: Window Top      [r]: Reload
 
                                                 ]],
 

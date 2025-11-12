@@ -32,7 +32,7 @@ local function getItems()
     "~/Applications/",
     "/System/Applications/",
     "/System/Applications/Utilities/",
-    "/System/Cryptexes/App/System/Applications",
+    "/System/Cryptexes/App/System/Applications/",
   }
 
   for _, path in ipairs(appPaths) do

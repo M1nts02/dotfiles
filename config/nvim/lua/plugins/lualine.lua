@@ -30,7 +30,13 @@ return {
           end,
           function()
             local tab_id = vim.api.nvim_tabpage_get_number(0)
-            return "[" .. tab_id .. "]"
+            local tab_num = #(vim.api.nvim_list_tabpages())
+
+            if tab_num < 2 then
+              return ""
+            end
+
+            return tab_id .. "/" .. tab_num
           end,
           "filename",
         },
