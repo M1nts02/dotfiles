@@ -86,13 +86,9 @@ function y() {
   rm -f -- "$tmp"
 }
 
-# cd with fzf
-function c() {
-  cd "$(dirname "$(fd ${1} | fzf)")"
-}
-
 alias v=nvim
 alias vi=nvim
+alias vim=nvim
 alias g="lazygit -sm half"
 
 alias ls="eza --icons -F"
