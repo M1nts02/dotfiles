@@ -1,5 +1,0 @@
-cmake_minimum_required(VERSION 3.10)
-set(C_STANDARD 18)
-project(main)
-aux_source_directory(./src all_src)
-add_executable(main ${all_src})

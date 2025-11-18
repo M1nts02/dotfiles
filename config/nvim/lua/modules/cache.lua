@@ -1,7 +1,14 @@
 local M = {}
 
 -- default cache file path
-local cache_path = vim.fn.stdpath "config" .. "/.cache.json"
+local cache_path = vim.g.confpath .. "/.cache.json"
+
+-- Open cache file
+vim.api.nvim_create_user_command("CustomOpen", function()
+  vim.cmd("e " .. cache_path)
+end, {
+  desc = "Open cache file",
+})
 
 -- default cache
 local cache = {
@@ -12,9 +19,17 @@ local cache = {
     disable_autoformat = false,
     dark = true,
     minipairs_disable = true,
+    transparent = false,
+    dark_theme = "akane-dark",
+    light_theme = "akane-light",
+    python3_host_prog = "python3",
   },
   opt = {
     wrap = true,
+    cursorline = false,
+    cursorcolumn = false,
+    number = true,
+    relativenumber = true,
   },
 }
 

@@ -9,7 +9,7 @@ return {
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
-          statusline = { "dashboard", "NeogitStatus", "oil", "qf" },
+          statusline = { "dashboard", "NeogitStatus", "oil", "qf", "toggleterm" },
         },
         ignore_focus = {},
         always_divide_middle = true,

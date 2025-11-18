@@ -9,9 +9,9 @@ return {
         separator = "➜",
         group = "",
       },
-      layout = {
-        height = { min = 2, max = 10 },
-        align = "center",
+      win = {
+        border = "rounded",
+        title_pos = "left",
       },
     }
 
