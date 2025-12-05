@@ -90,8 +90,4 @@ alias awk=gawk
 alias grep=ggrep
 alias keka="/Applications/Keka.app/Contents/MacOS/Keka --cli"
 
-if command -v bob &> /dev/null; then
-  export PATH="/Users/m1nts02/.local/share/bob/nvim-bin:$PATH"
-fi
-
 eval "$(zoxide init zsh)"

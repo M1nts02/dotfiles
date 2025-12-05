@@ -5,7 +5,6 @@ vim.g.is_windows = os_name:find "Windows" ~= nil
 
 vim.g.lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 vim.g.confpath = vim.fn.stdpath "config"
-vim.g.custom_file = vim.g.confpath .. "/template/custom_default.lua"
 
 require "modules.options" -- Options
 require("modules.cache").load() -- Save options
