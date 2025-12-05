@@ -3,6 +3,9 @@ return {
   config = function()
     require("which-key").setup {
       notify = false,
+      triggers = {
+        { "<auto>", mode = "n" },
+      },
       icons = {
         rules = false,
         breadcrumb = "»",

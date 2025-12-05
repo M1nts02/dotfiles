@@ -2,15 +2,6 @@ return {
   "akinsho/toggleterm.nvim",
   keys = {
     [[<C-\>]],
-    {
-      "<Space>gg",
-      function()
-        local lazygit =
-          require("toggleterm.terminal").Terminal:new { cmd = "lazygit -sm half", hidden = true, direction = "float" }
-        lazygit:toggle()
-      end,
-      desc = "Lazygit",
-    },
   },
   main = "toggleterm",
   opts = {

@@ -2,28 +2,9 @@ local function config()
   local utils = require "modules.utils"
   local executable = utils.executable
 
-  local lsp_servers = {
-    ["autotools_ls"] = "autotools-language-server",
-    ["bashls"] = "bash-language-server",
-    ["biome"] = "",
-    ["clangd"] = "",
-    ["cmake"] = "cmake-language-server",
-    ["csharp_ls"] = "csharp-ls",
-    ["gdscript"] = "",
-    ["gopls"] = "",
-    ["jdtls"] = "",
-    ["jsonls"] = "vscode-json-language-server",
-    ["lua_ls"] = "lua-language-server",
-    ["markdown_oxide"] = "markdown-oxide",
-    ["marksman"] = "",
-    ["neocmake"] = "neocmakelsp",
-    ["ols"] = "",
-    ["pylsp"] = "",
-    ["pyright"] = "",
-    ["rust_analyzer"] = "rust-analyzer",
-    ["sqls"] = "",
-    ["zls"] = "",
-  }
+  local file = io.open(vim.g.confpath .. "/lspconfig.json", "r")
+  local lsp_servers = vim.json.decode(file:read "*a")
+  file:close()
 
   local capabilities = require("blink.cmp").get_lsp_capabilities {
     textDocument = {
@@ -146,14 +127,12 @@ return {
     "folke/lazydev.nvim",
     "saghen/blink.cmp",
     "b0o/schemastore.nvim",
-    "LelouchHe/xmake-luals-addon",
   },
   config = function()
     config()
     require("lazydev").setup {
       library = {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        { path = "xmake-luals-addon/library", files = { "xmake.lua" } },
       },
       enabled = function(root_dir)
         return not vim.uv.fs_stat(root_dir .. "/.luarc.json")

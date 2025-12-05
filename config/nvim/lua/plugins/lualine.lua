@@ -28,17 +28,14 @@ return {
           function()
             return require("debugmaster.debug.mode").is_active() and "[DEBUG]" or ""
           end,
-          function()
-            local tab_id = vim.api.nvim_tabpage_get_number(0)
-            local tab_num = #(vim.api.nvim_list_tabpages())
-
-            if tab_num < 2 then
-              return ""
-            end
-
-            return tab_id .. "/" .. tab_num
-          end,
-          "filename",
+          {
+            "tabs",
+            mode = 2,
+            tabs_color = {
+              active = { fg = "#008b8b" },
+              inactive = { fg = "#8c8fa1" },
+            },
+          },
         },
         lualine_c = {
           "%=",
