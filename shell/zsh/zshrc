@@ -60,17 +60,6 @@ mb () {
   nohup mpv ${*} >> ~/.cache/mpv_nohup.log &
 }
 
-# bottom
-b () {
-  if [[ `get_dark_mode` == "true" ]]; then
-    echo "dark"
-    btm --theme nord
-  else
-    echo "light"
-    btm --theme nord-light
-  fi
-}
-
 # icloud path
 icloud () {
   cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs
@@ -89,7 +78,6 @@ function y() {
 alias v=nvim
 alias vi=nvim
 alias vim=nvim
-alias g="lazygit -sm half"
 
 alias ls="eza --icons -F"
 alias l="eza -l --color=auto"
@@ -101,5 +89,9 @@ alias sed=gsed
 alias awk=gawk
 alias grep=ggrep
 alias keka="/Applications/Keka.app/Contents/MacOS/Keka --cli"
+
+if command -v bob &> /dev/null; then
+  export PATH="/Users/m1nts02/.local/share/bob/nvim-bin:$PATH"
+fi
 
 eval "$(zoxide init zsh)"

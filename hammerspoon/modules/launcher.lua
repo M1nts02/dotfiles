@@ -1,6 +1,7 @@
 local application = require "hs.application"
 local hotkey = require "hs.hotkey"
 local actions = require "actions"
+local utils = require "utils"
 
 local config = {
   debounceDelay = 100,
@@ -132,9 +133,7 @@ chooser:queryChangedCallback(function(query)
 end)
 
 hotkey.bind({ "cmd" }, "space", function()
-  chooser:bgDark(
-    hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'" == "true\n"
-  )
+  chooser:bgDark(utils.get_dark_mode())
 
   chooser:show()
   chooser:query ""

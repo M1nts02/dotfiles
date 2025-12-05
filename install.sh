@@ -3,17 +3,14 @@ echo ${DIR}
 echo '' > ${HOME}/.aria2.session
 
 mkdir -p ${HOME}/.config
-ln -s ${DIR}/config/nvim    ${HOME}/.config/nvim
-ln -s ${DIR}/config/yazi    ${HOME}/.config/yazi
-ln -s ${DIR}/config/ghostty ${HOME}/.config/ghostty
-ln -s ${DIR}/config/mpv     ${HOME}/.config/mpv
-ln -s ${DIR}/config/aria2   ${HOME}/.config/aria2
+ln -s ${DIR}/config/nvim        ${HOME}/.config/nvim
+ln -s ${DIR}/config/yazi        ${HOME}/.config/yazi
+ln -s ${DIR}/config/ghostty     ${HOME}/.config/ghostty
+ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
+ln -s ${DIR}/config/aria2       ${HOME}/.config/aria2
+ln -s ${DIR}/config/flashspace  ${HOME}/.config/flashspace
 
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
-
-mkdir -p ${HOME}/.vim
-ln -s ${DIR}/vim/vimrc   ${HOME}/.vim/
-ln -s ${DIR}/vim/gvimrc  ${HOME}/.vim/
 
 mkdir -p ${HOME}/Library/LaunchAgents
 echo "
@@ -28,7 +25,7 @@ echo "
             <string>/opt/homebrew/bin/aria2c</string>
             <string>--enable-rpc</string>
             <string>--rpc-listen-all</string>
-            <string>-j 10</string>
+            <string>-j 20</string>
             <string>-d Downloads</string>
         </array>
         <key>KeepAlive</key>

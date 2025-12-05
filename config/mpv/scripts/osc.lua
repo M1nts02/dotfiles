@@ -30,7 +30,7 @@ local user_opts = {
   seekrange = true, -- show seekrange overlay
   seekrangealpha = 64, -- transparency of seekranges
   seekbarkeyframes = true, -- use keyframes when dragging the seekbar
-  showjump = true, -- show "jump forward/backward 5 seconds" buttons
+  showjump = false, -- show "jump forward/backward 5 seconds" buttons
   -- shift+left-click to step 1 frame and
   -- right-click to jump 1 minute
   jumpamount = 5, -- change the jump amount (in seconds by default)

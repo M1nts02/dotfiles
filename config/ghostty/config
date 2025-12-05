@@ -11,7 +11,7 @@ window-save-state = always
 window-width = 130
 window-height = 40
 window-decoration = none
-background-opacity = 0.85
+#background-opacity = 0.85
 
 shell-integration-features = no-cursor
 cursor-style = block
