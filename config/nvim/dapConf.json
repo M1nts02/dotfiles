@@ -1,0 +1,56 @@
+{
+  "cpp": [
+    {
+      "stopOnEntry": false,
+      "cwd": "${workspaceFolder}",
+      "name": "Launch",
+      "type": "lldb",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "program": "${input}"
+    }
+  ],
+  "c": [
+    {
+      "stopOnEntry": false,
+      "cwd": "${workspaceFolder}",
+      "name": "Launch",
+      "type": "lldb",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "program": "${input}"
+    }
+  ],
+  "rust": [
+    {
+      "stopOnEntry": false,
+      "cwd": "${workspaceFolder}",
+      "name": "Launch",
+      "type": "lldb",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "program": "${input}"
+    }
+  ],
+  "python": [
+    {
+      "program": "${file}",
+      "pythonPath": "python",
+      "type": "python",
+      "console": "integratedTerminal",
+      "request": "launch",
+      "name": "Launch file"
+    }
+  ],
+  "zig": [
+    {
+      "stopOnEntry": false,
+      "cwd": "${workspaceFolder}",
+      "name": "Launch",
+      "type": "lldb",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "program": "${input}"
+    }
+  ]
+}

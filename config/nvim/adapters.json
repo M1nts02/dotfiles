@@ -1,0 +1,22 @@
+{
+  "python": {
+    "command": "python",
+    "args": [
+      "-m",
+      "debugpy.adapter"
+    ],
+    "type": "executable"
+  },
+  "lldb": {
+    "executable": {
+      "args": [
+        "--port",
+        "${port}"
+      ],
+      "command": "codelldb"
+    },
+    "port": "${port}",
+    "type": "server",
+    "name": "lldb"
+  }
+}

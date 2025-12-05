@@ -1,70 +1,81 @@
 return {
-  "mfussenegger/nvim-dap",
-  event = { "VeryLazy" },
-  dependencies = { "miroshQa/debugmaster.nvim", "M1nts02/nvim-menu" },
-  config = function()
-    local utils = require "modules.utils"
-    local executable = utils.executable
-    local dap = require "dap"
+  ---------------------------------- Dap -------------------------------
+  {
+    "mfussenegger/nvim-dap",
+    event = { "VeryLazy" },
+    dependencies = { "miroshQa/debugmaster.nvim", "M1nts02/nvim-menu" },
+    config = function()
+      local dap = require "dap"
 
-    ----------- Adapters --------------
-    local adt = {}
+      ----------- Adapters --------------
+      local adapters = io.open(vim.g.confpath .. "/adapters.json", "r")
+      if adapters ~= nil then
+        local adt = vim.json.decode(adapters:read "*a")
+        adapters:close()
+        for k, v in pairs(adt) do
+          dap.adapters[k] = v
+        end
+      end
 
-    -- debugpy
-    adt.python = {
-      type = "executable",
-      command = "python",
-      args = { "-m", "debugpy.adapter" },
-    }
-
-    -- lldb
-    adt.lldb = {
-      type = "server",
-      name = "lldb",
-      port = "${port}",
-      executable = {
-        command = executable "codelldb" and "codelldb" or "lldb-dap",
-        args = { "--port", "${port}" },
-      },
-    }
-
-    for k, v in pairs(adt) do
-      dap.adapters[k] = v
-    end
-
-    ------------ Configurations ---------------
-    local conf = {}
-    conf.python = {
+      ------------ Configurations ---------------
+      local configurations = io.open(vim.g.confpath .. "/dapConf.json", "r")
+      if configurations ~= nil then
+        local conf = vim.json.decode(configurations:read "*a")
+        configurations:close()
+        for k, v in pairs(conf) do
+          v[1]["program"] = v[1]["program"] == "${input}"
+              and function()
+                return vim.fn.input "Path to executable: "
+              end
+            or v[1]["program"]
+          dap.configurations[k] = v
+        end
+      end
+    end,
+  },
+  ---------------------------------- Debug Master -------------------------------
+  {
+    "miroshQa/debugmaster.nvim",
+    event = { "VeryLazy" },
+    keys = {
       {
-        type = "python",
-        request = "launch",
-        name = "Launch file",
-        program = "${file}",
-        pythonPath = "python",
-        console = "integratedTerminal",
-      },
-    }
+        "<Space>d",
+        function()
+          local dm = require "debugmaster"
+          local menu = require "nvim-menu"
 
-    conf.cpp = {
-      {
-        name = "Launch",
-        type = "lldb",
-        request = "launch",
-        console = "integratedTerminal",
-        program = function()
-          return vim.fn.input "Path to executable: "
+          dm.mode.toggle()
+          if require("debugmaster.debug.mode").is_active() then
+            menu.open "Debug"
+          else
+            menu.close "Debug"
+          end
         end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
+        mode = { "n", "v" },
+        desc = "Debug Mode",
       },
-    }
+    },
+    config = function()
+      local menu = require "nvim-menu"
 
-    conf.c = conf.cpp
-    conf.rust = conf.cpp
-    conf.zig = conf.cpp
-
-    for k, v in pairs(conf) do
-      dap.configurations[k] = v
-    end
-  end,
+      menu.add("Debug", {
+        config = {
+          format = "${KEY} ${DESC}",
+          position = "BR",
+          type = "helper",
+          quit = false,
+        },
+        items = {
+          { { key = "t", desc = "Breakpoint" } },
+          { { key = "H", desc = "Help" } },
+          { { key = "u", desc = "Side panel" } },
+          { { key = "c", desc = "Start" } },
+          { { key = "o", desc = "Step over" } },
+          { { key = "m", desc = "Step into" } },
+          { { key = "q", desc = "Step out" } },
+          { { key = "r", desc = "Run to cursor" } },
+        },
+      })
+    end,
+  },
 }
