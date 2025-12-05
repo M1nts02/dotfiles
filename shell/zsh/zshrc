@@ -75,10 +75,6 @@ function y() {
   rm -f -- "$tmp"
 }
 
-alias v=nvim
-alias vi=nvim
-alias vim=nvim
-
 alias ls="eza --icons -F"
 alias l="eza -l --color=auto"
 alias ll="eza -l --color=auto --total-size"
@@ -89,5 +85,11 @@ alias sed=gsed
 alias awk=gawk
 alias grep=ggrep
 alias keka="/Applications/Keka.app/Contents/MacOS/Keka --cli"
+
+if command -v nvim &> /dev/null; then
+  alias v=nvim
+  alias vi=nvim
+  alias vim=nvim
+fi
 
 eval "$(zoxide init zsh)"

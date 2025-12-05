@@ -10,13 +10,13 @@ return {
   init = function()
     -- Enable highlight
     vim.api.nvim_create_autocmd("BufReadPost", {
-      pattern = { "*.kdl", "*.md", "*.ron", "*.toml", "*.yaml" },
+      pattern = { "*.md", "*.toml", "*.yaml" },
       command = "TSBufEnable highlight",
     })
   end,
   config = function()
     require("nvim-treesitter.configs").setup {
-      ensure_installed = { "c", "lua", "markdown", "query", "ron", "vim", "vimdoc" },
+      ensure_installed = { "c", "cpp", "json", "lua", "markdown", "query", "toml", "vim", "vimdoc", "yaml", "zig" },
       sync_install = false,
       auto_install = true,
       highlight = { enable = false, additional_vim_regex_highlighting = false },
