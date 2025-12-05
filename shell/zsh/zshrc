@@ -76,9 +76,9 @@ function y() {
 }
 
 alias ls="eza --icons -F"
-alias l="eza -l --color=auto"
-alias ll="eza -l --color=auto --total-size"
-alias lg="eza --git"
+alias l="eza -l --color=auto --icons"
+alias ll="eza -l --color=auto --total-size --icons"
+alias lg="eza --git -l --tree --icons"
 alias tree="eza --tree"
 alias cd="z"
 alias sed=gsed

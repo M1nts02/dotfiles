@@ -12,11 +12,6 @@
               "name" : "BaiduNetdisk"
             },
             {
-              "bundleIdentifier" : "com.brave.Browser",
-              "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
-              "name" : "Brave Browser"
-            },
-            {
               "bundleIdentifier" : "com.aone.keka",
               "iconPath" : "/Applications/Keka.app/Contents/Resources/Keka.icns",
               "name" : "Keka"
@@ -52,14 +47,24 @@
               "name" : "TRAE CN"
             },
             {
-              "bundleIdentifier" : "com.apple.systempreferences",
-              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
-              "name" : "System Settings"
-            },
-            {
               "bundleIdentifier" : "com.apple.Safari",
               "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
               "name" : "Safari"
+            },
+            {
+              "bundleIdentifier" : "com.brave.Browser",
+              "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
+              "name" : "Brave Browser"
+            },
+            {
+              "bundleIdentifier" : "com.microsoft.VSCode",
+              "iconPath" : "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns",
+              "name" : "Code"
+            },
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -72,19 +77,9 @@
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.apple.ActivityMonitor",
-              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
-              "name" : "Activity Monitor"
-            },
-            {
               "bundleIdentifier" : "com.obsproject.obs-studio",
               "iconPath" : "/Applications/OBS.app/Contents/Resources/AppIcon.icns",
               "name" : "OBS Studio"
-            },
-            {
-              "bundleIdentifier" : "com.tencent.qq",
-              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
-              "name" : "QQ"
             },
             {
               "bundleIdentifier" : "com.leshko.cloudplayer.mac",
@@ -100,6 +95,41 @@
               "bundleIdentifier" : "com.apple.AppStore",
               "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
               "name" : "App Store"
+            },
+            {
+              "bundleIdentifier" : "com.apple.systempreferences",
+              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
+              "name" : "System Settings"
+            },
+            {
+              "bundleIdentifier" : "com.xjbeta.Aria2D",
+              "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
+              "name" : "Aria2D"
+            },
+            {
+              "bundleIdentifier" : "netdcy.FlowVision",
+              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
+              "name" : "FlowVision"
+            },
+            {
+              "bundleIdentifier" : "com.apple.iBooksX",
+              "iconPath" : "/System/Applications/Books.app/Contents/Resources/AppIcon.icns",
+              "name" : "Books"
+            },
+            {
+              "bundleIdentifier" : "com.apple.ActivityMonitor",
+              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
+              "name" : "Activity Monitor"
+            },
+            {
+              "bundleIdentifier" : "com.tencent.qq",
+              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
+              "name" : "QQ"
+            },
+            {
+              "bundleIdentifier" : "com.apple.shortcuts",
+              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
+              "name" : "Shortcuts"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -127,9 +157,19 @@
               "name" : "Hammerspoon"
             },
             {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
+              "bundleIdentifier" : "org.vim.MacVim",
+              "iconPath" : "/Applications/MacVim.app/Contents/Resources/MacVim.icns",
+              "name" : "MacVim"
+            },
+            {
+              "bundleIdentifier" : "com.lwouis.alt-tab-macos",
+              "iconPath" : "/Applications/AltTab.app/Contents/Resources/app.icns",
+              "name" : "AltTab"
+            },
+            {
+              "bundleIdentifier" : "org.alacritty",
+              "iconPath" : "/Applications/Alacritty.app/Contents/Resources/alacritty.icns",
+              "name" : "Alacritty"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -152,11 +192,7 @@
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.apple.shortcuts",
-              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
-              "name" : "Shortcuts"
-            }
+
           ],
           "display" : "Built-in Retina Display",
           "id" : "FDBD49E6-18A5-4F3D-81BD-86E7473F46FB",

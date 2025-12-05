@@ -83,7 +83,7 @@ add("Main Menu", {
   {
     singleKey("f", "Finder"),
     function()
-      hs.application.launchOrFocus "Finder"
+      hs.application.launchOrFocus "/System/Library/CoreServices/Finder.app"
     end,
   },
   -- Rimer Switcher
@@ -277,7 +277,7 @@ add("Screenshot", {
   },
 })
 
-hs.hotkey.bind({ "cmd" }, "escape", function()
+hs.hotkey.bind({ "alt" }, "`", function()
   menu.color = utils.get_helper_color()
   run "Main Menu"
 end)

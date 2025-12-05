@@ -60,7 +60,7 @@ end tell
     ]]
   end,
   ["Finder"] = function()
-    hs.application.launchOrFocus "Finder"
+    hs.application.launchOrFocus "/System/Library/CoreServices/Finder.app"
   end,
   ["Trash"] = function()
     hs.osascript.applescript [[
