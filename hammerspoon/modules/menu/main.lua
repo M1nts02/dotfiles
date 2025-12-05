@@ -1,6 +1,5 @@
 local menu = require "modules.menu.menu"
 local utils = require "utils"
-local actions = require "actions"
 
 menu.helperFormat = {
   atScreenEdge = 0,
@@ -13,11 +12,58 @@ local run = menu.run
 local singleKey = menu.singleKey
 
 add("Main Menu", {
-  -- Yazi
   {
-    singleKey("v", "Vim"),
+    singleKey("1", "Move to Space 1"),
     function()
-      actions["Nvim"]()
+      utils.flashSpace_Move_space(1)
+    end,
+  },
+  {
+    singleKey("2", "Move to Space 2"),
+    function()
+      utils.flashSpace_Move_space(2)
+    end,
+  },
+  {
+    singleKey("3", "Move to Space 3"),
+    function()
+      utils.flashSpace_Move_space(3)
+    end,
+  },
+  {
+    singleKey("4", "Move to Space 4"),
+    function()
+      utils.flashSpace_Move_space(4)
+    end,
+  },
+  {
+    singleKey("5", "Move to Space 5"),
+    function()
+      utils.flashSpace_Move_space(5)
+    end,
+  },
+  {
+    singleKey("6", "Move to Space 6"),
+    function()
+      utils.flashSpace_Move_space(6)
+    end,
+  },
+  {
+    singleKey("7", "Move to Space 7"),
+    function()
+      utils.flashSpace_Move_space(7)
+    end,
+  },
+  {
+    singleKey("8", "Move to Space 8"),
+    function()
+      utils.flashSpace_Move_space(8)
+    end,
+  },
+  {
+    singleKey("9", "Move to Space 9"),
+    function()
+      utils.flashSpace_Move_space(9)
     end,
   },
   { -- Screenshot
@@ -28,21 +74,14 @@ add("Main Menu", {
   },
   -- Ghostty
   {
-    singleKey("2", "Ghostty"),
+    singleKey("g", "Ghostty"),
     function()
       hs.execute "open -a Ghostty -n"
     end,
   },
-  -- Yazi
-  {
-    singleKey("y", "Yazi"),
-    function()
-      actions["Yazi"]()
-    end,
-  },
   -- Finder
   {
-    singleKey("1", "Finder"),
+    singleKey("f", "Finder"),
     function()
       hs.application.launchOrFocus "Finder"
     end,
@@ -63,7 +102,7 @@ add("Main Menu", {
     { keep = true },
   },
   {
-    singleKey("f", "Float"),
+    singleKey("c", "Center"),
     function()
       hs.window.focusedWindow():moveToUnit { 0.075, 0.075, 0.85, 0.85 }
     end,
@@ -112,33 +151,6 @@ add("Main Menu", {
     end,
   },
   {
-    singleKey(";", "Volume Down"),
-    function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local newVolume = math.min(current - 5, 100)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("'", "Volume Up"),
-    function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local newVolume = math.min(current + 5, 100)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("0", "Mute Toggle"),
-    function()
-      local device = hs.audiodevice.defaultOutputDevice()
-      local muted = device:muted()
-      device:setMuted(not muted)
-    end,
-    { keep = true },
-  },
-  {
     singleKey("f11", "Volume Down"),
     function()
       local current = hs.audiodevice.defaultOutputDevice():volume()
@@ -162,30 +174,6 @@ add("Main Menu", {
       local device = hs.audiodevice.defaultOutputDevice()
       local muted = device:muted()
       device:setMuted(not muted)
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("]", "Next"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
-      hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("[", "Previous"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
-      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("p", "Play"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
-      hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
     end,
     { keep = true },
   },
@@ -227,13 +215,11 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [1]: Finder          [2]: Ghostty
+     [f]: Finder          [g]: Ghostty
 
      [s]: Screenshot      [i]: Rime
 
-     [v]: Vim             [y]: Yazi
-
-     [o]: Window Max      [f]: Window Float
+     [o]: Window Max      [c]: Window Center
 
      [h]: Window Left     [l]: Window Right
 
@@ -245,6 +231,7 @@ add("Main Menu", {
 
   helperFormat = {
     atScreenEdge = 0,
+    radius = 10,
   },
 })
 
@@ -290,7 +277,7 @@ add("Screenshot", {
   },
 })
 
-hs.hotkey.bind({ "cmd" }, "`", function()
+hs.hotkey.bind({ "cmd" }, "escape", function()
   menu.color = utils.get_helper_color()
   run "Main Menu"
 end)

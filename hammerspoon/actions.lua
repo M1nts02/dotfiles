@@ -1,5 +1,5 @@
+local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none"
 local utils = require "utils"
-local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none --background-opacity=0.85"
 
 return {
   ["Nvim"] = function()
@@ -33,14 +33,31 @@ return {
     )
   end,
   ["Yazi"] = function()
-    hs.execute("nohup " .. terminal .. " -e yazi > /tmp/yazi.log &", true)
+    hs.execute(
+      "nohup "
+        .. terminal
+        .. " --background-opacity=0.8"
+        .. " --title=Yazi"
+        .. " --keybind=cmd+t=unbind"
+        .. " --keybind=cmd+n=unbind"
+        .. " --keybind=cmd+d=unbind"
+        .. " --keybind=cmd+shift+d=unbind"
+        .. " -e yazi > /tmp/yazi.log &",
+      true
+    )
   end,
   ["Reload"] = function()
     hs.reload()
     hs.notify.new():title("Reload"):subTitle("Hammerspoon reload done!"):send()
   end,
   ["Dark Mode"] = function()
-    hs.shortcuts.run "暗色模式"
+    hs.osascript.applescript [[
+tell application "System Events"
+    tell appearance preferences 
+        set dark mode to not dark mode 
+    end tell
+end tell
+    ]]
   end,
   ["Finder"] = function()
     hs.application.launchOrFocus "Finder"
@@ -56,5 +73,35 @@ end tell
   end,
   ["ScreenSaver"] = function()
     hs.osascript.applescript 'tell application "ScreenSaverEngine" to run'
+  end,
+  ["FlashSpace Move to 1"] = function()
+    utils.flashSpace_Move_space(1)
+  end,
+  ["FlashSpace Move to 2"] = function()
+    utils.flashSpace_Move_space(2)
+  end,
+  ["FlashSpace Move to 3"] = function()
+    utils.flashSpace_Move_space(3)
+  end,
+  ["FlashSpace Move to 4"] = function()
+    utils.flashSpace_Move_space(4)
+  end,
+  ["FlashSpace Move to 5"] = function()
+    utils.flashSpace_Move_space(5)
+  end,
+  ["FlashSpace Move to 6"] = function()
+    utils.flashSpace_Move_space(6)
+  end,
+  ["FlashSpace Move to 7"] = function()
+    utils.flashSpace_Move_space(7)
+  end,
+  ["FlashSpace Move to 8"] = function()
+    utils.flashSpace_Move_space(8)
+  end,
+  ["FlashSpace Move to 9"] = function()
+    utils.flashSpace_Move_space(9)
+  end,
+  ["FlashSpace space control"] = function()
+    hs.execute("flashspace open-space-control", true)
   end,
 }
