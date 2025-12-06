@@ -15,55 +15,55 @@ add("Main Menu", {
   {
     singleKey("1", "Move to Space 1"),
     function()
-      utils.flashSpace_Move_space(1)
+      utils.flashSpaceMoveSpaceId(1)
     end,
   },
   {
     singleKey("2", "Move to Space 2"),
     function()
-      utils.flashSpace_Move_space(2)
+      utils.flashSpaceMoveSpaceId(2)
     end,
   },
   {
     singleKey("3", "Move to Space 3"),
     function()
-      utils.flashSpace_Move_space(3)
+      utils.flashSpaceMoveSpaceId(3)
     end,
   },
   {
     singleKey("4", "Move to Space 4"),
     function()
-      utils.flashSpace_Move_space(4)
+      utils.flashSpaceMoveSpaceId(4)
     end,
   },
   {
     singleKey("5", "Move to Space 5"),
     function()
-      utils.flashSpace_Move_space(5)
+      utils.flashSpaceMoveSpaceId(5)
     end,
   },
   {
     singleKey("6", "Move to Space 6"),
     function()
-      utils.flashSpace_Move_space(6)
+      utils.flashSpaceMoveSpaceId(6)
     end,
   },
   {
     singleKey("7", "Move to Space 7"),
     function()
-      utils.flashSpace_Move_space(7)
+      utils.flashSpaceMoveSpaceId(7)
     end,
   },
   {
     singleKey("8", "Move to Space 8"),
     function()
-      utils.flashSpace_Move_space(8)
+      utils.flashSpaceMoveSpaceId(8)
     end,
   },
   {
     singleKey("9", "Move to Space 9"),
     function()
-      utils.flashSpace_Move_space(9)
+      utils.flashSpaceMoveSpaceId(9)
     end,
   },
   { -- Screenshot
@@ -76,6 +76,7 @@ add("Main Menu", {
   {
     singleKey("g", "Ghostty"),
     function()
+      utils.flashSpaceMoveSpace("com.mitchellh.ghostty", utils.flashSpaceGetWorkspace())
       hs.execute "open -a Ghostty -n"
     end,
   },

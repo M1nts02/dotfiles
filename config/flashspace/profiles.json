@@ -37,11 +37,6 @@
               "name" : "Ani"
             },
             {
-              "bundleIdentifier" : "com.apple.Automator",
-              "iconPath" : "/System/Applications/Automator.app/Contents/Resources/AppIcon.icns",
-              "name" : "Automator"
-            },
-            {
               "bundleIdentifier" : "cn.trae.app",
               "iconPath" : "/Applications/Trae CN.app/Contents/Resources/Trae CN.icns",
               "name" : "TRAE CN"
@@ -52,19 +47,39 @@
               "name" : "Safari"
             },
             {
-              "bundleIdentifier" : "com.brave.Browser",
-              "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
-              "name" : "Brave Browser"
-            },
-            {
               "bundleIdentifier" : "com.microsoft.VSCode",
               "iconPath" : "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns",
               "name" : "Code"
             },
             {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
+              "bundleIdentifier" : "com.apple.logic10",
+              "iconPath" : "/Applications/Logic Pro.app/Contents/Resources/AppIcon.icns",
+              "name" : "Logic Pro"
+            },
+            {
+              "bundleIdentifier" : "com.xjbeta.Aria2D",
+              "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
+              "name" : "Aria2D"
+            },
+            {
+              "bundleIdentifier" : "com.rlxone.equinox",
+              "iconPath" : "/Applications/Equinox.app/Contents/Resources/AppIcon.icns",
+              "name" : "Equinox"
+            },
+            {
+              "bundleIdentifier" : "com.apple.AppStore",
+              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
+              "name" : "App Store"
+            },
+            {
+              "bundleIdentifier" : "com.brave.Browser",
+              "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
+              "name" : "Brave Browser"
+            },
+            {
+              "bundleIdentifier" : "com.amethyst.Amethyst",
+              "iconPath" : "/Applications/Amethyst.app/Contents/Resources/AppIcon.icns",
+              "name" : "Amethyst"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -82,34 +97,9 @@
               "name" : "OBS Studio"
             },
             {
-              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
-              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
-              "name" : "Evermusic"
-            },
-            {
               "bundleIdentifier" : "com.tencent.xinWeChat",
               "iconPath" : "/Applications/WeChat.app/Contents/Resources/AppIcon.icns",
               "name" : "WeChat"
-            },
-            {
-              "bundleIdentifier" : "com.apple.AppStore",
-              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
-              "name" : "App Store"
-            },
-            {
-              "bundleIdentifier" : "com.apple.systempreferences",
-              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
-              "name" : "System Settings"
-            },
-            {
-              "bundleIdentifier" : "com.xjbeta.Aria2D",
-              "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
-              "name" : "Aria2D"
-            },
-            {
-              "bundleIdentifier" : "netdcy.FlowVision",
-              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
-              "name" : "FlowVision"
             },
             {
               "bundleIdentifier" : "com.apple.iBooksX",
@@ -122,14 +112,14 @@
               "name" : "Activity Monitor"
             },
             {
-              "bundleIdentifier" : "com.tencent.qq",
-              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
-              "name" : "QQ"
-            },
-            {
               "bundleIdentifier" : "com.apple.shortcuts",
               "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
               "name" : "Shortcuts"
+            },
+            {
+              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
+              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
+              "name" : "Evermusic"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -170,6 +160,36 @@
               "bundleIdentifier" : "org.alacritty",
               "iconPath" : "/Applications/Alacritty.app/Contents/Resources/alacritty.icns",
               "name" : "Alacritty"
+            },
+            {
+              "bundleIdentifier" : "com.defold.editor",
+              "iconPath" : "/Applications/Defold.app/Contents/Resources/logo.icns",
+              "name" : "Defold"
+            },
+            {
+              "bundleIdentifier" : "com.colliderli.iina",
+              "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
+              "name" : "IINA"
+            },
+            {
+              "bundleIdentifier" : "netdcy.FlowVision",
+              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
+              "name" : "FlowVision"
+            },
+            {
+              "bundleIdentifier" : "com.tencent.qq",
+              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
+              "name" : "QQ"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
+            },
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -181,7 +201,11 @@
         },
         {
           "apps" : [
-
+            {
+              "bundleIdentifier" : "org.upscayl.Upscayl",
+              "iconPath" : "/Applications/Upscayl.app/Contents/Resources/icon.icns",
+              "name" : "Upscayl"
+            }
           ],
           "display" : "Built-in Retina Display",
           "id" : "E94A8D93-D32E-4E37-A430-621D5E631342",
@@ -225,11 +249,7 @@
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.colliderli.iina",
-              "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
-              "name" : "IINA"
-            }
+
           ],
           "display" : "Built-in Retina Display",
           "id" : "FE9E5FA7-D59B-44CA-84E2-FAEC123C2190",
@@ -246,9 +266,14 @@
               "name" : "Pixelmator Pro"
             },
             {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
+              "bundleIdentifier" : "com.apple.systempreferences",
+              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
+              "name" : "System Settings"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Automator",
+              "iconPath" : "/System/Applications/Automator.app/Contents/Resources/AppIcon.icns",
+              "name" : "Automator"
             }
           ],
           "display" : "Built-in Retina Display",

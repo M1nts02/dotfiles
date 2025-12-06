@@ -67,6 +67,13 @@ local function launchItem(item)
   end
 
   if item.type == "App" then
+    local current_space = utils.flashSpaceGetWorkspace()
+    local bundleID = utils.getBundleId(item.path)
+
+    if not hs.application.get(bundleID) then
+      utils.flashSpaceMoveSpace(bundleID, current_space)
+    end
+
     application.launchOrFocus(item.path)
   elseif item.type == "Action" then
     actions[item.name]()

@@ -3,6 +3,7 @@ local utils = require "utils"
 
 return {
   ["Nvim"] = function()
+    utils.flashSpaceMoveSpace("com.mitchellh.ghostty", utils.flashSpaceGetWorkspace())
     hs.execute(
       "nohup "
         .. terminal
@@ -32,20 +33,6 @@ return {
       true
     )
   end,
-  ["Yazi"] = function()
-    hs.execute(
-      "nohup "
-        .. terminal
-        .. " --background-opacity=0.8"
-        .. " --title=Yazi"
-        .. " --keybind=cmd+t=unbind"
-        .. " --keybind=cmd+n=unbind"
-        .. " --keybind=cmd+d=unbind"
-        .. " --keybind=cmd+shift+d=unbind"
-        .. " -e yazi > /tmp/yazi.log &",
-      true
-    )
-  end,
   ["Reload"] = function()
     hs.reload()
     hs.notify.new():title("Reload"):subTitle("Hammerspoon reload done!"):send()
@@ -60,9 +47,11 @@ end tell
     ]]
   end,
   ["Finder"] = function()
+    utils.flashSpaceMoveSpace("com.apple.finder", utils.flashSpaceGetWorkspace())
     hs.application.launchOrFocus "/System/Library/CoreServices/Finder.app"
   end,
   ["Trash"] = function()
+    utils.flashSpaceMoveSpace("com.apple.finder", utils.flashSpaceGetWorkspace())
     hs.osascript.applescript [[
 tell application "Finder"
   open trash
@@ -75,31 +64,31 @@ end tell
     hs.osascript.applescript 'tell application "ScreenSaverEngine" to run'
   end,
   ["FlashSpace Move to 1"] = function()
-    utils.flashSpace_Move_space(1)
+    utils.flashSpaceMoveSpaceId(1)
   end,
   ["FlashSpace Move to 2"] = function()
-    utils.flashSpace_Move_space(2)
+    utils.flashSpaceMoveSpaceId(2)
   end,
   ["FlashSpace Move to 3"] = function()
-    utils.flashSpace_Move_space(3)
+    utils.flashSpaceMoveSpaceId(3)
   end,
   ["FlashSpace Move to 4"] = function()
-    utils.flashSpace_Move_space(4)
+    utils.flashSpaceMoveSpaceId(4)
   end,
   ["FlashSpace Move to 5"] = function()
-    utils.flashSpace_Move_space(5)
+    utils.flashSpaceMoveSpaceId(5)
   end,
   ["FlashSpace Move to 6"] = function()
-    utils.flashSpace_Move_space(6)
+    utils.flashSpaceMoveSpaceId(6)
   end,
   ["FlashSpace Move to 7"] = function()
-    utils.flashSpace_Move_space(7)
+    utils.flashSpaceMoveSpaceId(7)
   end,
   ["FlashSpace Move to 8"] = function()
-    utils.flashSpace_Move_space(8)
+    utils.flashSpaceMoveSpaceId(8)
   end,
   ["FlashSpace Move to 9"] = function()
-    utils.flashSpace_Move_space(9)
+    utils.flashSpaceMoveSpaceId(9)
   end,
   ["FlashSpace space control"] = function()
     hs.execute("flashspace open-space-control", true)
