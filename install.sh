@@ -10,6 +10,12 @@ ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
 ln -s ${DIR}/config/aria2       ${HOME}/.config/aria2
 ln -s ${DIR}/config/flashspace  ${HOME}/.config/flashspace
 
+mkdir -p ${HOME}/.config/alacritty
+ln -s ${DIR}/config/alacritty/config.toml            ${HOME}/.config/alacritty/
+ln -s ${DIR}/config/alacritty/catppuccin_latte.toml  ${HOME}/.config/alacritty/
+ln -s ${DIR}/config/alacritty/catppuccin_mocha.toml  ${HOME}/.config/alacritty/
+cp -f ${DIR}/config/alacritty/dark.toml              ${HOME}/.config/alacritty/alacritty.toml
+
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
 
 mkdir -p ${HOME}/Library/LaunchAgents

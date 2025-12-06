@@ -80,6 +80,14 @@ add("Main Menu", {
       hs.execute "open -a Ghostty -n"
     end,
   },
+  -- Alacritty
+  {
+    singleKey("a", "Alacritty"),
+    function()
+      utils.flashSpaceMoveSpace("org.alacritty", utils.flashSpaceGetWorkspace())
+      hs.application.launchOrFocus "/Applications/Alacritty.app"
+    end,
+  },
   -- Finder
   {
     singleKey("f", "Finder"),
@@ -216,19 +224,19 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [f]: Finder          [g]: Ghostty
 
-     [s]: Screenshot      [i]: Rime
+     [f]: Finder          [g]: Ghostty         [a]: Alacritty
 
-     [o]: Window Max      [c]: Window Center
+     [s]: Screenshot      [i]: Rime            [r]: Reload
+
+     [o]: Window Max      [c]: Window Center   [t]: Window Top
 
      [h]: Window Left     [l]: Window Right
 
      [k]: Window Up       [j]: Window Down
 
-     [t]: Window Top      [r]: Reload
 
-                                                ]],
+                                                                   ]],
 
   helperFormat = {
     atScreenEdge = 0,

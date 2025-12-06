@@ -80,6 +80,11 @@
               "bundleIdentifier" : "com.amethyst.Amethyst",
               "iconPath" : "/Applications/Amethyst.app/Contents/Resources/AppIcon.icns",
               "name" : "Amethyst"
+            },
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -110,16 +115,6 @@
               "bundleIdentifier" : "com.apple.ActivityMonitor",
               "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
               "name" : "Activity Monitor"
-            },
-            {
-              "bundleIdentifier" : "com.apple.shortcuts",
-              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
-              "name" : "Shortcuts"
-            },
-            {
-              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
-              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
-              "name" : "Evermusic"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -157,11 +152,6 @@
               "name" : "AltTab"
             },
             {
-              "bundleIdentifier" : "org.alacritty",
-              "iconPath" : "/Applications/Alacritty.app/Contents/Resources/alacritty.icns",
-              "name" : "Alacritty"
-            },
-            {
               "bundleIdentifier" : "com.defold.editor",
               "iconPath" : "/Applications/Defold.app/Contents/Resources/logo.icns",
               "name" : "Defold"
@@ -182,14 +172,9 @@
               "name" : "QQ"
             },
             {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
-            },
-            {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
+              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
+              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
+              "name" : "Evermusic"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -205,6 +190,16 @@
               "bundleIdentifier" : "org.upscayl.Upscayl",
               "iconPath" : "/Applications/Upscayl.app/Contents/Resources/icon.icns",
               "name" : "Upscayl"
+            },
+            {
+              "bundleIdentifier" : "com.apple.shortcuts",
+              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
+              "name" : "Shortcuts"
+            },
+            {
+              "bundleIdentifier" : "org.alacritty",
+              "iconPath" : "/Applications/Alacritty.app/Contents/Resources/alacritty.icns",
+              "name" : "Alacritty"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -274,6 +269,11 @@
               "bundleIdentifier" : "com.apple.Automator",
               "iconPath" : "/System/Applications/Automator.app/Contents/Resources/AppIcon.icns",
               "name" : "Automator"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
             }
           ],
           "display" : "Built-in Retina Display",

@@ -1,5 +1,9 @@
 local M = {}
 
+function M.get_dotpath()
+  return hs.execute('echo -n "$( cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && cd ../.. && pwd )"', true)
+end
+
 function M.get_dark_mode()
   return hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
     == "true\n"

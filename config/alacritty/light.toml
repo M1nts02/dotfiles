@@ -1,0 +1,5 @@
+[general]
+import = [
+  "config.toml",
+  "catppuccin_latte.toml"
+]

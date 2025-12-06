@@ -1,5 +1,6 @@
 local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none"
 local utils = require "utils"
+local dotpath = utils.get_dotpath()
 
 return {
   ["Nvim"] = function()
@@ -45,6 +46,11 @@ tell application "System Events"
     end tell
 end tell
     ]]
+    if utils.get_dark_mode() then
+      hs.execute("cp -f " .. dotpath .. "/config/alacritty/dark.toml ~/.config/alacritty/alacritty.toml", true)
+    else
+      hs.execute("cp -f " .. dotpath .. "/config/alacritty/light.toml ~/.config/alacritty/alacritty.toml", true)
+    end
   end,
   ["Finder"] = function()
     utils.flashSpaceMoveSpace("com.apple.finder", utils.flashSpaceGetWorkspace())
@@ -59,6 +65,11 @@ tell application "Finder"
   activate
 end tell
 ]]
+    if utils.get_dark_mode() then
+      hs.execute("cp -f " .. dotpath .. "/config/alacritty/dark.toml ~/.config/alacritty/alacritty.toml", true)
+    else
+      hs.execute("cp -f " .. dotpath .. "/config/alacritty/light.toml ~/.config/alacritty/alacritty.toml", true)
+    end
   end,
   ["ScreenSaver"] = function()
     hs.osascript.applescript 'tell application "ScreenSaverEngine" to run'
