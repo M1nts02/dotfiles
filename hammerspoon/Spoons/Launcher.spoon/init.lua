@@ -63,6 +63,8 @@ local function getItems()
 
   -- Remove duplicates
   for _, v in pairs(t) do
+    local bundleID = hs.execute("echo -n $(osascript -e 'id of app \"" .. v.path .. "\"')", true)
+    v.image = bundleID and hs.image.imageFromAppBundle(bundleID) or nil
     table.insert(items, v)
   end
 
@@ -89,7 +91,7 @@ local function launchItem(item)
     application.launchOrFocus(item.path)
   elseif item.type == "Action" then
     obj.preAction(item)
-    obj.actions[item.name]()
+    obj.actions[item.name].run()
   end
 
   if type(obj.postAction) == "function" then
@@ -121,21 +123,24 @@ local function searchItems(query)
 
   for _, item in ipairs(allItems) do
     if matcher(item.name, query) then
-      local appInfo = item.path ~= nil
-          and {
-            text = item.name,
-            subText = item.path,
-            name = item.name,
-            path = item.path,
-            type = "App",
-          }
-        or {
+      if item.path ~= nil then
+        table.insert(filteredItems, {
           text = item.name,
-          subText = "Action: " .. item.name,
+          subText = item.path,
           name = item.name,
+          path = item.path,
+          image = item.image,
+          type = "App",
+        })
+      else
+        table.insert(filteredItems, {
+          text = item.name,
+          subText = actions[item.name].subText ~= nil and actions[item.name].subText or "Action: " .. item.name,
+          name = item.name,
+          image = actions[item.name].image,
           type = "Action",
-        }
-      table.insert(filteredItems, appInfo)
+        })
+      end
 
       if #filteredItems >= obj.maxResults then
         break
@@ -155,6 +160,8 @@ chooser:queryChangedCallback(function(query)
     searchItems(query)
   end)
 end)
+
+function obj.init() end
 
 function obj.run()
   chooser:bgDark(obj.bgDark)

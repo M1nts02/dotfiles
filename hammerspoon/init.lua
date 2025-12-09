@@ -18,7 +18,16 @@ require "modules.menu.screenshot"
 
 -------------- Launcher -------------
 Launcher = hs.loadSpoon "Launcher"
-Launcher.actions = actions
+for i, v in pairs(actions) do
+  if v.image == nil then
+    v.image = hs.image.imageFromPath "icons/grid-home-menu-options-squares-table.ico"
+  end
+  Launcher.actions[i] = {
+    run = v.run,
+    subText = v.subText,
+    image = v.image,
+  }
+end
 Launcher.preAction = function(item)
   if item.type ~= "App" then
     return
@@ -32,7 +41,6 @@ Launcher.preAction = function(item)
     end
   end
 end
-
 hs.hotkey.bind({ "cmd" }, "space", function()
   Launcher.bgDark = utils.get_dark_mode()
   Launcher.run()
