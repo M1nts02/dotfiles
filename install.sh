@@ -7,14 +7,7 @@ ln -s ${DIR}/config/nvim        ${HOME}/.config/nvim
 ln -s ${DIR}/config/yazi        ${HOME}/.config/yazi
 ln -s ${DIR}/config/ghostty     ${HOME}/.config/ghostty
 ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
-ln -s ${DIR}/config/aria2       ${HOME}/.config/aria2
 ln -s ${DIR}/config/flashspace  ${HOME}/.config/flashspace
-
-mkdir -p ${HOME}/.config/alacritty
-ln -s ${DIR}/config/alacritty/config.toml            ${HOME}/.config/alacritty/
-ln -s ${DIR}/config/alacritty/catppuccin_latte.toml  ${HOME}/.config/alacritty/
-ln -s ${DIR}/config/alacritty/catppuccin_mocha.toml  ${HOME}/.config/alacritty/
-cp -f ${DIR}/config/alacritty/dark.toml              ${HOME}/.config/alacritty/alacritty.toml
 
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
 
@@ -33,6 +26,15 @@ echo "
             <string>--rpc-listen-all</string>
             <string>-j 20</string>
             <string>-d Downloads</string>
+            <string>--input-file=.aria2.session</string>
+            <string>--save-session=.aria2.session</string>
+            <string>--save-session-interval=60</string>
+            <string>--max-concurrent-downloads=20</string>
+            <string>--max-overall-upload-limit=20kb</string>
+            <string>--disk-cache=64M</string>
+            <string>--file-allocation=none</string>
+            <string>--no-file-allocation-limit=64M</string>
+            <string>--seed-time=0</string>
         </array>
         <key>KeepAlive</key>
         <true/>
