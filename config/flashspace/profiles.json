@@ -67,19 +67,19 @@
               "name" : "Ani"
             },
             {
-              "bundleIdentifier" : "com.brave.Browser",
-              "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
-              "name" : "Brave Browser"
-            },
-            {
               "bundleIdentifier" : "com.xjbeta.Aria2D",
               "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
               "name" : "Aria2D"
             },
             {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
+              "bundleIdentifier" : "com.brave.Browser",
+              "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
+              "name" : "Brave Browser"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Safari",
+              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
+              "name" : "Safari"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -132,11 +132,6 @@
               "name" : "iOS App Installer"
             },
             {
-              "bundleIdentifier" : "com.apple.screenshot.launcher",
-              "iconPath" : "/System/Applications/Utilities/Screenshot.app/Contents/Resources/AppIcon.icns",
-              "name" : "Screenshot"
-            },
-            {
               "bundleIdentifier" : "com.apple.backup.launcher",
               "iconPath" : "/System/Applications/Time Machine.app/Contents/Resources/AppIcon.icns",
               "name" : "Time Machine"
@@ -172,11 +167,6 @@
               "name" : "Photos"
             },
             {
-              "bundleIdentifier" : "com.apple.shortcuts",
-              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
-              "name" : "Shortcuts"
-            },
-            {
               "bundleIdentifier" : "com.apple.TestFlight",
               "iconPath" : "/Applications/TestFlight.app/Contents/Resources/AppIcon.icns",
               "name" : "TestFlight"
@@ -205,6 +195,31 @@
               "bundleIdentifier" : "com.apple.FinalCut",
               "iconPath" : "/Applications/Final Cut Pro.app/Contents/Resources/AppIcon.icns",
               "name" : "Final Cut Pro"
+            },
+            {
+              "bundleIdentifier" : "com.tencent.qq",
+              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
+              "name" : "QQ"
+            },
+            {
+              "bundleIdentifier" : "net.freemacsoft.AppCleaner",
+              "iconPath" : "/Applications/AppCleaner.app/Contents/Resources/AppIcon.icns",
+              "name" : "AppCleaner"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Image_Capture",
+              "iconPath" : "/System/Applications/Image Capture.app/Contents/Resources/AppIcon.icns",
+              "name" : "Image Capture"
+            },
+            {
+              "bundleIdentifier" : "com.apple.screenshot.launcher",
+              "iconPath" : "/System/Applications/Utilities/Screenshot.app/Contents/Resources/AppIcon.icns",
+              "name" : "Screenshot"
             },
             {
               "bundleIdentifier" : "com.mitchellh.ghostty",
@@ -267,29 +282,9 @@
               "name" : "Automator"
             },
             {
-              "bundleIdentifier" : "com.apple.Safari",
-              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
-              "name" : "Safari"
-            },
-            {
               "bundleIdentifier" : "app.motrix.native",
               "iconPath" : "/Applications/Motrix.app/Contents/Resources/icon.icns",
               "name" : "Motrix"
-            },
-            {
-              "bundleIdentifier" : "net.freemacsoft.AppCleaner",
-              "iconPath" : "/Applications/AppCleaner.app/Contents/Resources/AppIcon.icns",
-              "name" : "AppCleaner"
-            },
-            {
-              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
-              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
-              "name" : "Evermusic"
-            },
-            {
-              "bundleIdentifier" : "com.apple.AppStore",
-              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
-              "name" : "App Store"
             },
             {
               "bundleIdentifier" : "com.apple.QuickTimePlayerX",
@@ -297,9 +292,19 @@
               "name" : "QuickTime Player"
             },
             {
-              "bundleIdentifier" : "com.tencent.qq",
-              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
-              "name" : "QQ"
+              "bundleIdentifier" : "com.apple.shortcuts",
+              "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
+              "name" : "Shortcuts"
+            },
+            {
+              "bundleIdentifier" : "com.apple.AppStore",
+              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
+              "name" : "App Store"
+            },
+            {
+              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
+              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
+              "name" : "Evermusic"
             }
           ],
           "display" : "Built-in Retina Display",
