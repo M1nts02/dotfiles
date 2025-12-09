@@ -1,18 +1,29 @@
-local M = {}
-M.__index = M
+local obj = {}
+obj.__index = obj
 
-M.helperEntryEachLine = 5
-M.helperEntryLengthInChar = 20
-M.helperFormat = { atScreenEdge = 2, textFont = "Courier", textSize = 20 }
-M.showBindHelper = true
-M.helperModifierMapping = {
+-- Metadata
+obj.name = "Menu"
+obj.version = "0.0.1"
+obj.author = "M1nts02"
+obj.homepage = "https://github.com/M1nts02"
+obj.license = "MIT - https://opensource.org/licenses/MIT"
+
+obj.helperEntryEachLine = 5
+obj.helperEntryLengthInChar = 20
+obj.helperFormat = { atScreenEdge = 2, textFont = "Courier", textSize = 20 }
+obj.showBindHelper = true
+obj.helperModifierMapping = {
   command = "⌘",
   control = "⌃",
   option = "⌥",
   shift = "⇧",
 }
 
-M.color = require("utils").get_helper_color()
+obj.color = {
+  strokeColor = { white = 0.05, alpha = 1 },
+  fillColor = { white = 0.05, alpha = 1 },
+  textColor = { white = 0.9, alpha = 1 },
+}
 local menus = {} -- all menu
 local previousHelperID = nil -- used by next model to close previous helper
 
@@ -68,21 +79,21 @@ local function showHelper(helper, helperFormat)
     helperFormat = {}
   end
 
-  for k, v in pairs(M.helperFormat) do
+  for k, v in pairs(obj.helperFormat) do
     if helperFormat[k] == nil then
       helperFormat[k] = v
     end
   end
 
-  helperFormat.strokeColor = M.color.strokeColor
-  helperFormat.fillColor = M.color.fillColor
-  helperFormat.textColor = M.color.textColor
+  helperFormat.strokeColor = obj.color.strokeColor
+  helperFormat.fillColor = obj.color.fillColor
+  helperFormat.textColor = obj.color.textColor
 
   previousHelperID = hs.alert.show(helper, helperFormat, true)
   print("Font Color" .. helperFormat.textColor.white)
 end
 
-function M.add(name, items, opts)
+function obj.add(name, items, opts)
   if opts == nil then
     opts = {}
   end
@@ -93,7 +104,7 @@ function M.add(name, items, opts)
   }
 end
 
-function M.run(name)
+function obj.run(name)
   local menu = menus[name]
   if menu == nil then
     return
@@ -120,7 +131,7 @@ function M.run(name)
 end
 
 -- returns a table of modifiers and keys and names
-function M.singleKey(key, name)
+function obj.singleKey(key, name)
   local mod = {}
   if key == keyboardUpper(key) and string.len(key) == 1 then
     mod = { "shift" }
@@ -134,4 +145,4 @@ function M.singleKey(key, name)
   end
 end
 
-return M
+return obj

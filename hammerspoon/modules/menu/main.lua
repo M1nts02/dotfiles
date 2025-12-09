@@ -1,71 +1,17 @@
-local menu = require "modules.menu.menu"
-local utils = require "utils"
-
-menu.helperFormat = {
-  atScreenEdge = 0,
-  radius = 10,
-  textStyle = { font = { name = "Monaco", size = 15 } },
-}
-
-local add = menu.add
-local run = menu.run
-local singleKey = menu.singleKey
+local add = Menu.add
+local run = Menu.run
+local singleKey = Menu.singleKey
 
 add("Main Menu", {
-  {
-    singleKey("1", "Move to Space 1"),
-    function()
-      utils.flashSpaceMoveSpaceId(1)
-    end,
-  },
-  {
-    singleKey("2", "Move to Space 2"),
-    function()
-      utils.flashSpaceMoveSpaceId(2)
-    end,
-  },
-  {
-    singleKey("3", "Move to Space 3"),
-    function()
-      utils.flashSpaceMoveSpaceId(3)
-    end,
-  },
-  {
-    singleKey("4", "Move to Space 4"),
-    function()
-      utils.flashSpaceMoveSpaceId(4)
-    end,
-  },
-  {
-    singleKey("5", "Move to Space 5"),
-    function()
-      utils.flashSpaceMoveSpaceId(5)
-    end,
-  },
-  {
-    singleKey("6", "Move to Space 6"),
-    function()
-      utils.flashSpaceMoveSpaceId(6)
-    end,
-  },
-  {
-    singleKey("7", "Move to Space 7"),
-    function()
-      utils.flashSpaceMoveSpaceId(7)
-    end,
-  },
-  {
-    singleKey("8", "Move to Space 8"),
-    function()
-      utils.flashSpaceMoveSpaceId(8)
-    end,
-  },
-  {
-    singleKey("9", "Move to Space 9"),
-    function()
-      utils.flashSpaceMoveSpaceId(9)
-    end,
-  },
+  { singleKey("1", "Move to Space 1"), actions["FlashSpace Move to 1"] },
+  { singleKey("2", "Move to Space 2"), actions["FlashSpace Move to 2"] },
+  { singleKey("3", "Move to Space 3"), actions["FlashSpace Move to 3"] },
+  { singleKey("4", "Move to Space 4"), actions["FlashSpace Move to 4"] },
+  { singleKey("5", "Move to Space 5"), actions["FlashSpace Move to 5"] },
+  { singleKey("6", "Move to Space 6"), actions["FlashSpace Move to 6"] },
+  { singleKey("7", "Move to Space 7"), actions["FlashSpace Move to 7"] },
+  { singleKey("8", "Move to Space 8"), actions["FlashSpace Move to 8"] },
+  { singleKey("9", "Move to Space 9"), actions["FlashSpace Move to 9"] },
   { -- Screenshot
     singleKey("s", "Screenshot"),
     function()
@@ -80,14 +26,6 @@ add("Main Menu", {
       hs.execute "open -a Ghostty -n"
     end,
   },
-  -- Alacritty
-  {
-    singleKey("a", "Alacritty"),
-    function()
-      utils.flashSpaceMoveSpace("org.alacritty", utils.flashSpaceGetWorkspace())
-      hs.application.launchOrFocus "/Applications/Alacritty.app"
-    end,
-  },
   -- Finder
   {
     singleKey("f", "Finder"),
@@ -97,7 +35,7 @@ add("Main Menu", {
   },
   -- Rimer Switcher
   {
-    singleKey("i", "Rime"),
+    singleKey("e", "Rime"),
     function()
       hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
       hs.eventtap.keyStroke({ "control", "shift" }, "f4")
@@ -105,52 +43,57 @@ add("Main Menu", {
   },
   {
     singleKey("o", "Maximize"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.99 }
-    end,
+    actions["Window Maximize"],
     { keep = true },
   },
   {
     singleKey("c", "Center"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.075, 0.075, 0.85, 0.85 }
-    end,
+    actions["Window Center"],
     { keep = true },
   },
   {
     singleKey("k", "Up"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.4925 }
-      -- hs.eventtap.keyStroke({ "control", "fn" }, "f")
-    end,
+    actions["Window Up"],
     { keep = true },
   },
   {
     singleKey("j", "Down"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.99, 0.4925 }
-    end,
+    actions["Window Down"],
     { keep = true },
   },
   {
     singleKey("h", "Left"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
-    end,
+    actions["Window Left"],
     { keep = true },
   },
   {
     singleKey("l", "Right"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
-    end,
+    actions["Window Right"],
     { keep = true },
   },
   {
     singleKey("t", "Top"),
-    function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.5, 0.6 }
-    end,
+    actions["Window Top"],
+    { keep = true },
+  },
+  {
+    singleKey("u", "Window Upper Left"),
+    actions["Window Upper Left"],
+    { keep = true },
+  },
+  {
+    singleKey("i", "Window Upper Right"),
+    actions["Window Upper Right"],
+    { keep = true },
+  },
+  {
+    singleKey("n", "Window Lower Left"),
+    actions["Window Lower Left"],
+    { keep = true },
+  },
+  {
+    singleKey("m", "Window Lower Right"),
+    actions["Window Lower Right"],
     { keep = true },
   },
   {
@@ -225,68 +168,24 @@ add("Main Menu", {
   helper = [[
 
 
-     [f]: Finder          [g]: Ghostty         [a]: Alacritty
+     [f]: Finder          [g]: Ghostty         [s]: Screenshot      [e]: Rime
 
-     [s]: Screenshot      [i]: Rime            [r]: Reload
+     [h]: Left            [l]: Right           [k]: Up              [j]: Down
 
-     [o]: Window Max      [c]: Window Center   [t]: Window Top
+     [u]: Upper Left      [i]: Upper Right     [n]: Lower Left      [m]: Lower Right
 
-     [h]: Window Left     [l]: Window Right
+     [c]: Center          [t]: Top             [o]: Maximize
 
-     [k]: Window Up       [j]: Window Down
+     [r]: Reload          [1-9]: Move to Space
 
-
-                                                                   ]],
-
+                                                                                        ]],
   helperFormat = {
     atScreenEdge = 0,
     radius = 10,
   },
 })
 
-add("Screenshot", {
-  {
-    singleKey("2", "Clipboard"),
-    function()
-      local timeStamp = string.gsub(os.date "%Y-%m-%d_%T", ":", ".")
-      local fileName = os.getenv "HOME" .. "/Downloads/ss-" .. timeStamp .. ".png"
-      hs.task.new("/usr/sbin/screencapture", nil, { "-cio", fileName }):start()
-    end,
-  },
-  {
-    singleKey("3", "Screen"),
-    function()
-      local timeStamp = string.gsub(os.date "%Y-%m-%d_%T", ":", ".")
-      local fileName = os.getenv "HOME" .. "/Downloads/ss-" .. timeStamp .. ".png"
-      hs.task.new("/usr/sbin/screencapture", nil, { fileName }):start()
-      hs.notify.new():title("Screenshot"):subTitle(fileName):send()
-    end,
-  },
-  {
-    singleKey("4", "Area"),
-    function()
-      local timeStamp = string.gsub(os.date "%Y-%m-%d_%T", ":", ".")
-      local fileName = os.getenv "HOME" .. "/Downloads/ss-" .. timeStamp .. ".png"
-      hs.task.new("/usr/sbin/screencapture", nil, { "-io", fileName }):start()
-    end,
-  },
-  {
-    singleKey("5", "App"),
-    function()
-      local timeStamp = string.gsub(os.date "%Y-%m-%d_%T", ":", ".")
-      local fileName = os.getenv "HOME" .. "/Downloads/ss-" .. timeStamp .. ".png"
-      local windowId = hs.window.frontmostWindow():id()
-      hs.task.new("/usr/sbin/screencapture", nil, { "-l" .. windowId, fileName }):start()
-      hs.notify.new():title("Screenshot"):subTitle(fileName):send()
-    end,
-  },
-  {
-    singleKey("q", "Quit"),
-    function() end,
-  },
-})
-
-hs.hotkey.bind({ "alt" }, "`", function()
-  menu.color = utils.get_helper_color()
+hs.hotkey.bind({ "cmd" }, "`", function()
+  Menu.color = utils.get_helper_color()
   run "Main Menu"
 end)

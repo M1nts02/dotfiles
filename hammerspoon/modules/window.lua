@@ -1,49 +1,36 @@
-local function getAllActiveWindows()
-  local apps = hs.application.runningApplications()
-  local filteredWindows = {}
+-------------------- Hammerspoon Switcher -----------------------
+local switcher_currentSpace_onScreen = hs.window.switcher.new(hs.window.filter.new():setCurrentSpace(true), {
+  showThumbnails = false,
+  showSelectedThumbnail = true,
+  onlyActiveApplication = false,
+  textColor = { 0.9, 0.9, 0.9 },
+  highlightColor = { 0.3, 0.3, 0.3, 1 },
+  backgroundColor = { 0.5, 0.5, 0.5, 1 },
+  showTitles = false,
+  titleBackgroundColor = { 0.5, 0.5, 0.5, 1 },
+  showSelectedTitle = false,
+  closeModeBackgroundColor = { 0.5, 0.5, 0.5, 1 },
+  minimizeModeBackgroundColor = { 0.5, 0.5, 0.5, 1 },
+})
 
-  for _, app in ipairs(apps) do
-    if app:isRunning() then
-      local windows = app:allWindows()
-      for _, win in ipairs(windows) do
-        if win:isStandard() and not win:isMinimized() and win:isVisible() then
-          table.insert(filteredWindows, win)
-        end
-      end
-    end
-  end
+hs.hotkey.bind("alt", "tab", "Next window", function()
+  switcher_currentSpace_onScreen:next()
+  hs.alert.closeAll()
+end)
+hs.hotkey.bind({ "alt", "shift" }, "tab", "Prev window", function()
+  switcher_currentSpace_onScreen:previous()
+  hs.alert.closeAll()
+end)
 
-  return filteredWindows
-end
-
-local function switchToAllAppWindow()
-  local windows = getAllActiveWindows()
-  if not windows or #windows <= 1 then
-    return
-  end
-
-  local focusedWindow = hs.window.frontmostWindow()
-  local focusedIndex = 1
-
-  for i, win in ipairs(windows) do
-    if win == focusedWindow then
-      focusedIndex = i
-      break
-    end
-  end
-
-  local prevIndex = focusedIndex - 1
-  if prevIndex < 1 then
-    prevIndex = #windows
-  end
-
-  local prevWindow = windows[prevIndex]
-  if prevWindow then
-    prevWindow:focus {
-      unhide = true,
-      focus = true,
-    }
-  end
-end
-
-hs.hotkey.bind({ "cmd" }, "`", nil, switchToAllAppWindow)
+-------------------- Resize -----------------------
+hs.hotkey.bind({ "ctrl", "cmd" }, "o", nil, actions["Window Maximize"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "c", nil, actions["Window Center"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "k", nil, actions["Window Up"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "j", nil, actions["Window Down"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "h", nil, actions["Window Left"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "l", nil, actions["Window Right"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "t", nil, actions["Window Top"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "u", nil, actions["Window Upper Left"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "i", nil, actions["Window Upper Right"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "n", nil, actions["Window Lower Left"])
+hs.hotkey.bind({ "ctrl", "cmd" }, "m", nil, actions["Window Lower Right"])
