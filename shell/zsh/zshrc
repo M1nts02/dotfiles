@@ -85,6 +85,7 @@ alias sed=gsed
 alias awk=gawk
 alias grep=ggrep
 alias keka="/Applications/Keka.app/Contents/MacOS/Keka --cli"
+alias q=exit
 
 if command -v nvim &> /dev/null; then
   alias v=nvim
