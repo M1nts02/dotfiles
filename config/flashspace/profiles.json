@@ -77,6 +77,11 @@
               "name" : "Brave Browser"
             },
             {
+              "bundleIdentifier" : "com.plantsvszombies3.mengxing",
+              "iconPath" : "/Applications/植物大战僵尸3.app/Contents/Resources/AppIcon.icns",
+              "name" : "植物大战僵尸3"
+            },
+            {
               "bundleIdentifier" : "com.apple.Safari",
               "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
               "name" : "Safari"
@@ -187,29 +192,14 @@
               "name" : "Apps"
             },
             {
-              "bundleIdentifier" : "com.alienator88.Pearcleaner",
-              "iconPath" : "/Applications/Pearcleaner.app/Contents/Resources/Glass.icns",
-              "name" : "Pearcleaner"
-            },
-            {
               "bundleIdentifier" : "com.apple.FinalCut",
               "iconPath" : "/Applications/Final Cut Pro.app/Contents/Resources/AppIcon.icns",
               "name" : "Final Cut Pro"
             },
             {
-              "bundleIdentifier" : "com.tencent.qq",
-              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
-              "name" : "QQ"
-            },
-            {
               "bundleIdentifier" : "net.freemacsoft.AppCleaner",
               "iconPath" : "/Applications/AppCleaner.app/Contents/Resources/AppIcon.icns",
               "name" : "AppCleaner"
-            },
-            {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
             },
             {
               "bundleIdentifier" : "com.apple.Image_Capture",
@@ -220,6 +210,16 @@
               "bundleIdentifier" : "com.apple.screenshot.launcher",
               "iconPath" : "/System/Applications/Utilities/Screenshot.app/Contents/Resources/AppIcon.icns",
               "name" : "Screenshot"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
+            },
+            {
+              "bundleIdentifier" : "com.alienator88.Pearcleaner",
+              "iconPath" : "/Applications/Pearcleaner.app/Contents/Resources/Glass.icns",
+              "name" : "Pearcleaner"
             },
             {
               "bundleIdentifier" : "com.mitchellh.ghostty",
@@ -297,14 +297,19 @@
               "name" : "Shortcuts"
             },
             {
-              "bundleIdentifier" : "com.apple.AppStore",
-              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
-              "name" : "App Store"
-            },
-            {
               "bundleIdentifier" : "com.leshko.cloudplayer.mac",
               "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
               "name" : "Evermusic"
+            },
+            {
+              "bundleIdentifier" : "com.tencent.qq",
+              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
+              "name" : "QQ"
+            },
+            {
+              "bundleIdentifier" : "com.apple.AppStore",
+              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
+              "name" : "App Store"
             }
           ],
           "display" : "Built-in Retina Display",
