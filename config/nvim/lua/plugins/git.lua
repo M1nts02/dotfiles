@@ -6,31 +6,14 @@ return {
       { "<Space>gn", "<CMD>Neogit<CR>", desc = "Neogit" },
       { "<Space>gd", "<CMD>DiffviewOpen<CR>", desc = "Diff" },
     },
-    opts = {},
+    opts = {
+      integrations = { fzf_lua = true },
+      graph_style = "kitty",
+      commit_editor = { staged_diff_split_kind = "auto", spell_check = false },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
-      {
-        "sindrets/diffview.nvim",
-        config = function()
-          local actions = require "diffview.actions"
-
-          require("diffview").setup {
-            keymaps = {
-              view = { { "n", "q", "<CMD>DiffviewClose<CR>" } },
-              file_panel = {
-                { "n", "q", "<CMD>DiffviewClose<CR>" },
-                {
-                  "n",
-                  "<C-y>",
-                  actions.select_entry,
-                  { desc = "Open the diff for the selected entry" },
-                },
-              },
-            },
-          }
-        end,
-      },
-      "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
     },
   },
   {

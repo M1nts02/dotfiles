@@ -16,6 +16,11 @@ return {
         border = "rounded",
         title_pos = "left",
       },
+      plugins = {
+        marks = false,
+        registers = false,
+        spelling = { enabled = false },
+      },
     }
 
     require("which-key").add {

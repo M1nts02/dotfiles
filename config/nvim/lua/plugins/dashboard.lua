@@ -51,12 +51,6 @@ return {
             key = "m",
           },
           {
-            desc = "Workspaces",
-            desc_hl = "String",
-            action = "Telescope workspaces",
-            key = "w",
-          },
-          {
             desc = "Neogit",
             desc_hl = "Define",
             action = "Neogit",
@@ -75,6 +69,12 @@ return {
               end
             end,
             key = "t",
+          },
+          {
+            desc = "Zoxide",
+            desc_hl = "String",
+            action = "FzfLua zoxide",
+            key = "z",
           },
           {
             desc = "Configuration",
