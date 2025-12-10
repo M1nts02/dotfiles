@@ -19,6 +19,8 @@ require "modules.menu.screenshot"
 -------------- Launcher -------------
 Launcher = hs.loadSpoon "Launcher"
 for i, v in pairs(actions) do
+if v.pass == true then goto continue end
+
   if v.image == nil then
     v.image = hs.image.imageFromPath "icons/grid-home-menu-options-squares-table.ico"
   end
@@ -27,6 +29,8 @@ for i, v in pairs(actions) do
     subText = v.subText,
     image = v.image,
   }
+
+  ::continue::
 end
 Launcher.preAction = function(item)
   if item.type ~= "App" then

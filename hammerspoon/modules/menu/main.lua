@@ -27,143 +27,28 @@ add("Main Menu", {
     end,
   },
   -- Finder
-  {
-    singleKey("f", "Finder"),
-    function()
-      hs.application.launchOrFocus "/System/Library/CoreServices/Finder.app"
-    end,
-  },
+  { singleKey("f", "Finder"), actions["Finder"].run },
   -- Rimer Switcher
-  {
-    singleKey("e", "Rime"),
-    function()
-      hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
-      hs.eventtap.keyStroke({ "control", "shift" }, "f4")
-    end,
-  },
-  {
-    singleKey("o", "Maximize"),
-    actions["Window Maximize"].run,
-    { keep = true },
-  },
-  {
-    singleKey("c", "Center"),
-    actions["Window Center"].run,
-    { keep = true },
-  },
-  {
-    singleKey("k", "Up"),
-    actions["Window Up"].run,
-    { keep = true },
-  },
-  {
-    singleKey("j", "Down"),
-    actions["Window Down"].run,
-    { keep = true },
-  },
-  {
-    singleKey("h", "Left"),
-    actions["Window Left"].run,
-    { keep = true },
-  },
-  {
-    singleKey("l", "Right"),
-    actions["Window Right"].run,
-    { keep = true },
-  },
-  {
-    singleKey("t", "Top"),
-    actions["Window Top"].run,
-    { keep = true },
-  },
-  {
-    singleKey("u", "Window Upper Left"),
-    actions["Window Upper Left"].run,
-    { keep = true },
-  },
-  {
-    singleKey("i", "Window Upper Right"),
-    actions["Window Upper Right"].run,
-    { keep = true },
-  },
-  {
-    singleKey("n", "Window Lower Left"),
-    actions["Window Lower Left"].run,
-    { keep = true },
-  },
-  {
-    singleKey("m", "Window Lower Right"),
-    actions["Window Lower Right"].run,
-    { keep = true },
-  },
-  {
-    singleKey("f3", "Misson Control"),
-    function()
-      hs.spaces.openMissionControl()
-    end,
-  },
-  {
-    singleKey("f11", "Volume Down"),
-    function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local newVolume = math.min(current - 5, 100)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("f12", "Volume Up"),
-    function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local newVolume = math.min(current + 5, 100)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("f10", "Mute Toggle"),
-    function()
-      local device = hs.audiodevice.defaultOutputDevice()
-      local muted = device:muted()
-      device:setMuted(not muted)
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("f9", "Next"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
-      hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("f7", "Prev"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
-      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("f8", "Play"),
-    function()
-      hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
-      hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
-    end,
-    { keep = true },
-  },
-  {
-    singleKey("r", "Reload"),
-    function()
-      hs.reload()
-      hs.notify.new():title("Reload"):subTitle("Hammerspoon reload done!"):send()
-    end,
-  },
-  {
-    singleKey("q", "Quit"),
-    function() end,
-  },
+  { singleKey("e", "Rime"), actions["Rime"].run },
+  { singleKey("o", "Maximize"), actions["Window Maximize"].run, { keep = true } },
+  { singleKey("c", "Center"), actions["Window Center"].run, { keep = true } },
+  { singleKey("k", "Up"), actions["Window Up"].run, { keep = true } },
+  { singleKey("j", "Down"), actions["Window Down"].run, { keep = true } },
+  { singleKey("h", "Left"), actions["Window Left"].run, { keep = true } },
+  { singleKey("l", "Right"), actions["Window Right"].run, { keep = true } },
+  { singleKey("t", "Top"), actions["Window Top"].run, { keep = true } },
+  { singleKey("u", "Window Upper Left"), actions["Window Upper Left"].run, { keep = true } },
+  { singleKey("i", "Window Upper Right"), actions["Window Upper Right"].run, { keep = true } },
+  { singleKey("n", "Window Lower Left"), actions["Window Lower Left"].run, { keep = true } },
+  { singleKey("m", "Window Lower Right"), actions["Window Lower Right"].run, { keep = true } },
+  { singleKey("f3", "Misson Control"), hs.spaces.openMissionControl },
+  { singleKey("f11", "Volume Down"), actions["Volume Down"].run, { keep = true } },
+  { singleKey("f12", "Volume Up"), actions["Volume Up"].run, { keep = true } },
+  { singleKey("f10", "Mute Toggle"), actions["Mute Toggle"].run, { keep = true } },
+  { singleKey("f9", "Next"), actions["Next"].run, { keep = true } },
+  { singleKey("f7", "Prev"), actions["Prev"].run, { keep = true } },
+  { singleKey("f8", "Play"), actions["Play"].run, { keep = true } },
+  { singleKey("q", "Quit"), function() end },
 }, {
   helper = [[
 
@@ -176,7 +61,7 @@ add("Main Menu", {
 
      [c]: Center          [t]: Top             [o]: Maximize
 
-     [r]: Reload          [1-9]: Move to Space
+     [1-9]: Move to Space
 
                                                                                         ]],
   helperFormat = {

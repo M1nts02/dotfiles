@@ -225,4 +225,50 @@ end tell
     end,
     image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
+  ["Play"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
+      hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
+    end,
+  },
+  ["Prev"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
+      hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
+    end,
+  },
+  ["Next"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
+      hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
+    end,
+  },
+  ["Mute Toggle"] = {
+    run = function()
+      local device = hs.audiodevice.defaultOutputDevice()
+      local muted = device:muted()
+      device:setMuted(not muted)
+    end,
+  },
+  ["Volume Up"] = {
+    run = function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local newVolume = math.min(current + 5, 100)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end,
+  },
+  ["Volume Down"] = {
+    run = function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local newVolume = math.min(current - 5, 100)
+      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+    end,
+  },
+  ["Rime"] = {
+    run = function()
+      hs.keycodes.currentSourceID "im.rime.inputmethod.Squirrel.Hans"
+      hs.eventtap.keyStroke({ "control", "shift" }, "f4")
+    end,
+    pass = true,
+  },
 }

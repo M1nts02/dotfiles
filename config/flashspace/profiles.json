@@ -67,6 +67,21 @@
               "name" : "Ani"
             },
             {
+              "bundleIdentifier" : "com.plantsvszombies3.mengxing",
+              "iconPath" : "/Applications/植物大战僵尸3.app/Contents/Resources/AppIcon.icns",
+              "name" : "植物大战僵尸3"
+            },
+            {
+              "bundleIdentifier" : "com.apple.exposelauncher",
+              "iconPath" : "/System/Applications/Mission Control.app/Contents/Resources/AppIcon.icns",
+              "name" : "Mission Control"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Safari",
+              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
+              "name" : "Safari"
+            },
+            {
               "bundleIdentifier" : "com.xjbeta.Aria2D",
               "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
               "name" : "Aria2D"
@@ -75,16 +90,6 @@
               "bundleIdentifier" : "com.brave.Browser",
               "iconPath" : "/Applications/Brave Browser.app/Contents/Resources/app.icns",
               "name" : "Brave Browser"
-            },
-            {
-              "bundleIdentifier" : "com.plantsvszombies3.mengxing",
-              "iconPath" : "/Applications/植物大战僵尸3.app/Contents/Resources/AppIcon.icns",
-              "name" : "植物大战僵尸3"
-            },
-            {
-              "bundleIdentifier" : "com.apple.Safari",
-              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
-              "name" : "Safari"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -177,11 +182,6 @@
               "name" : "TestFlight"
             },
             {
-              "bundleIdentifier" : "com.apple.ActivityMonitor",
-              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
-              "name" : "Activity Monitor"
-            },
-            {
               "bundleIdentifier" : "com.colliderli.iina",
               "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
               "name" : "IINA"
@@ -212,14 +212,24 @@
               "name" : "Screenshot"
             },
             {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
+              "bundleIdentifier" : "vr.HiFidelity",
+              "iconPath" : "/Applications/HiFidelity.app/Contents/Resources/AppIcon.icns",
+              "name" : "HiFidelity"
             },
             {
               "bundleIdentifier" : "com.alienator88.Pearcleaner",
               "iconPath" : "/Applications/Pearcleaner.app/Contents/Resources/Glass.icns",
               "name" : "Pearcleaner"
+            },
+            {
+              "bundleIdentifier" : "org.gnu.Emacs",
+              "iconPath" : "/Applications/Emacs.app/Contents/Resources/Emacs.icns",
+              "name" : "Emacs"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
             },
             {
               "bundleIdentifier" : "com.mitchellh.ghostty",
@@ -272,11 +282,6 @@
               "name" : "Kid3"
             },
             {
-              "bundleIdentifier" : "com.apple.systempreferences",
-              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
-              "name" : "System Settings"
-            },
-            {
               "bundleIdentifier" : "com.apple.Automator",
               "iconPath" : "/System/Applications/Automator.app/Contents/Resources/AppIcon.icns",
               "name" : "Automator"
@@ -297,19 +302,29 @@
               "name" : "Shortcuts"
             },
             {
-              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
-              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
-              "name" : "Evermusic"
-            },
-            {
-              "bundleIdentifier" : "com.tencent.qq",
-              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
-              "name" : "QQ"
+              "bundleIdentifier" : "com.ocenaudio",
+              "iconPath" : "/Applications/ocenaudio.app/Contents/Resources/ocenaudio.icns",
+              "name" : "ocenaudio"
             },
             {
               "bundleIdentifier" : "com.apple.AppStore",
               "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
               "name" : "App Store"
+            },
+            {
+              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
+              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
+              "name" : "Evermusic"
+            },
+            {
+              "bundleIdentifier" : "com.apple.ActivityMonitor",
+              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
+              "name" : "Activity Monitor"
+            },
+            {
+              "bundleIdentifier" : "com.tencent.qq",
+              "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
+              "name" : "QQ"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -335,6 +350,11 @@
               "bundleIdentifier" : "com.apple.audio.AudioMIDISetup",
               "iconPath" : "/System/Applications/Utilities/Audio MIDI Setup.app/Contents/Resources/AppIcon.icns",
               "name" : "Audio MIDI Setup"
+            },
+            {
+              "bundleIdentifier" : "com.apple.systempreferences",
+              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
+              "name" : "System Settings"
             }
           ],
           "display" : "Built-in Retina Display",
