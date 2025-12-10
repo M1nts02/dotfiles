@@ -28,55 +28,8 @@ local function matcher(appName, query) -- Case insensitive
 end
 
 local chooser = nil
-local applicationsCache = nil
-local applicationsCacheTime = nil
-local applicationsCacheDuration = 3600
 local searchTimer = nil
-
-local function getItems()
-  local currentTime = os.time()
-  if
-    applicationsCache
-    and applicationsCacheTime
-    and (currentTime - applicationsCacheTime) < applicationsCacheDuration
-  then
-    return applicationsCache
-  end
-
-  local items = {}
-  local t = {} -- Remove duplicates
-
-  for _, path in ipairs(obj.appPaths) do
-    local expandedPath = os.getenv "HOME" and path:gsub("^~", os.getenv "HOME") or path
-    local command = "find " .. expandedPath .. " -name '*.app' -type d -maxdepth 2 2>/dev/null | sort"
-    local handle = io.popen(command)
-    if handle then
-      for line in handle:lines() do
-        local appName = line:match "([^/]+)%.app$"
-        if appName then
-          t[line] = { name = appName, path = line }
-        end
-      end
-      handle:close()
-    end
-  end
-
-  -- Remove duplicates
-  for _, v in pairs(t) do
-    local bundleID = hs.execute("echo -n $(osascript -e 'id of app \"" .. v.path .. "\"')", true)
-    v.image = bundleID and hs.image.imageFromAppBundle(bundleID) or nil
-    table.insert(items, v)
-  end
-
-  for actionName, _ in pairs(obj.actions) do
-    table.insert(items, { name = actionName })
-  end
-
-  applicationsCache = items
-  applicationsCacheTime = currentTime
-
-  return items
-end
+local items = {}
 
 local function launchItem(item)
   if not item then
@@ -118,10 +71,9 @@ local function searchItems(query)
     return
   end
 
-  local allItems = getItems()
   local filteredItems = {}
 
-  for _, item in ipairs(allItems) do
+  for _, item in ipairs(items) do
     if matcher(item.name, query) then
       if item.path ~= nil then
         table.insert(filteredItems, {
@@ -161,9 +113,35 @@ chooser:queryChangedCallback(function(query)
   end)
 end)
 
-function obj.init() end
+function obj.start()
+  local applications = {} -- Remove duplicates
+  for _, path in ipairs(obj.appPaths) do
+    local expandedPath = os.getenv "HOME" and path:gsub("^~", os.getenv "HOME") or path
+    local command = "find " .. expandedPath .. " -name '*.app' -type d -maxdepth 2 2>/dev/null | sort"
+    local handle = io.popen(command)
+    if handle then
+      for line in handle:lines() do
+        local appName = line:match "([^/]+)%.app$"
+        if appName then
+          applications[appName] = { name = appName, path = line }
+        end
+      end
+      handle:close()
+    end
+  end
 
-function obj.run()
+  for _, v in pairs(applications) do
+    local bundleID = hs.execute("echo -n $(osascript -e 'id of app \"" .. v.path .. "\"')", true)
+    v.image = bundleID and hs.image.imageFromAppBundle(bundleID) or nil
+    table.insert(items, v)
+  end
+
+  for actionName, _ in pairs(obj.actions) do
+    table.insert(items, { name = actionName })
+  end
+end
+
+function obj.open()
   chooser:bgDark(obj.bgDark)
   chooser:show()
   chooser:query ""

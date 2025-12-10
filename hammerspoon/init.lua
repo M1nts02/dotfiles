@@ -41,7 +41,8 @@ Launcher.preAction = function(item)
     end
   end
 end
+Launcher.start()
 hs.hotkey.bind({ "cmd" }, "space", function()
   Launcher.bgDark = utils.get_dark_mode()
-  Launcher.run()
+  Launcher.open()
 end)
