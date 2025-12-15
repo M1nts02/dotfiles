@@ -17,6 +17,16 @@ return {
     { '"', "<CMD>FzfLua registers<CR>", desc = "Registers" },
     { "<C-r>", "<CMD>FzfLua registers<CR>", desc = "Registers", mode = "i" },
     { "z=", "<CMD>FzfLua spell_suggest<CR>", desc = "Spell_suggest" },
+    { "gd", "<CMD>FzfLua lsp_definitions<CR>", desc = "Definition" },
+    { "gO", "<CMD>FzfLua lsp_document_symbols<CR>", desc = "Symbols" },
+    { "grr", "<CMD>FzfLua lsp_references<CR>", desc = "References" },
+    { "gro", "<CMD>FzfLua lsp_outgoing_calls<CR>", desc = "Outgoing Calls" },
+    { "gri", "<CMD>FzfLua lsp_implementations<CR>", desc = "Implementations" },
+    { "grd", "<CMD>FzfLua diagnostics_document<CR>", desc = "Diagnostics" },
+    { "grD", "<CMD>FzfLua diagnostics_workspace<CR>", desc = "Diagnostics Workspace" },
+    { "grt", "<CMD>FzfLua lsp_typedefs<CR>", desc = "Type definition" },
+    { "<Space>fg", "<CMD>FzfLua live_grep<CR>", desc = "Live Grep" },
+    { "<Space>fG", "<CMD>FzfLua grep<CR>", desc = "Grep" },
   },
   config = function()
     local fzf_lua = require "fzf-lua"

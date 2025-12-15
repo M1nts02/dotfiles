@@ -92,6 +92,30 @@ return {
         },
         {
           {
+            key = "d",
+            desc = "Dim",
+            flag = function()
+              if vim.g.dim == true then
+                return true
+              else
+                return false
+              end
+            end,
+          },
+          function()
+            if vim.g.dim == true then
+              vim.g.dim = false
+              update { g = { dim = false } }
+              vim.cmd "DimToggle"
+            else
+              vim.g.dim = true
+              update { g = { dim = true } }
+              vim.cmd "DimToggle"
+            end
+          end,
+        },
+        {
+          {
             key = "w",
             desc = "Wrap",
             flag = function()
