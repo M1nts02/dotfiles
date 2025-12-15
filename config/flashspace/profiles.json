@@ -7,11 +7,6 @@
         {
           "apps" : [
             {
-              "bundleIdentifier" : "com.baidu.netdisk",
-              "iconPath" : "/Applications/BaiduNetdisk.app/Contents/Resources/icon.icns",
-              "name" : "BaiduNetdisk"
-            },
-            {
               "bundleIdentifier" : "com.aone.keka",
               "iconPath" : "/Applications/Keka.app/Contents/Resources/Keka.icns",
               "name" : "Keka"
@@ -22,29 +17,9 @@
               "name" : "MacPacker"
             },
             {
-              "bundleIdentifier" : "com.kingsoft.wpsoffice.mac",
-              "iconPath" : "/Applications/wpsoffice.app/Contents/Resources/wpsoffice.icns",
-              "name" : "WPS Office"
-            },
-            {
-              "bundleIdentifier" : "com.microsoft.VSCode",
-              "iconPath" : "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns",
-              "name" : "Code"
-            },
-            {
-              "bundleIdentifier" : "com.amethyst.Amethyst",
-              "iconPath" : "/Applications/Amethyst.app/Contents/Resources/AppIcon.icns",
-              "name" : "Amethyst"
-            },
-            {
               "bundleIdentifier" : "io.github.keycastr",
               "iconPath" : "/Applications/KeyCastr.app/Contents/Resources/KeyCastr.icns",
               "name" : "KeyCastr"
-            },
-            {
-              "bundleIdentifier" : "cn.trae.app",
-              "iconPath" : "/Applications/Trae CN.app/Contents/Resources/Trae CN.icns",
-              "name" : "TRAE CN"
             },
             {
               "bundleIdentifier" : "org.alacritty",
@@ -52,24 +27,14 @@
               "name" : "Alacritty"
             },
             {
-              "bundleIdentifier" : "ai.browser.Neo",
-              "iconPath" : "/Applications/Neo.app/Contents/Resources/app.icns",
-              "name" : "Neo"
-            },
-            {
-              "bundleIdentifier" : "com.apple.Compressor",
-              "iconPath" : "/Applications/Compressor.app/Contents/Resources/AppIcon.icns",
-              "name" : "Compressor"
-            },
-            {
               "bundleIdentifier" : "me.him188.ani.app.desktop",
               "iconPath" : "/Applications/Ani.app/Contents/Resources/Ani.icns",
               "name" : "Ani"
             },
             {
-              "bundleIdentifier" : "com.plantsvszombies3.mengxing",
-              "iconPath" : "/Applications/植物大战僵尸3.app/Contents/Resources/AppIcon.icns",
-              "name" : "植物大战僵尸3"
+              "bundleIdentifier" : "cn.trae.app",
+              "iconPath" : "/Applications/Trae CN.app/Contents/Resources/Trae CN.icns",
+              "name" : "TRAE CN"
             },
             {
               "bundleIdentifier" : "com.apple.exposelauncher",
@@ -77,14 +42,49 @@
               "name" : "Mission Control"
             },
             {
+              "bundleIdentifier" : "com.apple.screenshot.launcher",
+              "iconPath" : "/System/Applications/Utilities/Screenshot.app/Contents/Resources/AppIcon.icns",
+              "name" : "Screenshot"
+            },
+            {
+              "bundleIdentifier" : "com.apple.apps.launcher",
+              "iconPath" : "/System/Applications/Apps.app/Contents/Resources/AppIcon.icns",
+              "name" : "Apps"
+            },
+            {
+              "bundleIdentifier" : "com.PS.PSD",
+              "iconPath" : "/Applications/PD.app/Contents/Resources/AppIcon.icns",
+              "name" : "PD"
+            },
+            {
+              "bundleIdentifier" : "org.m0k.transmission",
+              "iconPath" : "/Applications/Transmission.app/Contents/Resources/AppIcon.icns",
+              "name" : "Transmission"
+            },
+            {
+              "bundleIdentifier" : "com.electron.min",
+              "iconPath" : "/Applications/Min.app/Contents/Resources/icon.icns",
+              "name" : "Min"
+            },
+            {
+              "bundleIdentifier" : "org.qutebrowser.qutebrowser",
+              "iconPath" : "/Applications/qutebrowser.app/Contents/Resources/qutebrowser.icns",
+              "name" : "qutebrowser"
+            },
+            {
               "bundleIdentifier" : "com.apple.Safari",
               "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
               "name" : "Safari"
             },
             {
-              "bundleIdentifier" : "com.xjbeta.Aria2D",
-              "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
-              "name" : "Aria2D"
+              "bundleIdentifier" : "com.googlecode.iterm2",
+              "iconPath" : "/Applications/iTerm.app/Contents/Resources/iTerm2 App Icon for Release.icns",
+              "name" : "iTerm2"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Automator",
+              "iconPath" : "/System/Applications/Automator.app/Contents/Resources/AppIcon.icns",
+              "name" : "Automator"
             },
             {
               "bundleIdentifier" : "com.brave.Browser",
@@ -96,7 +96,7 @@
           "id" : "37F051D6-E33A-4AAA-BEDD-2BD307954CE3",
           "name" : "Space 1",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+1",
+          "shortcut" : "opt+1",
           "symbolIconName" : "1.square"
         },
         {
@@ -110,11 +110,6 @@
               "bundleIdentifier" : "com.apple.iBooksX",
               "iconPath" : "/System/Applications/Books.app/Contents/Resources/AppIcon.icns",
               "name" : "Books"
-            },
-            {
-              "bundleIdentifier" : "com.pixelmatorteam.pixelmator.x",
-              "iconPath" : "/Applications/Pixelmator Pro.app/Contents/Resources/AppIcon.icns",
-              "name" : "Pixelmator Pro"
             },
             {
               "bundleIdentifier" : "com.apple.DwellControl",
@@ -147,34 +142,9 @@
               "name" : "Time Machine"
             },
             {
-              "bundleIdentifier" : "com.apple.Terminal",
-              "iconPath" : "/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns",
-              "name" : "Terminal"
-            },
-            {
               "bundleIdentifier" : "org.vim.MacVim",
               "iconPath" : "/Applications/MacVim.app/Contents/Resources/MacVim.icns",
               "name" : "MacVim"
-            },
-            {
-              "bundleIdentifier" : "netdcy.FlowVision",
-              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
-              "name" : "FlowVision"
-            },
-            {
-              "bundleIdentifier" : "org.upscayl.Upscayl",
-              "iconPath" : "/Applications/Upscayl.app/Contents/Resources/icon.icns",
-              "name" : "Upscayl"
-            },
-            {
-              "bundleIdentifier" : "com.rlxone.equinox",
-              "iconPath" : "/Applications/Equinox.app/Contents/Resources/AppIcon.icns",
-              "name" : "Equinox"
-            },
-            {
-              "bundleIdentifier" : "com.apple.Photos",
-              "iconPath" : "/System/Applications/Photos.app/Contents/Resources/AppIcon.icns",
-              "name" : "Photos"
             },
             {
               "bundleIdentifier" : "com.apple.TestFlight",
@@ -182,34 +152,9 @@
               "name" : "TestFlight"
             },
             {
-              "bundleIdentifier" : "com.colliderli.iina",
-              "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
-              "name" : "IINA"
-            },
-            {
-              "bundleIdentifier" : "com.apple.apps.launcher",
-              "iconPath" : "/System/Applications/Apps.app/Contents/Resources/AppIcon.icns",
-              "name" : "Apps"
-            },
-            {
-              "bundleIdentifier" : "com.apple.FinalCut",
-              "iconPath" : "/Applications/Final Cut Pro.app/Contents/Resources/AppIcon.icns",
-              "name" : "Final Cut Pro"
-            },
-            {
-              "bundleIdentifier" : "net.freemacsoft.AppCleaner",
-              "iconPath" : "/Applications/AppCleaner.app/Contents/Resources/AppIcon.icns",
-              "name" : "AppCleaner"
-            },
-            {
               "bundleIdentifier" : "com.apple.Image_Capture",
               "iconPath" : "/System/Applications/Image Capture.app/Contents/Resources/AppIcon.icns",
               "name" : "Image Capture"
-            },
-            {
-              "bundleIdentifier" : "com.apple.screenshot.launcher",
-              "iconPath" : "/System/Applications/Utilities/Screenshot.app/Contents/Resources/AppIcon.icns",
-              "name" : "Screenshot"
             },
             {
               "bundleIdentifier" : "vr.HiFidelity",
@@ -217,19 +162,109 @@
               "name" : "HiFidelity"
             },
             {
-              "bundleIdentifier" : "com.alienator88.Pearcleaner",
-              "iconPath" : "/Applications/Pearcleaner.app/Contents/Resources/Glass.icns",
-              "name" : "Pearcleaner"
-            },
-            {
               "bundleIdentifier" : "org.gnu.Emacs",
               "iconPath" : "/Applications/Emacs.app/Contents/Resources/Emacs.icns",
               "name" : "Emacs"
             },
             {
+              "bundleIdentifier" : "com.metacubex.ClashX.meta",
+              "iconPath" : "/Applications/ClashX Meta.app/Contents/Resources/AppIcon.icns",
+              "name" : "ClashX Meta"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Passwords",
+              "iconPath" : "/System/Applications/Passwords.app/Contents/Resources/AppIcon.icns",
+              "name" : "Passwords"
+            },
+            {
+              "bundleIdentifier" : "com.apple.reminders",
+              "iconPath" : "/System/Applications/Reminders.app/Contents/Resources/AppIcon.icns",
+              "name" : "Reminders"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Photos",
+              "iconPath" : "/System/Applications/Photos.app/Contents/Resources/AppIcon.icns",
+              "name" : "Photos"
+            },
+            {
+              "bundleIdentifier" : "com.rlxone.equinox",
+              "iconPath" : "/Applications/Equinox.app/Contents/Resources/AppIcon.icns",
+              "name" : "Equinox"
+            },
+            {
+              "bundleIdentifier" : "com.alienator88.Pearcleaner",
+              "iconPath" : "/Applications/Pearcleaner.app/Contents/Resources/Glass.icns",
+              "name" : "Pearcleaner"
+            },
+            {
+              "bundleIdentifier" : "com.colliderli.iina",
+              "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
+              "name" : "IINA"
+            },
+            {
+              "bundleIdentifier" : "com.apple.audio.AudioMIDISetup",
+              "iconPath" : "/System/Applications/Utilities/Audio MIDI Setup.app/Contents/Resources/AppIcon.icns",
+              "name" : "Audio MIDI Setup"
+            },
+            {
+              "bundleIdentifier" : "com.apple.motionapp",
+              "iconPath" : "/Applications/Motion.app/Contents/Resources/AppIcon.icns",
+              "name" : "Motion"
+            },
+            {
+              "bundleIdentifier" : "com.apple.FinalCut",
+              "iconPath" : "/Applications/Final Cut Pro.app/Contents/Resources/AppIcon.icns",
+              "name" : "Final Cut Pro"
+            },
+            {
+              "bundleIdentifier" : "com.apple.QuickTimePlayerX",
+              "iconPath" : "/System/Applications/QuickTime Player.app/Contents/Resources/AppIcon.icns",
+              "name" : "QuickTime Player"
+            },
+            {
+              "bundleIdentifier" : "mediago.ziying.site",
+              "iconPath" : "/Applications/mediago.app/Contents/Resources/icon.icns",
+              "name" : "mediago"
+            },
+            {
+              "bundleIdentifier" : "com.ocenaudio",
+              "iconPath" : "/Applications/ocenaudio.app/Contents/Resources/ocenaudio.icns",
+              "name" : "ocenaudio"
+            },
+            {
+              "bundleIdentifier" : "com.apple.ActivityMonitor",
+              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
+              "name" : "Activity Monitor"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Compressor",
+              "iconPath" : "/Applications/Compressor.app/Contents/Resources/AppIcon.icns",
+              "name" : "Compressor"
+            },
+            {
+              "bundleIdentifier" : "com.microsoft.VSCode",
+              "iconPath" : "/Applications/Visual Studio Code.app/Contents/Resources/Code.icns",
+              "name" : "Code"
+            },
+            {
+              "bundleIdentifier" : "com.apple.systempreferences",
+              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
+              "name" : "System Settings"
+            },
+            {
+              "bundleIdentifier" : "netdcy.FlowVision",
+              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
+              "name" : "FlowVision"
+            },
+            {
               "bundleIdentifier" : "com.apple.finder",
               "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
               "name" : "Finder"
+            },
+            {
+              "bundleIdentifier" : "com.apple.AppStore",
+              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
+              "name" : "App Store"
             },
             {
               "bundleIdentifier" : "com.mitchellh.ghostty",
@@ -241,16 +276,11 @@
           "id" : "FAD3FE7E-2C0B-426D-97FD-3FF20ADC8333",
           "name" : "Space 2",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+2",
+          "shortcut" : "opt+2",
           "symbolIconName" : "2.square"
         },
         {
           "apps" : [
-            {
-              "bundleIdentifier" : "com.apple.TextEdit",
-              "iconPath" : "/System/Applications/TextEdit.app/Contents/Resources/AppIcon.icns",
-              "name" : "TextEdit"
-            },
             {
               "bundleIdentifier" : "org.hammerspoon.Hammerspoon",
               "iconPath" : "/Applications/Hammerspoon.app/Contents/Resources/AppIcon.icns",
@@ -272,19 +302,9 @@
               "name" : "Weather"
             },
             {
-              "bundleIdentifier" : "com.apple.Passwords",
-              "iconPath" : "/System/Applications/Passwords.app/Contents/Resources/AppIcon.icns",
-              "name" : "Passwords"
-            },
-            {
               "bundleIdentifier" : "org.kde.kid3",
               "iconPath" : "/Applications/kid3.app/Contents/Resources/kid3.icns",
               "name" : "Kid3"
-            },
-            {
-              "bundleIdentifier" : "com.apple.Automator",
-              "iconPath" : "/System/Applications/Automator.app/Contents/Resources/AppIcon.icns",
-              "name" : "Automator"
             },
             {
               "bundleIdentifier" : "app.motrix.native",
@@ -292,34 +312,64 @@
               "name" : "Motrix"
             },
             {
-              "bundleIdentifier" : "com.apple.QuickTimePlayerX",
-              "iconPath" : "/System/Applications/QuickTime Player.app/Contents/Resources/AppIcon.icns",
-              "name" : "QuickTime Player"
-            },
-            {
               "bundleIdentifier" : "com.apple.shortcuts",
               "iconPath" : "/System/Applications/Shortcuts.app/Contents/Resources/AppIcon.icns",
               "name" : "Shortcuts"
             },
             {
-              "bundleIdentifier" : "com.ocenaudio",
-              "iconPath" : "/Applications/ocenaudio.app/Contents/Resources/ocenaudio.icns",
-              "name" : "ocenaudio"
+              "bundleIdentifier" : "com.apple.Terminal",
+              "iconPath" : "/System/Applications/Utilities/Terminal.app/Contents/Resources/Terminal.icns",
+              "name" : "Terminal"
             },
             {
-              "bundleIdentifier" : "com.apple.AppStore",
-              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
-              "name" : "App Store"
+              "bundleIdentifier" : "com.pixelmatorteam.pixelmator.x",
+              "iconPath" : "/Applications/Pixelmator Pro.app/Contents/Resources/AppIcon.icns",
+              "name" : "Pixelmator Pro"
+            },
+            {
+              "bundleIdentifier" : "com.sourcegit-scm.sourcegit",
+              "iconPath" : "/Applications/SourceGit.app/Contents/Resources/App.icns",
+              "name" : "SourceGit"
+            },
+            {
+              "bundleIdentifier" : "net.freemacsoft.AppCleaner",
+              "iconPath" : "/Applications/AppCleaner.app/Contents/Resources/AppIcon.icns",
+              "name" : "AppCleaner"
+            },
+            {
+              "bundleIdentifier" : "com.kingsoft.wpsoffice.mac",
+              "iconPath" : "/Applications/wpsoffice.app/Contents/Resources/wpsoffice.icns",
+              "name" : "WPS Office"
+            },
+            {
+              "bundleIdentifier" : "dog.unix.cantata.Cantata",
+              "iconPath" : "/Applications/Cantata.app/Contents/Resources/cantata.icns",
+              "name" : "Cantata"
+            },
+            {
+              "bundleIdentifier" : "org.upscayl.Upscayl",
+              "iconPath" : "/Applications/Upscayl.app/Contents/Resources/icon.icns",
+              "name" : "Upscayl"
+            },
+            {
+              "bundleIdentifier" : "com.xjbeta.Aria2D",
+              "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
+              "name" : "Aria2D"
+            },
+            {
+              "bundleIdentifier" : "com.apple.ScreenContinuity",
+              "iconPath" : "/System/Applications/iPhone Mirroring.app/Contents/Resources/AppIcon.icns",
+              "name" : "iPhone Mirroring"
+            },
+            {
+              "bundleIdentifier" : "com.NeatDownloadManager",
+              "iconPath" : "/Applications/NeatDownloadManager.app/Contents/Resources/AppIcon.icns",
+              "name" : "NeatDownloadManager"
             },
             {
               "bundleIdentifier" : "com.leshko.cloudplayer.mac",
               "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
               "name" : "Evermusic"
-            },
-            {
-              "bundleIdentifier" : "com.apple.ActivityMonitor",
-              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
-              "name" : "Activity Monitor"
             },
             {
               "bundleIdentifier" : "com.tencent.qq",
@@ -331,7 +381,7 @@
           "id" : "95BCE82D-8751-449B-AA38-25C7A2D6966F",
           "name" : "Space 3",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+3",
+          "shortcut" : "opt+3",
           "symbolIconName" : "3.square"
         },
         {
@@ -345,23 +395,13 @@
               "bundleIdentifier" : "com.titanium.OnyX",
               "iconPath" : "/Applications/OnyX.app/Contents/Resources/OnyX.icns",
               "name" : "OnyX"
-            },
-            {
-              "bundleIdentifier" : "com.apple.audio.AudioMIDISetup",
-              "iconPath" : "/System/Applications/Utilities/Audio MIDI Setup.app/Contents/Resources/AppIcon.icns",
-              "name" : "Audio MIDI Setup"
-            },
-            {
-              "bundleIdentifier" : "com.apple.systempreferences",
-              "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/SystemSettings.icns",
-              "name" : "System Settings"
             }
           ],
           "display" : "Built-in Retina Display",
           "id" : "E94A8D93-D32E-4E37-A430-621D5E631342",
           "name" : "Space 4",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+4",
+          "shortcut" : "opt+4",
           "symbolIconName" : "4.square"
         },
         {
@@ -376,7 +416,7 @@
           "id" : "FDBD49E6-18A5-4F3D-81BD-86E7473F46FB",
           "name" : "Space 5",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+5",
+          "shortcut" : "opt+5",
           "symbolIconName" : "5.square"
         },
         {
@@ -387,7 +427,7 @@
           "id" : "60FF9F37-DFC7-451D-832D-FAE4C71B7C8C",
           "name" : "Space 6",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+6",
+          "shortcut" : "opt+6",
           "symbolIconName" : "6.square"
         },
         {
@@ -398,7 +438,7 @@
           "id" : "AD88C044-0A6E-4809-959D-6012E74527F7",
           "name" : "Space 7",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+7",
+          "shortcut" : "opt+7",
           "symbolIconName" : "7.square"
         },
         {
@@ -409,7 +449,7 @@
           "id" : "FE9E5FA7-D59B-44CA-84E2-FAEC123C2190",
           "name" : "Space 8",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+8",
+          "shortcut" : "opt+8",
           "symbolIconName" : "8.square"
         },
         {
@@ -423,13 +463,28 @@
               "bundleIdentifier" : "com.apple.ScriptEditor2",
               "iconPath" : "/System/Applications/Utilities/Script Editor.app/Contents/Resources/AppIcon.icns",
               "name" : "Script Editor"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Notes",
+              "iconPath" : "/System/Applications/Notes.app/Contents/Resources/AppIcon.icns",
+              "name" : "Notes"
+            },
+            {
+              "bundleIdentifier" : "com.apple.TextEdit",
+              "iconPath" : "/System/Applications/TextEdit.app/Contents/Resources/AppIcon.icns",
+              "name" : "TextEdit"
+            },
+            {
+              "bundleIdentifier" : "com.baidu.netdisk",
+              "iconPath" : "/Applications/BaiduNetdisk.app/Contents/Resources/icon.icns",
+              "name" : "BaiduNetdisk"
             }
           ],
           "display" : "Built-in Retina Display",
           "id" : "630B52FB-53F8-4DD6-B1B6-1D9914A0C27A",
           "name" : "Space 9",
           "openAppsOnActivation" : false,
-          "shortcut" : "cmd+ctrl+9",
+          "shortcut" : "opt+9",
           "symbolIconName" : "9.square"
         }
       ]

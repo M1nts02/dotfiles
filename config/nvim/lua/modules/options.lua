@@ -51,7 +51,10 @@ opt.fillchars = { eob = " " }
 
 g.mapleader = "\\"
 g.loaded_netrw = 1
+g.netrw_banner = 1
 g.loaded_netrwPlugin = 1
+--g.netrw_winsize = 20
+g.netrw_liststyle = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 g.loaded_gzip = 1

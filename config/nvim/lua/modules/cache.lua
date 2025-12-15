@@ -11,7 +11,7 @@ end, {
 })
 
 -- default cache
-local cache = {
+local options = {
   g = {
     cmp_disable = false,
     dianostic_virtualtext = false,
@@ -23,6 +23,7 @@ local cache = {
     dark_theme = "akane-dark",
     light_theme = "akane-light",
     python3_host_prog = "python3",
+    dim = false,
   },
   opt = {
     wrap = true,
@@ -35,24 +36,20 @@ local cache = {
 
 local function update_cache_file()
   local cache_file = io.open(cache_path, "w")
-  local context = vim.json.encode(cache)
+  local context = vim.json.encode(options)
   cache_file:write(context)
   cache_file:close()
 end
 
-local function load_cache()
+function M.load()
   local file = io.open(cache_path, "r")
   if file then
-    cache = vim.json.decode(file:read "*a")
+    options = vim.json.decode(file:read "*a")
   else
     update_cache_file()
   end
-end
 
-function M.load()
-  load_cache()
-
-  for i, t in pairs(cache) do
+  for i, t in pairs(options) do
     if type(t) == "table" then
       for o, v in pairs(t) do
         vim[i][o] = v
@@ -66,7 +63,7 @@ function M.update(opts)
     if type(t) == "table" then
       for o, v in pairs(t) do
         vim[i][o] = v
-        cache[i][o] = v
+        options[i][o] = v
       end
     end
   end
@@ -75,7 +72,7 @@ function M.update(opts)
 end
 
 function M.get_status()
-  return cache
+  return options
 end
 
 return M
