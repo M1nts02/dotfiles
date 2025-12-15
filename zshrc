@@ -105,4 +105,6 @@ alias_if_exist vim nvim
 
 alias q=exit
 
-eval "$(zoxide init zsh)"
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
