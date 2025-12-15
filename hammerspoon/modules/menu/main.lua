@@ -22,21 +22,22 @@ add("Main Menu", {
   {
     singleKey("g", "Ghostty"),
     function()
-      utils.flashSpaceMoveSpace("com.mitchellh.ghostty", utils.flashSpaceGetWorkspace())
+      utils.flashSpaceMoveSpace { bundleID = "com.mitchellh.ghostty", spaceName = utils.flashSpaceGetWorkspace() }
       hs.execute "open -a Ghostty -n"
     end,
   },
   -- Finder
-  { singleKey("f", "Finder"), actions["Finder"].run },
+  { singleKey("e", "Finder"), actions["Finder"].run },
   -- Rimer Switcher
-  { singleKey("e", "Rime"), actions["Rime"].run },
+  { singleKey("w", "Rime"), actions["Rime"].run },
   { singleKey("o", "Maximize"), actions["Window Maximize"].run, { keep = true } },
-  { singleKey("c", "Center"), actions["Window Center"].run, { keep = true } },
+  { singleKey("f", "Center"), actions["Window Center"].run, { keep = true } },
   { singleKey("k", "Up"), actions["Window Up"].run, { keep = true } },
   { singleKey("j", "Down"), actions["Window Down"].run, { keep = true } },
   { singleKey("h", "Left"), actions["Window Left"].run, { keep = true } },
   { singleKey("l", "Right"), actions["Window Right"].run, { keep = true } },
-  { singleKey("t", "Top"), actions["Window Top"].run, { keep = true } },
+  { singleKey("d", "Default"), actions["Window Default"].run, { keep = true } },
+  { singleKey("t", "Float"), actions["FlashSpace Float Toggle"].run },
   { singleKey("u", "Window Upper Left"), actions["Window Upper Left"].run, { keep = true } },
   { singleKey("i", "Window Upper Right"), actions["Window Upper Right"].run, { keep = true } },
   { singleKey("n", "Window Lower Left"), actions["Window Lower Left"].run, { keep = true } },
@@ -53,21 +54,17 @@ add("Main Menu", {
   helper = [[
 
 
-     [f]: Finder          [g]: Ghostty         [s]: Screenshot      [e]: Rime
+     [e]: Finder          [g]: Ghostty         [s]: Screenshot      [w]: Rime
 
      [h]: Left            [l]: Right           [k]: Up              [j]: Down
 
      [u]: Upper Left      [i]: Upper Right     [n]: Lower Left      [m]: Lower Right
 
-     [c]: Center          [t]: Top             [o]: Maximize
+     [f]: Center          [d]: Default         [o]: Maximize
 
-     [1-9]: Move to Space
+     [t]: Float           [1-9]: Move to Space
 
                                                                                         ]],
-  helperFormat = {
-    atScreenEdge = 0,
-    radius = 10,
-  },
 })
 
 hs.hotkey.bind({ "cmd" }, "`", function()

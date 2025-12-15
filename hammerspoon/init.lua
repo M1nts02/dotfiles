@@ -19,7 +19,9 @@ require "modules.menu.screenshot"
 -------------- Launcher -------------
 Launcher = hs.loadSpoon "Launcher"
 for i, v in pairs(actions) do
-if v.pass == true then goto continue end
+  if v.pass == true then
+    goto continue
+  end
 
   if v.image == nil then
     v.image = hs.image.imageFromPath "icons/grid-home-menu-options-squares-table.ico"
@@ -41,7 +43,7 @@ Launcher.preAction = function(item)
     local bundleID = utils.getBundleId(item.path)
 
     if not hs.application.get(bundleID) then
-      utils.flashSpaceMoveSpace(bundleID, current_space)
+      utils.flashSpaceMoveSpace { bundleID = bundleID, spaceName = current_space }
     end
   end
 end

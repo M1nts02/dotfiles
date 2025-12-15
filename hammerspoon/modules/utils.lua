@@ -39,10 +39,14 @@ function M.getBundleId(app)
   return hs.execute("echo -n $(osascript -e 'id of app \"" .. app .. "\"')", true)
 end
 
----@param bundleID string
----@param spaceName string
-function M.flashSpaceMoveSpace(bundleID, spaceName)
-  if bundleID == nil or spaceName == nil then
+---@param opt table
+function M.flashSpaceMoveSpace(opt)
+  opt = (opt == nil or type(opt) ~= "table") and {} or opt
+  local spaceName = opt.spaceName
+  local bundleID = opt.bundleID
+
+  bundleID = bundleID == nil and hs.application.frontmostApplication():bundleID() or bundleID
+  if spaceName == nil or bundleID == nil then
     return
   end
 
