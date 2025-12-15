@@ -2,7 +2,8 @@
 sort_sensitive = false
 sort_reverse   = false
 show_symlink   = true
-ratio = [1, 4, 3]
+#ratio = [1, 4, 3]
+ratio = [0, 1, 1]
 
 [opener]
 folder = [
@@ -46,6 +47,38 @@ rules = [
 micro_workers = 5
 macro_workers = 10
 bizarre_retry = 5
+image_alloc   = 1073741824
+image_bound = [ 65535, 65535 ]
 
 [log]
 enabled = false
+
+[preview]
+wrap = "yes"
+max_width  = 3000
+max_height = 3000
+image_quality = 70
+image_filter = "nearest"
+
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
+
+[plugin]
+  prepend_preloaders = [
+    { mime = "{audio,video,image}/*", run = "mediainfo" },
+    { mime = "application/subrip", run = "mediainfo" },
+    { mime = "application/postscript", run = "mediainfo" },
+  ]
+  prepend_previewers = [
+    { mime = "{audio,video,image}/*", run = "mediainfo"},
+    { mime = "application/subrip", run = "mediainfo" },
+    { mime = "application/postscript", run = "mediainfo" },
+  ]

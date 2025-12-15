@@ -12,3 +12,4 @@
 - zoxide
 - xclip
 - clippy
+- imagemagick
