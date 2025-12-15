@@ -8,6 +8,8 @@ ln -s ${DIR}/config/yazi        ${HOME}/.config/yazi
 ln -s ${DIR}/config/ghostty     ${HOME}/.config/ghostty
 ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
 ln -s ${DIR}/config/flashspace  ${HOME}/.config/flashspace
+ln -s ${DIR}/config/gitui  ${HOME}/.config/gitui
+ln -s ${DIR}/config/gitu  ${HOME}/.config/gitu
 
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
 
@@ -35,6 +37,9 @@ echo "
             <string>--file-allocation=none</string>
             <string>--no-file-allocation-limit=64M</string>
             <string>--seed-time=0</string>
+            <string>--timeout=600</string>
+            <string>--max-tries=0</string>
+            <string>--retry-wait=0</string>
         </array>
         <key>KeepAlive</key>
         <true/>

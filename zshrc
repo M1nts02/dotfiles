@@ -12,7 +12,7 @@ export LIBRARY_PATH=${HOMEBREW}/lib
 export VISUAL="nvim"
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
-#export DOTPATH="$( cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && cd ../.. && pwd )"
+#export DOTPATH="$( cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd )"
 
 NEWLINE=$'\n'
 PROMPT="%F{blue}%~ %#%f %F{green}%T%f${NEWLINE}"
@@ -65,7 +65,7 @@ icloud () {
   cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs
 }
 
-#  Move to CWD When Exiting Yazi
+# Move to CWD When Exiting Yazi
 function y() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
   yazi "$@" --cwd-file="$tmp"
@@ -75,22 +75,34 @@ function y() {
   rm -f -- "$tmp"
 }
 
-alias ls="eza --icons -F"
-alias l="eza -l --color=auto --icons"
-alias ll="eza -l --color=auto --total-size --icons"
-alias lg="eza --git -l --tree --icons"
-alias tree="eza --tree"
-alias cd="z"
-alias sed=gsed
-alias awk=gawk
-alias grep=ggrep
-alias keka="/Applications/Keka.app/Contents/MacOS/Keka --cli"
-alias q=exit
+# alias if $2 exist
+function alias_if_exist() {
+  cmd=$(echo "$2" | cut -d ' ' -f 1) # get command without parameters
+  if command -v $cmd &> /dev/null; then
+    alias $1=$2
+  fi
+}
 
-if command -v nvim &> /dev/null; then
-  alias v=nvim
-  alias vi=nvim
-  alias vim=nvim
-fi
+# gitui
+function g() {
+  if [[ $(get_dark_mode) == 'true' ]]; then
+    gitui -t catppuccin-mocha.ron
+  else
+    gitui -t catppuccin-latte.ron
+  fi
+}
+
+alias_if_exist sed gsed
+alias_if_exist awk gawk
+alias_if_exist grep ggrep
+alias_if_exist ls "eza --icons -F"
+alias_if_exist l "eza -l --color=auto --icons"
+alias_if_exist ll "eza -l --color=auto --total-size --icons"
+alias_if_exist tree "eza --tree"
+alias_if_exist v nvim
+alias_if_exist vi nvim
+alias_if_exist vim nvim
+
+alias q=exit
 
 eval "$(zoxide init zsh)"

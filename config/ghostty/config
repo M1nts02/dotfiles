@@ -41,6 +41,10 @@ keybind = cmd+b>j=goto_split:bottom
 keybind = cmd+b>k=goto_split:top
 keybind = cmd+b>h=goto_split:left
 keybind = cmd+b>l=goto_split:right
+keybind = cmd+shift+j=goto_split:bottom
+keybind = cmd+shift+k=goto_split:top
+keybind = cmd+shift+h=goto_split:left
+keybind = cmd+shift+l=goto_split:right
 
 keybind = cmd+down=goto_split:bottom
 keybind = cmd+up=goto_split:top
