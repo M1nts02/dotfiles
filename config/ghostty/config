@@ -18,7 +18,7 @@ cursor-style = block
 cursor-style-blink = true
 
 window-inherit-font-size = false
-font-family = RecMonoSmCasual Nerd Font Mono
+font-family = RecMonoSmCasual Nerd Font Mono,楷体-简
 font-size = 15
 font-feature = -calt
 font-feature = -liga

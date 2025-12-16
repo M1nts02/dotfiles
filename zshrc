@@ -84,7 +84,7 @@ function alias_if_exist() {
 }
 
 # gitui
-function g() {
+function gu() {
   if [[ $(get_dark_mode) == 'true' ]]; then
     gitui -t catppuccin-mocha.ron
   else
@@ -102,6 +102,7 @@ alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vi nvim
 alias_if_exist vim nvim
+alias_if_exist g gitu
 
 alias q=exit
 
