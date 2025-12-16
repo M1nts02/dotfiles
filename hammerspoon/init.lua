@@ -4,7 +4,7 @@ _G.utils = require "modules.utils" -- utils
 _G.actions = require "modules.actions" -- actions
 
 -------------- Window ---------------
-require "modules.window"
+--require "modules.window"
 
 -------------- Menu -----------------
 _G.Menu = hs.loadSpoon "Menu"
@@ -38,14 +38,8 @@ Launcher.preAction = function(item)
   if item.type ~= "App" then
     return
   end
-  if utils.flashSpaceRunning() then
-    local current_space = utils.flashSpaceGetWorkspace()
-    local bundleID = utils.getBundleId(item.path)
-
-    if not hs.application.get(bundleID) then
-      utils.flashSpaceMoveSpace { bundleID = bundleID, spaceName = current_space }
-    end
-  end
+  local bundleID = utils.getBundleId(item.path)
+  print("bundleID是:" .. bundleID)
 end
 Launcher.start()
 hs.hotkey.bind({ "cmd" }, "space", function()

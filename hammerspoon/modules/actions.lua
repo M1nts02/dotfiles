@@ -1,11 +1,8 @@
 local terminal = "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none"
 
-local imageObj = hs.image.imageFromPath(os.getenv "HOME" .. "/.hammerspoon/icons/ena.png")
-
 return {
   ["Nvim"] = {
     run = function()
-      utils.flashSpaceMoveSpace { bundleID = "com.mitchellh.ghostty", spaceName = utils.flashSpaceGetWorkspace() }
       hs.execute(
         "nohup "
           .. terminal
@@ -60,14 +57,12 @@ end tell
   },
   ["Finder"] = {
     run = function()
-      utils.flashSpaceMoveSpace { bundleID = "com.apple.finder", spaceName = utils.flashSpaceGetWorkspace() }
       hs.application.launchOrFocus "/System/Library/CoreServices/Finder.app"
     end,
     image = hs.image.imageFromAppBundle "com.apple.finder",
   },
   ["Trash"] = {
     run = function()
-      utils.flashSpaceMoveSpace { bundleID = "com.apple.finder", spaceName = utils.flashSpaceGetWorkspace() }
       hs.osascript.applescript [[
 tell application "Finder"
   open trash
@@ -108,78 +103,6 @@ end tell
     end,
     image = hs.image.imageFromAppBundle "com.apple.screenshot.launcher",
   },
-  ["FlashSpace Move to 1"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 1"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 2"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 2"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 3"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 3"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 4"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 4"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 5"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 5"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 6"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 6"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 7"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 7"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 8"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 8"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
-  ["FlashSpace Move to 9"] = {
-    run = function(opt)
-      opt = opt == nil and {} or opt
-      opt.spaceName = "Space 9"
-      utils.flashSpaceMoveSpace(opt)
-    end,
-    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
-  },
   ["Window Maximize"] = {
     run = function()
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.99 }
@@ -192,60 +115,60 @@ end tell
     end,
     image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
-  ["Window Up"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.075, 0.075, 0.85, 0.85 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Down"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.99, 0.4925 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Left"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Right"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Default"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.65, 0.7 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Upper Left"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.4925 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Upper Right"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.4925 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Lower Left"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.4925, 0.4925 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
-  ["Window Lower Right"] = {
-    run = function()
-      hs.window.focusedWindow():moveToUnit { 0.5025, 0.5025, 0.4925, 0.4925 }
-    end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  },
+  --["Window Up"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.075, 0.075, 0.85, 0.85 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Down"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.99, 0.4925 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Left"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Right"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Default"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.65, 0.7 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Upper Left"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.4925 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Upper Right"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.4925 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Lower Left"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.4925, 0.4925 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
+  --["Window Lower Right"] = {
+  --  run = function()
+  --    hs.window.focusedWindow():moveToUnit { 0.5025, 0.5025, 0.4925, 0.4925 }
+  --  end,
+  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  --},
   ["Play"] = {
     run = function()
       hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
@@ -291,11 +214,5 @@ end tell
       hs.eventtap.keyStroke({ "control", "shift" }, "f4")
     end,
     pass = true,
-  },
-  ["FlashSpace Float Toggle"] = {
-    run = function()
-      hs.execute("flashspace floating-apps toggle", true)
-    end,
-    image = hs.image.imageFromPath "icons/coding-html-development-language-programming.ico",
   },
 }

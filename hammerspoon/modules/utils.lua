@@ -23,36 +23,10 @@ function M.get_helper_color()
   end
 end
 
----@return boolean
-function M.flashSpaceRunning()
-  return hs.application.get "pl.wojciechkulik.FlashSpace" and true or false
-end
-
----@return string
-function M.flashSpaceGetWorkspace()
-  return hs.execute("flashspace get-workspace", true):gsub("\n", "")
-end
-
 ---@param app string
 ---@return string
 function M.getBundleId(app)
   return hs.execute("echo -n $(osascript -e 'id of app \"" .. app .. "\"')", true)
-end
-
----@param opt table
-function M.flashSpaceMoveSpace(opt)
-  opt = (opt == nil or type(opt) ~= "table") and {} or opt
-  local spaceName = opt.spaceName
-  local bundleID = opt.bundleID
-
-  bundleID = bundleID == nil and hs.application.frontmostApplication():bundleID() or bundleID
-  if spaceName == nil or bundleID == nil then
-    return
-  end
-
-  if M.flashSpaceRunning() then
-    hs.execute("flashspace assign-app --name " .. bundleID .. " --workspace '" .. spaceName .. "'", true)
-  end
 end
 
 ---@param opt table
