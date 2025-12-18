@@ -17,8 +17,7 @@ add("Main Menu", {
     end,
   },
   -- Finder
-  { singleKey("f", "Finder"), actions["Finder"].run },
-  -- Rimer Switcher
+  { singleKey("e", "Finder"), actions["Finder"].run },
   { singleKey("o", "Maximize"), actions["Window Maximize"].run, { keep = true } },
   { singleKey("c", "Center"), actions["Window Center"].run, { keep = true } },
   { singleKey("f3", "Misson Control"), hs.spaces.openMissionControl },
@@ -33,11 +32,11 @@ add("Main Menu", {
   helper = [[
 
 
-     [e]: Finder          [g]: Ghostty         [s]: Screenshot      [w]: Rime
+     [e]: Finder          [g]: Ghostty         [s]: Screenshot
 
      [c]: Center          [o]: Maximize
 
-                                                                                        ]],
+                                                                      ]],
 })
 
 hs.hotkey.bind({ "cmd" }, "`", function()

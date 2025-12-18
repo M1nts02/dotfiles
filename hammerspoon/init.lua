@@ -4,7 +4,7 @@ _G.utils = require "modules.utils" -- utils
 _G.actions = require "modules.actions" -- actions
 
 -------------- Window ---------------
---require "modules.window"
+require "modules.window"
 
 -------------- Menu -----------------
 _G.Menu = hs.loadSpoon "Menu"
@@ -33,13 +33,6 @@ for i, v in pairs(actions) do
   }
 
   ::continue::
-end
-Launcher.preAction = function(item)
-  if item.type ~= "App" then
-    return
-  end
-  local bundleID = utils.getBundleId(item.path)
-  print("bundleID是:" .. bundleID)
 end
 Launcher.start()
 hs.hotkey.bind({ "cmd" }, "space", function()
