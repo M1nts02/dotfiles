@@ -14,7 +14,6 @@ return {
     { "<Space>fz", "<CMD>FzfLua zoxide<CR>", desc = "Zoxide" },
     { "`", "<CMD>FzfLua marks<CR>", desc = "Marks" },
     { "'", "<CMD>FzfLua marks<CR>", desc = "Marks" },
-    { '"', "<CMD>FzfLua registers<CR>", desc = "Registers" },
     { "<C-r>", "<CMD>FzfLua registers<CR>", desc = "Registers", mode = "i" },
     { "z=", "<CMD>FzfLua spell_suggest<CR>", desc = "Spell_suggest" },
     { "gd", "<CMD>FzfLua lsp_definitions<CR>", desc = "Definition" },

@@ -4,9 +4,6 @@ local setmap = utils.setmap
 local map = {
   -- Clear highlights on search when pressing <Esc> in normal mode
   { { "n" }, "<Esc>", "<CMD>nohlsearch<CR>" },
-  -- Paste
-  { { "n" }, "gp", '"+p' },
-  { { "n" }, "gP", '"+P' },
   -- Tab
   { { "n" }, "<C-w>e", "<CMD>tabnew<CR>" },
   { { "n" }, "<C-w>1", "<CMD>tabnext 1<CR>" },
@@ -19,19 +16,12 @@ local map = {
   { { "n" }, "<C-w>8", "<CMD>tabnext 8<CR>" },
   { { "n" }, "<C-w>9", "<CMD>tablast<CR>" },
   { { "n" }, "<C-w>0", "<CMD>tabfirst<CR>" },
-  -- Completion
-  { { "i" }, "<C-l>", "<C-x><C-f>" },
   -- Indenting
   { { "v" }, "<", "<gv" },
   { { "v" }, ">", ">gv" },
   -- Change number
   { { "v" }, "<C-a>", "<C-a>gv" },
   { { "v" }, "<C-x>", "<C-x>gv" },
-  -- Yank
-  { { "n" }, "gy", '"+y' },
-  { { "n" }, "gY", '"+Y' },
-  { { "v" }, "gy", '"+y' },
-  { { "v" }, "gY", '"+Y' },
   -- LSP
   {
     { "n" },

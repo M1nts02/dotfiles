@@ -3,22 +3,11 @@ return {
   config = function()
     require("which-key").setup {
       notify = false,
-      triggers = {
-        { "<auto>", mode = "n" },
-      },
-      icons = {
-        rules = false,
-        breadcrumb = "»",
-        separator = "➜",
-        group = "",
-      },
-      win = {
-        border = "rounded",
-        title_pos = "left",
-      },
+      triggers = { { "<auto>", mode = "n" } },
+      icons = { rules = false, group = "" },
+      win = { border = "rounded", title_pos = "left" },
       plugins = {
         marks = false,
-        registers = false,
         spelling = { enabled = false },
       },
     }
@@ -42,9 +31,6 @@ return {
         end,
         desc = "Window+",
       },
-
-      -- Git
-      { "<Space>g", group = "Git+" },
 
       -- LSP
       { "gr", group = "LSP+" },

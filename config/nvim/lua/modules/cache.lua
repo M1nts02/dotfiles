@@ -27,8 +27,8 @@ local options = {
   },
   opt = {
     wrap = true,
-    cursorline = false,
-    cursorcolumn = false,
+    cursorline = true,
+    cursorcolumn = true,
     number = true,
     relativenumber = true,
   },
