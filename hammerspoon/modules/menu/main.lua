@@ -18,8 +18,6 @@ add("Main Menu", {
   },
   -- Finder
   { singleKey("e", "Finder"), actions["Finder"].run },
-  { singleKey("o", "Maximize"), actions["Window Maximize"].run, { keep = true } },
-  { singleKey("c", "Center"), actions["Window Center"].run, { keep = true } },
   { singleKey("f3", "Misson Control"), hs.spaces.openMissionControl },
   { singleKey("f11", "Volume Down"), actions["Volume Down"].run, { keep = true } },
   { singleKey("f12", "Volume Up"), actions["Volume Up"].run, { keep = true } },
@@ -31,11 +29,13 @@ add("Main Menu", {
 }, {
   helper = [[
 
-
      [e]: Finder          [g]: Ghostty         [s]: Screenshot
 
-     [c]: Center          [o]: Maximize
+     [F7]: Prev           [F8]: Play           [F9]: Next
 
+     [F10]: Mute          [F11]: Volume Down   [F12]: Volume Up
+
+     [F3]: Misson Control [q]: Quit
                                                                       ]],
 })
 

@@ -115,60 +115,24 @@ end tell
     end,
     image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
-  --["Window Up"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.075, 0.075, 0.85, 0.85 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Down"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.99, 0.4925 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Left"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Right"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Default"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.65, 0.7 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Upper Left"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.4925 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Upper Right"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.4925 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Lower Left"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.005, 0.5025, 0.4925, 0.4925 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
-  --["Window Lower Right"] = {
-  --  run = function()
-  --    hs.window.focusedWindow():moveToUnit { 0.5025, 0.5025, 0.4925, 0.4925 }
-  --  end,
-  --  image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
-  --},
+  ["Window Left"] = {
+    run = function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
+    end,
+    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  },
+  ["Window Right"] = {
+    run = function()
+      hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
+    end,
+    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  },
+  ["Window Default"] = {
+    run = function()
+      hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.65, 0.7 }
+    end,
+    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
+  },
   ["Play"] = {
     run = function()
       hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
