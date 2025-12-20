@@ -12,6 +12,10 @@ ln -s ${DIR}/config/gitu        ${HOME}/.config/gitu
 
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
 
+mkdir -p ${HOME}/.vim
+ln -s ${DIR}/vim/vimrc   ${HOME}/.vim/vimrc
+ln -s ${DIR}/vim/gvimrc   ${HOME}/.vim/gvimrc
+
 mkdir -p ${HOME}/Library/LaunchAgents
 echo "
 <?xml version="1.0" encoding="UTF-8"?>

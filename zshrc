@@ -75,6 +75,11 @@ function y() {
   rm -f -- "$tmp"
 }
 
+# Toggle disable sleep
+disablesleep () {
+  sudo pmset -a disablesleep ${1}
+}
+
 # alias if $2 exist
 function alias_if_exist() {
   cmd=$(echo "$2" | cut -d ' ' -f 1) # get command without parameters
