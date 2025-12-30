@@ -179,4 +179,58 @@ end tell
     end,
     pass = true,
   },
+  ["FlashSpace Move to 1"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space1")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 2"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space2")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 3"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space3")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 4"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space4")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 5"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space5")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 6"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space6")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 7"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space7")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 8"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space8")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
+  ["FlashSpace Move to 9"] = {
+    run = function()
+      utils.flashSpaceMoveSpace(hs.application.frontmostApplication():bundleID(), "Space9")
+    end,
+    image = hs.image.imageFromPath "icons/add-new-plus-maximize-window-tab.ico",
+  },
 }

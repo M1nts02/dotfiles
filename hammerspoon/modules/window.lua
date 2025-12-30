@@ -31,11 +31,11 @@ end
 
 switchWindowsCurrentSpace.getWindows = filterWindows
 
-hs.hotkey.bind("alt", "tab", "Next window", function()
+hs.hotkey.bind("cmd", "`", "Next window", function()
   switchWindowsCurrentSpace:next()
   hs.alert.closeAll()
 end)
-hs.hotkey.bind({ "alt", "shift" }, "tab", "Prev window", function()
+hs.hotkey.bind({ "cmd", "shift" }, "`", "Prev window", function()
   switchWindowsCurrentSpace:previous()
   hs.alert.closeAll()
 end)
