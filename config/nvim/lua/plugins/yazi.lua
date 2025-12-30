@@ -1,20 +1,20 @@
-return {
+local M = {
   "mikavilpas/yazi.nvim",
   lazy = false,
   dependencies = { "nvim-lua/plenary.nvim" },
-  keys = {
-    {
-      "<Space>e",
-      function()
-        require("yazi").yazi()
-      end,
-      desc = "Yazi",
-      mode = { "n" },
-    },
-  },
-  config = function()
-    require("yazi").setup {
-      open_for_directories = true,
-    }
-  end,
 }
+
+M.keys = {
+  {
+    "<Space>e",
+    function()
+      require("yazi").yazi()
+    end,
+    desc = "Yazi",
+    mode = { "n" },
+  },
+}
+
+M.opts = { open_for_directories = true }
+
+return M

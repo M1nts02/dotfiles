@@ -1,16 +1,11 @@
 local M = {}
 
---- A function to copy file
----@param oldPath string The old file path
----@param newPath string The new file path
-function M.copy_file(oldPath, newPath)
-  local oldIcon, errorString = io.open(oldPath, "rb")
-  assert(oldIcon ~= nil, errorString)
-  local data = oldIcon:read "a"
-  oldIcon:close()
-  local newIcon = io.open(newPath, "wb")
-  newIcon:write(data)
-  newIcon:close()
+function M.set_colorscheme()
+  if vim.g.dark == true then
+    vim.cmd("colorscheme " .. vim.g.dark_theme)
+  else
+    vim.cmd("colorscheme " .. vim.g.light_theme)
+  end
 end
 
 --- A function to check Commands exist
@@ -38,6 +33,34 @@ function M.setmap(maps)
       m[4] = { noremap = true }
     end
     vim.keymap.set(m[1], m[2], m[3], m[4])
+  end
+end
+
+--- A function to load json from file
+---@param path string
+function M.load_json_file(path)
+  local file = io.open(path, "r")
+
+  if file then
+    local t = vim.json.decode(file:read "*a")
+    file:close()
+    return t
+  else
+    return nil
+  end
+end
+
+--- A function to wirte json file
+---@param path string
+---@param t table
+function M.update_json_file(path, t)
+  t = type(t) == "table" and t or {}
+  local file = io.open(path, "w")
+
+  if file then
+    local context = vim.json.encode(t)
+    file:write(context)
+    file:close()
   end
 end
 

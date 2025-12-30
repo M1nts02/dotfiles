@@ -1,42 +1,11 @@
-local function config()
-  local utils = require "modules.utils"
-  local executable = utils.executable
+local M = {
+  "neovim/nvim-lspconfig",
+  dependencies = { "folke/lazydev.nvim", "b0o/schemastore.nvim" },
+}
 
-  local file = io.open(vim.g.confpath .. "/lspconfig.json", "r")
-  local lsp_servers = vim.json.decode(file:read "*a")
-  file:close()
-
-  local capabilities = require("blink.cmp").get_lsp_capabilities {
-    textDocument = {
-      foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      },
-    },
-    foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    },
-    completion = {
-      completionItem = {
-        documentationFormat = { "markdown", "plaintext" },
-        snippetSupport = true,
-        preselectSupport = true,
-        insertReplaceSupport = true,
-        labelDetailsSupport = true,
-        deprecatedSupport = true,
-        commitCharactersSupport = true,
-        tagSupport = { valueSet = { 1 } },
-        resolveSupport = {
-          properties = {
-            "documentation",
-            "detail",
-            "additionalTextEdits",
-          },
-        },
-      },
-    },
-  }
+function M.config()
+  local executable = Utils.executable
+  local lsp_servers = Utils.load_json_file(ConfPath .. "/lspconfig.json") or {}
 
   local function on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
@@ -81,10 +50,9 @@ local function config()
     vim.diagnostic.config { virtual_lines = false, float = { border = "rounded" } }
   end
 
-  vim.lsp.config("*", { on_attach = on_attach, capabilities = capabilities })
+  vim.lsp.config("*", { on_attach = on_attach })
   vim.lsp.config("lua_ls", {
     on_attach = on_attach,
-    capabilities = capabilities,
     settings = {
       Lua = {
         completion = {
@@ -95,7 +63,6 @@ local function config()
   })
   vim.lsp.config("jsonls", {
     on_attach = on_attach,
-    capabilities = capabilities,
     settings = {
       json = {
         schemas = require("schemastore").json.schemas(),
@@ -112,31 +79,21 @@ local function config()
   end
 
   -- for mac
-  if vim.g.is_mac then
+  if isMac then
     vim.lsp.config("clangd", {
       cmd = { "/usr/bin/clangd" },
       on_attach = on_attach,
-      capabilities = capabilities,
     })
   end
+
+  require("lazydev").setup {
+    library = {
+      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    },
+    enabled = function(root_dir)
+      return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
+    end,
+  }
 end
 
-return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    "folke/lazydev.nvim",
-    "saghen/blink.cmp",
-    "b0o/schemastore.nvim",
-  },
-  config = function()
-    config()
-    require("lazydev").setup {
-      library = {
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-      enabled = function(root_dir)
-        return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
-      end,
-    }
-  end,
-}
+return M

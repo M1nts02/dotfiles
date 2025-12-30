@@ -1,7 +1,6 @@
 return {
   "mason-org/mason.nvim",
-  event = "VeryLazy",
-  build = { ":MasonInstall codelldb", ":MasonInstall json-lsp" },
+  cmd = { "Mason", "MasonInstall", "MasonLog", "MasonUninstall", "MasonUninstallAll", "MasonUpdate" },
   config = function()
     require("mason").setup {
       PATH = "skip",

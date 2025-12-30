@@ -1,5 +1,4 @@
-local utils = require "modules.utils"
-local setmap = utils.setmap
+local setmap = Utils.setmap
 
 local map = {
   -- Clear highlights on search when pressing <Esc> in normal mode

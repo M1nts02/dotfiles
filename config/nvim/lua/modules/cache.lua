@@ -1,7 +1,10 @@
 local M = {}
 
+local load_json_file = Utils.load_json_file
+local update_json_file = Utils.update_json_file
+
 -- default cache file path
-local cache_path = vim.g.confpath .. "/.cache.json"
+local cache_path = ConfPath .. "/.cache.json"
 
 -- Open cache file
 vim.api.nvim_create_user_command("CustomOpen", function()
@@ -34,19 +37,12 @@ local options = {
   },
 }
 
-local function update_cache_file()
-  local cache_file = io.open(cache_path, "w")
-  local context = vim.json.encode(options)
-  cache_file:write(context)
-  cache_file:close()
-end
-
 function M.load()
-  local file = io.open(cache_path, "r")
-  if file then
-    options = vim.json.decode(file:read "*a")
+  local opt = load_json_file(cache_path)
+  if opt then
+    options = opt or options
   else
-    update_cache_file()
+    update_json_file(cache_path, options)
   end
 
   for i, t in pairs(options) do
@@ -68,11 +64,7 @@ function M.update(opts)
     end
   end
 
-  update_cache_file()
-end
-
-function M.get_status()
-  return options
+  update_json_file(cache_path, options)
 end
 
 return M
