@@ -42,27 +42,9 @@ get_dark_mode () {
   osascript -e "tell app \"System Events\" to tell appearance preferences to get dark mode"
 }
 
-# proxy
-p () {
-  export http_proxy="http://127.0.0.1:7890"
-  export https_proxy="http://127.0.0.1:7890"
-  echo "HTTP Proxy on"
-}
-
-np () {
-  unset http_proxy
-  unset https_proxy
-  echo "HTTP Proxy off"
-}
-
 # mpv with nohup
 mb () {
   nohup mpv ${*} >> ~/.cache/mpv_nohup.log &
-}
-
-# icloud path
-icloud () {
-  cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs
 }
 
 # Move to CWD When Exiting Yazi
@@ -88,15 +70,6 @@ function alias_if_exist() {
   fi
 }
 
-# gitui
-function gu() {
-  if [[ $(get_dark_mode) == 'true' ]]; then
-    gitui -t catppuccin-mocha.ron
-  else
-    gitui -t catppuccin-latte.ron
-  fi
-}
-
 alias_if_exist sed gsed
 alias_if_exist awk gawk
 alias_if_exist grep ggrep
@@ -110,6 +83,10 @@ alias_if_exist vim nvim
 alias_if_exist g gitu
 
 alias q=exit
+alias note="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Note"
+alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+alias p='export http_proxy="http://127.0.0.1:7890";export https_proxy="http://127.0.0.1:7890";echo "HTTP Proxy on"'
+alias np='unset http_proxy;unset https_proxy;echo "HTTP Proxy off"'
 
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
