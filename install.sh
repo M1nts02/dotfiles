@@ -7,14 +7,10 @@ ln -s ${DIR}/config/nvim        ${HOME}/.config/nvim
 ln -s ${DIR}/config/yazi        ${HOME}/.config/yazi
 ln -s ${DIR}/config/ghostty     ${HOME}/.config/ghostty
 ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
-ln -s ${DIR}/config/gitui       ${HOME}/.config/gitui
 ln -s ${DIR}/config/gitu        ${HOME}/.config/gitu
+ln -s ${DIR}/config/flashspace  ${HOME}/.config/flashspace
 
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
-
-mkdir -p ${HOME}/.vim
-ln -s ${DIR}/vim/vimrc   ${HOME}/.vim/vimrc
-ln -s ${DIR}/vim/gvimrc   ${HOME}/.vim/gvimrc
 
 mkdir -p ${HOME}/Library/LaunchAgents
 echo "
