@@ -20,7 +20,7 @@ add("Main Menu", {
   {
     singleKey("g", "Ghostty"),
     function()
-      hs.execute "open -a Ghostty -n"
+      hs.execute "open -a Ghostty"
     end,
   },
   -- Finder
