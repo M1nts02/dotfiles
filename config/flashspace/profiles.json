@@ -160,6 +160,11 @@
               "bundleIdentifier" : "com.colliderli.iina",
               "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
               "name" : "IINA"
+            },
+            {
+              "bundleIdentifier" : "com.apple.AppStore",
+              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
+              "name" : "App Store"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -290,11 +295,6 @@
               "bundleIdentifier" : "com.apple.ActivityMonitor",
               "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
               "name" : "Activity Monitor"
-            },
-            {
-              "bundleIdentifier" : "com.apple.AppStore",
-              "iconPath" : "/System/Applications/App Store.app/Contents/Resources/AppIcon.icns",
-              "name" : "App Store"
             }
           ],
           "display" : "Built-in Retina Display",
