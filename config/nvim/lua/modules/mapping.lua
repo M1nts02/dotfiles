@@ -33,7 +33,7 @@ local map = {
     end,
   },
   {
-    { "i" },
+    { "i", "s" },
     "<C-s>",
     function()
       vim.lsp.buf.signature_help { border = "rounded" }

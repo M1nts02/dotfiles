@@ -5,21 +5,17 @@ local M = {
 
 M.dependencies = { "nanotee/zoxide.vim" }
 
+M.cmd = { "Pick", "Zi" }
+
 M.keys = {
   { "<Space>f<CR>", "<CMD>Pick resume<CR>", desc = "Resume" },
-  { "<Space>fG", "<CMD>Pick grep<CR>", desc = "Grep" },
   { "<Space>fb", "<CMD>Pick buffers<CR>", desc = "Buffers" },
+  { "<Space>fc", "<CMD>Pick commands<CR>", desc = "commands" },
   { "<Space>ff", "<CMD>Pick files<CR>", desc = "Files" },
   { "<Space>fg", "<CMD>Pick grep_live<CR>", desc = "Grep Live" },
   { "<Space>fh", "<CMD>Pick help<CR>", desc = "Help" },
   { "<Space>fo", "<CMD>Pick oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fz", "<CMD>Zi<CR>", desc = "Zoxide" },
-  { "gO", "<CMD>Pick lsp scope='document_symbol'<CR>", desc = "Symbols" },
-  { "gd", "<CMD>Pick lsp scope='definition'<CR>", desc = "Definition" },
-  { "grd", "<CMD>Pick diagnostic<CR>", desc = "diagnostics" },
-  { "gri", "<CMD>Pick lsp scope='implementation'<CR>", desc = "Implementations" },
-  { "grr", "<CMD>Pick lsp scope='references'<CR>", desc = "References" },
-  { "grt", "<CMD>Pick lsp scope='type_definition'<CR>", desc = "Type Definition" },
   { "z=", "<CMD>Pick spellsuggest<CR>", desc = "Spell Suggest" },
 }
 

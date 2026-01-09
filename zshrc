@@ -80,7 +80,6 @@ alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vi nvim
 alias_if_exist vim nvim
-alias_if_exist g gitu
 
 alias q=exit
 alias note="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Note"

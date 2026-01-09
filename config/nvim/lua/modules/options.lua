@@ -48,6 +48,7 @@ opt.tabstop = 2
 opt.termguicolors = true
 opt.undofile = true
 opt.whichwrap:append "<>[]hl"
+opt.wildoptions = { "tagfile", "fuzzy" }
 
 g.loaded_2html_plugin = 1
 g.loaded_getscript = 1

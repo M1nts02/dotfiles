@@ -29,7 +29,10 @@ function M.config()
   for k, v in pairs(configurations) do
     v[1]["program"] = v[1]["program"] == "${input}"
         and function()
-          return vim.fn.input "Path to executable: "
+          return vim.fn.input {
+            prompt = "Path to executable: ",
+            completion = "file",
+          }
         end
       or v[1]["program"]
     dap.configurations[k] = v

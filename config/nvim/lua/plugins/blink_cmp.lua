@@ -2,7 +2,6 @@ local M = {
   "saghen/blink.cmp",
   version = "*",
   event = { "InsertEnter", "CmdLineEnter" },
-  keys = { "/", "?", ":" },
   dependencies = {
     "rafamadriz/friendly-snippets",
     {
@@ -127,43 +126,9 @@ function M.config()
     },
     signature = {
       enabled = false,
-      window = {
-        border = "rounded",
-      },
+      window = { border = "rounded" },
     },
-    cmdline = {
-      keymap = {
-        ["<C-y>"] = { "select_and_accept", "fallback" },
-        ["<C-c>"] = { "hide", "fallback" },
-        ["<Tab>"] = { "select_next", "show", "fallback" },
-        ["<S-Tab>"] = { "select_prev", "show", "fallback" },
-        ["<Up>"] = { "fallback" },
-        ["<Down>"] = { "fallback" },
-      },
-      sources = function()
-        local type = vim.fn.getcmdtype()
-        if type == "/" or type == "?" then
-          return { "buffer" }
-        elseif type == ":" then
-          return { "cmdline", "path" }
-        elseif type == "@" then
-          return { "path", "buffer" }
-        end
-        return {}
-      end,
-      completion = {
-        list = { selection = { preselect = false, auto_insert = true } },
-        menu = {
-          auto_show = true,
-          draw = {
-            columns = {
-              { "kind_icon" },
-              { "label", gap = 1 },
-            },
-          },
-        },
-      },
-    },
+    cmdline = { enabled = false },
   }
 end
 
