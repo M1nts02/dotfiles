@@ -77,19 +77,9 @@
               "name" : "Mission Control"
             },
             {
-              "bundleIdentifier" : "com.apple.Safari",
-              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
-              "name" : "Safari"
-            },
-            {
               "bundleIdentifier" : "com.xjbeta.Aria2D",
               "iconPath" : "/Applications/Aria2D.app/Contents/Resources/AppIcon.icns",
               "name" : "Aria2D"
-            },
-            {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
             },
             {
               "bundleIdentifier" : "com.brave.Browser",
@@ -97,19 +87,9 @@
               "name" : "Brave Browser"
             },
             {
-              "bundleIdentifier" : "com.apple.finder",
-              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
-              "name" : "Finder"
-            },
-            {
               "bundleIdentifier" : "com.apple.systempreferences",
               "iconPath" : "/System/Applications/System Settings.app/Contents/Resources/PrefApp.icns",
               "name" : "System Settings"
-            },
-            {
-              "bundleIdentifier" : "netdcy.FlowVision",
-              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
-              "name" : "FlowVision"
             },
             {
               "bundleIdentifier" : "com.pixelmatorteam.pixelmator.x",
@@ -147,19 +127,39 @@
               "name" : "Passwords"
             },
             {
-              "bundleIdentifier" : "com.apple.ActivityMonitor",
-              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
-              "name" : "Activity Monitor"
+              "bundleIdentifier" : "com.now.gg.BlueStacks",
+              "iconPath" : "/Applications/BlueStacks.app/Contents/Resources/BlueStacks.icns",
+              "name" : "BlueStacks"
+            },
+            {
+              "bundleIdentifier" : "com.apple.ScreenContinuity",
+              "iconPath" : "/System/Applications/iPhone Mirroring.app/Contents/Resources/AppIcon.icns",
+              "name" : "iPhone Mirroring"
+            },
+            {
+              "bundleIdentifier" : "com.quark.desktop",
+              "iconPath" : "/Applications/Quark.app/Contents/Resources/app.icns",
+              "name" : "Quark"
+            },
+            {
+              "bundleIdentifier" : "com.apple.finder",
+              "iconPath" : "/System/Library/CoreServices/Finder.app/Contents/Resources/Finder.icns",
+              "name" : "Finder"
+            },
+            {
+              "bundleIdentifier" : "com.apple.Safari",
+              "iconPath" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/Resources/AppIcon.icns",
+              "name" : "Safari"
+            },
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
             },
             {
               "bundleIdentifier" : "com.colliderli.iina",
               "iconPath" : "/Applications/IINA.app/Contents/Resources/AppIcon.icns",
               "name" : "IINA"
-            },
-            {
-              "bundleIdentifier" : "com.now.gg.BlueStacks",
-              "iconPath" : "/Applications/BlueStacks.app/Contents/Resources/BlueStacks.icns",
-              "name" : "BlueStacks"
             }
           ],
           "display" : "Built-in Retina Display",
@@ -277,9 +277,19 @@
               "name" : "Emacs"
             },
             {
-              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
-              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
-              "name" : "Evermusic"
+              "bundleIdentifier" : "netdcy.FlowVision",
+              "iconPath" : "/Applications/FlowVision.app/Contents/Resources/AppIcon.icns",
+              "name" : "FlowVision"
+            },
+            {
+              "bundleIdentifier" : "com.liuliu.draw-things",
+              "iconPath" : "/Applications/Draw Things.app/Contents/Resources/macOS.icns",
+              "name" : "Draw Things"
+            },
+            {
+              "bundleIdentifier" : "com.apple.ActivityMonitor",
+              "iconPath" : "/System/Applications/Utilities/Activity Monitor.app/Contents/Resources/AppIcon.icns",
+              "name" : "Activity Monitor"
             },
             {
               "bundleIdentifier" : "com.apple.AppStore",
@@ -330,6 +340,11 @@
               "bundleIdentifier" : "com.tencent.qq",
               "iconPath" : "/Applications/QQ.app/Contents/Resources/icon.icns",
               "name" : "QQ"
+            },
+            {
+              "bundleIdentifier" : "com.leshko.cloudplayer.mac",
+              "iconPath" : "/Applications/Evermusic.app/Contents/Resources/AppIcon_evermusic_free.icns",
+              "name" : "Evermusic"
             }
           ],
           "display" : "Built-in Retina Display",
