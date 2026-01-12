@@ -61,26 +61,4 @@ function M.ScreenShot(opt)
   end
 end
 
----@return boolean
-function M.flashSpaceRunning()
-  return hs.application.get "pl.wojciechkulik.FlashSpace" and true or false
-end
-
----@return string
-function M.flashSpaceGetWorkspace()
-  return hs.execute("flashspace get-workspace", true):gsub("\n", "")
-end
-
----@param bundleID string
----@param spaceName string
-function M.flashSpaceMoveSpace(bundleID, spaceName)
-  if bundleID == nil or spaceName == nil then
-    return
-  end
-
-  if M.flashSpaceRunning() then
-    hs.execute("flashspace assign-app --name " .. bundleID .. " --workspace '" .. spaceName .. "'", true)
-  end
-end
-
 return M
