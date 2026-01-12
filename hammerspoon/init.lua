@@ -15,27 +15,4 @@ Menu.helperFormat = {
 }
 require "modules.menu.main"
 require "modules.menu.screenshot"
-
--------------- Launcher -------------
-Launcher = hs.loadSpoon "Launcher"
-for i, v in pairs(actions) do
-  if v.pass == true then
-    goto continue
-  end
-
-  if v.image == nil then
-    v.image = hs.image.imageFromPath "icons/grid-home-menu-options-squares-table.ico"
-  end
-  Launcher.actions[i] = {
-    run = v.run,
-    subText = v.subText,
-    image = v.image,
-  }
-
-  ::continue::
-end
-Launcher.start()
-hs.hotkey.bind({ "cmd" }, "space", function()
-  Launcher.bgDark = utils.get_dark_mode()
-  Launcher.open()
-end)
+require "modules.launcher"
