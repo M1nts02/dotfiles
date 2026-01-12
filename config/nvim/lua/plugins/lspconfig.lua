@@ -5,7 +5,28 @@ local M = {
 
 function M.config()
   local executable = Utils.executable
-  local lsp_servers = Utils.load_json_file(ConfPath .. "/lspconfig.json") or {}
+  local lsp_servers = {
+    ["autotools_ls"] = "autotools-language-server",
+    ["bashls"] = "bash-language-server",
+    ["biome"] = "",
+    ["clangd"] = "",
+    ["cmake"] = "cmake-language-server",
+    ["csharp_ls"] = "csharp-ls",
+    ["gdscript"] = "",
+    ["gopls"] = "",
+    ["jdtls"] = "",
+    ["jsonls"] = "vscode-json-language-server",
+    ["lua_ls"] = "lua-language-server",
+    ["markdown_oxide"] = "markdown-oxide",
+    ["marksman"] = "",
+    ["neocmake"] = "neocmakelsp",
+    ["ols"] = "",
+    ["pylsp"] = "",
+    ["pyright"] = "",
+    ["rust_analyzer"] = "rust-analyzer",
+    ["sqls"] = "",
+    ["zls"] = "",
+  }
 
   local function on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false

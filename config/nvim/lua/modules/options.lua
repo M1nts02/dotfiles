@@ -8,7 +8,6 @@ o.cmdheight = 1
 o.encoding = "utf-8"
 o.foldlevelstart = 99
 o.foldmethod = "indent"
-o.helpheight = 80
 o.ignorecase = true
 o.incsearch = false
 o.infercase = true
@@ -50,21 +49,7 @@ opt.undofile = true
 opt.whichwrap:append "<>[]hl"
 opt.wildoptions = { "tagfile", "fuzzy" }
 
-g.loaded_2html_plugin = 1
-g.loaded_getscript = 1
-g.loaded_getscriptPlugin = 1
-g.loaded_gzip = 1
-g.loaded_logipat = 1
-g.loaded_matchit = 1
 g.loaded_netrw = 1
-g.loaded_rrhelper = 1
-g.loaded_spellfile_plugin = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1
 g.mapleader = "\\"
 
 --cmd "unmenu PopUp"

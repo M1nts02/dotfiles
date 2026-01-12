@@ -18,7 +18,7 @@ cursor-style = block
 cursor-style-blink = true
 
 window-inherit-font-size = false
-font-family = font-maple-mono-nf-cn
+font-family = Maple Mono NF,Maple Mono NF CN
 font-size = 14
 font-feature = -calt
 font-feature = -liga

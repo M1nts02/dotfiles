@@ -11,10 +11,6 @@ require "modules.options"
 -- Load saved options
 Cache.load()
 
--- Don't load shada
-local shada = vim.o.shada
-vim.o.shada = ""
-
 -- Check plugin manager
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -45,9 +41,6 @@ require("lazy").setup({
     dir = ConfPath,
     event = "VeryLazy",
     config = function()
-      -- Load shada
-      vim.o.shada = shada
-      pcall(vim.cmd.rshada, { bang = true })
       -- Load mapping
       require "modules.mapping"
     end,
