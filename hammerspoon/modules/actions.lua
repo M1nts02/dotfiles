@@ -35,14 +35,12 @@ return {
         true
       )
     end,
-    image = hs.image.imageFromPath "icons/coding-html-development-language-programming.ico",
   },
   ["Reload"] = {
     run = function()
       hs.reload()
       hs.notify.new():title("Reload"):subTitle("Hammerspoon reloading..."):send()
     end,
-    image = hs.image.imageFromAppBundle "org.hammerspoon.Hammerspoon",
   },
   ["Dark Mode"] = {
     run = function()
@@ -54,13 +52,11 @@ tell application "System Events"
 end tell
     ]]
     end,
-    image = hs.image.imageFromPath "icons/color-contrast-design-tool.ico",
   },
   ["Finder"] = {
     run = function()
       hs.application.launchOrFocus "/System/Library/CoreServices/Finder.app"
     end,
-    image = hs.image.imageFromAppBundle "com.apple.finder",
   },
   ["Trash"] = {
     run = function()
@@ -72,67 +68,56 @@ tell application "Finder"
 end tell
 ]]
     end,
-    image = hs.image.imageFromPath "icons/delete-dustbin-empty-recycle-recycling-remove-trash.ico",
   },
   ["ScreenSaver"] = {
     run = function()
       hs.osascript.applescript 'tell application "ScreenSaverEngine" to run'
     end,
-    image = hs.image.imageFromPath "icons/computer-device-internet-laptop-netbook-notebook-pc.ico",
   },
   ["Screenshot Clipboard"] = {
     run = function()
       utils.ScreenShot { mode = "Clipboard" }
     end,
-    image = hs.image.imageFromAppBundle "com.apple.screenshot.launcher",
   },
   ["Screenshot Screen"] = {
     run = function()
       utils.ScreenShot { mode = "Screen", notify = true }
     end,
-    image = hs.image.imageFromAppBundle "com.apple.screenshot.launcher",
   },
   ["Screenshot Area"] = {
     run = function()
       utils.ScreenShot { mode = "Area" }
     end,
-    image = hs.image.imageFromAppBundle "com.apple.screenshot.launcher",
   },
   ["Screenshot App"] = {
     run = function()
       utils.ScreenShot { mode = "App", notify = true }
     end,
-    image = hs.image.imageFromAppBundle "com.apple.screenshot.launcher",
   },
   ["Window Maximize"] = {
     run = function()
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.99, 0.99 }
     end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
   ["Window Center"] = {
     run = function()
       hs.window.focusedWindow():moveToUnit { 0.175, 0.125, 0.65, 0.75 }
     end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
   ["Window Left"] = {
     run = function()
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.4925, 0.99 }
     end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
   ["Window Right"] = {
     run = function()
       hs.window.focusedWindow():moveToUnit { 0.5025, 0.005, 0.4925, 0.99 }
     end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
   ["Window Default"] = {
     run = function()
       hs.window.focusedWindow():moveToUnit { 0.005, 0.005, 0.65, 0.7 }
     end,
-    image = hs.image.imageFromPath "icons/interface-layout-multi-column-design-column-website.ico",
   },
   ["Play"] = {
     run = function()
@@ -179,5 +164,10 @@ end tell
       hs.eventtap.keyStroke({ "control", "shift" }, "f4")
     end,
     pass = true,
+  },
+  ["Network"] = {
+    run = function()
+      os.execute "open 'x-apple.systempreferences:com.apple.Network-Settings.extension'"
+    end,
   },
 }
