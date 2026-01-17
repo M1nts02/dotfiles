@@ -63,7 +63,7 @@ function M.config()
             end,
           },
           { icon = "󰊢 ", key = "g", desc = "Git", action = ":Neogit" },
-          { icon = "󰕲 ", key = "z", desc = "Zoxide", action = ":Zi" },
+          { icon = "󰕲 ", key = "z", desc = "Zoxide", action = ":FzfLua zoxide" },
           { icon = " ", key = "c", desc = "Configuration", action = ":CustomOpen" },
         },
       },

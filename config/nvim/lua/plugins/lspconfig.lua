@@ -24,6 +24,7 @@ function M.config()
     ["pylsp"] = "",
     ["pyright"] = "",
     ["rust_analyzer"] = "rust-analyzer",
+    ["sourcekit"] = "sourcekit-lsp",
     ["sqls"] = "",
     ["zls"] = "",
   }
