@@ -62,11 +62,26 @@ disablesleep () {
   sudo pmset -a disablesleep ${1}
 }
 
-# alias if $2 exist
+# gitui
+function g() {
+  if [[ $(get_dark_mode) == 'true' ]]; then
+    gitui -t catppuccin-mocha.ron
+  else
+    gitui -t catppuccin-latte.ron
+  fi
+}
+
+# alias if $2 or $3 exist
 function alias_if_exist() {
-  cmd=$(echo "$2" | cut -d ' ' -f 1) # get command without parameters
-  if command -v $cmd &> /dev/null; then
-    alias $1=$2
+  if [[ -n $3 ]]; then
+    if command -v $3 &> /dev/null; then
+      alias $1=$2
+    fi
+  else
+    cmd=$(echo "$2" | cut -d ' ' -f 1) # get command without parameters
+    if command -v $cmd &> /dev/null; then
+      alias $1=$2
+    fi
   fi
 }
 
