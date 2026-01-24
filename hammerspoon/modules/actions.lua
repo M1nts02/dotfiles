@@ -2,40 +2,6 @@ local terminal =
   "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none --window-position-x=30 --window-position-y=30"
 
 return {
-  ["Nvim"] = {
-    run = function()
-      hs.execute(
-        "nohup "
-          .. terminal
-          .. " --title=Neovim"
-          .. " --window-save-state=never"
-          .. " --keybind=cmd+n=unbind"
-          .. " --keybind=cmd+d=text:\x1b\x17v"
-          .. " --keybind=cmd+shift+d=text:\x1b\x17s"
-          .. " --keybind=cmd+w=text:\x1b\x17q"
-          .. " --keybind=cmd+j=text:\x1c"
-          .. " --keybind=cmd+left=text:\x1b\x17h"
-          .. " --keybind=cmd+right=text:\x1b\x17l"
-          .. " --keybind=cmd+up=text:\x1b\x17k"
-          .. " --keybind=cmd+down=text:\x1b\x17j"
-          .. " --keybind=cmd+t=text:\x1b\x17e"
-          .. " --keybind=cmd+digit_1=text:\x1b\x171"
-          .. " --keybind=cmd+digit_2=text:\x1b\x172"
-          .. " --keybind=cmd+digit_3=text:\x1b\x173"
-          .. " --keybind=cmd+digit_4=text:\x1b\x174"
-          .. " --keybind=cmd+digit_5=text:\x1b\x175"
-          .. " --keybind=cmd+digit_6=text:\x1b\x176"
-          .. " --keybind=cmd+digit_7=text:\x1b\x177"
-          .. " --keybind=cmd+digit_8=text:\x1b\x178"
-          .. " --keybind=cmd+digit_9=text:\x1b\x179"
-          .. " --keybind=cmd+digit_0=text:\x1b\x170"
-          .. " --keybind=cmd+f=text:\x1b/"
-          .. " --keybind=cmd+shift+p=text:\x1b:"
-          .. " -e nvim > /tmp/nvim.log &",
-        true
-      )
-    end,
-  },
   ["Reload"] = {
     run = function()
       hs.reload()
@@ -139,23 +105,50 @@ end tell
   },
   ["Mute Toggle"] = {
     run = function()
-      local device = hs.audiodevice.defaultOutputDevice()
-      local muted = device:muted()
-      device:setMuted(not muted)
+      hs.eventtap.event.newSystemKeyEvent("MUTE", true):post()
+      hs.eventtap.event.newSystemKeyEvent("MUTE", false):post()
     end,
   },
   ["Volume Up"] = {
     run = function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local newVolume = math.min(current + 5, 100)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+      hs.eventtap.event.newSystemKeyEvent("SOUND_UP", true):post()
+      hs.eventtap.event.newSystemKeyEvent("SOUND_UP", false):post()
     end,
   },
   ["Volume Down"] = {
     run = function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local newVolume = math.min(current - 5, 100)
-      hs.audiodevice.defaultOutputDevice():setVolume(newVolume)
+      hs.eventtap.event.newSystemKeyEvent("SOUND_DOWN", true):post()
+      hs.eventtap.event.newSystemKeyEvent("SOUND_DOWN", false):post()
+    end,
+  },
+  ["Brightness Up"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("BRIGHTNESS_UP", true):post()
+      hs.eventtap.event.newSystemKeyEvent("BRIGHTNESS_UP", false):post()
+    end,
+  },
+  ["Brightness Down"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("BRIGHTNESS_DOWN", true):post()
+      hs.eventtap.event.newSystemKeyEvent("BRIGHTNESS_DOWN", false):post()
+    end,
+  },
+  ["Illumination Up"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("ILLUMINATION_UP", true):post()
+      hs.eventtap.event.newSystemKeyEvent("ILLUMINATION_UP", false):post()
+    end,
+  },
+  ["Illumination Down"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("ILLUMINATION_DOWN", true):post()
+      hs.eventtap.event.newSystemKeyEvent("ILLUMINATION_DOWN", false):post()
+    end,
+  },
+  ["Caps Lock"] = {
+    run = function()
+      hs.eventtap.event.newSystemKeyEvent("CAPS_LOCK", true):post()
+      hs.eventtap.event.newSystemKeyEvent("CAPS_LOCK", false):post()
     end,
   },
   ["Rime"] = {
@@ -167,7 +160,53 @@ end tell
   },
   ["Network"] = {
     run = function()
-      os.execute "open 'x-apple.systempreferences:com.apple.Network-Settings.extension'"
+      hs.execute "open 'x-apple.systempreferences:com.apple.Network-Settings.extension'"
+    end,
+  },
+  ["Dock"] = {
+    run = function()
+      hs.eventtap.keyStroke({ "fn" }, "a")
+    end,
+  },
+  ["Character Viewer "] = {
+    run = function()
+      hs.eventtap.keyStroke({ "fn" }, "e")
+    end,
+  },
+  ["Control Center"] = {
+    run = function()
+      hs.eventtap.keyStroke({ "fn" }, "c")
+    end,
+  },
+  ["Notification Center"] = {
+    run = function()
+      hs.eventtap.keyStroke({ "fn" }, "n")
+    end,
+  },
+  ["Desktop"] = {
+    run = function()
+      hs.eventtap.keyStroke({ "fn" }, "h")
+    end,
+  },
+  ["Fullscreen"] = {
+    run = function()
+      hs.eventtap.keyStroke({ "fn" }, "f")
+    end,
+  },
+  ["FinderZi"] = {
+    run = function()
+      hs.osascript.applescript [[
+set shell_command to "source ~/.zshrc; zoxide query -l | choose | xargs -I {} echo {}"
+set my_posix_path to do shell script shell_command
+tell application "Finder"
+  activate
+  if (count of Finder windows) > 0 then
+    set target of front Finder window to (POSIX file my_posix_path as alias)
+  else
+    make new Finder window to (POSIX file my_posix_path as alias)
+  end if
+end tell
+      ]]
     end,
   },
 }

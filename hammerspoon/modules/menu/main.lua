@@ -9,11 +9,17 @@ add("Main Menu", {
       run "Screenshot"
     end,
   },
+  { -- Space
+    singleKey("w", "Move Space"),
+    function()
+      run "Space"
+    end,
+  },
   -- Automator
   {
-    singleKey("a", "Automator"),
+    singleKey("v", "AppVolume"),
     function()
-      hs.application.launchOrFocus "/System/Applications/Automator.app"
+      hs.application.launchOrFocus "/Applications/AppVolume.app"
     end,
   },
   -- Ghostty
@@ -25,83 +31,38 @@ add("Main Menu", {
   },
   -- Finder
   { singleKey("e", "Finder"), actions["Finder"].run },
-  { singleKey("f3", "Misson Control"), hs.spaces.openMissionControl },
-  { singleKey("f11", "Volume Down"), actions["Volume Down"].run, { keep = true } },
-  { singleKey("f12", "Volume Up"), actions["Volume Up"].run, { keep = true } },
-  { singleKey("f10", "Mute Toggle"), actions["Mute Toggle"].run, { keep = true } },
-  { singleKey("f9", "Next"), actions["Next"].run, { keep = true } },
-  { singleKey("f7", "Prev"), actions["Prev"].run, { keep = true } },
-  { singleKey("f8", "Play"), actions["Play"].run, { keep = true } },
-  -- Workspace
-  {
-    singleKey("1", "Send App to Space 1"),
-    function()
-      Space.sendSpace "1"
-    end,
-  },
-  {
-    singleKey("2", "Send App to Space 2"),
-    function()
-      Space.sendSpace "2"
-    end,
-  },
-  {
-    singleKey("3", "Send App to Space 3"),
-    function()
-      Space.sendSpace "3"
-    end,
-  },
-  {
-    singleKey("4", "Send App to Space 4"),
-    function()
-      Space.sendSpace "4"
-    end,
-  },
-  {
-    singleKey("5", "Send App to Space 5"),
-    function()
-      Space.sendSpace "5"
-    end,
-  },
-  {
-    singleKey("6", "Send App to Space 6"),
-    function()
-      Space.sendSpace "6"
-    end,
-  },
-  {
-    singleKey("7", "Send App to Space 7"),
-    function()
-      Space.sendSpace "7"
-    end,
-  },
-  {
-    singleKey("8", "Send App to Space 8"),
-    function()
-      Space.sendSpace "8"
-    end,
-  },
-  {
-    singleKey("9", "Send App to Space 9"),
-    function()
-      Space.sendSpace "9"
-    end,
-  },
+  { singleKey("d", "Finder"), actions["Dock"].run },
+  { singleKey("1", "Brightness Down"), actions["Brightness Down"].run, { keep = true } },
+  { singleKey("2", "Brightness Up"), actions["Brightness Up"].run, { keep = true } },
+  { singleKey("3", "Misson Control"), hs.spaces.openMissionControl },
+  { singleKey("4", "Caps Lock"), actions["Caps Lock"].run, { keep = true } },
+  { singleKey("5", "Illumination Down"), actions["Illumination Down"].run, { keep = true } },
+  { singleKey("6", "Illumination Up"), actions["Illumination Up"].run, { keep = true } },
+  { singleKey("7", "Prev"), actions["Prev"].run, { keep = true } },
+  { singleKey("8", "Play"), actions["Play"].run, { keep = true } },
+  { singleKey("9", "Next"), actions["Next"].run, { keep = true } },
+  { singleKey("0", "Mute Toggle"), actions["Mute Toggle"].run, { keep = true } },
+  { singleKey("-", "Volume Down"), actions["Volume Down"].run, { keep = true } },
+  { singleKey("=", "Volume Up"), actions["Volume Up"].run, { keep = true } },
   { singleKey("q", "Quit"), function() end },
 }, {
   helper = [[
 
-     [e]: Finder          [g]: Ghostty         [a]: Automator
+     [e]: Finder              [g]: Ghostty             [v]: AppVolume
 
-     [F7]: Prev           [F8]: Play           [F9]: Next
+     [1]: Brightness Down     [2]: Brightness Up       [3]: Misson Control
 
-     [F10]: Mute          [F11]: Volume Down   [F12]: Volume Up
+     [4]: Caps Lock           [5]: Illumination Down   [6]: Illumination Up
 
-     [F3]: Misson Control [1-9]: Move Space    [s]: Screenshot
-                                                                      ]],
+     [7]: Prev                [8]: Play                [9]: Next
+
+     [0]: Mute                [-]: Volume Down         [=]: Volume Up
+
+     [w]: Space               [s]: Screenshot          [d]: Dock
+                                                                              ]],
 })
 
-hs.hotkey.bind({ "alt" }, "`", function()
+hs.hotkey.bind({ "cmd", "ctrl" }, "e", function()
   Menu.color = utils.get_helper_color()
   run "Main Menu"
 end)

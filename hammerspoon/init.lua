@@ -19,6 +19,7 @@ Menu.helperFormat = {
 }
 require "modules.menu.main"
 require "modules.menu.screenshot"
+require "modules.menu.space"
 
 -------------- Launcher -------------
 require "modules.launcher"
