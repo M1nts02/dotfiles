@@ -31,17 +31,19 @@ keymap = [
   { on = [ "<Right>" ], run = "enter",    desc = "Enter the child directory" },
 
   { on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
-  { on = [ "g", "i" ], run = "cd '~/Library/Mobile Documents/com~apple~CloudDocs'", desc = "Goto icloud" },
-  { on = [ "g", "d" ], run = "cd ~/Downloads/", desc = "Goto download" },
-  { on = [ "g", "p" ], run = "cd ~/Pictures/", desc = "Goto pictures" },
-  { on = [ "g", "c" ], run = "cd ~/Documents/", desc = "Goto documents" },
-  { on = [ "g", "m" ], run = "cd ~/Music/", desc = "Goto music" },
-  { on = [ "g", "t" ], run = "cd ~/Desktop/", desc = "Goto desktop" },
-  { on = [ "g", "/" ], run = "cd /", desc = "Goto root" },
-  { on = [ "g", "h" ], run = "cd ~", desc = "Go to the home directory" },
   { on = [ "G" ],      run = "arrow bot", desc = "Move cursor to the bottom" },
   { on = [ "<Home>" ], run = "arrow top", desc = "Move cursor to the top" },
   { on = [ "<End>" ],  run = "arrow bot", desc = "Move cursor to the bottom" },
+
+  { on = [ "`", "i" ], run = "cd '~/Library/Mobile Documents/com~apple~CloudDocs'", desc = "Goto icloud", for = "unix" },
+  { on = [ "`", "d" ], run = "cd ~/Downloads/", desc = "Goto download" },
+  { on = [ "`", "p" ], run = "cd ~/Pictures/", desc = "Goto pictures" },
+  { on = [ "`", "c" ], run = "cd ~/Documents/", desc = "Goto documents" },
+  { on = [ "`", "m" ], run = "cd ~/Music/", desc = "Goto music" },
+  { on = [ "`", "t" ], run = "cd ~/Desktop/", desc = "Goto desktop" },
+  { on = [ "`", "/" ], run = "cd /", desc = "Goto root" },
+  { on = [ "`", "`" ], run = "cd ~", desc = "Go to the home directory" },
+  { on = [ "`", "f" ], run = "shell -- open -R \"$@\"", desc = "Reveal in Finder", for = "unix" },
 
   # Filtering
   { on = [ "f" ], run = "filter", desc = "Filter" },
@@ -56,6 +58,7 @@ keymap = [
   # Operation
   { on = [ "o" ],         run = "open --interactive",                 desc = "Open the selected files interactively" },
   { on = [ "<Enter>" ],   run = "open",                               desc = "Open the selected files" },
+  { on = [ "O" ],         run = "shell -- /bin/ls /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applications/Utilities/ | grep '\\.app$' | sed 's/\\.app$//g' | choose | xargs -I {} open -a \"{}.app\" \"$@\"",      desc = "Open with other App" },
   { on = [ "y" ],         run = "yank",                               desc = "Copy the selected files" },
   { on = [ "Y" ],         run = 'shell -- clippy "$@"',               desc = "Copy file to GUI app" },
   { on = [ "x" ],         run = "yank --cut",                         desc = "Cut the selected files" },
@@ -82,11 +85,6 @@ keymap = [
   { on = [ "c", "f" ], run = "copy filename",         desc = "Copy the name of the file" },
   { on = [ "c", "n" ], run = "copy name_without_ext", desc = "Copy the name of the file without the extension" },
 
-  # Compress
-  { on = [ "c", "7" ], run = 'shell --block --confirm -- 7za a "archive_$(date +%Y%m%d_%H%M%S).7z" "$@"',    desc = "compress(7z)" },
-  { on = [ "c", "z" ], run = 'shell --block --confirm -- zip "archive_$(date +%Y%m%d_%H%M%S).zip" "$@"',     desc = "compress(zip)" },
-  { on = [ "c", "t" ], run = 'shell --block --confirm -- tar -cf "archive_$(date +%Y%m%d_%H%M%S).tar" "$@"', desc = "compress(tar)" },
-
   # Find
   { on = [ "/" ], run = "find --smart" },
   { on = [ "?" ], run = "find --previous --smart" },
@@ -109,7 +107,7 @@ keymap = [
   # fzf
   { on = [ "z", "f" ], run = "plugin fzf", desc = "Jump to a file/directory via fzf" },
   # zoxide
-  { on = [ "z", "z" ], run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
+  { on = [ "z", "i" ], run = "plugin zoxide", desc = "Jump to a directory via zoxide" },
 
   # Tabs
   { on = [ "t" ], run = "tab_create --current", desc = "Create a new tab using the current path" },
@@ -251,13 +249,3 @@ keymap = [
 on   = "<tab>"
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
-
-[[mgr.prepend_keymap]]
-on   = "+"
-run  = "plugin zoom 1"
-desc = "Zoom in hovered file"
-
-[[mgr.prepend_keymap]]
-on   = "-"
-run  = "plugin zoom -1"
-desc = "Zoom out hovered file"

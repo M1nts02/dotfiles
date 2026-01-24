@@ -44,7 +44,7 @@ get_dark_mode () {
 
 # mpv with nohup
 mb () {
-  nohup mpv ${*} >> ~/.cache/mpv_nohup.log &
+  nohup mpv ${*} >> /tmp/mpv_nohup.log &
 }
 
 # Move to CWD When Exiting Yazi
@@ -95,6 +95,7 @@ alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vi nvim
 alias_if_exist vim nvim
+alias_if_exist hist "fc -ln 0 | fzf" fzf
 
 alias q=exit
 alias note="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Note"

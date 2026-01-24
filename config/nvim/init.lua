@@ -43,6 +43,8 @@ require("lazy").setup({
     config = function()
       -- Load mapping
       require "modules.mapping"
+      -- neovide
+      require "modules.neovide"
     end,
   },
 }, { -- Lazy.nvim config

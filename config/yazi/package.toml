@@ -1,22 +1,12 @@
 [[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "da5b695"
-hash = "73788c7dc5827ef4677c502c3ea8fa19"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "da5b695"
+rev = "de33976"
 hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:zoom"
-rev = "da5b695"
-hash = "7cf11690b16255b11b15a325e2e9791a"
-
-[[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "31c143a"
-hash = "89e540aad3e89e4136446f10d1a88f1b"
+rev = "7cd6b04"
+hash = "98b8276aa076284f5c4a5260cbe08549"
 
 [flavor]
 deps = []
