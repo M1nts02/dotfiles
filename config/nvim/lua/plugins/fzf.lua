@@ -12,6 +12,7 @@ M.keys = {
   { "<Space>fz", "<CMD>FzfLua zoxide<CR>", desc = "Zoxide" },
   { "z=", "<CMD>FzfLua spell_suggest<CR>", desc = "Spell_suggest" },
   { "<Space>fg", "<CMD>FzfLua live_grep<CR>", desc = "Live Grep" },
+  { "<D-S-p>", "<CMD>FzfLua commands<CR>", desc = "Commands" },
 }
 
 M.config = function()

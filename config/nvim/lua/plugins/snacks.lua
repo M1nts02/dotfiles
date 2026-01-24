@@ -33,6 +33,22 @@ M.keys = {
     desc = "Terminal",
     mode = { "n", "i", "t" },
   },
+  {
+    "<D-j>",
+    function()
+      require("snacks").terminal.toggle()
+    end,
+    desc = "Terminal",
+    mode = { "n", "i", "t" },
+  },
+  {
+    "<Space>e",
+    function()
+      require("snacks").explorer.reveal()
+    end,
+    desc = "Explorer",
+    mode = { "n" },
+  },
 }
 
 function M.config()
@@ -70,7 +86,7 @@ function M.config()
     },
     terminal = { win = { style = "terminal" }, keys = {} },
     statuscolumn = { enabled = false },
-    explorer = { enabled = false },
+    explorer = { enabled = true },
     indent = { enabled = false },
     input = { enabled = false },
     picker = { enabled = false },

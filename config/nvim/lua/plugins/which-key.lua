@@ -10,7 +10,6 @@ function M.config()
     icons = { rules = false, group = "" },
     win = { border = "rounded", title_pos = "left" },
     plugins = {
-      marks = false,
       spelling = { enabled = false },
     },
   }

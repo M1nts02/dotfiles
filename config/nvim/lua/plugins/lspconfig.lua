@@ -35,32 +35,9 @@ function M.config()
 
     -- inlay hints
     if client.server_capabilities.inlayHintProvider then
-      local inlay_hints_group = vim.api.nvim_create_augroup("InlayHints", { clear = false })
-
       if vim.g.inlay_hints == true then
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
-
-      -- Disable inlay hints with insert mode and visual mode
-      vim.api.nvim_create_autocmd("ModeChanged", {
-        group = inlay_hints_group,
-        buffer = bufnr,
-        callback = function(args)
-          if not vim.g.inlay_hints then
-            return
-          end
-          local mode = vim.fn.mode()
-          if mode == "i" or mode == "v" or mode == "V" or mode == "\22" or mode == "R" then
-            if vim.lsp.inlay_hint.is_enabled { bufnr = bufnr } then
-              vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
-            end
-          else
-            if not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr } then
-              vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
-            end
-          end
-        end,
-      })
     end
   end
 
