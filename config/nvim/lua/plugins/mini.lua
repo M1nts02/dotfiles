@@ -1,6 +1,7 @@
 local M = {
   "nvim-mini/mini.nvim",
   version = "*",
+  event = { "VeryLazy" },
 }
 
 function M.config()
@@ -20,8 +21,6 @@ function M.config()
       hex_color = hipatterns.gen_highlighter.hex_color(),
     },
   }
-
-  require("mini.diff").setup { view = { style = "sign" } }
 end
 
 return M

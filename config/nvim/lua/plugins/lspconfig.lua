@@ -1,6 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
-  dependencies = { "folke/lazydev.nvim", "b0o/schemastore.nvim" },
+  event = { "VeryLazy" },
+  dependencies = { "b0o/schemastore.nvim" },
 }
 
 function M.config()
@@ -84,15 +85,6 @@ function M.config()
       on_attach = on_attach,
     })
   end
-
-  require("lazydev").setup {
-    library = {
-      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-    },
-    enabled = function(root_dir)
-      return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
-    end,
-  }
 end
 
 return M

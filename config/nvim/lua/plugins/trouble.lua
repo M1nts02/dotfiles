@@ -6,20 +6,6 @@ local M = {
 M.cmd = "Trouble"
 
 M.keys = {
-  {
-    "<Space>fG",
-    function()
-      local arg = vim.fn.input "Grep: "
-
-      if arg == "" or arg == nil then
-        return
-      end
-
-      pcall(vim.cmd, "vimgrep /" .. arg .. "/gj **")
-      vim.cmd "Trouble qflist"
-    end,
-    desc = "Grep",
-  },
   { "<Space>fq", "<CMD>Trouble qflist toggle<CR>", desc = "Quickfix" },
   { "gro", "<CMD>Trouble symbols toggle<CR>", desc = "Symbols" },
   { "gd", "<CMD>Trouble lsp_definitions<CR>", desc = "Definition" },

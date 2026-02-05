@@ -41,6 +41,7 @@ opt.listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", prece
 opt.scrolloff = 10
 opt.shiftwidth = 2
 opt.shortmess:append { c = true }
+opt.shortmess:append "I"
 opt.signcolumn = "yes"
 opt.softtabstop = -1
 opt.tabstop = 2

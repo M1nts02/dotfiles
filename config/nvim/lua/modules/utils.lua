@@ -29,9 +29,8 @@ end
 ---@param maps table The table for set keymap
 function M.setmap(maps)
   for _, m in ipairs(maps) do
-    if m[4] == nil then
-      m[4] = { noremap = true }
-    end
+    m[4] = m[4] or {}
+    m[4]["noremap"] = m[4]["noremap"] or true
     vim.keymap.set(m[1], m[2], m[3], m[4])
   end
 end

@@ -5,10 +5,6 @@ show_symlink   = true
 ratio = [0, 1, 1]
 
 [opener]
-folder = [
-  { run = 'open -a kid3 "$@"', desc = "Kid3"},
-  { run = 'open -a FlowVision "$@"', desc = "FlowVision"},
-]
 archive = [
   { run = 'open "$@"', desc = "Open" },
 ]
@@ -17,7 +13,6 @@ text = [
 ]
 image = [
   { run = 'open "$@"', desc = "Open" },
-  { run = 'open -a "Pixelmator Pro" "$@"', desc = "Pixelmator Pro"},
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
@@ -26,8 +21,6 @@ video = [
 ]
 audio = [
   { run = 'open "$@"', desc = "Open" },
-  { run = 'open -a kid3 "$@"', desc = "Kid3"},
-  { run = 'open -a "MediaHuman Audio Converter" "$@"', desc = "MediaHuman Audio Converter"},
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 fallback = [

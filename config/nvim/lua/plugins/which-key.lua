@@ -22,18 +22,6 @@ function M.config()
     { "gb", "<C-v>", desc = "Visual Block" },
     { "gl", "V", desc = "Visual Line" },
 
-    -- Window
-    {
-      "<Space>w",
-      function()
-        require("which-key").show {
-          keys = "<c-w>",
-          loop = true,
-        }
-      end,
-      desc = "Window+",
-    },
-
     -- LSP
     { "gr", group = "LSP+" },
     { "grn", vim.lsp.buf.rename, desc = "Rename" },
