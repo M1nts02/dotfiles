@@ -1,7 +1,7 @@
 local M = {
   "mikavilpas/yazi.nvim",
-  lazy = false,
-  dependencies = { "nvim-lua/plenary.nvim" },
+  event = "VeryLazy",
+  dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 }
 
 M.keys = {
