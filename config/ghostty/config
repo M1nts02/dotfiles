@@ -10,7 +10,7 @@ window-width = 130
 window-height = 40
 window-position-x=30
 window-position-y=30
-window-decoration = none
+#window-decoration = none
 
 shell-integration-features = no-cursor
 cursor-style = block

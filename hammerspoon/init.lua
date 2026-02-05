@@ -1,14 +1,11 @@
 --require "hs.ipc"
 
-_G.utils = require "modules.utils" -- utils
-_G.actions = require "modules.actions" -- actions
+_G.Utils = require "modules.utils" -- utils
+_G.Actions = require "modules.actions" -- actions
+--_G.DotPath = string.gsub(hs.execute 'cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd', "[\r\n]+$", "")
 
 -------------- Window ---------------
 require "modules.window"
-
--------------- Workspace ------------
-_G.Space = hs.loadSpoon "M1Space"
-require "modules.space"
 
 -------------- Menu -----------------
 _G.Menu = hs.loadSpoon "Menu"
@@ -19,7 +16,6 @@ Menu.helperFormat = {
 }
 require "modules.menu.main"
 require "modules.menu.screenshot"
-require "modules.menu.space"
 
 -------------- Launcher -------------
 require "modules.launcher"

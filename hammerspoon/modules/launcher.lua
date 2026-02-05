@@ -2,7 +2,7 @@ hs.hotkey.bind({ "cmd" }, "space", function()
   local apps =
     hs.execute "/bin/ls /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applications/Utilities/ |  grep '\\.app$' | sed 's/\\.app$/.app/g'"
 
-  for k, v in pairs(actions) do
+  for k, v in pairs(Actions) do
     if v.pass ~= true then
       apps = apps .. k .. "\n"
     end
@@ -12,6 +12,6 @@ hs.hotkey.bind({ "cmd" }, "space", function()
   if string.sub(result, -4) == ".app" then
     hs.application.launchOrFocus(result)
   else
-    actions[result].run()
+    Actions[result].run()
   end
 end)

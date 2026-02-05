@@ -1,6 +1,3 @@
-local terminal =
-  "/Applications/Ghostty.app/Contents/MacOS/ghostty --window-decoration=none --window-position-x=30 --window-position-y=30"
-
 return {
   ["Reload"] = {
     run = function()
@@ -42,22 +39,22 @@ end tell
   },
   ["Screenshot Clipboard"] = {
     run = function()
-      utils.ScreenShot { mode = "Clipboard" }
+      Utils.ScreenShot { mode = "Clipboard" }
     end,
   },
   ["Screenshot Screen"] = {
     run = function()
-      utils.ScreenShot { mode = "Screen", notify = true }
+      Utils.ScreenShot { mode = "Screen", notify = true }
     end,
   },
   ["Screenshot Area"] = {
     run = function()
-      utils.ScreenShot { mode = "Area" }
+      Utils.ScreenShot { mode = "Area" }
     end,
   },
   ["Screenshot App"] = {
     run = function()
-      utils.ScreenShot { mode = "App", notify = true }
+      Utils.ScreenShot { mode = "App", notify = true }
     end,
   },
   ["Window Maximize"] = {

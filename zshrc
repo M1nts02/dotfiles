@@ -95,6 +95,7 @@ alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vi nvim
 alias_if_exist vim nvim
+alias_if_exist vimdiff "nvim -d"
 alias_if_exist hist "fc -ln 0 | fzf" fzf
 
 alias q=exit
