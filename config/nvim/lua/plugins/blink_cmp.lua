@@ -1,7 +1,7 @@
 local M = {
   "saghen/blink.cmp",
   version = "*",
-  event = { "InsertEnter", "CmdLineEnter" },
+  event = { "InsertEnter" },
   dependencies = {
     "rafamadriz/friendly-snippets",
     {
@@ -9,11 +9,6 @@ local M = {
       config = function()
         require("lspkind").init {
           mode = "symbol_text",
-          symbol_map = {
-            FittenCode = "",
-            Codeium = "",
-            Copilot = "",
-          },
         }
       end,
     },

@@ -1,4 +1,6 @@
-local M = { "ibhagwan/fzf-lua", enabled = Utils.executable { "fzf" }, event = { "VeryLazy" } }
+local M = { "ibhagwan/fzf-lua", enabled = Utils.executable { "fzf" } }
+
+M.cmd = "FzfLua"
 
 M.dependencies = { "echasnovski/mini.nvim" }
 
@@ -7,29 +9,23 @@ M.keys = {
   { "<Space>ff", "<CMD>FzfLua files<CR>", desc = "Files" },
   { "<Space>fo", "<CMD>FzfLua oldfiles<CR>", desc = "Oldfile" },
   { "<Space>fb", "<CMD>FzfLua buffers<CR>", desc = "Buffers" },
-  { "<Space>fc", "<CMD>FzfLua commands<CR>", desc = "Commands" },
+  { "<Space>fc", "<CMD>FzfLua commands winopts.preview.hidden=true<CR>", desc = "Commands" },
   { "<Space>fh", "<CMD>FzfLua help_tags<CR>", desc = "Help" },
-  { "<Space>fz", "<CMD>FzfLua zoxide<CR>", desc = "Zoxide" },
-  { "z=", "<CMD>FzfLua spell_suggest<CR>", desc = "Spell Suggest" },
+  { "<Space>fz", "<CMD>FzfLua zoxide winopts.preview.hidden=true<CR>", desc = "Zoxide" },
   { "<Space>fg", "<CMD>FzfLua live_grep<CR>", desc = "Live Grep" },
+  { "<Space>/", "<CMD>FzfLua blines winopts.preview.hidden=true<CR>", desc = "Line" },
+  { "<Space>`", "<CMD>FzfLua resume<CR>", desc = "Resume" },
+  { "q/", "<CMD>FzfLua command_history<CR>", desc = "Command History" },
+  { "q:", "<CMD>FzfLua search_history<CR>", desc = "Search History" },
 }
 
 M.config = function()
   local fzf_lua = require "fzf-lua"
   fzf_lua.setup {
     fzf_colors = true,
-    winopts = { split = "belowright new", preview = { hidden = true, scrollbar = "border" } },
-    fzf_opts = {
-      ["--no-hscroll"] = true,
-      ["--input-border"] = "none",
-      ["--style"] = "minimal",
-      ["--layout"] = "default",
-      ["--border"] = "none",
-      ["--highlight-line"] = true,
-    },
-    keymap = {
-      builtin = { ["ctrl-s"] = "toggle-preview" },
-      fzf = { ["ctrl-s"] = "toggle-preview" },
+    winopts = {
+      preview = { scrollbar = "border" },
+      backdrop = 100,
     },
     files = { cwd_prompt = false },
   }

@@ -1,8 +1,8 @@
 --require "hs.ipc"
 
+--_G.DotPath = string.gsub(hs.execute 'cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd', "[\r\n]+$", "")
 _G.Utils = require "modules.utils" -- utils
 _G.Actions = require "modules.actions" -- actions
---_G.DotPath = string.gsub(hs.execute 'cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd', "[\r\n]+$", "")
 
 -------------- Window ---------------
 require "modules.window"

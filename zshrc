@@ -88,21 +88,19 @@ function alias_if_exist() {
 alias_if_exist sed gsed
 alias_if_exist awk gawk
 alias_if_exist grep ggrep
-alias_if_exist ls "eza --icons -F"
 alias_if_exist l "eza -l --color=auto --icons"
 alias_if_exist ll "eza -l --color=auto --total-size --icons"
 alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
-alias_if_exist vi nvim
-alias_if_exist vim nvim
 alias_if_exist vimdiff "nvim -d"
 alias_if_exist hist "fc -ln 0 | fzf" fzf
 
 alias q=exit
-alias note="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs/Note"
 alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 alias p='export http_proxy="http://127.0.0.1:7890";export https_proxy="http://127.0.0.1:7890";echo "HTTP Proxy on"'
 alias np='unset http_proxy;unset https_proxy;echo "HTTP Proxy off"'
+
+[[ -f ~/.custom.sh ]] && source ~/.custom.sh
 
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"

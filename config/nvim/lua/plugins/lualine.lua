@@ -43,6 +43,31 @@ function M.config()
         "%=",
       },
       lualine_x = {
+        {
+          function()
+            return "%S"
+          end,
+          color = { fg = "#399ee6", gui = "bold" },
+        },
+        {
+          function()
+            return vim.fn.reg_recording() ~= "" and "● " .. vim.fn.reg_recording() or ""
+          end,
+          color = { fg = "#ffa54f", gui = "bold" },
+        },
+        {
+          function()
+            if vim.v.hlsearch == 0 then
+              return ""
+            end
+            local ok, result = pcall(vim.fn.searchcount, { maxcount = 999, timeout = 100 })
+            if not ok or result.total == 0 then
+              return ""
+            end
+            return string.format("[%d/%d]", result.current, result.total)
+          end,
+          color = { fg = "#399ee6", gui = "bold" },
+        },
         "diagnostics",
         {
           "lsp_status",

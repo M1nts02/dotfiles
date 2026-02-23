@@ -17,6 +17,30 @@ M.keys = {
   },
 }
 
+M.init = function()
+  -- dap
+  vim.fn.sign_define("DapBreakpoint", {
+    text = "⊚",
+    texthl = "LspDiagnosticsSignError",
+    linehl = "",
+    numhl = "",
+  })
+
+  vim.fn.sign_define("Dapstooped", {
+    text = "❀",
+    texthl = "LspDiagnosticsSignHint",
+    linehl = "",
+    numhl = "",
+  })
+
+  vim.fn.sign_define("DapBreakpointRejected", {
+    text = "▷",
+    texthl = "LspDiagnosticsSignInformation",
+    linehl = "DiagnosticUnderlineInfo",
+    numhl = "LspDiagnosticsSignInformation",
+  })
+end
+
 function M.config()
   local dap = require "dap"
 

@@ -1,6 +1,4 @@
-local M = {
-  "M1nts02/akane.nvim",
-}
+local M = { "M1nts02/akane.nvim" }
 
 function M.config()
   require("akane").setup { transparent = vim.g.transparent }

@@ -25,7 +25,7 @@ echo "
             <string>/opt/homebrew/bin/aria2c</string>
             <string>--enable-rpc</string>
             <string>--rpc-listen-all</string>
-            <string>-j 20</string>
+            <string>-j 10</string>
             <string>-d Downloads</string>
             <string>--input-file=.aria2.session</string>
             <string>--save-session=.aria2.session</string>

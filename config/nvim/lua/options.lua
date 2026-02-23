@@ -4,7 +4,7 @@ local g = vim.g
 local o = vim.o
 
 o.backspace = "indent," .. "eol," .. "start"
-o.cmdheight = 1
+opt.cmdheight = 0
 o.encoding = "utf-8"
 o.foldlevelstart = 99
 o.foldmethod = "indent"
@@ -19,7 +19,6 @@ o.pumheight = 15
 o.ruler = false
 o.shiftround = true
 o.showbreak = "+---"
-o.showcmd = true
 o.showmode = false
 o.showtabline = 0
 o.smartcase = true
@@ -40,8 +39,10 @@ opt.list = true
 opt.listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", precedes = "←" }
 opt.scrolloff = 10
 opt.shiftwidth = 2
-opt.shortmess:append { c = true }
 opt.shortmess:append "I"
+opt.shortmess:append { c = true }
+opt.showcmd = true
+opt.showcmdloc = "statusline"
 opt.signcolumn = "yes"
 opt.softtabstop = -1
 opt.tabstop = 2
@@ -56,9 +57,6 @@ g.mapleader = "\\"
 --cmd "unmenu PopUp"
 cmd "filetype indent off"
 
--- Add env for mason
-vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (isWindows and ";" or ":") .. vim.env.PATH
-
 -- Use ripgrep
 if vim.fn.executable "rg" == 1 then
   vim.o.grepprg = "rg --vimgrep "
@@ -69,33 +67,3 @@ end
 vim.schedule(function()
   opt.clipboard = "unnamedplus"
 end)
-
--- highlight yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
--- dap
-vim.fn.sign_define("DapBreakpoint", {
-  text = "⊚",
-  texthl = "LspDiagnosticsSignError",
-  linehl = "",
-  numhl = "",
-})
-
-vim.fn.sign_define("Dapstooped", {
-  text = "❀",
-  texthl = "LspDiagnosticsSignHint",
-  linehl = "",
-  numhl = "",
-})
-
-vim.fn.sign_define("DapBreakpointRejected", {
-  text = "▷",
-  texthl = "LspDiagnosticsSignInformation",
-  linehl = "DiagnosticUnderlineInfo",
-  numhl = "LspDiagnosticsSignInformation",
-})

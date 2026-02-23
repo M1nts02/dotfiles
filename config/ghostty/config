@@ -38,6 +38,11 @@ keybind = cmd+b>j=goto_split:bottom
 keybind = cmd+b>k=goto_split:top
 keybind = cmd+b>h=goto_split:left
 keybind = cmd+b>l=goto_split:right
+keybind = cmd+b>down=goto_split:bottom
+keybind = cmd+b>up=goto_split:top
+keybind = cmd+b>left=goto_split:left
+keybind = cmd+b>right=goto_split:right
+
 keybind = cmd+shift+j=goto_split:bottom
 keybind = cmd+shift+k=goto_split:top
 keybind = cmd+shift+h=goto_split:left

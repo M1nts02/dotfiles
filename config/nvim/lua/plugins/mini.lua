@@ -5,6 +5,7 @@ local M = {
 }
 
 function M.config()
+  require("mini.icons").setup()
   require("mini.pairs").setup()
   require("mini.comment").setup()
 

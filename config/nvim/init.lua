@@ -3,11 +3,13 @@ _G.isMac = sysname:find "Darwin" ~= nil
 _G.isLinux = sysname:find "Linux" ~= nil
 _G.isWindows = sysname:find "Windows_NT" ~= nil
 _G.ConfPath = vim.fn.stdpath "config"
-_G.Utils = require "modules.utils"
-_G.Cache = require "modules.cache"
+_G.CachePath = ConfPath .. "/.cache.json"
+
+_G.Utils = require "utils"
+_G.Cache = require "cache"
 
 -- Load options
-require "modules.options"
+require "options"
 -- Load saved options
 Cache.load()
 
@@ -41,7 +43,10 @@ require("lazy").setup({
     dir = ConfPath,
     event = "VeryLazy",
     config = function()
-      require "modules.mapping"
+      require "command"
+      require "autocmd"
+      require "mapping"
+      require "neovide"
     end,
   },
 }, { -- Lazy.nvim config

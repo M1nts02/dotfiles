@@ -1,5 +1,9 @@
 return {
   "mason-org/mason.nvim",
+  init = function()
+    -- Add env for mason
+    vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (isWindows and ";" or ":") .. vim.env.PATH
+  end,
   cmd = { "Mason", "MasonInstall", "MasonLog", "MasonUninstall", "MasonUninstallAll", "MasonUpdate" },
   config = function()
     require("mason").setup {
