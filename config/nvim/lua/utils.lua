@@ -1,13 +1,5 @@
 local M = {}
 
-function M.set_colorscheme()
-  if vim.g.dark == true then
-    vim.cmd("colorscheme " .. vim.g.dark_theme)
-  else
-    vim.cmd("colorscheme " .. vim.g.light_theme)
-  end
-end
-
 --- A function to check Commands exist
 ---@param cmd string|string[] The commands
 ---@return boolean

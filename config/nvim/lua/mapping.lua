@@ -45,7 +45,7 @@ local map = {
       vim.lsp.buf.signature_help { border = "rounded" }
     end,
   },
-  { { "n" }, "<Space>m", "<CMD>Settings<CR>", { desc = "Actions" } },
+  { { "n" }, "<Space>m", "<CMD>Settings<CR>", { desc = "Menu" } },
 }
 
 setmap(map)

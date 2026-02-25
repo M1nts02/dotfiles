@@ -4,6 +4,14 @@ local M = {
   event = { "VeryLazy" },
 }
 
+-- Toggle auto pairs
+vim.api.nvim_create_user_command("AutoPairsToggle", function()
+  vim.g.minipairs_disable = not vim.g.minipairs_disable
+  Cache.update { g = { minipairs_disable = vim.g.minipairs_disable } }
+end, {
+  desc = "Toggle auto pairs",
+})
+
 function M.config()
   require("mini.icons").setup()
   require("mini.pairs").setup()

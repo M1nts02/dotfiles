@@ -6,10 +6,10 @@ local update_json_file = Utils.update_json_file
 -- default cache
 local options = {
   g = {
-    cmp_disable = false,
+    cmp_enable = false,
     dianostic_virtualtext = false,
     inlay_hints = true,
-    disable_autoformat = false,
+    enable_autoformat = false,
     dark = true,
     minipairs_disable = true,
     transparent = false,

@@ -3,6 +3,14 @@ local M = {
   event = "VeryLazy",
 }
 
+-- Toggle format
+vim.api.nvim_create_user_command("FormatToggle", function()
+  vim.g.enable_autoformat = not vim.g.enable_autoformat
+  Cache.update { g = { enable_autoformat = vim.g.enable_autoformat } }
+end, {
+  desc = "Toggle format",
+})
+
 function M.config()
   vim.g.zig_fmt_autosave = 0
   require("conform").setup {
@@ -21,7 +29,7 @@ function M.config()
       zig = { "zigfmt" },
     },
     format_on_save = function(bufnr)
-      if vim.g.disable_autoformat == true then
+      if vim.g.enable_autoformat ~= true then
         return
       end
       return { timeout_ms = 1000, lsp_format = "fallback" }

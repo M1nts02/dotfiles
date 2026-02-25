@@ -63,16 +63,7 @@ function M.config()
         keys = {
           { icon = " ", key = "p", desc = "Plugin", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = " ", key = "m", desc = "Mason", action = ":Mason" },
-          {
-            icon = " ",
-            key = "t",
-            desc = "Dark Mode",
-            action = function()
-              vim.g.dark = not vim.g.dark
-              Utils.set_colorscheme()
-              Cache.update { g = { dark = vim.g.dark } }
-            end,
-          },
+          { icon = " ", key = "t", desc = "Dark Mode", action = ":DarkMode" },
           { icon = "󰊢 ", key = "g", desc = "Git", action = ":Neogit" },
           { icon = "󰕲 ", key = "z", desc = "Zoxide", action = ":FzfLua zoxide" },
           { icon = " ", key = "s", desc = "Settings", action = ":Settings" },
@@ -95,6 +86,8 @@ function M.config()
 
   -- Toggle Dim
   vim.api.nvim_create_user_command("DimToggle", function()
+    vim.g.dim = not vim.g.dim
+    Cache.update { g = { dim = vim.g.dim } }
     if vim.g.dim == true then
       Snacks.dim.enable { animate = { enabled = false } }
     else
@@ -103,7 +96,12 @@ function M.config()
   end, {
     desc = "Toggle Dim",
   })
-  vim.cmd "DimToggle"
+
+  if vim.g.dim == true then
+    Snacks.dim.enable { animate = { enabled = false } }
+  else
+    Snacks.dim.disable()
+  end
 end
 
 return M

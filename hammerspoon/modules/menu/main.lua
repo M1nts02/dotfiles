@@ -9,13 +9,6 @@ add("Main Menu", {
       run "Screenshot"
     end,
   },
-  -- AppVolume
-  {
-    singleKey("v", "AppVolume"),
-    function()
-      hs.application.launchOrFocus "/Applications/AppVolume.app"
-    end,
-  },
   -- Ghostty
   {
     singleKey("g", "Ghostty"),
@@ -42,7 +35,7 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [e]: Finder              [g]: Ghostty             [v]: AppVolume
+     [e]: Finder              [g]: Ghostty             [s]: Screenshot 
 
      [1]: Brightness Down     [2]: Brightness Up       [3]: Misson Control
 
@@ -52,7 +45,7 @@ add("Main Menu", {
 
      [0]: Mute                [-]: Volume Down         [=]: Volume Up
 
-     [s]: Screenshot          [`]: Dock
+     [`]: Dock
                                                                               ]],
 })
 

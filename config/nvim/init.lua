@@ -47,6 +47,7 @@ require("lazy").setup({
       require "autocmd"
       require "mapping"
       require "neovide"
+      require "menu"
     end,
   },
 }, { -- Lazy.nvim config

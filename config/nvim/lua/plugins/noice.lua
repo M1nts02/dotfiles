@@ -3,7 +3,15 @@ M.event = "VeryLazy"
 
 M.dependencies = {
   "MunifTanjim/nui.nvim",
-  "rcarriga/nvim-notify",
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup {
+        render = "compact",
+        stages = "static",
+      }
+    end,
+  },
 }
 
 M.opts = {
@@ -33,7 +41,7 @@ M.opts = {
   presets = {
     bottom_search = false,
     command_palette = true,
-    long_message_to_split = false,
+    long_message_to_split = true,
     inc_rename = false,
     lsp_doc_border = false,
   },

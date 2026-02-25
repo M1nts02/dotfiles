@@ -15,6 +15,14 @@ local M = {
   },
 }
 
+-- Toggle auto completion
+vim.api.nvim_create_user_command("BlinkCmpToggle", function()
+  vim.g.cmp_enable = not vim.g.cmp_enable
+  Cache.update { g = { cmp_enable = vim.g.cmp_enable } }
+end, {
+  desc = "Toggle auto completion",
+})
+
 function M.config()
   local cmp = require "blink-cmp"
   local lspkind = require "lspkind"
@@ -25,7 +33,7 @@ function M.config()
       if buftype == "prompt" then
         return false
       end
-      return not vim.g.cmp_disable
+      return vim.g.cmp_enable
     end,
     keymap = {
       ["<C-c>"] = { "hide", "fallback" },

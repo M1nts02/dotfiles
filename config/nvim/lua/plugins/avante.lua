@@ -42,6 +42,9 @@ M.opts = {
       args = { "acp" },
     },
   },
+  behaviour = {
+    auto_set_keymaps = false,
+  },
 }
 
 return M
