@@ -7,6 +7,10 @@ _G.Actions = require "modules.actions" -- actions
 -------------- Window ---------------
 require "modules.window"
 
+-------------- Workspace ------------
+_G.Space = hs.loadSpoon "M1Space"
+require "modules.space"
+
 -------------- Menu -----------------
 _G.Menu = hs.loadSpoon "Menu"
 Menu.helperFormat = {
@@ -16,6 +20,7 @@ Menu.helperFormat = {
 }
 require "modules.menu.main"
 require "modules.menu.screenshot"
+require "modules.menu.space"
 
 -------------- Launcher -------------
 require "modules.launcher"

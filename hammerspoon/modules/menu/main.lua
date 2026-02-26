@@ -31,6 +31,12 @@ add("Main Menu", {
   { singleKey("0", "Mute Toggle"), Actions["Mute Toggle"], { keep = true } },
   { singleKey("-", "Volume Down"), Actions["Volume Down"], { keep = true } },
   { singleKey("=", "Volume Up"), Actions["Volume Up"], { keep = true } },
+  { -- Space
+    singleKey("w", "Move Space"),
+    function()
+      run "Space"
+    end,
+  },
   { singleKey("q", "Quit"), function() end },
 }, {
   helper = [[
@@ -45,7 +51,7 @@ add("Main Menu", {
 
      [0]: Mute                [-]: Volume Down         [=]: Volume Up
 
-     [`]: Dock
+     [w]: Space               [`]: Dock
                                                                               ]],
 })
 

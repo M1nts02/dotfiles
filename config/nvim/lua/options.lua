@@ -4,7 +4,6 @@ local g = vim.g
 local o = vim.o
 
 o.backspace = "indent," .. "eol," .. "start"
-opt.cmdheight = 0
 o.encoding = "utf-8"
 o.foldlevelstart = 99
 o.foldmethod = "indent"
@@ -31,6 +30,7 @@ o.wildignorecase = true
 o.winblend = 0
 o.writebackup = false
 
+opt.cmdheight = 0
 opt.expandtab = true
 opt.fileencodings = "utf-8,gbk,ucs-bom,default,latin1"
 opt.fillchars = { eob = " " }
