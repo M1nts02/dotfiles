@@ -16,7 +16,6 @@ local options = {
     dark_theme = "akane-dark",
     light_theme = "akane-light",
     python3_host_prog = "python3",
-    dim = false,
   },
   opt = {
     wrap = true,

@@ -35,17 +35,6 @@ M.keys = {
   },
 }
 
-if vim.g.neovide then
-  table.insert(M.keys, {
-    "<D-j>",
-    function()
-      require("snacks").terminal.toggle()
-    end,
-    desc = "Terminal",
-    mode = { "n", "i", "t" },
-  })
-end
-
 function M.config()
   local Snacks = require "snacks"
   Snacks.setup {
@@ -83,25 +72,6 @@ function M.config()
     scroll = { enabled = false },
     words = { enabled = false },
   }
-
-  -- Toggle Dim
-  vim.api.nvim_create_user_command("DimToggle", function()
-    vim.g.dim = not vim.g.dim
-    Cache.update { g = { dim = vim.g.dim } }
-    if vim.g.dim == true then
-      Snacks.dim.enable { animate = { enabled = false } }
-    else
-      Snacks.dim.disable()
-    end
-  end, {
-    desc = "Toggle Dim",
-  })
-
-  if vim.g.dim == true then
-    Snacks.dim.enable { animate = { enabled = false } }
-  else
-    Snacks.dim.disable()
-  end
 end
 
 return M

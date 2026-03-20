@@ -7,6 +7,8 @@ ratio = [0, 1, 1]
 [opener]
 archive = [
   { run = 'open "$@"', desc = "Open" },
+  { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+  { run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 text = [
   { run = 'nvim "$@"', block = true },

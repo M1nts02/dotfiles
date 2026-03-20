@@ -17,8 +17,8 @@ function M.config()
 
   require("which-key").add {
     { "gr", group = "LSP+" },
-    { "<Space>f", group = "Find+" },
-    { "<Space>a", group = "Ai+" },
+    { "<Leader>f", group = "Find+" },
+    { "<Leader>a", group = "Ai+" },
   }
 end
 

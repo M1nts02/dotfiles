@@ -1,13 +1,5 @@
 local M = { "yetone/avante.nvim" }
 
-M.keys = {
-  { "<Space>aa", "<CMD>AvanteAsk<CR>", desc = "Ask" },
-  { "<Space>ae", "<CMD>AvanteEdit<CR>", desc = "Edit" },
-  { "<Space>ah", "<CMD>AvanteHistory<CR>", desc = "History" },
-  { "<Space>an", "<CMD>AvanteChatNew<CR>", desc = "New Chat" },
-  { "<Space>at", "<CMD>AvanteToggle<CR>", desc = "Toggle" },
-}
-
 M.build = isWindows and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make"
 M.event = "VeryLazy"
 M.version = false
@@ -43,9 +35,6 @@ M.opts = {
       command = "kimi",
       args = { "acp" },
     },
-  },
-  behaviour = {
-    auto_set_keymaps = false,
   },
   selection = {
     enabled = false,

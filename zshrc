@@ -12,7 +12,7 @@ export LIBRARY_PATH=${HOMEBREW}/lib
 export VISUAL="nvim"
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
-#export DOTPATH="$( cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd )"
+export DOTPATH="$( cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd )"
 
 NEWLINE=$'\n'
 PROMPT="%F{blue}%~ %#%f %F{green}%T%f${NEWLINE}"
@@ -71,6 +71,17 @@ function g() {
   fi
 }
 
+p() {
+  if [[ -n "$http_proxy" ]]; then
+    unset http_proxy https_proxy
+    echo "HTTP Proxy off"
+  else
+    export http_proxy="http://127.0.0.1:7890"
+    export https_proxy="http://127.0.0.1:7890"
+    echo "HTTP Proxy on"
+  fi
+}
+
 # alias if $2 or $3 exist
 function alias_if_exist() {
   if [[ -n $3 ]]; then
@@ -85,6 +96,9 @@ function alias_if_exist() {
   fi
 }
 
+command -v bob &> /dev/null && export PATH="${HOME}/.local/share/bob/nvim-bin:$PATH"
+command -v cargo &> /dev/null && export PATH="${HOME}/.cargo/bin:$PATH"
+
 alias_if_exist sed gsed
 alias_if_exist awk gawk
 alias_if_exist grep ggrep
@@ -94,11 +108,10 @@ alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vimdiff "nvim -d"
 alias_if_exist hist "fc -ln 0 | fzf" fzf
+alias_if_exist e "open -a emacs" emacs
 
 alias q=exit
 alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
-alias p='export http_proxy="http://127.0.0.1:7890";export https_proxy="http://127.0.0.1:7890";echo "HTTP Proxy on"'
-alias np='unset http_proxy;unset https_proxy;echo "HTTP Proxy off"'
 
 [[ -f ~/.custom.sh ]] && source ~/.custom.sh
 

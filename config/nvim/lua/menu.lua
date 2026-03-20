@@ -17,11 +17,6 @@ local actions = {
     action = "BlinkCmpToggle",
   },
   {
-    desc = "Dim",
-    flag = "dim",
-    action = "DimToggle",
-  },
-  {
     desc = "Wrap",
     flag = function()
       return vim.opt.wrap:get()

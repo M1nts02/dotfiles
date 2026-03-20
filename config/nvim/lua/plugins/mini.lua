@@ -16,6 +16,7 @@ function M.config()
   require("mini.icons").setup()
   require("mini.pairs").setup()
   require("mini.comment").setup()
+  require("mini.diff").setup { view = { style = "sign" } }
 
   local hipatterns = require "mini.hipatterns"
   hipatterns.setup {

@@ -10,7 +10,17 @@ ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
 ln -s ${DIR}/config/gitui       ${HOME}/.config/gitui
 ln -s ${DIR}/config/stylua      ${HOME}/.config/stylua
 
+#mkdir -p ${HOME}/.config/alacritty
+#ln -s ${DIR}/config/alacritty/catppuccin_latte.toml      ${HOME}/.config/alacritty
+#ln -s ${DIR}/config/alacritty/catppuccin_mocha.toml      ${HOME}/.config/alacritty
+#ln -s ${DIR}/config/alacritty/config.toml      ${HOME}/.config/alacritty
+#cp -f ${DIR}/config/alacritty/light.toml      ${HOME}/.config/alacritty/alacritty.toml
+
 ln -s ${DIR}/hammerspoon   ${HOME}/.hammerspoon
+
+#mkdir -p ${HOME}/.vim
+#ln -s ${DIR}/vim/vimrc  ${HOME}/.vim/vimrc
+#ln -s ${DIR}/vim/gvimrc ${HOME}/.vim/gvimrc
 
 mkdir -p ${HOME}/Library/LaunchAgents
 echo "

@@ -46,7 +46,6 @@ require("lazy").setup({
       require "command"
       require "autocmd"
       require "mapping"
-      require "neovide"
       require "menu"
     end,
   },

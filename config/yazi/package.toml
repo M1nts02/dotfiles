@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "230b9c6"
-hash = "8a7c58225816a163a6e8730c0adafbc8"
+rev = "1962818"
+hash = "4c0260feb50ea2437380690ffc241da7"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "dc61636"
-hash = "2fa34959353b6f1a1c33659f50e098fd"
+rev = "6fbed8d"
+hash = "57ae6b43c477e117802f176683b78e74"
 
 [flavor]
 deps = []

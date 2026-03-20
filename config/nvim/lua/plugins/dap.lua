@@ -6,7 +6,7 @@ local M = {
 
 M.keys = {
   {
-    "<Space>d",
+    "<Leader>d",
     function()
       local dm = require "debugmaster"
 

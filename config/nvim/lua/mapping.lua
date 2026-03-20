@@ -1,7 +1,7 @@
 local setmap = Utils.setmap
 
 local map = {
-  { { "n" }, "<Space>q", "<CMD>q<CR>", { desc = "Quit" } },
+  { { "n" }, "<Leader>q", "<CMD>q<CR>", { desc = "Quit" } },
   -- Clear highlights on search when pressing <Esc> in normal mode
   { { "n" }, "<Esc>", "<CMD>nohlsearch<CR>" },
   -- Tab
@@ -16,8 +16,8 @@ local map = {
   { { "n" }, "<C-w>8", "<CMD>tabnext 8<CR>", { desc = "Goto Tab 8" } },
   { { "n" }, "<C-w>9", "<CMD>tabnext 9<CR>", { desc = "Goto Tab 9" } },
   -- Terminal
-  -- { { "n" }, "<Space>t", "<CMD>belowright split | terminal<CR><Insert>", { desc = "Terminal Split" } },
-  -- { { "n" }, "<Space>T", "<CMD>belowright vsplit | terminal<CR><Insert>", { desc = "Terminal VSplit" } },
+  -- { { "n" }, "<Leader>t", "<CMD>belowright split | terminal<CR><Insert>", { desc = "Terminal Split" } },
+  -- { { "n" }, "<Leader>T", "<CMD>belowright vsplit | terminal<CR><Insert>", { desc = "Terminal VSplit" } },
   -- LSP
   { { "n" }, "grn", vim.lsp.buf.rename, { desc = "Rename" } },
   { { "n" }, "gra", vim.lsp.buf.code_action, { desc = "Code Action" } },
@@ -45,7 +45,7 @@ local map = {
       vim.lsp.buf.signature_help { border = "rounded" }
     end,
   },
-  { { "n" }, "<Space>m", "<CMD>Settings<CR>", { desc = "Menu" } },
+  { { "n" }, "<Leader>m", "<CMD>Settings<CR>", { desc = "Menu" } },
 }
 
 setmap(map)

@@ -18,7 +18,11 @@ add("Main Menu", {
   },
   -- Finder
   { singleKey("e", "Finder"), Actions["Finder"] },
-  { singleKey("`", "Dock"), Actions["Dock"] },
+  { singleKey("j", "Emoji"), Actions["Character Viewer"] },
+  { singleKey("c", "Control Center"), Actions["Control Center"] },
+  { singleKey("n", "Notification Center"), Actions["Notification Center"] },
+  { singleKey("h", "Desktop"), Actions["Desktop"] },
+  { singleKey("a", "Dock"), Actions["Dock"] },
   { singleKey("1", "Brightness Down"), Actions["Brightness Down"], { keep = true } },
   { singleKey("2", "Brightness Up"), Actions["Brightness Up"], { keep = true } },
   { singleKey("3", "Misson Control"), hs.spaces.openMissionControl },
@@ -31,12 +35,6 @@ add("Main Menu", {
   { singleKey("0", "Mute Toggle"), Actions["Mute Toggle"], { keep = true } },
   { singleKey("-", "Volume Down"), Actions["Volume Down"], { keep = true } },
   { singleKey("=", "Volume Up"), Actions["Volume Up"], { keep = true } },
-  { -- Space
-    singleKey("w", "Move Space"),
-    function()
-      run "Space"
-    end,
-  },
   { singleKey("q", "Quit"), function() end },
 }, {
   helper = [[
@@ -51,8 +49,10 @@ add("Main Menu", {
 
      [0]: Mute                [-]: Volume Down         [=]: Volume Up
 
-     [w]: Space               [`]: Dock
-                                                                              ]],
+     [j]: Emoji               [c]: Control Center      [n]: Notification Center
+
+     [h]: Desktop             [a]: Dock
+                                                                                   ]],
 })
 
 hs.hotkey.bind({ "cmd" }, "`", function()

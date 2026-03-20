@@ -1,26 +1,40 @@
 local M = { "M1nts02/akane.nvim" }
 
--- Toggle dark mode
-vim.api.nvim_create_user_command("DarkMode", function()
-  vim.g.dark = not vim.g.dark
-  Cache.update { g = { dark = vim.g.dark } }
+local function dark_mode(mode)
+  if mode == nil then
+    vim.g.dark = not vim.g.dark
+  else
+    vim.g.dark = mode
+  end
 
+  Cache.update { g = { dark = vim.g.dark } }
   if vim.g.dark == true then
     vim.cmd("colorscheme " .. vim.g.dark_theme)
   else
     vim.cmd("colorscheme " .. vim.g.light_theme)
   end
+end
+
+-- Toggle dark mode
+vim.api.nvim_create_user_command("DarkMode", function(opt)
+  local mode = vim.split(opt.args, " ", { plain = true })[1]
+
+  if mode == nil or mode == "" then
+    dark_mode(not vim.g.dark)
+  else
+    dark_mode(mode == "true")
+  end
 end, {
   desc = "Toggle dark mode",
+  nargs = "*",
+  complete = function()
+    return { "true", "false" }
+  end,
 })
 
 function M.config()
   require("akane").setup { transparent = vim.g.transparent }
-  if vim.g.dark == true then
-    vim.cmd("colorscheme " .. vim.g.dark_theme)
-  else
-    vim.cmd("colorscheme " .. vim.g.light_theme)
-  end
+  dark_mode(vim.g.dark)
 end
 
 return M

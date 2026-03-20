@@ -44,6 +44,7 @@ keymap = [
   { on = [ "`", "/" ], run = "cd /", desc = "Goto root" },
   { on = [ "`", "`" ], run = "cd ~", desc = "Go to the home directory" },
   { on = [ "`", "f" ], run = "shell -- open -R \"$@\"", desc = "Reveal in Finder", for = "unix" },
+  { on = [ "`", "o" ], run = "shell -- mdrop \"$@\"", desc = "mDrop", for = "unix" },
 
   # Filtering
   { on = [ "f" ], run = "filter", desc = "Filter" },
@@ -247,6 +248,11 @@ keymap = [
 ]
 
 [[mgr.prepend_keymap]]
-on   = "<tab>"
+on   = "["
 run  = "plugin toggle-pane min-preview"
 desc = "Show or hide the preview pane"
+
+[[mgr.prepend_keymap]]
+on   = "]"
+run  = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"

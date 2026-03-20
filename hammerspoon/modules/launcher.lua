@@ -1,6 +1,6 @@
 hs.hotkey.bind({ "cmd" }, "space", function()
   local apps =
-    hs.execute "/bin/ls /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applications/Utilities/ |  grep '\\.app$' | sed 's/\\.app$/.app/g'"
+    hs.execute "/bin/ls ${HOME}/Library/Mobile\\ Documents/com\\~apple\\~Automator/Documents /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applications/Utilities/ |  grep '\\.app$' | sed 's/\\.app$/.app/g'"
 
   for k, _ in pairs(Actions) do
     apps = apps .. k .. "\n"

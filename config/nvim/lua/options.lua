@@ -52,7 +52,7 @@ opt.whichwrap:append "<>[]hl"
 opt.wildoptions = { "tagfile", "fuzzy" }
 
 g.loaded_netrw = 1
-g.mapleader = "\\"
+g.mapleader = " "
 
 --cmd "unmenu PopUp"
 cmd "filetype indent off"
