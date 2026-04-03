@@ -39,3 +39,11 @@ vim.api.nvim_create_user_command("VirtualText", function()
 end, {
   desc = "Toggle virtual text",
 })
+
+-- Toggle format
+vim.api.nvim_create_user_command("FormatToggle", function()
+  vim.g.enable_autoformat = not vim.g.enable_autoformat
+  Cache.update { g = { enable_autoformat = vim.g.enable_autoformat } }
+end, {
+  desc = "Toggle format",
+})

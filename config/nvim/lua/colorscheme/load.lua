@@ -1,5 +1,3 @@
-local M = { "M1nts02/akane.nvim" }
-
 local function dark_mode(mode)
   if mode == nil then
     vim.g.dark = not vim.g.dark
@@ -9,9 +7,9 @@ local function dark_mode(mode)
 
   Cache.update { g = { dark = vim.g.dark } }
   if vim.g.dark == true then
-    vim.cmd("colorscheme " .. vim.g.dark_theme)
+    vim.cmd.colorscheme(vim.g.dark_theme)
   else
-    vim.cmd("colorscheme " .. vim.g.light_theme)
+    vim.cmd.colorscheme(vim.g.light_theme)
   end
 end
 
@@ -32,9 +30,4 @@ end, {
   end,
 })
 
-function M.config()
-  require("akane").setup { transparent = vim.g.transparent }
-  dark_mode(vim.g.dark)
-end
-
-return M
+dark_mode(vim.g.dark)

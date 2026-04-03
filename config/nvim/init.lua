@@ -13,48 +13,12 @@ require "options"
 -- Load saved options
 Cache.load()
 
--- Check plugin manager
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
-  print "Downloading ..."
-  vim.fn.system {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  }
-end
+require("colorscheme").init()
+require "command"
+require "autocmd"
+require "mapping"
+require "menu"
+require "statusline"
 
--- Load lazy.nvim
-vim.opt.runtimepath:prepend(lazypath)
-
-require("lazy").setup({
-  -- Plugins manager
-  { "folke/lazy.nvim", version = "*" },
-
-  -- Load plugins
-  { import = "plugins" },
-
-  -- Lazy-load
-  {
-    name = "lazy-load",
-    dir = ConfPath,
-    event = "VeryLazy",
-    config = function()
-      require "command"
-      require "autocmd"
-      require "mapping"
-      require "menu"
-    end,
-  },
-}, { -- Lazy.nvim config
-  ui = {
-    border = "rounded",
-    backdrop = 100,
-  },
-  change_detection = {
-    notify = false,
-  },
-})
+-- Load Plugins
+require("pack").load()

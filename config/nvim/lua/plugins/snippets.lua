@@ -1,6 +1,5 @@
 return {
   "chrisgrieser/nvim-scissors",
-  event = "VeryLazy",
   config = function()
     require("scissors").setup {
       snippetDir = ConfPath .. "/snippets",

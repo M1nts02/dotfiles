@@ -1,36 +1,30 @@
-local M = {
+return {
   "nvim-mini/mini.nvim",
-  version = "*",
-  event = { "VeryLazy" },
+  config = function()
+    require("mini.icons").setup()
+    require("mini.pairs").setup()
+    require("mini.comment").setup()
+
+    local hipatterns = require "mini.hipatterns"
+    hipatterns.setup {
+      highlighters = {
+        -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+        fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
+        hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
+        todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+        note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+
+        -- Highlight hex color strings (`#rrggbb`) using that color
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+      },
+    }
+
+    -- Toggle auto pairs
+    vim.api.nvim_create_user_command("AutoPairsToggle", function()
+      vim.g.minipairs_disable = not vim.g.minipairs_disable
+      Cache.update { g = { minipairs_disable = vim.g.minipairs_disable } }
+    end, {
+      desc = "Toggle auto pairs",
+    })
+  end,
 }
-
--- Toggle auto pairs
-vim.api.nvim_create_user_command("AutoPairsToggle", function()
-  vim.g.minipairs_disable = not vim.g.minipairs_disable
-  Cache.update { g = { minipairs_disable = vim.g.minipairs_disable } }
-end, {
-  desc = "Toggle auto pairs",
-})
-
-function M.config()
-  require("mini.icons").setup()
-  require("mini.pairs").setup()
-  require("mini.comment").setup()
-  require("mini.diff").setup { view = { style = "sign" } }
-
-  local hipatterns = require "mini.hipatterns"
-  hipatterns.setup {
-    highlighters = {
-      -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-      fixme = { pattern = "%f[%w]()FIXME()%f[%W]", group = "MiniHipatternsFixme" },
-      hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
-      todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
-      note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-
-      -- Highlight hex color strings (`#rrggbb`) using that color
-      hex_color = hipatterns.gen_highlighter.hex_color(),
-    },
-  }
-end
-
-return M

@@ -1,43 +1,11 @@
 local actions = {
-  {
-    desc = "Auto pairs",
-    flag = function()
-      return not vim.g.minipairs_disable
-    end,
-    action = "AutoPairsToggle",
-  },
-  {
-    desc = "Dark mode",
-    flag = "dark",
-    action = "DarkMode",
-  },
-  {
-    desc = "Auto Completion",
-    flag = "cmp_enable",
-    action = "BlinkCmpToggle",
-  },
-  {
-    desc = "Wrap",
-    flag = function()
-      return vim.opt.wrap:get()
-    end,
-    action = "WrapToggle",
-  },
-  {
-    desc = "Virtual Text",
-    flag = "dianostic_virtualtext",
-    action = "VirtualText",
-  },
-  {
-    desc = "Inlay hints",
-    flag = "inlay_hints",
-    action = "InlayHints",
-  },
-  {
-    desc = "Auto format",
-    flag = "enable_autoformat",
-    action = "FormatToggle",
-  },
+  { desc = "Auto pairs",      flag = function() return not vim.g.minipairs_disable end, action = "AutoPairsToggle", },
+  { desc = "Dark mode",       flag = "dark",                                            action = "DarkMode", },
+  { desc = "Auto Completion", flag = "cmp_enable",                                      action = "BlinkCmpToggle", },
+  { desc = "Wrap",            flag = function() return vim.opt.wrap:get() end,          action = "WrapToggle", },
+  { desc = "Virtual Text",    flag = "dianostic_virtualtext",                           action = "VirtualText", },
+  { desc = "Inlay hints",     flag = "inlay_hints",                                     action = "InlayHints", },
+  { desc = "Auto format",     flag = "enable_autoformat",                               action = "FormatToggle", },
 }
 
 vim.api.nvim_create_user_command("Settings", function()

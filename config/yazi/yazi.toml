@@ -6,7 +6,6 @@ ratio = [0, 1, 1]
 
 [opener]
 archive = [
-  { run = 'open "$@"', desc = "Open" },
   { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
   { run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
@@ -14,18 +13,16 @@ text = [
   { run = 'nvim "$@"', block = true },
 ]
 image = [
-  { run = 'open "$@"', desc = "Open" },
   { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
-  { run = 'open "$@"', desc = "Open" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
-  { run = 'open "$@"', desc = "Open" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 fallback = [
+  { run = 'open "$@"', desc = "Open" },
   { run = 'open -R "$@"', desc = "Reveal in Finder", for = "unix" },
 ]
 

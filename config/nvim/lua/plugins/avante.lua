@@ -1,44 +1,51 @@
-local M = { "yetone/avante.nvim" }
-
-M.build = isWindows and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make"
-M.event = "VeryLazy"
-M.version = false
-
-M.dependencies = {
-  "nvim-lua/plenary.nvim",
-  "MunifTanjim/nui.nvim",
-  "ibhagwan/fzf-lua",
-  "nvim-mini/mini.nvim",
-  {
-    "HakonHarnes/img-clip.nvim",
-    event = "VeryLazy",
-    opts = {
-      default = {
-        embed_image_as_base64 = false,
-        prompt_for_file_name = false,
-        drag_and_drop = { insert_mode = true },
-        use_absolute_path = true,
+return {
+  "yetone/avante.nvim",
+  build = function(plugin)
+    if isWindows then
+      vim.cmd(
+        "!(cd  " .. plugin.path .. " && powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false)"
+      )
+    else
+      vim.cmd("!(cd " .. plugin.path .. " && make)")
+    end
+  end,
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    "ibhagwan/fzf-lua",
+    "nvim-mini/mini.nvim",
+    {
+      "HakonHarnes/img-clip.nvim",
+      config = function()
+        require("img-clip").setup {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = { insert_mode = true },
+            use_absolute_path = true,
+          },
+        }
+      end,
+    },
+    {
+      "MeanderingProgrammer/render-markdown.nvim",
+      config = function()
+        require("render-markdown").setup { file_types = { "Avante" } }
+      end,
+    },
+  },
+  config = function()
+    require("avante").setup {
+      provider = "kimi-cli",
+      acp_providers = {
+        ["kimi-cli"] = {
+          command = "kimi",
+          args = { "acp" },
+        },
       },
-    },
-  },
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    opts = { file_types = { "Avante" } },
-    ft = { "markdown", "Avante" },
-  },
+      selection = {
+        enabled = false,
+      },
+    }
+  end,
 }
-
-M.opts = {
-  provider = "kimi-cli",
-  acp_providers = {
-    ["kimi-cli"] = {
-      command = "kimi",
-      args = { "acp" },
-    },
-  },
-  selection = {
-    enabled = false,
-  },
-}
-
-return M

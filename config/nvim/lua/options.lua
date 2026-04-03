@@ -11,14 +11,10 @@ o.ignorecase = true
 o.incsearch = false
 o.infercase = true
 o.laststatus = 3
-o.mouse = "nvic"
 o.omnifunc = "syntaxcomplete#Complete"
-o.pumblend = 0
 o.pumheight = 15
-o.ruler = false
 o.shiftround = true
 o.showbreak = "+---"
-o.showmode = false
 o.showtabline = 0
 o.smartcase = true
 o.splitbelow = true
@@ -30,26 +26,24 @@ o.wildignorecase = true
 o.winblend = 0
 o.writebackup = false
 
-opt.cmdheight = 0
 opt.expandtab = true
 opt.fileencodings = "utf-8,gbk,ucs-bom,default,latin1"
 opt.fillchars = { eob = " " }
 opt.inccommand = "split"
 opt.list = true
 opt.listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", precedes = "←" }
+opt.mouse = "nvic"
+opt.pumborder = "rounded"
 opt.scrolloff = 10
 opt.shiftwidth = 2
-opt.shortmess:append "I"
-opt.shortmess:append { c = true }
-opt.showcmd = true
-opt.showcmdloc = "statusline"
+opt.shortmess:append { I = true, c = true, C = true }
 opt.signcolumn = "yes"
 opt.softtabstop = -1
 opt.tabstop = 2
 opt.termguicolors = true
 opt.undofile = true
 opt.whichwrap:append "<>[]hl"
-opt.wildoptions = { "tagfile", "fuzzy" }
+opt.wildoptions = { "fuzzy", "pum", "tagfile" }
 
 g.loaded_netrw = 1
 g.mapleader = " "

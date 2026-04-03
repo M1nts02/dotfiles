@@ -16,11 +16,12 @@ local map = {
   { { "n" }, "<C-w>8", "<CMD>tabnext 8<CR>", { desc = "Goto Tab 8" } },
   { { "n" }, "<C-w>9", "<CMD>tabnext 9<CR>", { desc = "Goto Tab 9" } },
   -- Terminal
-  -- { { "n" }, "<Leader>t", "<CMD>belowright split | terminal<CR><Insert>", { desc = "Terminal Split" } },
-  -- { { "n" }, "<Leader>T", "<CMD>belowright vsplit | terminal<CR><Insert>", { desc = "Terminal VSplit" } },
+  { { "n" }, "<Leader>t", "<CMD>belowright split | terminal<CR><Insert>", { desc = "Terminal Split" } },
+  { { "n" }, "<Leader>T", "<CMD>belowright vsplit | terminal<CR><Insert>", { desc = "Terminal VSplit" } },
   -- LSP
   { { "n" }, "grn", vim.lsp.buf.rename, { desc = "Rename" } },
   { { "n" }, "gra", vim.lsp.buf.code_action, { desc = "Code Action" } },
+  { { "n" }, "gO", vim.lsp.buf.document_symbol, { desc = "Document Symbol" } },
   -- Indenting
   { { "v" }, "<", "<gv" },
   { { "v" }, ">", ">gv" },
@@ -28,23 +29,8 @@ local map = {
   { { "v" }, "<C-a>", "<C-a>gv" },
   { { "v" }, "<C-x>", "<C-x>gv" },
   -- LSP
-  {
-    { "n" },
-    "K",
-    function()
-      vim.lsp.buf.hover {
-        title = "  hover ",
-        border = "rounded",
-      }
-    end,
-  },
-  {
-    { "i", "s" },
-    "<C-s>",
-    function()
-      vim.lsp.buf.signature_help { border = "rounded" }
-    end,
-  },
+  { { "n" }, "K", function() vim.lsp.buf.hover { title = "  hover ", border = "rounded", } end, },
+  { { "i", "s" }, "<C-s>", function() vim.lsp.buf.signature_help { border = "rounded" } end, },
   { { "n" }, "<Leader>m", "<CMD>Settings<CR>", { desc = "Menu" } },
 }
 

@@ -6,3 +6,4 @@ custom.lua
 .luarc.json
 zig-cache
 template/zig-cache
+nvim-pack-lock.json

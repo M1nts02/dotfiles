@@ -108,7 +108,7 @@ alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vimdiff "nvim -d"
 alias_if_exist hist "fc -ln 0 | fzf" fzf
-alias_if_exist e "open -a emacs" emacs
+alias_if_exist wget wget2
 
 alias q=exit
 alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
