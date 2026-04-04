@@ -1,6 +1,8 @@
 local M = {}
 
 local build_info = {}
+local plugins = {}
+local configs = {}
 
 local function do_build(name, info)
   local pack_info = vim.pack.get({ name }, { info = false })[1]
@@ -40,32 +42,22 @@ function M.add(plugin)
   if type(opt.build) == "function" or type(opt.build) == "string" then
     build_info[name] = { build = opt.build }
   end
-
   -- add
   opt.src = opt.src or ("https://github.com/" .. opt[1])
-  vim.pack.add({
-    {
-      src = opt.src,
-      name = opt.name,
-      version = opt.version,
-      data = opt.data,
-    },
-  }, { confirm = false })
+  table.insert(plugins, { src = opt.src, name = opt.name, version = opt.version, data = opt.data })
 
   -- init
   if type(opt.init) == "function" then
     opt.init()
   end
 
-  -- config
+  -- add config
   if type(opt.config) == "function" then
-    vim.api.nvim_create_autocmd("VimEnter", {
-      desc = "Load config",
-      callback = function()
-        opt.config()
-      end,
-      once = true,
-    })
+    if type(opt.priority) == "number" then
+      table.insert(configs, opt.priority, opt.config)
+    else
+      table.insert(configs, opt.config)
+    end
   end
 
   -- dependencies
@@ -88,6 +80,39 @@ function M.load()
       M.add(require("plugins." .. name))
     end
   end
+
+  -- add plugins
+  vim.pack.add(plugins, { confirm = false })
+
+  -- local configs
+  vim.api.nvim_create_autocmd("VimEnter", {
+    desc = "Load config",
+    callback = function()
+      for _, v in pairs(configs) do
+        v()
+      end
+    end,
+    once = true,
+  })
 end
+
+vim.api.nvim_create_user_command("PackUninstall", function()
+  local all_packs = vim.pack.get(nil, { info = false })
+  local inactive = {}
+  for _, pack in ipairs(all_packs) do
+    if pack.active == false then
+      table.insert(inactive, pack.spec.name)
+    end
+  end
+  if #inactive == 0 then
+    vim.notify("No inactive plugins to uninstall", vim.log.levels.INFO)
+    return
+  end
+  vim.pack.del(inactive)
+end, { desc = "Uninstall all inactive plugins" })
+
+vim.api.nvim_create_user_command("PackUpdate", function()
+  vim.pack.update()
+end, { desc = "Update plugins" })
 
 return M

@@ -27,9 +27,7 @@ vim.api.nvim_create_user_command("Settings", function()
   }, function(_, idx)
     local act = actions[idx]
 
-    if act == nil then
-      return
-    end
+    if act == nil then return end
 
     if type(act.action) == "function" then
       act.action()

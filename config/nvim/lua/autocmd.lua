@@ -16,3 +16,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
+-- Set highlight
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function ()
+     Color.set_hl()
+  end,
+})

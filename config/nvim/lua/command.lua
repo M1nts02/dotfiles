@@ -47,3 +47,29 @@ vim.api.nvim_create_user_command("FormatToggle", function()
 end, {
   desc = "Toggle format",
 })
+
+-- Toggle dark mode
+vim.api.nvim_create_user_command("DarkMode", function(opt)
+  local mode = vim.split(opt.args, " ", { plain = true })[1]
+
+  if mode == nil or mode == "" then
+    Color.dark_mode(not vim.g.dark)
+  else
+    Color.dark_mode(mode == "true")
+  end
+end, {
+  desc = "Toggle dark mode",
+  nargs = "*",
+  complete = function()
+    return { "true", "false" }
+  end,
+})
+
+-- Toggle auto completion
+vim.api.nvim_create_user_command("BlinkCmpToggle", function()
+  vim.g.cmp_enable = not vim.g.cmp_enable
+  Cache.update { g = { cmp_enable = vim.g.cmp_enable } }
+end, {
+  desc = "Toggle auto completion",
+})
+

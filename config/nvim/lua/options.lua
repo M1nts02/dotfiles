@@ -47,6 +47,8 @@ opt.wildoptions = { "fuzzy", "pum", "tagfile" }
 
 g.loaded_netrw = 1
 g.mapleader = " "
+g.dark_theme = "habamax"
+g.light_theme = "zellner"
 
 --cmd "unmenu PopUp"
 cmd "filetype indent off"

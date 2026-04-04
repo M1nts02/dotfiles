@@ -19,14 +19,10 @@ M.cpp = {
     type = "lldb",
     request = "launch",
     console = "integratedTerminal",
-    program = function()
-      return vim.fn.input {
-        prompt = "Path to executable: ",
-        completion = "file",
-      }
-    end,
+    program = function() return vim.fn.input { prompt = "Path to executable: ", completion = "file" } end,
   },
 }
+
 M.c = M.cpp
 M.rust = M.cpp
 M.zig = M.cpp

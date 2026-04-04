@@ -12,8 +12,6 @@ local options = {
     enable_autoformat = false,
     dark = true,
     minipairs_disable = true,
-    dark_theme = "akane-dark",
-    light_theme = "akane-light",
     python3_host_prog = "python3",
   },
   opt = {

@@ -5,20 +5,17 @@ _G.isWindows = sysname:find "Windows_NT" ~= nil
 _G.ConfPath = vim.fn.stdpath "config"
 _G.CachePath = ConfPath .. "/.cache.json"
 
-_G.Utils = require "utils"
-_G.Cache = require "cache"
+_G.Utils = require("utils")
+_G.Cache = require("cache")
+_G.Color = require("colorscheme")
 
--- Load options
-require "options"
--- Load saved options
-Cache.load()
+require "options" -- Load options
+Cache.load()      -- Load saved options
 
-require("colorscheme").init()
 require "command"
 require "autocmd"
 require "mapping"
 require "menu"
 require "statusline"
 
--- Load Plugins
-require("pack").load()
+require("pack").load() -- Load Plugins
