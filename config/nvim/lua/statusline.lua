@@ -5,9 +5,9 @@ function _G.statusline()
     return require("debugmaster.debug.mode").is_active()
   end)
   if ok and dbg then
-    table.insert(left, "%#DiagnosticWarn#[DEBUG]")
+    table.insert(left, "%#WarningMsg#[DEBUG]")
   else
-    table.insert(left, "%#DiagnosticWarn#")
+    table.insert(left, "%#WarningMsg#")
   end
 
   local n = vim.fn.tabpagenr("$")

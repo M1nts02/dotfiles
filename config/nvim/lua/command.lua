@@ -1,9 +1,8 @@
 -- Open cache file
-vim.api.nvim_create_user_command("CustomOpen", function()
-  vim.cmd("e " .. CachePath)
-end, {
-  desc = "Open cache file",
-})
+vim.api.nvim_create_user_command("CustomOpen", "e " .. CachePath, { desc = "Open cache file" })
+
+-- Toggle dark mode
+vim.api.nvim_create_user_command("DarkMode", function() Color.dark_mode(not vim.g.dark) end, { desc = "Toggle dark mode" })
 
 -- Toggle Wrap
 vim.api.nvim_create_user_command("WrapToggle", function()
@@ -48,23 +47,6 @@ end, {
   desc = "Toggle format",
 })
 
--- Toggle dark mode
-vim.api.nvim_create_user_command("DarkMode", function(opt)
-  local mode = vim.split(opt.args, " ", { plain = true })[1]
-
-  if mode == nil or mode == "" then
-    Color.dark_mode(not vim.g.dark)
-  else
-    Color.dark_mode(mode == "true")
-  end
-end, {
-  desc = "Toggle dark mode",
-  nargs = "*",
-  complete = function()
-    return { "true", "false" }
-  end,
-})
-
 -- Toggle auto completion
 vim.api.nvim_create_user_command("BlinkCmpToggle", function()
   vim.g.cmp_enable = not vim.g.cmp_enable
@@ -72,4 +54,3 @@ vim.api.nvim_create_user_command("BlinkCmpToggle", function()
 end, {
   desc = "Toggle auto completion",
 })
-

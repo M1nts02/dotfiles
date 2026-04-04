@@ -21,9 +21,11 @@ cmp.setup {
   },
   appearance = { nerd_font_variant = "normal", kind_icons = lspkind.symbol_map },
   sources = {
-    default = { "lsp", "path", "buffer", "snippets" },
+    default = { "lazydev", "lsp", "path", "buffer" },
     min_keyword_length = 3,
-    providers = { snippets = { score_offset = 4 } },
+    providers = { snippets = { score_offset = 4 },
+      lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
+    },
   },
   snippets = { preset = "luasnip" },
   completion = {

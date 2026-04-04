@@ -8,7 +8,7 @@ return {
       icons = { rules = false, group = "" },
       win = { border = "rounded", title_pos = "left" },
       plugins = {
-        spelling = { enabled = true },
+        spelling = { enabled = false },
       },
     }
 

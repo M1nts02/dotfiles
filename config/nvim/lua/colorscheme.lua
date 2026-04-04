@@ -1,8 +1,6 @@
 local M = {}
 
-local function get_color_hl(group)
-  return vim.api.nvim_get_hl(0, { name = group })
-end
+local function get_color_hl(group) return vim.api.nvim_get_hl(0, { name = group }) end
 
 function M.dark_mode(mode)
   vim.g.dark = mode or false
@@ -57,6 +55,9 @@ function M.set_hl()
     PmenuMatch = { fg = pink },
     PmenuMatchSel = { fg = pink },
 
+    WinSeparator = { fg = blue, bg = bg, bold = true },
+    WinSeparatorNC = { fg = blue, bg = bg, bold = true },
+
     -- Statusline
     StatusLine = { bg = bg },
     StatusLineNC = { bg = bg },
@@ -80,15 +81,6 @@ function M.set_hl()
     AvanteConflictIncoming = { fg = bg, bg = green },
     AvanteConflictCurrentLabel = { fg = bg, bg = blue },
     AvanteConflictIncomingLabel = { fg = bg, bg = green },
-
-    -- Fzf-lua
-    FzfLuaHeaderBind = { fg = grey, bg = bg },
-    FzfLuaHeaderText = { fg = grey, bg = bg },
-    FzfLuaBufNr = { fg = red },
-    FzfLuaBufLineNr = { fg = green, bg = bg },
-    FzfLuaBufName = { fg = blue, bg = bg },
-    FzfLuaCursorLine = { fg = fg, bg = bg1 },
-    FzfLuaPathLineNr = { fg = green },
 
     -- Mason
     MasonNormal = { fg = fg, bg = bg },

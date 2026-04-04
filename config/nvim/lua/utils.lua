@@ -4,14 +4,10 @@ local M = {}
 ---@param cmd string|string[] The commands
 ---@return boolean
 function M.executable(cmd)
-  if type(cmd) == "string" then
-    return vim.fn.executable(cmd) == 1
-  end
+  if type(cmd) == "string" then return vim.fn.executable(cmd) == 1 end
 
   for _, c in ipairs(cmd) do
-    if vim.fn.executable(c) == 1 then
-      return true
-    end
+    if vim.fn.executable(c) == 1 then return true end
   end
 
   return false
