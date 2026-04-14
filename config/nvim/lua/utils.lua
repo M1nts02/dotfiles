@@ -51,4 +51,17 @@ function M.update_json_file(path, t)
   end
 end
 
+--- A function to complete plugin name
+function M.plugins_complete(arglead, cmdline, cursorpos)
+  local plugins = vim.pack.get() or {}
+  local names = {}
+  for _, plugin in ipairs(plugins) do
+    local name = plugin.spec and plugin.spec.name
+    if name and (arglead == "" or name:find(arglead, 1, true) == 1) then
+      table.insert(names, name)
+    end
+  end
+  return names
+end
+
 return M

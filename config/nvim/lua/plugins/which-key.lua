@@ -14,8 +14,10 @@ return {
 
     require("which-key").add {
       { "gr",        group = "LSP+" },
-      { "<Leader>f", group = "Find+" },
       { "<Leader>a", group = "Ai+" },
+      { "<Leader>f", group = "Find+" },
+      { "<Leader>g", group = "Git+" },
+      { "<Leader>o", group = "Options+" },
     }
   end,
 }

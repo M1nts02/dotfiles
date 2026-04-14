@@ -31,7 +31,10 @@ local map = {
   -- LSP
   { { "n" }, "K", function() vim.lsp.buf.hover { title = "  hover ", border = "rounded", } end, },
   { { "i", "s" }, "<C-s>", function() vim.lsp.buf.signature_help { border = "rounded" } end, },
-  { { "n" }, "<Leader>m", "<CMD>Settings<CR>", { desc = "Menu" } },
+  { { "n" }, "<Leader>s", "<CMD>Settings<CR>", { desc = "Settings" } },
+  { { "n" }, "<Leader>fz", "<CMD>Zoxide<CR>", { desc = "Zoxide" } },
+  { { "n" }, "<Leader>od", "<CMD>DarkMode<CR>", { desc = "Dark Mode" } },
+  { { "n" }, "<Leader>ol", "<CMD>LspVirtualText<CR>", { desc = "LSP Virtual Text" } },
 }
 
 setmap(map)

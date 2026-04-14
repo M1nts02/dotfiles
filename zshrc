@@ -24,28 +24,24 @@ zstyle ':completion:*' menu yes select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # search history
-autoload -Uz history-beginning-search-menu
-zle -N history-beginning-search-menu
-bindkey '^r' history-beginning-search-menu
+#autoload -Uz history-beginning-search-menu
+#zle -N history-beginning-search-menu
+#bindkey '^r' history-beginning-search-menu
 
 # history with up and down
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
-bindkey "^p" up-line-or-beginning-search # Up
-bindkey "^n" down-line-or-beginning-search # Down
+#autoload -U up-line-or-beginning-search
+#autoload -U down-line-or-beginning-search
+#zle -N up-line-or-beginning-search
+#zle -N down-line-or-beginning-search
+#bindkey "^[[A" up-line-or-beginning-search # Up
+#bindkey "^[[B" down-line-or-beginning-search # Down
+#bindkey "^p" up-line-or-beginning-search # Up
+#bindkey "^n" down-line-or-beginning-search # Down
 
-get_dark_mode () {
-  osascript -e "tell app \"System Events\" to tell appearance preferences to get dark mode"
-}
+get_dark_mode () { osascript -e "tell app \"System Events\" to tell appearance preferences to get dark mode" }
 
 # mpv with nohup
-mb () {
-  nohup mpv ${*} >> /tmp/mpv_nohup.log &
-}
+mb () { nohup mpv ${*} >> /tmp/mpv_nohup.log & }
 
 # Move to CWD When Exiting Yazi
 function y() {
@@ -58,9 +54,7 @@ function y() {
 }
 
 # Toggle disable sleep
-disablesleep () {
-  sudo pmset -a disablesleep ${1}
-}
+disablesleep () { sudo pmset -a disablesleep ${1} }
 
 # gitui
 function g() {
@@ -107,13 +101,17 @@ alias_if_exist ll "eza -l --color=auto --total-size --icons"
 alias_if_exist tree "eza --tree"
 alias_if_exist v nvim
 alias_if_exist vimdiff "nvim -d"
-alias_if_exist hist "fc -ln 0 | fzf" fzf
+#alias_if_exist hist "fc -ln 0 | fzf" fzf
 alias_if_exist wget wget2
 
 alias q=exit
 alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 
 [[ -f ~/.custom.sh ]] && source ~/.custom.sh
+
+if command -v atuin &> /dev/null; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
 
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"

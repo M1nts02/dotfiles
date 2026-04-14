@@ -7,12 +7,11 @@ local update_json_file = Utils.update_json_file
 local options = {
   g = {
     cmp_enable = false,
-    dianostic_virtualtext = false,
-    inlay_hints = true,
-    enable_autoformat = false,
+    dianostic_virtualtext = 2,
     dark = true,
     minipairs_disable = true,
     python3_host_prog = "python3",
+    virtual_text = false,
   },
   opt = {
     wrap = true,

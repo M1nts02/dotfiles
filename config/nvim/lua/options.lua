@@ -49,6 +49,7 @@ g.loaded_netrw = 1
 g.mapleader = " "
 g.dark_theme = "habamax"
 g.light_theme = "zellner"
+g.zig_fmt_autosave = 0
 
 --cmd "unmenu PopUp"
 cmd "filetype indent off"
@@ -63,3 +64,5 @@ end
 vim.schedule(function()
   opt.clipboard = "unnamedplus"
 end)
+
+require("vim._core.ui2").enable({})
