@@ -1,6 +1,8 @@
 local M = {}
 
-local function get_color_hl(group) return vim.api.nvim_get_hl(0, { name = group }) end
+local function get_color_hl(group)
+  return vim.api.nvim_get_hl(0, { name = group })
+end
 
 function M.dark_mode(mode)
   vim.g.dark = mode or false
@@ -30,65 +32,69 @@ end
 
 function M.set_hl()
   local colors = M.get_hl()
-  local bg     = colors.bg
-  local bg1    = colors.bg1
-  local fg     = colors.fg
-  local red    = colors.red
-  local green  = colors.green
-  local cyan   = colors.cyan
-  local blue   = colors.blue
-  local grey   = colors.grey
+  local bg = colors.bg
+  local bg1 = colors.bg1
+  local fg = colors.fg
+  local red = colors.red
+  local green = colors.green
+  local cyan = colors.cyan
+  local blue = colors.blue
+  local grey = colors.grey
   local yellow = colors.yellow
-  local pink   = colors.pink
+  local pink = colors.pink
 
   local groups = {
-    NormalNC                    = { fg = fg, bg = bg },
-    NormalFloat                 = { bg = bg },
-    FloatBorder                 = { fg = blue, bg = bg },
-    FloatTitle                  = { fg = grey, bg = bg },
+    NormalNC = { fg = fg, bg = bg },
+    NormalFloat = { bg = bg },
+    FloatBorder = { fg = blue, bg = bg },
+    FloatTitle = { fg = grey, bg = bg },
 
-    Pmenu                       = { fg = fg, bg = bg },
-    PmenuBorder                 = { fg = blue, bg = bg },
-    PmenuSel                    = { fg = fg, bg = bg1 },
-    PmenuSbar                   = { fg = fg, bg = bg },
-    PmenuThumb                  = { bg = blue },
-    PmenuMatch                  = { fg = pink },
-    PmenuMatchSel               = { fg = pink },
+    Pmenu = { fg = fg, bg = bg },
+    PmenuBorder = { fg = blue, bg = bg },
+    PmenuSel = { fg = fg, bg = bg1 },
+    PmenuSbar = { fg = fg, bg = bg },
+    PmenuThumb = { bg = blue },
+    PmenuMatch = { fg = pink },
+    PmenuMatchSel = { fg = pink },
 
-    WinSeparator                = { fg = blue, bg = bg, bold = true },
-    WinSeparatorNC              = { fg = blue, bg = bg, bold = true },
+    WinSeparator = { fg = blue, bg = bg, bold = true },
+    WinSeparatorNC = { fg = blue, bg = bg, bold = true },
 
     -- Statusline
-    StatusLine                  = { bg = bg },
-    StatusLineNC                = { bg = bg },
+    StatusLine = { bg = bg },
+    StatusLineNC = { bg = bg },
 
     -- Blink.cmp
-    BlinkCmpLabel               = { fg = fg, bg = bg },
-    BlinkCmpMenu                = { fg = grey, bg = bg },
-    BlinkCmpMenuBorder          = { fg = blue, bg = bg },
-    BlinkCmpDocBorder           = { fg = blue, bg = bg },
+    BlinkCmpLabel = { fg = fg, bg = bg },
+    BlinkCmpMenu = { fg = grey, bg = bg },
+    BlinkCmpMenuBorder = { fg = blue, bg = bg },
+    BlinkCmpDocBorder = { fg = blue, bg = bg },
     BlinkCmpSignatureHelpBorder = { fg = blue, bg = bg },
-    BlinkCmpMenuSelection       = { fg = blue, bg = bg1, bold = true },
-    BlinkCmpLabelMatch          = { fg = pink, bg = "NONE" },
-    BlinkCmpLabelDeprecated     = { fg = grey, bg = "NONE", strikethrough = true },
-    BlinkCmpLabelDetail         = { fg = pink, bg = "NONE", italic = true },
-    BlinkCmpLabelDescription    = { fg = pink, bg = "NONE", italic = true },
-    BlinkCmpSource              = { fg = pink, bg = "NONE", italic = true },
+    BlinkCmpMenuSelection = { fg = blue, bg = bg1, bold = true },
+    BlinkCmpLabelMatch = { fg = pink, bg = "NONE" },
+    BlinkCmpLabelDeprecated = { fg = grey, bg = "NONE", strikethrough = true },
+    BlinkCmpLabelDetail = { fg = pink, bg = "NONE", italic = true },
+    BlinkCmpLabelDescription = { fg = pink, bg = "NONE", italic = true },
+    BlinkCmpSource = { fg = pink, bg = "NONE", italic = true },
 
     -- Avante
-    AvantePromptInputBorder     = { link = "Normal" },
-    AvanteConflictCurrent       = { fg = bg, bg = blue },
-    AvanteConflictIncoming      = { fg = bg, bg = green },
-    AvanteConflictCurrentLabel  = { fg = bg, bg = blue },
+    AvantePromptInputBorder = { link = "Normal" },
+    AvanteConflictCurrent = { fg = bg, bg = blue },
+    AvanteConflictIncoming = { fg = bg, bg = green },
+    AvanteConflictCurrentLabel = { fg = bg, bg = blue },
     AvanteConflictIncomingLabel = { fg = bg, bg = green },
 
     -- Mason
-    MasonNormal                 = { fg = fg, bg = bg },
+    MasonNormal = { fg = fg, bg = bg },
 
     -- Dashboard
-    DashboardHeader             = { fg = cyan },
-    DashboardFooter             = { fg = grey },
-    DashboardKey                = { fg = grey },
+    DashboardHeader = { fg = cyan },
+    DashboardFooter = { fg = grey },
+    DashboardKey = { fg = grey },
+
+    -- Fzf-lua
+    FzfLuaCursorLine = { fg = blue, bg = bg1 },
+    FzfLuaFzfMatch = { fg = pink },
   }
   for group, parameters in pairs(groups) do
     vim.api.nvim_set_hl(0, group, parameters)

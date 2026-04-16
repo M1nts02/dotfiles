@@ -11,12 +11,14 @@ _G.Color = require "colorscheme"
 _G.Pack = require "pack"
 
 require "options" -- Load options
-Cache.load() -- Load saved options
+Cache.load()      -- Load saved options
 
 require "command"
 require "autocmd"
 require "mapping"
-require "menu"
 require "statusline"
-
 Pack.load()
+
+if vim.g.neovide then
+  require "neovide"
+end

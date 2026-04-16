@@ -9,6 +9,13 @@ add("Main Menu", {
       run "Screenshot"
     end,
   },
+  -- Kitty
+  {
+    singleKey("v", "Neovide"),
+    function()
+      hs.execute "open -a /Applications/Neovide.app"
+    end,
+  },
   -- Ghostty
   {
     singleKey("g", "Ghostty"),
@@ -39,8 +46,6 @@ add("Main Menu", {
 }, {
   helper = [[
 
-     [e]: Finder              [g]: Ghostty             [s]: Screenshot 
-
      [1]: Brightness Down     [2]: Brightness Up       [3]: Misson Control
 
      [4]: Caps Lock           [5]: Illumination Down   [6]: Illumination Up
@@ -49,9 +54,11 @@ add("Main Menu", {
 
      [0]: Mute                [-]: Volume Down         [=]: Volume Up
 
+     [e]: Finder              [g]: Ghostty             [v]: Neovide
+
      [j]: Emoji               [c]: Control Center      [n]: Notification Center
 
-     [h]: Desktop             [a]: Dock
+     [h]: Desktop             [a]: Dock                [s]: Screenshot
                                                                                    ]],
 })
 

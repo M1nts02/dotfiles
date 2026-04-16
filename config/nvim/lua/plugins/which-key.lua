@@ -7,13 +7,11 @@ return {
       triggers = { { "<auto>", mode = "n" } },
       icons = { rules = false, group = "" },
       win = { border = "rounded", title_pos = "left" },
-      plugins = {
-        spelling = { enabled = false },
-      },
     }
 
     require("which-key").add {
-      { "gr",        group = "LSP+" },
+      { "gr", group = "LSP+" },
+      { "grx", group = "Codelens" },
       { "<Leader>a", group = "Ai+" },
       { "<Leader>f", group = "Find+" },
       { "<Leader>g", group = "Git+" },

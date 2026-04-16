@@ -10,7 +10,7 @@ function _G.statusline()
     table.insert(left, "%#WarningMsg#")
   end
 
-  local n = vim.fn.tabpagenr("$")
+  local n = vim.fn.tabpagenr "$"
   local cur = vim.fn.tabpagenr()
   local file_part = "%#Function#%t"
   if n > 1 then

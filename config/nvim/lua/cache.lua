@@ -6,7 +6,7 @@ local update_json_file = Utils.update_json_file
 -- default cache
 local options = {
   g = {
-    cmp_enable = false,
+    cmp_enable = true,
     dianostic_virtualtext = 2,
     dark = true,
     minipairs_disable = true,
@@ -14,9 +14,7 @@ local options = {
     virtual_text = false,
   },
   opt = {
-    wrap = true,
-    cursorline = true,
-    cursorcolumn = true,
+    wrap = false,
     number = true,
     relativenumber = true,
   },

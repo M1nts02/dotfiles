@@ -4,10 +4,14 @@ local M = {}
 ---@param cmd string|string[] The commands
 ---@return boolean
 function M.executable(cmd)
-  if type(cmd) == "string" then return vim.fn.executable(cmd) == 1 end
+  if type(cmd) == "string" then
+    return vim.fn.executable(cmd) == 1
+  end
 
   for _, c in ipairs(cmd) do
-    if vim.fn.executable(c) == 1 then return true end
+    if vim.fn.executable(c) == 1 then
+      return true
+    end
   end
 
   return false
@@ -19,7 +23,22 @@ function M.setmap(maps)
   for _, m in ipairs(maps) do
     m[4] = m[4] or {}
     m[4]["noremap"] = m[4]["noremap"] or true
-    vim.keymap.set(m[1], m[2], m[3], m[4])
+
+    if m.enabled == false then
+      goto continue
+    end
+
+    local mode = {}
+    if type(m[1]) == "table" then
+      mode = m[1]
+    elseif type(m[1]) == "string" then
+      for char in string.gmatch(m[1], ".") do
+        table.insert(mode, char)
+      end
+    end
+    vim.keymap.set(mode, m[2], m[3], m[4])
+
+    ::continue::
   end
 end
 

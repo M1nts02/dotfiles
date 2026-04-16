@@ -1,10 +1,6 @@
 return {
   "yetone/avante.nvim",
-  build = function(plugin)
-    if isWindows then vim.cmd("!(cd  " .. plugin.path .. " && powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false)")
-    else vim.cmd("!(cd " .. plugin.path .. " && make)")
-    end
-  end,
+  build = isWindows and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" or "make",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
@@ -25,7 +21,9 @@ return {
     },
     {
       "MeanderingProgrammer/render-markdown.nvim",
-      config = function() require("render-markdown").setup { file_types = { "Avante" } } end,
+      config = function()
+        require("render-markdown").setup { file_types = { "Avante" } }
+      end,
     },
   },
   config = function()

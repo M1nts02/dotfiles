@@ -11,8 +11,8 @@ archive = [
   { run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 text = [
-  { run = 'open "$@"', desc = "Open" },
   { run = 'nvim "$@"', block = true },
+  { run = 'open "$@"', desc = "Open" },
 ]
 image = [
   { run = 'open "$@"', desc = "Open" },
@@ -27,7 +27,6 @@ audio = [
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 fallback = [
-  { run = 'open "$@"', desc = "Open" },
   { run = 'open -R "$@"', desc = "Reveal in Finder", for = "unix" },
 ]
 

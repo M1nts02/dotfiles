@@ -26,6 +26,9 @@ o.wildignorecase = true
 o.winblend = 0
 o.writebackup = false
 
+opt.confirm = true
+opt.cursorcolumn = true
+opt.cursorline = true
 opt.expandtab = true
 opt.fileencodings = "utf-8,gbk,ucs-bom,default,latin1"
 opt.fillchars = { eob = " " }
@@ -65,4 +68,4 @@ vim.schedule(function()
   opt.clipboard = "unnamedplus"
 end)
 
-require("vim._core.ui2").enable({})
+require("vim._core.ui2").enable {}

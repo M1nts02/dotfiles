@@ -12,7 +12,7 @@ end
 
 -- Config LSP
 vim.lsp.config("*", { on_attach = on_attach })
-vim.lsp.config("sourcekit", { on_attach = on_attach, filetypes = { "swift", "objc", "objcpp" } })
+vim.lsp.config("sourcekit", { on_attach = on_attach, filetypes = { "swift" } })
 vim.lsp.config("clangd", {
   on_attach = on_attach,
   cmd = {

@@ -2,8 +2,9 @@
 vim.api.nvim_create_user_command("CustomOpen", "e " .. CachePath, { desc = "Open cache file" })
 
 -- Toggle dark mode
-vim.api.nvim_create_user_command("DarkMode", function() Color.dark_mode(not vim.g.dark) end,
-  { desc = "Toggle dark mode" })
+vim.api.nvim_create_user_command("DarkMode", function()
+  Color.dark_mode(not vim.g.dark)
+end, { desc = "Toggle dark mode" })
 
 -- Toggle Wrap
 vim.api.nvim_create_user_command("WrapToggle", function()
@@ -11,6 +12,7 @@ vim.api.nvim_create_user_command("WrapToggle", function()
   Cache.update { opt = { wrap = s } }
   local i = s == true and "true" or "false"
   vim.cmd("tabdo windo lua vim.opt.wrap = " .. i)
+  vim.notify("Wrap is " .. (s and "enabled" or "disabled"))
 end, {
   desc = "Toggle wrap",
 })
@@ -18,23 +20,24 @@ end, {
 -- Toggle auto completion
 vim.api.nvim_create_user_command("BlinkCmpToggle", function()
   Cache.update { g = { cmp_enable = not vim.g.cmp_enable } }
+  vim.notify("Auto completion is " .. (vim.g.cmp_enable and "enabled" or "disabled"))
 end, {
   desc = "Toggle auto completion",
 })
 
 -- Zoxide
 vim.api.nvim_create_user_command("Zoxide", function()
-  local handle = io.popen("zoxide query -l 2>/dev/null")
+  local handle = io.popen "zoxide query -l 2>/dev/null"
   if not handle then
     vim.notify("Failed to run zoxide", vim.log.levels.ERROR)
     return
   end
 
-  local result = handle:read("*a")
+  local result = handle:read "*a"
   handle:close()
 
   local items = {}
-  for line in result:gmatch("[^\r\n]+") do
+  for line in result:gmatch "[^\r\n]+" do
     if line ~= "" then
       table.insert(items, line)
     end
@@ -57,7 +60,7 @@ vim.api.nvim_create_user_command("LspVirtualText", function()
   Cache.update { g = { virtual_text = not vim.g.virtual_text } }
   if vim.g.virtual_text == true then
     vim.lsp.codelens.enable(true)
-    vim.cmd("tabdo windo lua vim.lsp.inlay_hint.enable(true, { bufnr = 0 })")
+    vim.cmd "tabdo windo lua vim.lsp.inlay_hint.enable(true, { bufnr = 0 })"
     if vim.g.dianostic_virtualtext == 1 then
       vim.diagnostic.config { virtual_lines = true, float = { border = "rounded" } }
     elseif vim.g.dianostic_virtualtext == 2 then
@@ -65,7 +68,7 @@ vim.api.nvim_create_user_command("LspVirtualText", function()
     end
   else
     vim.lsp.codelens.enable(false)
-    vim.cmd("tabdo windo lua vim.lsp.inlay_hint.enable(false, { bufnr = 0 })")
+    vim.cmd "tabdo windo lua vim.lsp.inlay_hint.enable(false, { bufnr = 0 })"
     vim.diagnostic.config { virtual_lines = false, float = { border = "rounded" } }
   end
 end, {

@@ -1,10 +1,11 @@
 local cmp = require "blink-cmp"
-local lspkind = require "lspkind"
 
 cmp.setup {
   enabled = function()
     local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
-    if buftype == "prompt" then return false end
+    if buftype == "prompt" then
+      return false
+    end
     return vim.g.cmp_enable
   end,
   keymap = {
@@ -19,13 +20,10 @@ cmp.setup {
     ["<C-u>"] = { "show_documentation", "scroll_documentation_up", "fallback" },
     ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
   },
-  appearance = { nerd_font_variant = "normal", kind_icons = lspkind.symbol_map },
   sources = {
     default = { "lazydev", "lsp", "path", "buffer" },
     min_keyword_length = 3,
-    providers = { snippets = { score_offset = 4 },
-      lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
-    },
+    providers = { snippets = { score_offset = 4 }, lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 } },
   },
   snippets = { preset = "luasnip" },
   completion = {
@@ -50,12 +48,14 @@ cmp.setup {
         align_to = "label",
         padding = { 0, 1 },
         gap = 1,
-        columns = { { "kind_icon" }, { "label", gap = 1 }, { "kind" } },
+        columns = { { "label", gap = 1 }, { "kind" } },
         components = {
           kind = {
             ellipsis = false,
             width = { fill = true },
-            text = function(ctx) return "(" .. ctx.kind .. ")" end,
+            text = function(ctx)
+              return "(" .. ctx.kind .. ")"
+            end,
           },
         },
       },

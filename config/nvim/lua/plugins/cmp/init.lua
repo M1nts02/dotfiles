@@ -5,12 +5,8 @@ return {
     "rafamadriz/friendly-snippets",
     {
       "L3MON4D3/LuaSnip",
-      build = function(plugin) if not isWindows then vim.cmd("!(cd  " .. plugin.path .. " && make install_jsregexp)") end end,
+      build = not isWindows and "make install_jsregexp" or nil,
       config = function() require "plugins.cmp.luasnip" end,
-    },
-    {
-      "onsails/lspkind.nvim",
-      config = function() require("lspkind").init { mode = "symbol_text" } end,
     },
     {
       "folke/lazydev.nvim",

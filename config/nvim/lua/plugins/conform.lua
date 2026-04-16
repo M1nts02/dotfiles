@@ -1,7 +1,8 @@
 return {
   "stevearc/conform.nvim",
   config = function()
-    require("conform").setup {
+    local conform = require "conform"
+    conform.setup {
       formatters_by_ft = {
         c = { "clang_format" },
         cpp = { "clang_format" },
@@ -16,7 +17,6 @@ return {
       },
     }
 
-    vim.api.nvim_create_user_command("Conform", function() require("conform").format() end, { desc = "Format" })
-    vim.api.nvim_create_user_command("ConformAll", "tabdo windo lua require('conform').format()", { desc = "Format all buffers" })
+    Utils.setmap { { "n", "<Leader>F", function() conform.format { async = true, lsp_format = "fallback" } end, { desc = "Format" } } }
   end,
 }

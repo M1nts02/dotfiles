@@ -1,11 +1,17 @@
 -- highlight yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  callback = function() vim.highlight.on_yank() end,
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -- Set highlight
-vim.api.nvim_create_autocmd("ColorScheme", { callback = function() Color.set_hl() end })
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    Color.set_hl()
+  end,
+})
 
 -- highlight yank
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -14,12 +20,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if vim.g.lsp_info == true then
       vim.lsp.codelens.enable(true)
       if vim.g.dianostic_virtualtext == 1 then
-        vim.diagnostic.config({ virtual_lines = true, float = { border = "rounded" } })
+        vim.diagnostic.config { virtual_lines = true, float = { border = "rounded" } }
       elseif vim.g.dianostic_virtualtext == 2 then
-        vim.diagnostic.config({ virtual_lines = { current_line = true }, float = { border = "rounded" } })
+        vim.diagnostic.config { virtual_lines = { current_line = true }, float = { border = "rounded" } }
       end
     else
-      vim.diagnostic.config({ virtual_lines = false, float = { border = "rounded" } })
+      vim.diagnostic.config { virtual_lines = false, float = { border = "rounded" } }
     end
   end,
 })
@@ -40,10 +46,15 @@ vim.api.nvim_create_autocmd("PackChanged", {
         return
       end
       local path = pack_info.path
-      if type(info.build) == "function" then
-        info.build { name = name, path = path }
-      elseif type(info.build) == "string" then
-        vim.cmd(info.build)
+      local build = info.build
+      if type(build) == "function" then
+        build { name = name, path = path }
+      elseif type(build) == "string" then
+        if string.sub(build, 1, 1) == ":" then
+          vim.cmd(string.sub(build, 2))
+        else
+          vim.cmd("!(cd  " .. path .. " && " .. info.build .. ")")
+        end
       end
     end
   end,

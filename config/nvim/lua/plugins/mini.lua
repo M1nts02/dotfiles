@@ -10,6 +10,7 @@ return {
     vim.api.nvim_create_user_command("AutoPairsToggle", function()
       vim.g.minipairs_disable = not vim.g.minipairs_disable
       Cache.update { g = { minipairs_disable = vim.g.minipairs_disable } }
+      vim.notify("Auto pairs is " .. (vim.g.minipairs_disable and "disabled" or "enabled"))
     end, { desc = "Toggle auto pairs" })
   end,
 }

@@ -1,0 +1,9 @@
+frame = "none"
+title-hidden = true
+
+[font]
+normal = [ "Maple Mono NF CN" ]
+size = 14.0
+
+[font.features]
+"Maple Mono NF CN" = [ "-calt", "-liga", "-clig" ]

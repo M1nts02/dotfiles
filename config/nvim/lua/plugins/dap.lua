@@ -55,7 +55,7 @@ return {
     for k, v in pairs(configurations) do
       dap.configurations[k] = v
     end
-    Utils.setmap { { { "n", "v" }, "<Leader>d", require("debugmaster").mode.toggle, { desc = "Debug Mode" } } }
+    Utils.setmap { { "nv", "<Leader>d", require("debugmaster").mode.toggle, { desc = "Debug Mode" } } }
     -- Statuscol
     _G.dap_toggle_breakpoint = function()
       vim.cmd "DapToggleBreakpoint"
