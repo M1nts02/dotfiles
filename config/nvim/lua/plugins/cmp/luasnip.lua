@@ -68,4 +68,3 @@ function ListSnippets()
 end
 
 Utils.setmap { { "i", "<C-l>", ListSnippets, { desc = "Snippets" } } }
-Utils.setmap { { "n", "<Leader>fs", ListSnippets, { desc = "Snippets" } } }

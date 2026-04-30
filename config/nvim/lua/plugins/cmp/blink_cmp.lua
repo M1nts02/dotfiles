@@ -1,5 +1,11 @@
 local cmp = require "blink-cmp"
 
+-- Toggle auto completion
+vim.api.nvim_create_user_command("CmpToggle", function()
+  Cache.update { g = { cmp_enable = not vim.g.cmp_enable } }
+  vim.notify("Auto completion is " .. (vim.g.cmp_enable and "enabled" or "disabled"))
+end, { desc = "Toggle auto completion" })
+
 cmp.setup {
   enabled = function()
     local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
@@ -21,9 +27,8 @@ cmp.setup {
     ["<C-d>"] = { "show_documentation", "scroll_documentation_down", "fallback" },
   },
   sources = {
-    default = { "lazydev", "lsp", "path", "buffer" },
+    default = { "lsp", "path", "buffer" },
     min_keyword_length = 3,
-    providers = { snippets = { score_offset = 4 }, lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 } },
   },
   snippets = { preset = "luasnip" },
   completion = {

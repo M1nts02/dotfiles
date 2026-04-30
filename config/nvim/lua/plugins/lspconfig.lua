@@ -4,7 +4,7 @@ local function on_attach(client, bufnr)
 
   -- inlay hints
   if client.server_capabilities.inlayHintProvider then
-    if vim.g.virtual_text == true then
+    if vim.g.lsp_info == true then
       vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
   end
@@ -29,7 +29,6 @@ vim.lsp.config("clangd", {
     "--enable-config",
   },
 })
-vim.lsp.config("lua_ls", { on_attach = on_attach, settings = { Lua = { completion = { callSnippet = "Replace" } } } })
 vim.lsp.config("mpls", {
   cmd = { "mpls", "--no-auto", "--theme", "dark", "--enable-emoji", "--enable-footnotes" },
   filetypes = { "markdown" },
@@ -56,8 +55,8 @@ return {
       "basedpyright",
       "bashls",
       "clangd",
+      "emmylua_ls",
       "jsonls",
-      "lua_ls",
       "markdown_oxide",
       "mpls",
       "ruff",
