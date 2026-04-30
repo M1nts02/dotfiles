@@ -4,7 +4,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    "nvim-telescope/telescope.nvim",
     "nvim-mini/mini.nvim",
     {
       "HakonHarnes/img-clip.nvim",

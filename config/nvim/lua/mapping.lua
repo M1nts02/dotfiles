@@ -1,7 +1,11 @@
 local setmap = Utils.setmap
 
-local map = {
+setmap {
   { "n", "<Leader>q", "<CMD>q<CR>", { desc = "Quit" } },
+  -- Plugin
+  { "n", "<Leader>pu", "<CMD>PackUpdate<CR>", { desc = "Update plugins" } },
+  { "n", "<Leader>ps", "<CMD>PackStatus<CR>", { desc = "Plugins status" } },
+  { "n", "<Leader>px", "<CMD>PackUninstall<CR>", { desc = "Remove disabled plugins" } },
   -- Clear highlights on search when pressing <Esc> in normal mode
   { "n", "<Esc>", "<CMD>nohlsearch<CR>" },
   -- Tab
@@ -26,14 +30,78 @@ local map = {
   { "v", "<C-a>", "<C-a>gv" },
   { "v", "<C-x>", "<C-x>gv" },
   -- LSP
-  { "n", "K", function() vim.lsp.buf.hover { title = "  hover ", border = "rounded" } end, },
-  { "is", "<C-s>", function() vim.lsp.buf.signature_help { border = "rounded" } end, },
+  { "n", "K", function() vim.lsp.buf.hover { title = "  hover ", border = "rounded" } end },
+  { "is", "<C-s>", function() vim.lsp.buf.signature_help { border = "rounded" } end },
   { "n", "<Leader>fz", "<CMD>Zoxide<CR>", { desc = "Zoxide" } },
   { "n", "<Leader>od", "<CMD>DarkMode<CR>", { desc = "Dark Mode" } },
   { "n", "<Leader>ol", "<CMD>LspVirtualText<CR>", { desc = "LSP Virtual Text" } },
   { "n", "<Leader>op", "<CMD>AutoPairsToggle<CR>", { desc = "Auto pairs" } },
-  { "n", "<Leader>oc", "<CMD>BlinkCmpToggle<CR>", { desc = "Auto Completion" } },
+  { "n", "<Leader>oc", "<CMD>CmpToggle<CR>", { desc = "Auto Completion" } },
   { "n", "<Leader>ow", "<CMD>WrapToggle<CR>", { desc = "Wrap" } },
+  -- Copy
+  { "v", "<D-c>", '"+y', { desc = "Copy" }, enabled = isMac },
+  { "nv", "<D-x>", '"+d', { desc = "Cut" }, enabled = isMac and isGui },
+  { "nv", "<D-v>", '"+p', { desc = "Paste" }, enabled = isMac and isGui },
+  { "ic", "<D-v>", "<C-r>+", { desc = "Paste" }, enabled = isMac and isGui },
+  {
+    "t",
+    "<D-v>",
+    function()
+      local clipboard_content = vim.fn.getreg "+"
+      vim.api.nvim_chan_send(vim.bo.channel, clipboard_content)
+    end,
+    { desc = "Paste" },
+    enabled = isMac and isGui,
+  },
+  { "n", "<D-a>", "ggVG", { desc = "Select all" }, enabled = isMac and isGui },
+  { "i", "<D-a>", "<Esc>ggVG", { desc = "Select all" }, enabled = isMac and isGui },
+  { "n", "<D-w>", "<CMD>q<CR>", { desc = "Quit" }, enabled = isMac and isGui },
+  -- Split window
+  { "n", "<D-d>", "<CMD>belowright vsplit<CR>", { desc = "Vertical Split" }, enabled = isMac and isGui },
+  { "n", "<D-S-d>", "<CMD>belowright split<CR>", { desc = "Split" }, enabled = isMac and isGui },
+  -- Move focus
+  { "nxit", "<D-Left>", "<CMD>wincmd h<CR>", { desc = "Focus left" }, enabled = isMac and isGui },
+  { "nxit", "<D-Right>", "<CMD>wincmd l<CR>", { desc = "Focus right" }, enabled = isMac and isGui },
+  { "nxit", "<D-Up>", "<CMD>wincmd k<CR>", { desc = "Focus up" }, enabled = isMac and isGui },
+  { "nxit", "<D-Down>", "<CMD>wincmd j<CR>", { desc = "Focus down" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-h>", "<CMD>wincmd h<CR>", { desc = "Focus left" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-l>", "<CMD>wincmd l<CR>", { desc = "Focus right" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-k>", "<CMD>wincmd k<CR>", { desc = "Focus up" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-j>", "<CMD>wincmd j<CR>", { desc = "Focus down" }, enabled = isMac and isGui },
+  -- Tab
+  { "n", "<D-t>", "<CMD>tabnew<CR>", { desc = "New Tab" }, enabled = isMac and isGui },
+  { "n", "<D-1>", "<CMD>tabnext 1<CR>", { desc = "Goto Tab 1" }, enabled = isMac and isGui },
+  { "n", "<D-2>", "<CMD>tabnext 2<CR>", { desc = "Goto Tab 2" }, enabled = isMac and isGui },
+  { "n", "<D-3>", "<CMD>tabnext 3<CR>", { desc = "Goto Tab 3" }, enabled = isMac and isGui },
+  { "n", "<D-4>", "<CMD>tabnext 4<CR>", { desc = "Goto Tab 4" }, enabled = isMac and isGui },
+  { "n", "<D-5>", "<CMD>tabnext 5<CR>", { desc = "Goto Tab 5" }, enabled = isMac and isGui },
+  { "n", "<D-6>", "<CMD>tabnext 6<CR>", { desc = "Goto Tab 6" }, enabled = isMac and isGui },
+  { "n", "<D-7>", "<CMD>tabnext 7<CR>", { desc = "Goto Tab 7" }, enabled = isMac and isGui },
+  { "n", "<D-8>", "<CMD>tabnext 8<CR>", { desc = "Goto Tab 8" }, enabled = isMac and isGui },
+  { "n", "<D-9>", "<CMD>tabnext 9<CR>", { desc = "Goto Tab 9" }, enabled = isMac and isGui },
+  { "i", "<D-t>", "<C-o><CMD>tabnew<CR>", { desc = "New Tab" }, enabled = isMac and isGui },
+  { "i", "<D-1>", "<C-o><CMD>tabnext 1<CR>", { desc = "Goto Tab 1" }, enabled = isMac and isGui },
+  { "i", "<D-2>", "<C-o><CMD>tabnext 2<CR>", { desc = "Goto Tab 2" }, enabled = isMac and isGui },
+  { "i", "<D-3>", "<C-o><CMD>tabnext 3<CR>", { desc = "Goto Tab 3" }, enabled = isMac and isGui },
+  { "i", "<D-4>", "<C-o><CMD>tabnext 4<CR>", { desc = "Goto Tab 4" }, enabled = isMac and isGui },
+  { "i", "<D-5>", "<C-o><CMD>tabnext 5<CR>", { desc = "Goto Tab 5" }, enabled = isMac and isGui },
+  { "i", "<D-6>", "<C-o><CMD>tabnext 6<CR>", { desc = "Goto Tab 6" }, enabled = isMac and isGui },
+  { "i", "<D-7>", "<C-o><CMD>tabnext 7<CR>", { desc = "Goto Tab 7" }, enabled = isMac and isGui },
+  { "i", "<D-8>", "<C-o><CMD>tabnext 8<CR>", { desc = "Goto Tab 8" }, enabled = isMac and isGui },
+  { "i", "<D-9>", "<C-o><CMD>tabnext 9<CR>", { desc = "Goto Tab 9" }, enabled = isMac and isGui },
+  { "t", "<D-t>", "<C-\\><C-n><CMD>tabnew<CR>", { desc = "New Tab" }, enabled = isMac and isGui },
+  { "t", "<D-1>", "<C-\\><C-n><CMD>tabnext 1<CR>", { desc = "Goto Tab 1" }, enabled = isMac and isGui },
+  { "t", "<D-2>", "<C-\\><C-n><CMD>tabnext 2<CR>", { desc = "Goto Tab 2" }, enabled = isMac and isGui },
+  { "t", "<D-3>", "<C-\\><C-n><CMD>tabnext 3<CR>", { desc = "Goto Tab 3" }, enabled = isMac and isGui },
+  { "t", "<D-4>", "<C-\\><C-n><CMD>tabnext 4<CR>", { desc = "Goto Tab 4" }, enabled = isMac and isGui },
+  { "t", "<D-5>", "<C-\\><C-n><CMD>tabnext 5<CR>", { desc = "Goto Tab 5" }, enabled = isMac and isGui },
+  { "t", "<D-6>", "<C-\\><C-n><CMD>tabnext 6<CR>", { desc = "Goto Tab 6" }, enabled = isMac and isGui },
+  { "t", "<D-7>", "<C-\\><C-n><CMD>tabnext 7<CR>", { desc = "Goto Tab 7" }, enabled = isMac and isGui },
+  { "t", "<D-8>", "<C-\\><C-n><CMD>tabnext 8<CR>", { desc = "Goto Tab 8" }, enabled = isMac and isGui },
+  { "t", "<D-9>", "<C-\\><C-n><CMD>tabnext 9<CR>", { desc = "Goto Tab 9" }, enabled = isMac and isGui },
+  -- terminal
+  { "nit", "<C-/>", "<CMD>Term<CR>", { desc = "Terminal" } },
+  -- Gitui
+  { "n", "<Leader>gg","<CMD>Gitui<CR>", { desc = "Gitui" }, enabled = Utils.executable "gitui", },
+  { "n", "<Leader>y","<CMD>Yazi<CR>", { desc = "Yazi" }, enabled = Utils.executable "yazi", },
 }
-
-setmap(map)

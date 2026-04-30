@@ -16,6 +16,7 @@ return {
       { "<Leader>f", group = "Find+" },
       { "<Leader>g", group = "Git+" },
       { "<Leader>o", group = "Options+" },
+      { "<Leader>p", group = "Plugins+" },
     }
   end,
 }

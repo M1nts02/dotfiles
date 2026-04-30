@@ -5,6 +5,8 @@ return {
     require("mini.pairs").setup()
     require("mini.comment").setup()
     require("mini.icons").setup()
+    require("mini.diff").setup()
+    require("mini.git").setup()
 
     -- Toggle auto pairs
     vim.api.nvim_create_user_command("AutoPairsToggle", function()
