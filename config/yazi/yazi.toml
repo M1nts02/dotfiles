@@ -11,6 +11,7 @@ archive = [
   { run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 text = [
+  { run = 'neovide "$@"' },
   { run = 'nvim "$@"', block = true },
   { run = 'open "$@"', desc = "Open" },
 ]
@@ -26,6 +27,9 @@ audio = [
   { run = 'open "$@"', desc = "Open" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
+dmg = [
+  { run = 'hdiutil attach "$@"', desc = "Mount DMG", block = true  },
+]
 fallback = [
   { run = 'open -R "$@"', desc = "Reveal in Finder", for = "unix" },
 ]
@@ -38,6 +42,7 @@ rules = [
     { mime = "video/*", use = ["video", "fallback"] },
     { mime = "audio/*", use = ["audio", "fallback"] },
     { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["archive", "fallback"] },
+    { mime = "application/zlib", use = ["dmg", "fallback"] },
     { name = "*",       use = ["text", "fallback"] },
 ]
 

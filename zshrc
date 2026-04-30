@@ -65,6 +65,15 @@ function g() {
   fi
 }
 
+# neovide
+function v() {
+  if command -v "neovide" &> /dev/null; then
+    nohup neovide ${*} > /tmp/neovide.log &
+  else
+    echo "Not install neovide"
+  fi
+}
+
 p() {
   if [[ -n "$http_proxy" ]]; then
     unset http_proxy https_proxy
@@ -99,10 +108,11 @@ alias_if_exist grep ggrep
 alias_if_exist l "eza -l --color=auto --icons"
 alias_if_exist ll "eza -l --color=auto --total-size --icons"
 alias_if_exist tree "eza --tree"
-alias_if_exist v nvim
 alias_if_exist vimdiff "nvim -d"
 #alias_if_exist hist "fc -ln 0 | fzf" fzf
 alias_if_exist wget wget2
+alias_if_exist vi nvim
+alias_if_exist vim nvim
 
 alias q=exit
 alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
