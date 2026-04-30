@@ -64,6 +64,11 @@ function M.set_hl()
     StatusLine = { bg = bg },
     StatusLineNC = { bg = bg },
 
+    -- Tabline
+    TabLine = { fg = grey, bg = bg },
+    TabLineSel = { fg = fg, bg = bg, bold = true },
+    TabLineFill = { bg = bg },
+
     -- Blink.cmp
     BlinkCmpLabel = { fg = fg, bg = bg },
     BlinkCmpMenu = { fg = grey, bg = bg },
@@ -86,11 +91,6 @@ function M.set_hl()
 
     -- Mason
     MasonNormal = { fg = fg, bg = bg },
-
-    -- Dashboard
-    DashboardHeader = { fg = cyan },
-    DashboardFooter = { fg = grey },
-    DashboardKey = { fg = grey },
 
     -- Fzf-lua
     FzfLuaCursorLine = { fg = blue, bg = bg1 },

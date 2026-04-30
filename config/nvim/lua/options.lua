@@ -11,11 +11,12 @@ o.ignorecase = true
 o.incsearch = false
 o.infercase = true
 o.laststatus = 3
-o.omnifunc = "syntaxcomplete#Complete"
+o.omnifunc = "v:lua.vim.lsp.omnifunc"
 o.pumheight = 15
 o.shiftround = true
 o.showbreak = "+---"
-o.showtabline = 0
+o.showmode = true
+o.showtabline = 1
 o.smartcase = true
 o.splitbelow = true
 o.splitright = true
@@ -26,6 +27,7 @@ o.wildignorecase = true
 o.winblend = 0
 o.writebackup = false
 
+opt.completeopt = { "menu", "menuone", "noselect", "popup", "fuzzy", "preview" }
 opt.confirm = true
 opt.cursorcolumn = true
 opt.cursorline = true
@@ -47,6 +49,7 @@ opt.termguicolors = true
 opt.undofile = true
 opt.whichwrap:append "<>[]hl"
 opt.wildoptions = { "fuzzy", "pum", "tagfile" }
+opt.winborder = "rounded"
 
 g.loaded_netrw = 1
 g.mapleader = " "
@@ -68,4 +71,5 @@ vim.schedule(function()
   opt.clipboard = "unnamedplus"
 end)
 
+vim.cmd.packadd { args = { "nvim.undotree" } }
 require("vim._core.ui2").enable {}

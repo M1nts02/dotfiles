@@ -18,7 +18,12 @@ function M.executable(cmd)
 end
 
 --- A function to set keymap
----@param maps table The table for set keymap
+---@param maps table[] A table containing multiple tables, each table has:
+---   [1] string The mode string
+---   [2] string The keymap
+---   [3] string|function The command or function to execute
+---   [4] table The options for keymap
+---   enabled boolean|nil Whether this keymap is enabled
 function M.setmap(maps)
   for _, m in ipairs(maps) do
     m[4] = m[4] or {}

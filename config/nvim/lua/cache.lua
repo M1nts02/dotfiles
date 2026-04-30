@@ -11,7 +11,7 @@ local options = {
     dark = true,
     minipairs_disable = true,
     python3_host_prog = "python3",
-    virtual_text = false,
+    lsp_info = false,
   },
   opt = {
     wrap = false,

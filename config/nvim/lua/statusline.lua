@@ -1,22 +1,8 @@
 function _G.statusline()
   local left = {}
 
-  local ok, dbg = pcall(function()
-    return require("debugmaster.debug.mode").is_active()
-  end)
-  if ok and dbg then
-    table.insert(left, "%#WarningMsg#[DEBUG]")
-  else
-    table.insert(left, "%#WarningMsg#")
-  end
-
-  local n = vim.fn.tabpagenr "$"
-  local cur = vim.fn.tabpagenr()
-  local file_part = "%#Function#%t"
-  if n > 1 then
-    file_part = file_part .. " [%#Function#" .. cur .. "/" .. n .. "]"
-  end
-  table.insert(left, file_part)
+  local file_part = vim.fn.expand "%:."
+  table.insert(left, "%#Function#" .. file_part)
   table.insert(left, "%=")
   table.insert(left, "%S")
 
