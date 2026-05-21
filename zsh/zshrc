@@ -1,0 +1,68 @@
+# homebrew
+BREW_PATH='/opt/homebrew/bin/brew'
+if [[ -f $BREW_PATH ]] then;
+  export HOMEBREW_FORCE_BREWED_GIT=1
+  export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/simple"
+  export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+  eval $($BREW_PATH shellenv)
+
+  export HOMEBREW=$(brew --prefix)
+  export PATH=${HOMEBREW}/include:$PATH
+  export LIBRARY_PATH=${HOMEBREW}/lib
+fi
+
+export DOTPATH="$( cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && cd .. && pwd )"
+
+NEWLINE=$'\n'
+PROMPT="%F{blue}%~ %#%f %F{green}%T%f${NEWLINE}"
+export LESS='-Pslines %lt-%lb'
+
+# completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+get_dark_mode () { [[ $(osascript -e "tell app \"System Events\" to tell appearance preferences to get dark mode") == 'true' ]] }
+
+# alias and export if $2 or $3 exist
+function alias_if_exist() { (( $+commands[$([[ -n $3 ]] && echo $3 || echo "$2" | cut -d ' ' -f 1)] )) && alias $1=$2 }
+function export_if_exist() { (( $+commands[$([[ -n $3 ]] && echo $3 || echo "$2" | cut -d ' ' -f 1)] )) && export $1=$2 }
+
+(( $+commands[bob] ))   && export PATH="${HOME}/.local/share/bob/nvim-bin:$PATH"
+(( $+commands[cargo] )) && export PATH="${HOME}/.cargo/bin:$PATH"
+
+alias_if_exist sed gsed
+alias_if_exist awk gawk
+alias_if_exist grep ggrep
+alias_if_exist l "eza -l --color=auto --icons"
+alias_if_exist ll "eza -l --color=auto --total-size --icons"
+alias_if_exist tree "eza --tree"
+alias_if_exist vimdiff "nvim -d"
+alias_if_exist wget wget2
+alias_if_exist vi nvim
+alias_if_exist vim nvim
+
+export_if_exist VISUAL "nvim"
+export_if_exist EDITOR "nvim"
+export_if_exist GIT_EDITOR "nvim"
+
+alias q=exit
+alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
+
+(( $+commands[neovide] )) && function v()  { nohup neovide ${*} > /tmp/neovide.log & }
+(( $+commands[gitui] )) && function g()  { get_dark_mode && gitui -t catppuccin-mocha.ron || gitui -t catppuccin-latte.ron }
+(( $+commands[mpv] )) && function mb() { nohup mpv ${*} >> /tmp/mpv_nohup.log & }
+(( $+commands[yazi] )) && function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+  command rm -f -- "$tmp"
+}
+
+[[ -f ~/.custom.sh ]] && source ~/.custom.sh
+source $DOTPATH/zsh/menu.sh
+
+(( $+commands[atuin] ))  && eval "$(atuin init zsh --disable-up-arrow)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
