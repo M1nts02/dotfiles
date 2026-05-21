@@ -1,18 +1,11 @@
 local M = {}
 
-local function get_color_hl(group)
-  return vim.api.nvim_get_hl(0, { name = group })
-end
+local function get_color_hl(group) return vim.api.nvim_get_hl(0, { name = group }) end
 
 function M.dark_mode(mode)
   vim.g.dark = mode or false
-
   Cache.update { g = { dark = vim.g.dark } }
-  if vim.g.dark == true then
-    vim.cmd.colorscheme(vim.g.dark_theme)
-  else
-    vim.cmd.colorscheme(vim.g.light_theme)
-  end
+  vim.cmd.colorscheme(vim.g.dark == true and vim.g.dark_theme or vim.g.light_theme)
 end
 
 function M.get_hl()

@@ -1,6 +1,4 @@
-local setmap = Utils.setmap
-
-setmap {
+Utils.setmap {
   { "n", "<Leader>q", "<CMD>q<CR>", { desc = "Quit" } },
   -- Plugin
   { "n", "<Leader>pu", "<CMD>PackUpdate<CR>", { desc = "Update plugins" } },
@@ -22,6 +20,7 @@ setmap {
   -- LSP
   { "n", "grn", vim.lsp.buf.rename, { desc = "Rename" } },
   { "n", "gra", vim.lsp.buf.code_action, { desc = "Code Action" } },
+  { "n", "grd", vim.diagnostic.open_float, { desc = "Diagnostic" } },
   { "n", "gO", vim.lsp.buf.document_symbol, { desc = "Document Symbol" } },
   -- Indenting
   { "v", "<", "<gv" },
@@ -99,9 +98,4 @@ setmap {
   { "t", "<D-7>", "<C-\\><C-n><CMD>tabnext 7<CR>", { desc = "Goto Tab 7" }, enabled = isMac and isGui },
   { "t", "<D-8>", "<C-\\><C-n><CMD>tabnext 8<CR>", { desc = "Goto Tab 8" }, enabled = isMac and isGui },
   { "t", "<D-9>", "<C-\\><C-n><CMD>tabnext 9<CR>", { desc = "Goto Tab 9" }, enabled = isMac and isGui },
-  -- terminal
-  { "nit", "<C-/>", "<CMD>Term<CR>", { desc = "Terminal" } },
-  -- Gitui
-  { "n", "<Leader>gg","<CMD>Gitui<CR>", { desc = "Gitui" }, enabled = Utils.executable "gitui", },
-  { "n", "<Leader>y","<CMD>Yazi<CR>", { desc = "Yazi" }, enabled = Utils.executable "yazi", },
 }

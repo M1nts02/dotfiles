@@ -1,3 +1,9 @@
+vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+vim.opt.completeopt = { "menu", "menuone", "noselect", "popup", "fuzzy", "preview" }
+-- vim.o.completeitemalign = "abbr,kind,menu"
+-- vim.bo.completefunc
+-- vim.o.autocomplete = true
+
 -- Enable built-in LSP completion
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Enable built-in LSP completion",
@@ -53,10 +59,38 @@ function completion_tab(select_key, key)
 end
 
 Utils.setmap {
-  { "i", "<Tab>", function() completion_tab("<C-n>", "<Tab>") end, { desc = "<Tab> or next item" } },
-  { "i", "<S-Tab>", function() completion_tab("C-p", "<S-Tab>") end, { desc = "<Tab> or next item" } },
-  { "is", "<C-n>", function() completion_snippet_or(1, "<C-n>") end, { desc = "Snippet jump forward or LSP completion or next item" } },
-  { "is", "<C-p>", function() completion_snippet_or(-1, "<C-p>") end, { desc = "Snippet jump back or LSP completion or prev item" } },
+  {
+    "i",
+    "<Tab>",
+    function()
+      completion_tab("<C-n>", "<Tab>")
+    end,
+    { desc = "<Tab> or next item" },
+  },
+  {
+    "i",
+    "<S-Tab>",
+    function()
+      completion_tab("C-p", "<S-Tab>")
+    end,
+    { desc = "<Tab> or next item" },
+  },
+  {
+    "is",
+    "<C-n>",
+    function()
+      completion_snippet_or(1, "<C-n>")
+    end,
+    { desc = "Snippet jump forward or LSP completion or next item" },
+  },
+  {
+    "is",
+    "<C-p>",
+    function()
+      completion_snippet_or(-1, "<C-p>")
+    end,
+    { desc = "Snippet jump back or LSP completion or prev item" },
+  },
   {
     "i",
     "<CR>",

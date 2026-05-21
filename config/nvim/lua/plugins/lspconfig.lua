@@ -62,6 +62,7 @@ return {
       "ruff",
       "sourcekit",
       "sqruff",
+      "tombi",
       "zls",
       "zuban",
     } do

@@ -11,7 +11,6 @@ o.ignorecase = true
 o.incsearch = false
 o.infercase = true
 o.laststatus = 3
-o.omnifunc = "v:lua.vim.lsp.omnifunc"
 o.pumheight = 15
 o.shiftround = true
 o.showbreak = "+---"
@@ -21,13 +20,12 @@ o.smartcase = true
 o.splitbelow = true
 o.splitright = true
 o.swapfile = false
-o.timeoutlen = 500
+o.timeoutlen = 1000
 o.virtualedit = "block"
 o.wildignorecase = true
 o.winblend = 0
 o.writebackup = false
 
-opt.completeopt = { "menu", "menuone", "noselect", "popup", "fuzzy", "preview" }
 opt.confirm = true
 opt.cursorcolumn = true
 opt.cursorline = true
@@ -46,6 +44,7 @@ opt.signcolumn = "yes"
 opt.softtabstop = -1
 opt.tabstop = 2
 opt.termguicolors = true
+opt.termguicolors = true
 opt.undofile = true
 opt.whichwrap:append "<>[]hl"
 opt.wildoptions = { "fuzzy", "pum", "tagfile" }
@@ -57,8 +56,7 @@ g.dark_theme = "habamax"
 g.light_theme = "zellner"
 g.zig_fmt_autosave = 0
 
---cmd "unmenu PopUp"
-cmd "filetype indent off"
+cmd "unmenu PopUp"
 
 -- Use ripgrep
 if vim.fn.executable "rg" == 1 then

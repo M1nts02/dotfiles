@@ -13,6 +13,7 @@ return {
         python = { "ruff_format", "isort", "black", stop_after_first = true },
         sql = { "sqruff" },
         typescript = { "biome" },
+        toml = { "tombi" },
         zig = { "zigfmt" },
       },
     }

@@ -7,7 +7,7 @@ return {
       { "n", "<Leader>fq", function() trouble.toggle("qflist") end,             { desc = "Quickfix" } },
       { "n", "gro",        function() trouble.toggle("symbols") end,            { desc = "Symbols" } },
       { "n", "gd",         function() trouble.open("lsp_definitions") end,      { desc = "Definition" } },
-      { "n", "grd",        function() trouble.toggle("diagnostics") end,        { desc = "Diagnostics" } },
+      { "n", "grD",        function() trouble.toggle("diagnostics") end,        { desc = "Diagnostics" } },
       { "n", "gri",        function() trouble.open("lsp_implementations") end,  { desc = "Implementations" } },
       { "n", "grO",        function() trouble.toggle("lsp_outgoing_calls") end, { desc = "Outgoing Calls" } },
       { "n", "grr",        function() trouble.toggle("lsp_references") end,     { desc = "References" } },
