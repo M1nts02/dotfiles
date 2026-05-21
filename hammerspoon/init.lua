@@ -1,8 +1,6 @@
-require "hs.ipc"
+-- require "hs.ipc"
 
---_G.DotPath = string.gsub(hs.execute 'cd "$( dirname "$( readlink "$HOME/.zshrc" )/" )" && pwd', "[\r\n]+$", "")
 _G.Utils = require "modules.utils" -- utils
-_G.Actions = require "modules.actions" -- actions
 
 -------------- Window ---------------
 require "modules.window"
@@ -17,5 +15,6 @@ Menu.helperFormat = {
 require "modules.menu.main"
 require "modules.menu.screenshot"
 
--------------- Launcher -------------
---require "modules.launcher"
+hs.hotkey.bind({}, "f18", function()
+  hs.eventtap.keyStroke({ "fn" }, "c")
+end)

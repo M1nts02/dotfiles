@@ -2,24 +2,15 @@ local M = {}
 
 ---@return boolean
 function M.get_dark_mode()
-  return hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'"
-    == "true\n"
+  return hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'" == "true\n"
 end
 
 ---@return table
 function M.get_helper_color()
   if M.get_dark_mode() then
-    return {
-      strokeColor = { white = 0.05, alpha = 1 },
-      fillColor = { white = 0.05, alpha = 1 },
-      textColor = { white = 0.5, alpha = 1 },
-    }
+    return { strokeColor = { white = 0.05, alpha = 1 }, fillColor = { white = 0.05, alpha = 1 }, textColor = { white = 0.5, alpha = 1 } }
   else
-    return {
-      strokeColor = { white = 0.95, alpha = 1 },
-      fillColor = { white = 0.95, alpha = 1 },
-      textColor = { white = 0.5, alpha = 1 },
-    }
+    return { strokeColor = { white = 0.95, alpha = 1 }, fillColor = { white = 0.95, alpha = 1 }, textColor = { white = 0.5, alpha = 1 } }
   end
 end
 
@@ -31,14 +22,8 @@ end
 
 ---@param opt table
 function M.ScreenShot(opt)
-  if type(opt) ~= "table" then
-    return
-  end
-
-  local timeStamp = string.gsub(os.date "%Y-%m-%d_%T", ":", ".")
-
   opt.dir = opt.dir ~= nil and opt.dir or os.getenv "HOME" .. "/Pictures/"
-  opt.fileName = opt.fileName ~= nil and opt.fileName or "ss-" .. timeStamp .. ".png"
+  opt.fileName = opt.fileName ~= nil and opt.fileName or ("ss-" .. string.gsub(os.date "%Y-%m-%d_%T", ":", ".") .. ".png")
   local fileFullPath = opt.dir .. opt.fileName
 
   if opt.mode == "Clipboard" then
@@ -48,8 +33,7 @@ function M.ScreenShot(opt)
   elseif opt.mode == "Area" then
     hs.task.new("/usr/sbin/screencapture", nil, { "-io", fileFullPath }):start()
   elseif opt.mode == "App" then
-    local windowId = hs.window.frontmostWindow():id()
-    hs.task.new("/usr/sbin/screencapture", nil, { "-l" .. windowId, fileFullPath }):start()
+    hs.task.new("/usr/sbin/screencapture", nil, { "-l" .. hs.window.frontmostWindow():id(), fileFullPath }):start()
   else
     return
   end
@@ -58,6 +42,38 @@ function M.ScreenShot(opt)
     hs.notify.new():title("Screenshot"):subTitle(fileFullPath):send()
   elseif type(opt.notify) == "string" then
     hs.notify.new():title("Screenshot"):subTitle(opt.notify):send()
+  end
+end
+
+---@param cmd string
+function M.sudoExecute(cmd)
+  local appleScript = string.format([[do shell script "%s" with administrator privileges]], cmd:gsub('"', '\\"'))
+
+  local ok, result = hs.osascript.applescript(appleScript)
+  if ok then
+    return result
+  else
+    hs.notify.show("Sudo fail", "", tostring(result))
+    return nil, result
+  end
+end
+
+---@param key string
+function M.MediaKeyEvent(key)
+  hs.eventtap.event.newSystemKeyEvent(key, true):post()
+  hs.eventtap.event.newSystemKeyEvent(key, false):post()
+end
+
+function M.rime_switcher()
+  local rimeID = "im.rime.inputmethod.Squirrel.Hans"
+  local currentID = hs.keycodes.currentSourceID()
+  if currentID ~= rimeID then
+    hs.keycodes.currentSourceID(rimeID)
+    hs.timer.doAfter(0.15, function()
+      hs.eventtap.keyStroke({ "ctrl", "shift" }, "f4")
+    end)
+  else
+    hs.eventtap.keyStroke({ "ctrl", "shift" }, "f4")
   end
 end
 
