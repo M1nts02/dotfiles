@@ -19,6 +19,8 @@ require "autocmd"
 require "mapping"
 require "statusline"
 require "tabline"
+require "terminal"
+require "gitui"
 -- require "completion"
 require "gui"
 Pack.load()
