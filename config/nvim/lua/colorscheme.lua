@@ -1,6 +1,8 @@
 local M = {}
 
-local function get_color_hl(group) return vim.api.nvim_get_hl(0, { name = group }) end
+local function get_color_hl(group)
+  return vim.api.nvim_get_hl(0, { name = group })
+end
 
 function M.dark_mode(mode)
   vim.g.dark = mode or false
@@ -21,6 +23,30 @@ function M.get_hl()
     yellow = get_color_hl("Type").fg,
     pink = get_color_hl("Special").fg,
   }
+end
+
+function M.sync_with_system()
+  if vim.fn.has "mac" == 0 then
+    return
+  end
+
+  local cmd = { "osascript", "-e", 'tell app "System Events" to tell appearance preferences to get dark mode' }
+
+  vim.defer_fn(function()
+    vim.fn.jobstart(cmd, {
+      stdout_buffered = true,
+      on_stdout = function(_, data, _)
+        if not data then
+          return
+        end
+        local output = table.concat(data, "")
+        local is_dark = vim.trim(output) == "true"
+        vim.schedule(function()
+          M.dark_mode(is_dark)
+        end)
+      end,
+    })
+  end, 0)
 end
 
 function M.set_hl()

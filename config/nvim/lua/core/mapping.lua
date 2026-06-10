@@ -3,7 +3,7 @@ Utils.setmap {
   -- Plugin
   { "n", "<Leader>pu", "<CMD>PackUpdate<CR>", { desc = "Update plugins" } },
   { "n", "<Leader>ps", "<CMD>PackStatus<CR>", { desc = "Plugins status" } },
-  { "n", "<Leader>px", "<CMD>PackUninstall<CR>", { desc = "Remove disabled plugins" } },
+  { "n", "<Leader>px", "<CMD>PackClean<CR>", { desc = "Remove disabled plugins" } },
   -- Clear highlights on search when pressing <Esc> in normal mode
   { "n", "<Esc>", "<CMD>nohlsearch<CR>" },
   -- Tab
@@ -67,6 +67,11 @@ Utils.setmap {
   { "nxit", "<D-S-l>", "<CMD>wincmd l<CR>", { desc = "Focus right" }, enabled = isMac and isGui },
   { "nxit", "<D-S-k>", "<CMD>wincmd k<CR>", { desc = "Focus up" }, enabled = isMac and isGui },
   { "nxit", "<D-S-j>", "<CMD>wincmd j<CR>", { desc = "Focus down" }, enabled = isMac and isGui },
+  -- Move Window
+  { "nxit", "<D-S-Left>", "<CMD>wincmd H<CR>", { desc = "Focus left" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-Right>", "<CMD>wincmd L<CR>", { desc = "Focus right" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-Up>", "<CMD>wincmd K<CR>", { desc = "Focus up" }, enabled = isMac and isGui },
+  { "nxit", "<D-S-Down>", "<CMD>wincmd J<CR>", { desc = "Focus down" }, enabled = isMac and isGui },
   -- Tab
   { "n", "<D-t>", "<CMD>tabnew<CR>", { desc = "New Tab" }, enabled = isMac and isGui },
   { "n", "<D-1>", "<CMD>tabnext 1<CR>", { desc = "Goto Tab 1" }, enabled = isMac and isGui },
@@ -98,4 +103,26 @@ Utils.setmap {
   { "t", "<D-7>", "<C-\\><C-n><CMD>tabnext 7<CR>", { desc = "Goto Tab 7" }, enabled = isMac and isGui },
   { "t", "<D-8>", "<C-\\><C-n><CMD>tabnext 8<CR>", { desc = "Goto Tab 8" }, enabled = isMac and isGui },
   { "t", "<D-9>", "<C-\\><C-n><CMD>tabnext 9<CR>", { desc = "Goto Tab 9" }, enabled = isMac and isGui },
+  -- terminal
+  { "nit", "<C-/>", "<CMD>Term<CR>", { desc = "Terminal" } },
+  { "nit", "<D-j>", "<CMD>Term<CR>", { desc = "Terminal" }, enabled = isMac and isGui },
+  -- Gitui
+  {
+    "n", "<Leader>gg",
+    function()
+      vim.cmd "tabnew"
+      local buf = vim.api.nvim_get_current_buf()
+      vim.fn.jobstart(vim.g.dark and "gitui -t catppuccin-mocha.ron" or "gitui -t catppuccin-latte.ron", {
+        term = true,
+        on_exit = function(_, code)
+          if code ~= 0 then return end
+          vim.schedule(function() pcall(vim.api.nvim_buf_delete, buf, { force = true }) end)
+        end,
+      })
+      vim.api.nvim_buf_set_name(buf, "term://gitui")
+      vim.cmd "startinsert"
+    end,
+    { desc = "Gitui" },
+    enabled = Utils.executable "gitui",
+  },
 }

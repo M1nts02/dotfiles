@@ -1,7 +1,8 @@
 return {
   "folke/which-key.nvim",
   config = function()
-    require("which-key").setup {
+    local which_key = require "which-key"
+    which_key.setup {
       preset = "helix",
       notify = false,
       triggers = { { "<auto>", mode = "n" } },
@@ -9,7 +10,7 @@ return {
       win = { border = "rounded", title_pos = "left" },
     }
 
-    require("which-key").add {
+    which_key.add {
       { "gr", group = "LSP+" },
       { "grx", group = "Codelens" },
       { "<Leader>a", group = "Ai+" },
@@ -17,6 +18,7 @@ return {
       { "<Leader>g", group = "Git+" },
       { "<Leader>o", group = "Options+" },
       { "<Leader>p", group = "Plugins+" },
+      { "<Leader>w", function() which_key.show { keys = "<c-w>", loop = true } end, desc = "Window" },
     }
   end,
 }

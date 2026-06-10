@@ -21,5 +21,6 @@ return {
 
     Color.dark_mode(vim.g.dark)
     Color.set_hl()
+    Color.sync_with_system()
   end,
 }

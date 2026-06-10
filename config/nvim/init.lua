@@ -6,21 +6,19 @@ _G.isGui = vim.g.neovide == true
 _G.ConfPath = vim.fn.stdpath "config"
 _G.CachePath = ConfPath .. "/.cache.json"
 
-_G.Utils = require "utils"
-_G.Cache = require "cache"
+_G.Utils = require "core.utils"
+_G.Cache = require "core.cache"
+_G.Pack = require "core.pack"
 _G.Color = require "colorscheme"
-_G.Pack = require "pack"
 
-require "options" -- Load options
+require "core.options" -- Load options
 Cache.load() -- Load saved options
 
-require "command"
-require "autocmd"
-require "mapping"
+require "core.command"
+require "core.autocmd"
+require "core.mapping"
 require "statusline"
 require "tabline"
-require "terminal"
-require "gitui"
--- require "completion"
-require "gui"
+-- require "config.completion"
+require "core.gui"
 Pack.load()

@@ -1,8 +1,19 @@
 local M = {}
 
-local build_info = {}
+_G.build_info = {}
 local plugins = {}
 local configs = {}
+
+--- A function to complete plugin name
+function M.plugins_complete(arglead, cmdline, cursorpos)
+  local plist = vim.pack.get() or {}
+  local names = {}
+  for _, plugin in ipairs(plist) do
+    local name = plugin.spec and plugin.spec.name
+    table.insert(names, name)
+  end
+  return Utils.cmdline_complete(arglead, cmdline, cursorpos, names)
+end
 
 -- Add plugin
 function M.add(plugin)
@@ -72,14 +83,19 @@ function M.load()
 end
 
 -- Build Plugins
-vim.api.nvim_create_autocmd("PackChanged", {
-  callback = function(args)
-    local data = args.data or {}
-    local kind = data.kind
-    if kind ~= "install" and kind ~= "update" then
-      return
+---@param p table
+local function plugins_build(p)
+  if type(p) ~= "table" then
+    return
+  end
+
+  if #p == 0 then
+    for i, _ in pairs(build_info) do
+      table.insert(p, i)
     end
-    local name = data.spec and data.spec.name
+  end
+
+  for _, name in pairs(p) do
     if name and build_info[name] then
       local info = build_info[name]
       local pack_info = vim.pack.get({ name }, { info = false })[1]
@@ -98,11 +114,37 @@ vim.api.nvim_create_autocmd("PackChanged", {
         end
       end
     end
+  end
+end
+
+vim.api.nvim_create_user_command("PackBuild", function(opts)
+  plugins_build(opts.fargs)
+end, {
+  desc = "Build plugins",
+  nargs = "*",
+  complete = function(arglead, cmdline, cursorpos)
+    local plist = {}
+    for i, _ in pairs(build_info) do
+      table.insert(plist, i)
+    end
+    return Utils.cmdline_complete(arglead, cmdline, cursorpos, plist)
   end,
 })
 
--- Uninstall Plugins
-vim.api.nvim_create_user_command("PackUninstall", function()
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(args)
+    local data = args.data or {}
+    local kind = data.kind
+    if kind ~= "install" and kind ~= "update" then
+      return
+    end
+    local name = data.spec and data.spec.name
+    plugins_build { name }
+  end,
+})
+
+-- Clean Plugins
+vim.api.nvim_create_user_command("PackClean", function()
   local all_packs = vim.pack.get(nil, { info = false })
   local inactive = {}
   for _, pack in ipairs(all_packs) do
@@ -125,7 +167,7 @@ vim.api.nvim_create_user_command("PackUpdate", function(opts)
   else
     vim.pack.update(fargs)
   end
-end, { desc = "Update plugins", nargs = "*", complete = Utils.plugins_complete })
+end, { desc = "Update plugins", nargs = "*", complete = M.plugins_complete })
 
 -- Show Plugins Status
 vim.api.nvim_create_user_command("PackStatus", function(opts)
@@ -135,6 +177,6 @@ vim.api.nvim_create_user_command("PackStatus", function(opts)
   else
     vim.pack.update(fargs, { offline = true })
   end
-end, { desc = "Show plugins Status", nargs = "*", complete = Utils.plugins_complete })
+end, { desc = "Show plugins Status", nargs = "*", complete = M.plugins_complete })
 
 return M
