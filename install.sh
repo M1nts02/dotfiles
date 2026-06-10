@@ -21,6 +21,7 @@ ln -s ${DIR}/config/mpv         ${HOME}/.config/mpv
 ln -s ${DIR}/config/gitui       ${HOME}/.config/gitui
 ln -s ${DIR}/config/stylua      ${HOME}/.config/stylua
 ln -s ${DIR}/config/neovide     ${HOME}/.config/neovide
+ln -s ${DIR}/config/minttab     ${HOME}/.config/minttab
 
 mkdir -p ${HOME}/.config/yazi
 ln -s ${DIR}/config/yazi/keymap.toml  ${HOME}/.config/yazi
@@ -51,5 +52,35 @@ if [ "${PLATFORM}" = "Mac" ]; then
   if [[ -L "${HOME}/.zshrc" ]]; then unlink "${HOME}/.zshrc"
   else rm -f "${HOME}/.zshrc"
   fi
-  ln -s ${DIR}/zsh/zshrc ${HOME}/.zshrc
+  ln -s ${DIR}/shell/zshrc ${HOME}/.zshrc
+
+
+  mkdir -p ${HOME}/Library/LaunchAgents
+  echo "
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.aria2.app</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>$(which minttab)</string>
+        </array>
+        <key>KeepAlive</key>
+        <true/>
+        <key>StandardErrorPath</key>
+        <string>/tmp/minttab.log</string>
+        <key>StandardOutPath</key>
+        <string>/tmp/minttab.log</string>
+        <key>EnvironmentVariables</key>
+        <dict>
+          <key>PATH</key>
+            <string><![CDATA[/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin]]></string>
+        </dict>
+    <key>WorkingDirectory</key>
+    <string>${HOME}</string>
+    </dict>
+</plist>
+  " > ${HOME}/Library/LaunchAgents/com.minttab.agent.plist
 fi

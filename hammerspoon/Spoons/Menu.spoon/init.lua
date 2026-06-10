@@ -43,7 +43,7 @@ local function modalBind(modal, items, o)
         modal:exit()
         killHelper()
       end
-      func()
+      hs.timer.doAfter(0.2, func)
     end)
   end
 
@@ -146,3 +146,4 @@ function obj.singleKey(key, name)
 end
 
 return obj
+

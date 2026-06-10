@@ -2,8 +2,11 @@
 
 _G.Utils = require "modules.utils" -- utils
 
+-------------- MintTab --------------
+_G.MintTab = require "modules.minttab"
+
 -------------- Window ---------------
-require "modules.window"
+_G.Window = require "actions.window"
 
 -------------- Menu -----------------
 _G.Menu = hs.loadSpoon "Menu"
@@ -15,6 +18,5 @@ Menu.helperFormat = {
 require "modules.menu.main"
 require "modules.menu.screenshot"
 
-hs.hotkey.bind({}, "f18", function()
-  hs.eventtap.keyStroke({ "fn" }, "c")
-end)
+-------------- Menubar --------------
+require "modules.menubar"
