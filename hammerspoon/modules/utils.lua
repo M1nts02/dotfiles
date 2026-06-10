@@ -2,7 +2,8 @@ local M = {}
 
 ---@return boolean
 function M.get_dark_mode()
-  return hs.execute "osascript -e 'tell app \"System Events\" to tell appearance preferences to get dark mode'" == "true\n"
+  local result = hs.execute "defaults read -g AppleInterfaceStyle 2>/dev/null"
+  return result:match "^Dark%s*$" ~= nil
 end
 
 ---@return table
