@@ -2,6 +2,7 @@
 BREW_PATH='/opt/homebrew/bin/brew'
 if [[ -f $BREW_PATH ]] then;
   export HOMEBREW_FORCE_BREWED_GIT=1
+  export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
   export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/simple"
   export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
   export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
@@ -62,7 +63,9 @@ alias icloud="cd $HOME/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 }
 
 [[ -f ~/.custom.sh ]] && source ~/.custom.sh
-source $DOTPATH/zsh/menu.sh
 
 (( $+commands[atuin] ))  && eval "$(atuin init zsh --disable-up-arrow)"
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+
+# kimi-code
+export PATH="/Users/m1nts02/.kimi-code/bin:$PATH"
