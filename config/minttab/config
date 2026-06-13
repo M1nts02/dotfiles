@@ -1,73 +1,97 @@
-# MintTab — macOS window switcher configuration
+# MintTab configuration
 # Location: ~/.config/minttab/config
-# Format: key = value, lines starting with # are comments
+# Format: key = value, comments start with #
 
-# ---- Switching Mode ----
+# ============================================================
+# Core
+# ============================================================
 
-# switching: switch logic
-#   app    — group by application (multiple windows of the same app merged into one icon)
-#   window — group by window (each window displayed independently)
-switching = window
+# switch-mod: modifier for the main switch hotkey (key is always Tab)
+#   alt  — Alt+Tab
+#   cmd  — Cmd+Tab
+#   ctrl — Ctrl+Tab
+switch-mod = cmd
 
-# grouping: enable grouping feature (true/false)
-#   when disabled, group-related hotkeys are not registered and show-all does not display group rows
-grouping = true
-
-# ---- Interface ----
-
-# ui-style: interface style
-#   icons — icons only
-#   list  — icons + window title
-ui-style = list
-
-# ui-size: interface size
-#   small  — small
-#   medium — medium
-#   large  — large
-ui-size = medium
-
-# blur: enable background blur effect (true/false)
-blur = true
-
-# mouse: enable mouse selection/hover (true/false)
-mouse = true
-
-# mouse-switch: switch immediately when releasing hotkey after hovering with mouse (true/false)
-mouse-switch = true
-
-# show-hidden: show Cmd+H hidden apps (true/false)
-show-hidden = true
-
-# show-windowless: show background apps with no windows (true/false)
-show-windowless = false
-
-# assign-switch: switch to the group after assigning via hotkey (true/false)
-assign-switch = true
-
-# auto-group: auto switch to the group of the current window when opening the switcher
+# auto-group: when opening the switcher, jump to the frontmost app's group
 auto-group = true
 
-# show-all-cross-group: allow Tab/←→ to cross groups in show-all mode
-show-all-cross-group = false
+# assign-switch: when auto-group is enabled and the frontmost app is ungrouped,
+# assign it to the current group instead of falling back to group 1
+assign-switch = true
 
-# switch-group-focus: auto focus the first window of the target group when switching groups
+# switch-group-focus: focus the first window when switching groups via hotkey
 switch-group-focus = true
 
-# ---- Keys ----
+# show-hidden: include windows from Cmd+H hidden apps in the switcher
+show-hidden = true
 
-# switch-mod: switch key modifier (the key is always Tab)
-#   alt — Alt+Tab
-#   cmd — Cmd+Tab
-#   ctrl — Ctrl+Tab
-switch-mod = alt
+# ============================================================
+# UI
+# ============================================================
 
-# show-all: show all windows/apps (ignores group filter)
-show-all = alt+grave
+# ui-style: switcher appearance
+#   icons — icons only
+#   list  — icon + window title
+ui-style = list
 
-# ---- Group Switch (1–9, 9 groups total) ----
-# Format: mod+key, available modifiers: alt, cmd, ctrl, shift
-# Comment out a line to disable the hotkey for that group
+# ui-size: UI element size
+#   small, medium, large
+ui-size = medium
 
+# blur: enable background blur
+blur = true
+
+# mouse: enable mouse selection and hover
+mouse = true
+
+# mouse-switch: release the switch hotkey on a hovered item to select it
+mouse-switch = true
+
+# show-all-cross-group: in show-all mode, Left/Right can move across group rows
+show-all-cross-group = false
+
+# group-hide-others: when switching groups, unhide all apps in the target group
+# and hide apps assigned to other groups. If the target group has no assigned
+# apps, only the group number is switched and no apps are hidden/unhidden.
+group-hide-others = true
+
+# ============================================================
+# Groups
+# ============================================================
+
+# Display names for groups 1–9 (shown in menu bar and show-all panel)
+group-name-1 = Group 1
+group-name-2 = Group 2
+group-name-3 = Group 3
+group-name-4 = Group 4
+group-name-5 = Group 5
+group-name-6 = Group 6
+group-name-7 = Group 7
+group-name-8 = Group 8
+group-name-9 = Group 9
+
+# ============================================================
+# Menu Bar
+# ============================================================
+
+# menu-bar: show menu bar icon with group indicator
+menu-bar = false
+
+# menu-bar-icon-format: {index} = group number, {name} = group name
+menu-bar-icon-format = {index}:{name}
+
+# ============================================================
+# Keybindings
+# ============================================================
+
+# Main switch hotkey is modifier + Tab (see switch-mod above).
+
+# show-all: show all windows, ignoring the current group filter
+show-all = alt+tab
+
+# ---- Group switch (1–9) ----
+# Format: mod+key. Modifiers: alt, cmd, ctrl, shift.
+# Comment out a line to disable that group's hotkey.
 group-switch-1 = ctrl+1
 group-switch-2 = ctrl+2
 group-switch-3 = ctrl+3
@@ -78,9 +102,7 @@ group-switch-7 = ctrl+7
 group-switch-8 = ctrl+8
 group-switch-9 = ctrl+9
 
-# ---- Group Assign (assign the current app to a specific group) ----
-# Press the same combination again to unassign
-
+# ---- Group assign (assign current app to group 1–9) ----
 # group-assign-1 = ctrl+shift+1
 # group-assign-2 = ctrl+shift+2
 # group-assign-3 = ctrl+shift+3
@@ -90,8 +112,3 @@ group-switch-9 = ctrl+9
 # group-assign-7 = ctrl+shift+7
 # group-assign-8 = ctrl+shift+8
 # group-assign-9 = ctrl+shift+9
-
-# ---- Group Navigation (unbound by default) ----
-# Switch to next/previous non-empty group
-# next-group = ctrl+right
-# prev-group = ctrl+left

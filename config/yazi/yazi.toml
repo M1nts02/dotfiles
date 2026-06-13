@@ -30,7 +30,7 @@ dmg = [
 ]
 fallback = [
   { run = "open -R %s", desc = "Reveal in Finder", for = "unix" },
-  { run = "mdrop %s", desc = "mDrop", for = "unix" },
+  { run = "mdrop -e %s", desc = "mDrop", for = "unix" },
 ]
 
 [open]

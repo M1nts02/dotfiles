@@ -18,9 +18,11 @@ brew install mhersson/formulas/mpls
 
 # Optional
 brew install --cask mediahuman-audio-converter appcleaner kid3 flowvision iina monitorcontrol squirrel-app zed petrichor
-brew install m1nts02/tap/minttab
 brew install pixi mihomo proxychains-ng imagemagick kimi-code zig zls choose-gui mole claude-code
 brew install coreutils grep gawk gnu-sed bash
+brew install m1nts02/tap/minttab
+brew services start m1nts02/tap/minttab
+brew services start mihomo
 
 # Duti
 brew install duti
